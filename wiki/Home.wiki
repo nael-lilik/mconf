@@ -1,0 +1,56 @@
+Mconf-Mobile is an Android implementation of the [http://www.bigbluebutton.org BigBlueButton] client. If you would like more information about the project, please visit http://www.inf.ufrgs.br/prav/gtmconf (Portuguese and English).
+
+Video demo 1: http://www.youtube.com/watch?v=v4Du20LsWGs
+
+If you like this project and want to give us some feedback, please contact [mailto:mconf.prav@gmail.com mconf.prav@gmail.com] :)
+
+If you have a suggestion or discovered a bug, please [http://code.google.com/p/mconf/issues/list create an issue].
+
+Also if you want to collaborate with this project, send us a patch and we would be glad to receive and merge it.
+
+= About the developers =
+ * Felipe Cecagno (fcecagno@gmail.com)
+ * Leonardo Daronco (leonardodaronco@gmail.com)
+ * Alessandra Leonhardt (ale.lionheart@gmail.com)
+
+= About the subprojects =
+== Flazr - a Java implementation of multimedia streaming protocols ==
+
+[http://flazr.com/ Flazr] is a very good implementation of the RTMP protocol with minimal dependencies. It was developed by Peter Thomas and it's licensed under LGPL.
+
+We've had to "clone" the subversion repository of Flazr because we needed to adapt the library to support Remote Shared Objects. We've used part of the [http://red5.org/ Red5] source code - Red5 is an Open Source Flash Server written in Java. Red5 is also licensed under LGPL.
+
+== BBB-Java ==
+
+This is our Java implementation that uses Flazr to communicate with BigBlueButton Server. It could be used as an interface between any Java application and BBB. The code is licensed under GNU Lesser General Public License (LGPL).
+
+== BBB-Android ==
+
+BBB-Android is our Android implementation of the BigBlueButton client. The code is licensed under GNU Lesser General Public License (LGPL).
+
+= If you want to run our app =
+ # Install Android SDK ([http://developer.android.com/sdk/index.html link])
+ # Install Eclipse ([http://www.eclipse.org/downloads/ link])
+ # Configure the environment (Eclipse + Android SDK integration)
+ # Install Apache Ant ([http://ant.apache.org/ link])
+ # Clone the repository
+ # Run *`ant dist`* inside *`flazr/`*. It will ask for a version, enter *`0.7`*
+ # Import all the projects in your workspace on Eclipse
+ # Just wait while Eclipse build the code
+ # Copy the file *`bigbluebutton.properties`* from your server to *`bbb-android/assets`*
+ # Run *`bbb-android`* as an Android application
+
+= Roadmap =
+ * Chat module
+ * Listeners module
+ * Video module
+
+= Pics =
+
+https://lh5.googleusercontent.com/_X8EH0UU7sPQ/TVGHBclu72I/AAAAAAAAABU/9GqXD1dftmA/s512/device04.png
+*
+https://lh6.googleusercontent.com/_X8EH0UU7sPQ/TVGHHMQoF4I/AAAAAAAAABs/Sv0ZKa3j2BM/s512/device08.png
+*
+https://lh6.googleusercontent.com/_X8EH0UU7sPQ/TVGJdY7fV8I/AAAAAAAAACk/MZtn_X1HtWA/s512/device15.png
+
+More pics [https://picasaweb.google.com/108245856281359125408/BigBlueButtonAndroidApp01# here].
