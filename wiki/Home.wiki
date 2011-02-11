@@ -47,10 +47,10 @@ BBB-Android is our Android implementation of the BigBlueButton client. The code 
 
 = Pics =
 
-https://lh5.googleusercontent.com/_X8EH0UU7sPQ/TVGHBclu72I/AAAAAAAAABU/9GqXD1dftmA/s512/device04.png
-*
-https://lh6.googleusercontent.com/_X8EH0UU7sPQ/TVGHHMQoF4I/AAAAAAAAABs/Sv0ZKa3j2BM/s512/device08.png
-*
-https://lh6.googleusercontent.com/_X8EH0UU7sPQ/TVGJdY7fV8I/AAAAAAAAACk/MZtn_X1HtWA/s512/device15.png
+ https://lh5.googleusercontent.com/_X8EH0UU7sPQ/TVGHBclu72I/AAAAAAAAABU/9GqXD1dftmA/s512/device04.png
+
+ https://lh6.googleusercontent.com/_X8EH0UU7sPQ/TVGHHMQoF4I/AAAAAAAAABs/Sv0ZKa3j2BM/s512/device08.png
+
+ https://lh6.googleusercontent.com/_X8EH0UU7sPQ/TVGJdY7fV8I/AAAAAAAAACk/MZtn_X1HtWA/s512/device15.png
 
 More pics [https://picasaweb.google.com/108245856281359125408/BigBlueButtonAndroidApp01# here].
