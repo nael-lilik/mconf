@@ -11,6 +11,10 @@ The source code for all subprojects can be found at https://github.com/mconf/
 
 If you like this project and want to give us some feedback, please contact mconf.prav@gmail.com. If you have a suggestion or discovered a bug, please [http://code.google.com/p/mconf/issues/list create an issue]. Furthermore, if you want to collaborate, send us a pull request and we will be glad to analyze and use it.
 
+== Mconf overview diagrams ==
+
+http://code.google.com/p/mconf/source/browse/wiki/Mconf-diagram-overview.png
+
 == Subprojects ==
 
   * [MconfMobile Mconf-Mobile]: Mconf-Mobile is an Android implementation of the [http://www.bigbluebutton.org BigBlueButton] client.
