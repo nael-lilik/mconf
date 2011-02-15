@@ -1,4 +1,4 @@
   * [Home Home]
-  * [SubProjects Subprojects]
+  * Subprojects
     * [MconfMobile Mconf-Mobile]
     * [MconfWeb Mconf-Web]
