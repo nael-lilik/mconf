@@ -11,7 +11,7 @@ VCC is developed in Ruby on Rails 2.3.4 and uses Isabel to perform webconfereces
 
 == Other libraries ==
 
-  * *bigbluebutton-api-ruby* (https://github.com/mconf/bigbluebutton-api-ruby): A library to access the BigBlueButton API in Ruby applications. Developed to be used in Mconf-Web.
+  * *bigbluebutton-api-ruby* (https://github.com/mconf/bigbluebutton-api-ruby): A library to access the BigBlueButton API in Ruby applications. Developed on top of a gem called [http://code.google.com/p/bigbluebuttongem/ bigbluebuttongem] to be used in Mconf-Web.
 
 == How to Start ==
 
@@ -29,8 +29,7 @@ Setting up the development environment:
   * Install bundler: `gem install bundler`
   * Run `script/setup` to install the system packages needed
   * Run `bundle install` to install all gems
-  * Configure the database and the mailer
-    * The script `setup` will create these files for you, but you need to open and configure them
+  * Configure the database and the mailer. The script `setup` will create these files for you, but you need to open and configure them
     * Database: `config/database.yml`    
     * Mailer: `config/initializers/mail_conf.rb`
   * Run `rake setup:development`
