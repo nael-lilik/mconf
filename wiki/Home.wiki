@@ -4,6 +4,8 @@ The project is currently built on top of the open source systems [http://www.big
 
 For more information about the project, please visit http://www.inf.ufrgs.br/prav/gtmconf (Portuguese and English)
 
+The source code for all subprojects can be found at https://github.com/mconf/
+
 == Subprojects ==
 
   * [MconfMobile Mconf-Mobile]: Mconf-Mobile is an Android implementation of the [http://www.bigbluebutton.org BigBlueButton] client.
@@ -11,7 +13,7 @@ For more information about the project, please visit http://www.inf.ufrgs.br/pra
 
 == About the developers ==
 
-Mconf is being developed at the Federal University of Rio Grande do Sul (UFRGS), in Porto Alegre, Brazil. Everyone involved in the project is member of the [http://www.inf.ufrgs.br/prav/ PRAV] research group. The project is funded by [http://www.rnp.br/ RNP].
+Mconf is being developed at the Federal University of Rio Grande do Sul (UFRGS), in Porto Alegre, Brazil. Everyone involved in the project is a member of the [http://www.inf.ufrgs.br/prav/ PRAV] research group. The project is funded by [http://www.rnp.br/ RNP].
 
 Developers:
 
