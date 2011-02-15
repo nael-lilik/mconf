@@ -1,10 +1,19 @@
 = Mconf =
+
+|| [https://github.com/mconf/ Source code] || [Home#Subbprojects Subprojects] ||
+
 Mconf is a project that aims to create a complete and easy to use webconference system, with focus on the interaction with mobile devices and social networks.
 The project is currently built on top of the open source systems [http://www.bigbluebutton.org BigBlueButton] and [http://globalplaza.org/ Global Plaza].
 
 For more information about the project, please visit http://www.inf.ufrgs.br/prav/gtmconf (Portuguese and English)
 
 The source code for all subprojects can be found at https://github.com/mconf/
+
+If you like this project and want to give us some feedback, please contact mconf.prav@gmail.com :)
+
+If you have a suggestion or discovered a bug, please [http://code.google.com/p/mconf/issues/list create an issue].
+
+Furthermore, if you want to collaborate, send us a pull request and we will be glad to analyze and use it.
 
 == Subprojects ==
 
@@ -21,7 +30,7 @@ Developers:
  * Leonardo Daronco (leonardodaronco@gmail.com)
  * Alessandra Leonhardt (ale.lionheart@gmail.com)
 
-== Mconf is built on top of ==
+== Mconf base ==
 
 Open source systems that form the base of Mconf.
 
