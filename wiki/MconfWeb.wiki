@@ -1,14 +1,8 @@
 = Mconf-Web =
 
+|| [https://github.com/mconf/mconf-web Source code] || [MconfWeb#How_to_Start How to Start] ||
+
 Mconf-Web is the social network in the Mconf webconferencing system. It is developed using Ruby on Rails and is a fork of the VCC project (https://github.com/ging/vcc).
-
-If you like this project and want to give us some feedback, please contact mconf.prav@gmail.com :)
-
-If you have a suggestion or discovered a bug, please [http://code.google.com/p/mconf/issues/list create an issue].
-
-Also if you want to collaborate with this project, send us a pull request and we will be glad to analyze and use it.
-
-== Mconf-Web base ==
 
 Mconf-Web is a fork of *VCC*.
 VCC is open source and it's code can be found at https://github.com/ging/vcc
@@ -19,7 +13,7 @@ VCC is developed in Ruby on Rails 2.3.4 and uses Isabel to perform webconfereces
 
   * *bigbluebutton-api-ruby* (https://github.com/mconf/bigbluebutton-api-ruby): A library to access the BigBlueButton API in Ruby applications. Developed to be used in Mconf-Web.
 
-== How to start ==
+== How to Start ==
 
 Setting up the development environment:
 
