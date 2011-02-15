@@ -1,0 +1,47 @@
+= Mconf-Web =
+
+Mconf-Web is the social network in the Mconf webconferencing system. It is developed using Ruby on Rails and is a fork of the VCC project (https://github.com/ging/vcc).
+
+If you like this project and want to give us some feedback, please contact mconf.prav@gmail.com :)
+
+If you have a suggestion or discovered a bug, please [http://code.google.com/p/mconf/issues/list create an issue].
+
+Also if you want to collaborate with this project, send us a pull request and we will be glad to analyze and use it.
+
+== Mconf-Web base ==
+
+Mconf-Web is a fork of *VCC*.
+VCC is open source and it's code can be found at https://github.com/ging/vcc
+
+VCC is developed in Ruby on Rails 2.3.4 and uses Isabel to perform webconfereces. In Mconf-Web, we are improving VCC and integrating it with *BigBlueButton*
+
+== Other libraries ==
+
+  * *bigbluebutton-api-ruby* (https://github.com/mconf/bigbluebutton-api-ruby): A library to access the BigBlueButton API in Ruby applications. Developed to be used in Mconf-Web.
+
+== How to start ==
+
+Setting up the development environment:
+
+  * Install ruby using rvm (http://rvm.beginrescueend.com/)
+    * Quick steps to install rvm (the project currently uses rvm 1.2.6):
+        * Run: `bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )`
+        * Add the following line to your ~/.bashrc or ~/.bash_profile:
+          * `[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.`
+        * Start a new prompt or load source in the current shell with: `source ~/.rvm/scripts/rvm`
+            * To check if it worked, run `type rvm | head -1` and it should output `rvm is a function`
+        * Run `rvm notes` and install the packages under "For Ruby (MRI & ree)"
+        * Mconf-Web uses rubygems 1.5.0. If needed, you can specify the version with: `rvm rubygems 1.5.0`
+  * Install bundler: `gem install bundler`
+  * Run `script/setup` to install the system packages needed
+  * Run `bundle install` to install all gems
+  * Configure the database and the mailer
+    * The script `setup` will create these files for you, but you need to open and configure them
+    * Database: `config/database.yml`    
+    * Mailer: `config/initializers/mail_conf.rb`
+  * Run `rake setup:development`
+
+Then you can:
+
+  * Start the server with `script/server` and navigate to `localhost:3000`
+  * Run tests with `rake spec`
