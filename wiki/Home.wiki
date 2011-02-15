@@ -13,7 +13,12 @@ If you like this project and want to give us some feedback, please contact mconf
 
 == Mconf overview diagrams ==
 
-http://code.google.com/p/mconf/source/browse/wiki/Mconf-diagram-overview.png
+=== Overview of the Mconf components ===
+http://mconf.googlecode.com/svn/wiki/Mconf-diagram-overview.png
+
+=== Possible contributions to BBB ===
+
+http://mconf.googlecode.com/svn/wiki/Mconf-diagram-overview-bbb.png
 
 == Subprojects ==
 
