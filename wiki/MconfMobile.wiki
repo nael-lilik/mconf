@@ -1,14 +1,10 @@
 = Mconf-Mobile =
 
+|| [https://github.com/mconf/mconf-mobile Source code] || [MconfMobile#If_you_want_to_run_our_app How to Start] || 
+
 Mconf-Mobile is an Android implementation of the [http://www.bigbluebutton.org BigBlueButton] client. If you would like more information about the project, please visit http://www.inf.ufrgs.br/prav/gtmconf (Portuguese and English).
 
-Video demo 1: http://www.youtube.com/watch?v=v4Du20LsWGs
-
-If you like this project and want to give us some feedback, please contact [mailto:mconf.prav@gmail.com mconf.prav@gmail.com] :)
-
-If you have a suggestion or discovered a bug, please [http://code.google.com/p/mconf/issues/list create an issue].
-
-Also if you want to collaborate with this project, send us a patch and we would be glad to receive and merge it.
+*Video demo 1:* http://www.youtube.com/watch?v=v4Du20LsWGs
 
 = About the subprojects =
 == Flazr - a Java implementation of multimedia streaming protocols ==
@@ -25,7 +21,9 @@ This is our Java implementation that uses Flazr to communicate with BigBlueButto
 
 BBB-Android is our Android implementation of the BigBlueButton client. The code is licensed under GNU Lesser General Public License (LGPL).
 
+
 = If you want to run our app =
+
  # Install Android SDK ([http://developer.android.com/sdk/index.html link])
  # Install Eclipse ([http://www.eclipse.org/downloads/ link])
  # Configure the environment (Eclipse + Android SDK integration)
