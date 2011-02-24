@@ -9,14 +9,14 @@ To run tests on the android app, [http://code.google.com/p/robotium/ Robotium] i
 = If you want to run the tests =
 To run the tests in bbb-androidTests, the following steps are needed
 
-# Follow the steps to run the app, listed here http://code.google.com/p/mconf/wiki/MconfMobile
-#Open the bbb-androidTests projects, in Eclipse
-#Right click > Build Path > Configure Build Path
-#Go to Libraries tab, click Add External JARs
-#Find the robotium-solo-2.2 jar on the bbb-androidTests folder
-#Ok
-#Run as Android JUnit Test
-#Collect the results
+  # Follow the steps to run the app, listed here http://code.google.com/p/mconf/wiki/MconfMobile
+  #Open the bbb-androidTests projects, in Eclipse
+  #Right click > Build Path > Configure Build Path
+  #Go to Libraries tab, click Add External JARs
+  #Find the robotium-solo-2.2 jar on the bbb-androidTests folder
+  #Ok
+  #Run as Android JUnit Test
+  #Collect the results
 
 There are many test cases written on the code. To assign a test to run on the device, simple type test before the name of the method.
 
