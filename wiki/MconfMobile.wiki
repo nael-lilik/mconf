@@ -35,6 +35,9 @@ BBB-Android is our Android implementation of the BigBlueButton client. The code 
  # Copy the file *`bigbluebutton.properties`* from your server to *`bbb-android/assets`*
  # Run *`bbb-android`* as an Android application
 
+== Testing ==
+[http://code.google.com/p/mconf/wiki/Testing?ts=1298555415&updated=Testing Testing the app page]
+
 = Roadmap =
  * Chat module
  * Listeners module
