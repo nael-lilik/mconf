@@ -1,0 +1,28 @@
+#summary UI driven automated tests
+#labels Phase-QA
+
+= Testing Mconf-Mobile =
+
+To run tests on the android app, [http://code.google.com/p/robotium/ Robotium] is used. It's a framework to easily works with the UI, providing trustful information in few lines of code.
+
+
+= If you want to run the tests =
+To run the tests in bbb-androidTests, the following steps are needed
+
+# Follow the steps to run the app, listed here http://code.google.com/p/mconf/wiki/MconfMobile
+# Open the bbb-androidTests projects, in Eclipse
+# Right click > Build Path > Configure Build Path
+# Go to Libraries tab, click Add External JARs
+# Find the robotium-solo-2.2 jar on the bbb-androidTests folder
+# Ok
+# Run as Android JUnit Test
+# Collect the results
+
+There are many test cases written on the code. To assign a test to run on the device, simple type test before the name of the method.
+
+For example, testLogin() will run, and Login() won't.
+
+= Creating new test cases = 
+
+New tests can be written after the code, using the existing methods, and the Robotium framework.
+The tests are based in the Solo object, from Robotium, wich gets the activity and all the elements on the screen. Using the methods of the Solo object, buttons can be clicked, text can be entered, the back button can be pressed and so on.
