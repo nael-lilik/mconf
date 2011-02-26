@@ -26,16 +26,16 @@ BBB-Android is our Android implementation of the BigBlueButton client. The code 
 
  # Install Android SDK ([http://developer.android.com/sdk/index.html link])
  # Install Eclipse ([http://www.eclipse.org/downloads/ link])
- # Configure the environment (Eclipse + Android SDK integration)
+ # Configure the environment (Eclipse + Android SDK integration) ([http://developer.android.com/sdk/eclipse-adt.html link])
  # Install Apache Ant ([http://ant.apache.org/ link])
  # Clone the repository
- # Run *`ant dist`* inside *`flazr/`*. It will ask for a version, enter *`0.7`*
+ # Run *`ant dist`* inside *`flazr/`*
  # Import all the projects in your workspace on Eclipse
  # Just wait while Eclipse build the code
- # Copy the file *`bigbluebutton.properties`* from your server to *`bbb-android/assets`*
  # Run *`bbb-android`* as an Android application
+ # If you want to run the app against to your own server, copy the file *`bbb-android/mobile.jsp`* to *`/var/lib/tomcat6/webapps/bigbluebutton/demo/`*. You can access our development server at *`http://devbbb-mconf.no-ip.org`*
 
-== Testing ==
+= Testing =
 [http://code.google.com/p/mconf/wiki/Testing?ts=1298555415&updated=Testing Testing the app page]
 
 = Roadmap =
