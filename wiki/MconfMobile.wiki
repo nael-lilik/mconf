@@ -15,12 +15,13 @@ We've had to "clone" the subversion repository of Flazr because we needed to ada
 
 == BBB-Java ==
 
-This is our Java implementation that uses Flazr to communicate with BigBlueButton Server. It could be used as an interface between any Java application and BBB. The code is licensed under GNU Lesser General Public License (LGPL).
+This is our Java implementation that uses Flazr to communicate with BigBlueButton Server. It is a client-side API and could be used as an interface between any Java application and BBB. The code is licensed under GNU Lesser General Public License (LGPL).
 
 == BBB-Android ==
 
 BBB-Android is our Android implementation of the BigBlueButton client. The code is licensed under GNU Lesser General Public License (LGPL).
 
+*Update:* since March 2011 we changed the license of BBB-Android to GNU General Public Licence (GPL) because we started to use [http://sipdroid.org/ Sipdroid] for audio interaction. Sipdroid is a free SIP/VoIP client for Android and it's licensed under GNU General Public License (GPL).
 
 = If you want to run our app =
 
