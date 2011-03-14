@@ -1,0 +1,11 @@
+#summary Development Road Map for Mconf-Web
+
+= Current Release =
+
+== Release 0.1 ==
+
+Features:
+  * Migration of VCC to Rails 3 ([http://code.google.com/p/mconf/issues/detail?id=9 issue 9])
+  * First integration of BBB in Mconf-Web using bigbluebutton-api-ruby. Simple integration totally based on API calls, with no features such as user access control, persistent data (db), monitoring, etc.
+
+*(Soft) Deadline*: May 20th, 2011.
