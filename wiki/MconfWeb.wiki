@@ -2,39 +2,53 @@
 
 || [https://github.com/mconf/mconf-web Source code] || [MconfWeb#How_to_Start How to Start] ||
 
-Mconf-Web is the social network in the Mconf webconferencing system. It is developed using Ruby on Rails and is a fork of the VCC project (https://github.com/ging/vcc).
+Mconf-Web is the social network in the Mconf webconferencing system. It is developed using Ruby on Rails 3.
 
 Mconf-Web is a fork of *VCC*.
 VCC is open source and it's code can be found at https://github.com/ging/vcc
 
-VCC is developed in Ruby on Rails 2.3.4 and uses Isabel to perform webconfereces. In Mconf-Web, we are improving VCC and integrating it with *BigBlueButton*
+VCC is developed in Ruby on Rails 2.3.4 and uses Isabel to perform webconfereces. In Mconf-Web, we are improving VCC and integrating it with *BigBlueButton*.
 
 == Other libraries ==
 
   * *bigbluebutton-api-ruby* (https://github.com/mconf/bigbluebutton-api-ruby): A library to access the BigBlueButton API in Ruby applications. Developed on top of a gem called [http://code.google.com/p/bigbluebuttongem/ bigbluebuttongem] to be used in Mconf-Web.
 
+  * *bigbluebutton-rails* (https://github.com/mconf/bigbluebutton-rails): An integration of BBB and Rails. Uses bigbluebutton-api-ruby to access the BBB API.
+
 == How to Start ==
 
 Setting up the development environment:
 
-  * Install ruby using rvm (http://rvm.beginrescueend.com/)
-    * Quick steps to install rvm (the project currently uses rvm 1.2.6):
-        * Run: `bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )`
-        * Add the following line to your ~/.bashrc or ~/.bash_profile:
-          * `[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.`
-        * Start a new prompt or load source in the current shell with: `source ~/.rvm/scripts/rvm`
-            * To check if it worked, run `type rvm | head -1` and it should output `rvm is a function`
-        * Run `rvm notes` and install the packages under "For Ruby (MRI & ree)"
-        * Mconf-Web uses rubygems 1.5.0. If needed, you can specify the version with: `rvm rubygems 1.5.0`
-  * Install bundler: `gem install bundler`
-  * Run `script/setup` to install the system packages needed
-  * Run `bundle install` to install all gems
-  * Configure the database and the mailer. The script `setup` will create these files for you, but you need to open and configure them
-    * Database: `config/database.yml`    
-    * Mailer: `config/initializers/mail_conf.rb`
-  * Run `rake setup:development`
+  # Install ruby. We recommend the use of rvm (http://rvm.beginrescueend.com/). See the quick steps below.
+  # Run <tt>script/setup development</tt>. It will install some system packages that mconf-web uses (such as imagemagick, openssl, libxml2) and create configuration files.
+  # Install bundler with <tt>gem install bundler</tt> and run <tt>bundle install</tt> to install all gems
+  # Configure the database and the mailer:
+    * (The script <tt>setup</tt> created these files for you, but you need to open and configure them)
+    * Database: <tt>config/database.yml</tt>
+      * You may need to insert a password if you're using mysql.
+    * Mailer: <tt>config/initializers/mail_conf.rb</tt>
+      * It uses a gmail account. Uncomment everything and change your username/password.
+  # Run <tt>rake setup:development</tt>. It will drop and recreate your development database, create the basic data needed to use the system and populate the db with test data.
+  # Run <tt>rake setup:test</tt>. It will prepare the test enviroment (also creating the basic data needed).
 
 Then you can:
 
-  * Start the server with `script/server` and navigate to `localhost:3000`
-  * Run tests with `rake spec`
+  * Run the server with <tt>rails server</tt> and navigate to <tt>localhost:3000</tt>
+  * Run tests with <tt>bundle exec rake spec</tt>
+
+=== Quick steps to install Ruby using rvm ===
+
+  * Quick steps to install rvm (we are using rvm 1.2.6)
+    * Run:
+      * <tt>bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )</tt>
+    * Add the following line to your ~/.bashrc or ~/.bash_profile:
+      * <tt>[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.</tt>
+    * Start a new prompt or load source in the current shell with:
+      * <tt>source ~/.rvm/scripts/rvm</tt>
+    * To check if it worked, run <tt>type rvm | head -1</tt> and it should output <tt>rvm is a function</tt>
+    * Run <tt>rvm notes</tt> and install the packages under "For Ruby (MRI & ree)"
+    * Mconf-Web uses rubygems 1.5.0. If needed, you can specify the version with: <tt>rvm rubygems 1.5.0</tt>
+      * To check your rubygems version run <tt>gem -v</tt>
+    * We recommend that you create a gemset for Mconf.
+      * Creating the: <tt>rvm gemset create mconf</tt>
+      * Use this gemset as default: <tt>rvm use --default 1.9.2@mconf</tt>
