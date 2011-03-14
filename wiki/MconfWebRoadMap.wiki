@@ -6,6 +6,7 @@
 
 Features:
   * Migration of VCC to Rails 3 ([http://code.google.com/p/mconf/issues/detail?id=9 issue 9])
-  * First integration of BBB in Mconf-Web using bigbluebutton-api-ruby. Simple integration totally based on API calls, with no features such as user access control, persistent data (db), monitoring, etc.
+  * Branding of VCC to become Mconf-Web ([http://code.google.com/p/mconf/issues/detail?id=11 issue 11])
+  * First integration of BBB in Mconf-Web using bigbluebutton-api-ruby. Simple integration totally based on API calls, with no features such as user access control, persistent data (db), monitoring, etc. ([http://code.google.com/p/mconf/issues/detail?id=10 issue 10], [http://code.google.com/p/mconf/issues/detail?id=25 issue 25], [http://code.google.com/p/mconf/issues/detail?id=26 issue 26])
 
 *(Soft) Deadline*: May 20th, 2011.
