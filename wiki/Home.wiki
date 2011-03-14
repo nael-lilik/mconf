@@ -5,11 +5,11 @@
 Mconf is a project that aims to create a complete and easy to use webconference system, with focus on the interaction with mobile devices and social networks.
 The project is currently built on top of the open source systems [http://www.bigbluebutton.org BigBlueButton] and [http://globalplaza.org/ Global Plaza].
 
-For more information about the project, please visit http://www.inf.ufrgs.br/prav/gtmconf (Portuguese and English)
-
 The source code for all subprojects can be found at https://github.com/mconf/
 
-If you like this project and want to give us some feedback, please contact mconf.prav@gmail.com. If you have a suggestion or discovered a bug, please [http://code.google.com/p/mconf/issues/list create an issue]. Furthermore, if you want to collaborate, send us a pull request and we will be glad to analyze and use it.
+You can find more information about the project at http://www.inf.ufrgs.br/prav/gtmconf (Portuguese and English)
+
+If you like this project and want to give us some feedback, please contact mconf@googlegroups.com. If you have a suggestion or discovered a bug, please [http://code.google.com/p/mconf/issues/list create an issue]. Furthermore, if you want to collaborate, send us a pull request and we will be glad to analyze and use it.
 
 == Subprojects ==
 
@@ -21,19 +21,12 @@ If you like this project and want to give us some feedback, please contact mconf
 === Overview of the Mconf components ===
 http://mconf.googlecode.com/svn/wiki/Mconf-diagram-overview.png
 
-=== Possible contributions to BBB ===
 
-http://mconf.googlecode.com/svn/wiki/Mconf-diagram-overview-bbb.png
-
-== About the developers ==
+== Contributors ==
 
 Mconf is being developed at the Federal University of Rio Grande do Sul (UFRGS), in Porto Alegre, Brazil. Everyone involved in the project is a member of the [http://www.inf.ufrgs.br/prav/ PRAV] research group. The project is funded by [http://www.rnp.br/ RNP].
 
-Developers:
-
- * Felipe Cecagno (fcecagno@gmail.com)
- * Leonardo Daronco (leonardodaronco@gmail.com)
- * Alessandra Leonhardt (ale.lionheart@gmail.com)
+Check our github to see who's currently working on the project: https://github.com/mconf
 
 == Mconf base systems ==
 
