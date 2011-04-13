@@ -36,7 +36,7 @@ BBB-Android is our Android implementation of the BigBlueButton client. The code 
  # Import all the projects in your workspace on Eclipse
  # Just wait while Eclipse build the code
  # Run *`bbb-android`* as an Android application
- # If you want to run the app against to your own server, copy the file *`bbb-android/mobile.jsp`* to *`/var/lib/tomcat6/webapps/bigbluebutton/demo/`*. You can access our development server at *`http://devbbb-mconf.no-ip.org`*
+ # If you want to run the app against to your own server, copy the file *`bbb-android/mobile.jsp`* to *`/var/lib/tomcat6/webapps/bigbluebutton/demo/`*. You can access our development server at *`http://mconfdev.inf.ufrgs.br`*
 
 = Roadmap =
  * Chat module
