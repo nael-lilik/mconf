@@ -44,10 +44,13 @@ There are two ways of running the application:
 
 We provide mobile access in our development server at http://mconfdev.inf.ufrgs.br.
 
-= Roadmap =
+= Changelog =
  * Chat module
  * Listeners module
- * Video module
+
+= Roadmap =
+ * Video module (under development, some results on video-integration branch)
+ * Presentation module
 
 = Pics =
 
