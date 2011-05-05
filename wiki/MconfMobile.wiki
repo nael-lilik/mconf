@@ -23,7 +23,16 @@ BBB-Android is our Android implementation of the BigBlueButton client. The code 
 
 *Update:* since March 2011 we changed the license of BBB-Android to GNU General Public Licence (GPL) because we started to use [http://sipdroid.org/ Sipdroid] for audio interaction. Sipdroid is a free SIP/VoIP client for Android and it's licensed under GNU General Public License (GPL).
 
-= If you want to run our app =
+= Running the app =
+
+There are two ways of running the application:
+
+ # If you want to run the application with your integrated environment (like Moodle), you need to provide custom urls for the BigBlueButton calls, replacing the protocol *`http://`* with *`bigbluebutton://`*
+ # If you want to run the application standalone, the server you are going to connect must provide the demo *`mobile.jsp`*. To provide standalone access for mobile devices in your server, copy the file *`bbb-android/mobile.jsp`* to *`/var/lib/tomcat6/webapps/bigbluebutton/demo/`*.
+
+We provide mobile access in our development server at http://mconfdev.inf.ufrgs.br.
+
+= Building the app from the repository =
 
  # Install Android SDK ([http://developer.android.com/sdk/index.html link])
  # Install Eclipse ([http://www.eclipse.org/downloads/ link])
@@ -37,12 +46,7 @@ BBB-Android is our Android implementation of the BigBlueButton client. The code 
  # Just wait while Eclipse build the code
  # Run *`bbb-android`* as an Android application
 
-There are two ways of running the application:
-
- # If you want to run the application with your integrated environment (like Moodle), you need to provide custom urls for the BigBlueButton calls, replacing the protocol *`http://`* with *`bigbluebutton://`*
- # If you want to run the application standalone, the server you are going to connect must provide the demo *`mobile.jsp`*. To provide standalone access for mobile devices in your server, copy the file *`bbb-android/mobile.jsp`* to *`/var/lib/tomcat6/webapps/bigbluebutton/demo/`*.
-
-We provide mobile access in our development server at http://mconfdev.inf.ufrgs.br.
+A full documentation for Android developers is available [http://developer.android.com/index.html here].
 
 = Changelog =
  * Chat module
