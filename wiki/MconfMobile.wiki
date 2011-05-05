@@ -29,14 +29,20 @@ BBB-Android is our Android implementation of the BigBlueButton client. The code 
  # Install Eclipse ([http://www.eclipse.org/downloads/ link])
  # Configure the environment (Eclipse + Android SDK integration) ([http://developer.android.com/sdk/eclipse-adt.html link])
  # Install Apache Ant ([http://ant.apache.org/ link])
- # Install Android NDK ([http://developer.android.com/sdk/ndk/index.html link])
+ # Install Android NDK by CrystaX.Net ([http://www.crystax.net/android/ndk-r4.php link])
  # Clone the repository
  # Run *`ant dist`* inside *`flazr/`*
  # Run *`./<NDK-DIR>/ndk-build`* inside *`bbb-android`*
  # Import all the projects in your workspace on Eclipse
  # Just wait while Eclipse build the code
  # Run *`bbb-android`* as an Android application
- # If you want to run the app against to your own server, copy the file *`bbb-android/mobile.jsp`* to *`/var/lib/tomcat6/webapps/bigbluebutton/demo/`*. You can access our development server at http://mconfdev.inf.ufrgs.br
+
+There are two ways of running the application:
+
+ # If you want to run the application with your integrated environment (like Moodle), you need to provide custom urls for the BigBlueButton calls, replacing the protocol *`http://`* with *`bigbluebutton://`*
+ # If you want to run the application standalone, the server you are going to connect must provide the demo *`mobile.jsp`*. To provide standalone access for mobile devices in your server, copy the file *`bbb-android/mobile.jsp`* to *`/var/lib/tomcat6/webapps/bigbluebutton/demo/`*.
+
+We provide mobile access in our development server at http://mconfdev.inf.ufrgs.br.
 
 = Roadmap =
  * Chat module
