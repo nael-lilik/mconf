@@ -62,6 +62,4 @@ If you are a developer and want to be part of this project, you can pick an issu
  * Video module (under development, some results on video-integration branch)
  * Presentation module
 
-= Pics =
-
-https://picasaweb.google.com/108245856281359125408/BigBlueButtonForAndroidV02?feat=directlink
+= [https://picasaweb.google.com/108245856281359125408/BigBlueButtonForAndroidV02?feat=directlink Pics] =
