@@ -28,7 +28,7 @@ BBB-Android is our Android implementation of the BigBlueButton client. The code 
 There are two ways of running the application:
 
  # If you want to run the application with your integrated environment (like Moodle), you need to provide custom urls for the BigBlueButton calls, replacing the protocol *`http://`* with *`bigbluebutton://`*
- # If you want to run the application standalone, the server you are going to connect must provide the demo *`mobile.jsp`*. To provide standalone access for mobile devices in your server, copy the file *`bbb-android/mobile.jsp`* to *`/var/lib/tomcat6/webapps/bigbluebutton/demo/`*.
+ # If you want to run the application standalone, the server you are going to connect must provide the demo *`mobile.jsp`*. To do that, copy the file *`bbb-android/mobile.jsp`* to *`/var/lib/tomcat6/webapps/bigbluebutton/demo/`*.
 
 We provide mobile access in our development server at http://mconfdev.inf.ufrgs.br.
 
