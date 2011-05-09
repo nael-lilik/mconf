@@ -12,7 +12,7 @@ Mconf-web is a web application that connects to a BigBlueButton server instance 
  * Permission control to access webconference rooms;
  * Follows a social network model (inherited from VCC) with spaces (communities) that have events:
    * People from a space can interact using this space's webconferece room;
-   * [future] Events will have a webconference room associated. Users can schedule events and enable features such as automatic recording.
+   * (_not implemented yet_) Events will have a webconference room associated. Users can schedule events and enable features such as automatic recording.
  * Users can also create their own webconferences and share with other members or invite non-members;
 
 During the first phase of Mconf-web, we are strongly focusing on the integration with BigBlueButton. This means that we want to have the basic libraries needed to integrate a Ruby on Rails application and BigBlueButton fully functional and with all the features we need. The current Mconf-web is a test application for these libraries and is also an integration between BigBlueButton and an improved version of VCC. In the future, it's possible that Mconf-web will change it's model and move away from VCC.
