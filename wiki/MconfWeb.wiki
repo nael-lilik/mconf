@@ -22,13 +22,15 @@ Setting up the development environment:
   # Install ruby. We recommend the use of rvm (http://rvm.beginrescueend.com/). See the quick steps below.
   # Run <tt>script/setup development</tt>. It will install some system packages that mconf-web uses (such as imagemagick, openssl, libxml2) and create configuration files.
   # Install bundler with <tt>gem install bundler</tt> and run <tt>bundle install</tt> to install all gems
-  # Configure the database and the mailer:
-    * (The script <tt>setup</tt> created these files for you, but you need to open and configure them)
-    * Database: <tt>config/database.yml</tt>
-      * You may need to insert a password if you're using mysql.
-    * Mailer: <tt>config/initializers/mail_conf.rb</tt>
-      * It uses a gmail account. Uncomment everything and change your username/password.
-  # Run <tt>rake setup:development</tt>. It will drop and recreate your development database, create the basic data needed to use the system and populate the db with test data.
+  # Configuration files:
+    * The script "<tt>setup</tt>" creates some configuration files that you need to run the application. You just need to open and configure them.
+      * Database: <tt>config/database.yml</tt>
+        * You may need to insert a password if you're using mysql.
+      * Mailer: <tt>config/mail_conf.yml</tt>
+        * Mconf-web uses by default a gmail account to send emails (<tt>see config/initializers/mail_conf.rb</tt>). You just need to insert you name/password in this file.
+      * BigBlueButton server: <tt>config/bbb_conf.yml</tt>
+        * This file holds the configuration of your BigBlueButton server. This server will be added in the database as the default server. Currently, all BigBlueButton rooms created through Mconf-web will use this server.
+  # Run <tt>rake setup:development</tt>. It will drop and recreate your development database, create basic data (<b>you need</b> this data to run the application) and populate the db with test data.
   # Run <tt>rake setup:test</tt>. It will prepare the test enviroment (also creating the basic data needed).
 
 Then you can:
