@@ -1,0 +1,17 @@
+=== Quick steps to install Ruby using RVM ===
+
+You can use the lastest versions of RVM and rubygems. For your information, we're currently using RVM 1.6.1 and rubygems 1.7.2.
+
+  * Run:
+    * <tt>bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )</tt>
+  * Add the following line to your ~/.bashrc or ~/.bash_profile:
+    * <tt>[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.</tt>
+  * Start a new prompt or load source in the current shell with:
+    * <tt>source ~/.rvm/scripts/rvm</tt>
+  * To check if it worked, run <tt>type rvm | head -1</tt> and it should output <tt>rvm is a function</tt>
+  * Run <tt>rvm notes</tt> and install the packages under "For Ruby (MRI & ree)"
+  * If needed, you can specify the version with: <tt>rvm rubygems 1.7.2</tt> (for version 1.7.2)
+    * To check your rubygems version run <tt>gem -v</tt>
+  * We recommend that you create a gemset for Mconf.
+    * Creating the: <tt>rvm gemset create mconf</tt>
+    * Use this gemset as default: <tt>rvm use --default 1.9.2@mconf</tt>
