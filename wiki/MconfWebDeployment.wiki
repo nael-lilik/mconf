@@ -1,2 +1,42 @@
 = Deployment =
 
+Mconf-web is a Rails application, so the deployment process is very similar to the deployment of any other Rails application.
+
+The server setup we have right now, and thus the recommended setup, uses the following:
+
+  # [http://www.ubuntu.com/ Ubuntu] 10.04 operating system
+  # Ruby is installed with [https://rvm.beginrescueend.com/ RVM]
+  # [http://www.modrails.com/ Phusion Passenger]
+  # [http://nginx.net/ Nginx] is the web server
+  # Mysql2 database
+  # [https://github.com/capistrano/capistrano Capistrano] helps you run commands on the server from your development environment
+
+The following guide will instruct you on how to setup exactly this environment.
+
+Mconf-web should work in any operating system that has Ruby available (and most of them do have Ruby). Changing the items 1 and 2 might only require changes in the applications (packages) you'll need to install. But changes in the items 3 to 5 will certainly require modifications in the configuration files and maybe even some code changes.
+
+== 1. System setup ==
+
+=== Ubuntu ===
+
+First, setup a standard [http://www.ubuntu.com/ Ubuntu] installation and create a user `mconf` with a password:
+
+{{{
+sudo useradd mconf
+sudo passwd mconf
+}}}
+
+Login as `mconf` and clone Mconf-web:
+
+{{{
+git clone git://github.com/mconf/mconf-web.git
+}}}
+
+Mconf-web requires some packages to be installed in your OS. The script [https://github.com/mconf/mconf-web/blob/master/script/setup setup] can help with that, but first you're going to need to install Ruby.
+
+=== RVM ===
+
+To install Ruby using RVM follow our [RVMQuickSteps quick steps] or check [https://rvm.beginrescueend.com/ RVM's website].
+
+
+_to be continued..._
