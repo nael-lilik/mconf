@@ -20,7 +20,7 @@ During the first phase of Mconf-web, we are strongly focusing on the integration
 
 == Differences between Mconf-web and VCC ==
 
-The project supporting VCC has ended in the end of 2010, so it's development has been greatly reduced since then. You can see the new directions VCC's team has taken at their github page: https://github.com/ging
+The project supporting VCC has ended in the end of 2010, so it's development has been greatly reduced since then. You can see the new directions VCC's team has taken at their [https://github.com/ging github page].
 
 VCC is developed in Ruby on Rails 2.3.4 and uses Isabel to perform webconfereces. The most important differences included by Mconf-web are the use of *Rails 3* and the use of *!BigBlueButton* as a replacement for Isabel.
 
