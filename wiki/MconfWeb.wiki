@@ -4,7 +4,7 @@
 
 Mconf-Web is the social network in the Mconf webconferencing system.
 
-It is (currently) a fork of *VCC*, and open source system that can be found at https://github.com/ging/vcc
+It is (currently) a fork of *VCC*, and open source system that can be found [https://github.com/ging/vcc here].
 
 Mconf-web is a web application that connects to a BigBlueButton server instance and allows the users to create and participate in webconferences. It provides functionalities that are (by design) not implemented in the core of BigBlueButton, such as:
 
@@ -28,15 +28,15 @@ VCC is developed in Ruby on Rails 2.3.4 and uses Isabel to perform webconfereces
 
 The integration with BigBlueButton is based on two gems (that are also being developed in the Mconf project):
 
-  * *bigbluebutton-api-ruby* ([https://github.com/mconf/bigbluebutton-api-ruby]): A library to access the BigBlueButton API in Ruby applications. Developed on top of a gem called [http://code.google.com/p/bigbluebuttongem/ bigbluebuttongem] to be used in Mconf-Web.
+  * *[https://github.com/mconf/bigbluebutton-api-ruby bigbluebutton-api-ruby]*: A library to access the BigBlueButton API in Ruby applications. Developed on top of a gem called [http://code.google.com/p/bigbluebuttongem/ bigbluebuttongem] to be used in Mconf-Web.
 
-  * *bigbluebutton_rails* ([https://github.com/mconf/bigbluebutton_rails]): An integration of BBB and Rails. It uses bigbluebutton-api-ruby to access the BBB API.
+  * *[https://github.com/mconf/bigbluebutton_rails bigbluebutton_rails]*: An integration of BBB and Rails. It uses bigbluebutton-api-ruby to access the BBB API.
 
 == How to Start ==
 
 Setting up the development environment:
 
-  # Install ruby. We recommend the use of rvm (http://rvm.beginrescueend.com/). See the quick steps below.
+  # Install ruby. We recommend the use of [http://rvm.beginrescueend.com/ RVM]. We have made a quick steps page that you can find [RVMQuickSteps here].
   # Run <tt>script/setup development</tt>. It will install some system packages that mconf-web uses (such as imagemagick, openssl, libxml2) and create configuration files.
   # Install bundler with <tt>gem install bundler</tt> and run <tt>bundle install</tt> to install all gems
   # Configuration files:
@@ -54,21 +54,3 @@ Then you can:
 
   * Run the server with <tt>rails server</tt> and navigate to <tt>localhost:3000</tt>
   * Run tests with <tt>bundle exec rake spec</tt>
-
-=== Quick steps to install Ruby using rvm ===
-
-You can use the lastest versions of RVM and rubygems. For your information, we're currently using RVM 1.6.1 and rubygems 1.7.2.
-
-  * Run:
-    * <tt>bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )</tt>
-  * Add the following line to your ~/.bashrc or ~/.bash_profile:
-    * <tt>[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.</tt>
-  * Start a new prompt or load source in the current shell with:
-    * <tt>source ~/.rvm/scripts/rvm</tt>
-  * To check if it worked, run <tt>type rvm | head -1</tt> and it should output <tt>rvm is a function</tt>
-  * Run <tt>rvm notes</tt> and install the packages under "For Ruby (MRI & ree)"
-  * If needed, you can specify the version with: <tt>rvm rubygems 1.7.2</tt> (for version 1.7.2)
-    * To check your rubygems version run <tt>gem -v</tt>
-  * We recommend that you create a gemset for Mconf.
-    * Creating the: <tt>rvm gemset create mconf</tt>
-    * Use this gemset as default: <tt>rvm use --default 1.9.2@mconf</tt>
