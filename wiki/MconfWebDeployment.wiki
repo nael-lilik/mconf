@@ -1,3 +1,5 @@
+<font color="red">_work in progress..._</font>
+
 = Deployment =
 
 Mconf-web is a Rails application, so the deployment process is very similar to the deployment of any other Rails application.
@@ -26,17 +28,24 @@ sudo useradd mconf
 sudo passwd mconf
 }}}
 
-Login as `mconf` and clone Mconf-web:
-
-{{{
-git clone git://github.com/mconf/mconf-web.git
-}}}
-
-Mconf-web requires some packages to be installed in your OS. The script [https://github.com/mconf/mconf-web/blob/master/script/setup setup] can help with that, but first you're going to need to install Ruby.
+The first thing you'll need to install in your system is Ruby.
 
 === RVM ===
 
 To install Ruby using RVM follow our [RVMQuickSteps quick steps] or check [https://rvm.beginrescueend.com/ RVM's website].
 
+_*TODO:* Capistrano, deploy.rb, develop.rb_
+
+=== System packages ===
+
+The system packages needed can be found in the top of the [https://github.com/mconf/mconf-web/blob/master/script/setup setup] script. To install them, you can simply run the script with:
+
+{{{
+script/setup production
+}}}
+
+The script will also create some configuration files that you need to edit. See the next section for more information.
+
+*Note:* The list of packages is outdated and needs a clean up. It was inherited from VCC and might have unnecessary packages. However, after installing all these packages you shouldn't need anything else.
 
 _to be continued..._
