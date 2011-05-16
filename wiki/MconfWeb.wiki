@@ -6,7 +6,7 @@ Mconf-Web is the social network in the Mconf webconferencing system.
 
 It is (currently) a fork of *VCC*, and open source system that can be found [https://github.com/ging/vcc here].
 
-Mconf-web is a web application that connects to a BigBlueButton server instance and allows the users to create and participate in webconferences. It provides functionalities that are (by design) not implemented in the core of BigBlueButton, such as:
+Mconf-web is a web application that connects to a !BigBlueButton server instance and allows the users to create and participate in webconferences. It provides functionalities that are (by design) not implemented in the core of !BigBlueButton, such as:
 
  * User authentication;
  * Permission control to access webconference rooms;
@@ -15,20 +15,20 @@ Mconf-web is a web application that connects to a BigBlueButton server instance 
    * (_not implemented yet_) Events will have a webconference room associated. Users can schedule events and enable features such as automatic recording.
  * Users can also create their own webconferences and share with other members or invite non-members;
 
-During the first phase of Mconf-web, we are strongly focusing on the integration with BigBlueButton. This means that we want to have the basic libraries needed to integrate a Ruby on Rails application and BigBlueButton fully functional and with all the features we need. The current Mconf-web is a test application for these libraries and is also an integration between BigBlueButton and an improved version of VCC. In the future, it's possible that Mconf-web will change it's model and move away from VCC.
+During the first phase of Mconf-web, we are strongly focusing on the integration with !BigBlueButton. This means that we want to have the basic libraries needed to integrate a Ruby on Rails application and !BigBlueButton fully functional and with all the features we need. The current Mconf-web is a test application for these libraries and is also an integration between !BigBlueButton and an improved version of VCC. In the future, it's possible that Mconf-web will change it's model and move away from VCC.
 
 
 == Differences between Mconf-web and VCC ==
 
 The project supporting VCC has ended in the end of 2010, so it's development has been greatly reduced since then. You can see the new directions VCC's team has taken at their github page: https://github.com/ging
 
-VCC is developed in Ruby on Rails 2.3.4 and uses Isabel to perform webconfereces. The most important differences included by Mconf-web are the use of *Rails 3* and the use of *BigBlueButton* as a replacement for Isabel.
+VCC is developed in Ruby on Rails 2.3.4 and uses Isabel to perform webconfereces. The most important differences included by Mconf-web are the use of *Rails 3* and the use of *!BigBlueButton* as a replacement for Isabel.
 
-== Integration with BigBlueButton ==
+== Integration with !BigBlueButton ==
 
-The integration with BigBlueButton is based on two gems (that are also being developed in the Mconf project):
+The integration with !BigBlueButton is based on two gems (that are also being developed in the Mconf project):
 
-  * *[https://github.com/mconf/bigbluebutton-api-ruby bigbluebutton-api-ruby]*: A library to access the BigBlueButton API in Ruby applications. Developed on top of a gem called [http://code.google.com/p/bigbluebuttongem/ bigbluebuttongem] to be used in Mconf-Web.
+  * *[https://github.com/mconf/bigbluebutton-api-ruby bigbluebutton-api-ruby]*: A library to access the !BigBlueButton API in Ruby applications. Developed on top of a gem called [http://code.google.com/p/bigbluebuttongem/ bigbluebuttongem] to be used in Mconf-Web.
 
   * *[https://github.com/mconf/bigbluebutton_rails bigbluebutton_rails]*: An integration of BBB and Rails. It uses bigbluebutton-api-ruby to access the BBB API.
 
@@ -45,8 +45,8 @@ Setting up the development environment:
         * You may need to insert a password if you're using mysql.
       * Mailer: <tt>config/mail_conf.yml</tt>
         * Mconf-web uses by default a gmail account to send emails (<tt>see config/initializers/mail_conf.rb</tt>). You just need to insert you name/password in this file.
-      * BigBlueButton server: <tt>config/bbb_conf.yml</tt>
-        * This file holds the configuration of your BigBlueButton server. This server will be added in the database as the default server. Currently, all BigBlueButton rooms created through Mconf-web will use this server.
+      * !BigBlueButton server: <tt>config/bbb_conf.yml</tt>
+        * This file holds the configuration of your !BigBlueButton server. This server will be added in the database as the default server. Currently, all !BigBlueButton rooms created through Mconf-web will use this server.
   # Run <tt>rake setup:development</tt>. It will drop and recreate your development database, create basic data (<b>you need</b> this data to run the application) and populate the db with test data.
   # Run <tt>rake setup:test</tt>. It will prepare the test enviroment (also creating the basic data needed).
 
