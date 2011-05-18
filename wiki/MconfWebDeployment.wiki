@@ -8,14 +8,14 @@ The server setup we have right now, and thus the recommended setup, uses the fol
 
   # [http://www.ubuntu.com/ Ubuntu] 10.04 operating system
   # Ruby is installed with [https://rvm.beginrescueend.com/ RVM]
-  # [http://www.modrails.com/ Phusion Passenger]
-  # [http://nginx.net/ Nginx]
-  # Mysql2 database
+  # [http://www.modrails.com/ Phusion Passenger] (ruby app server)
+  # [http://nginx.net/ Nginx] (web server)
+  # MySQL database
   # [https://github.com/capistrano/capistrano Capistrano] helps you run commands on the server from your development environment
 
 The following guide will instruct you on how to setup exactly this environment.
 
-<font color="red">*Important:*</font> The following guide assumes that you have already a development environment configured. After you set up a basic server, the rest of the deployment will be done remotely from the development environment (using Capistrano). So take a look at [MconfWeb our initial page] to set up your development environment.
+  <font color="red">*Important:*</font> The following guide assumes that you have already a development environment configured. After you set up a basic server, the rest of the deployment will be done remotely from the development environment (using Capistrano). So take a look at [MconfWeb our wiki home] to set up your development environment.
 
 Mconf-web should work in any operating system that has Ruby available (and most of them do have Ruby). Changing any of these items will certainly require modifications in the configuration files and scripts (and maybe even some code changes in some cases).
 
@@ -125,27 +125,54 @@ After the previous steps, your server is configured and you can start to deploy 
 
 === Capistrano ===
 
-Capistrano is a ruby gem that helps you deploy applications. All it's configuration is in the file [https://github.com/mconf/mconf-web/blob/master/config/deploy.rb config/deploy.rb].
+Capistrano is a ruby gem that helps you deploy applications. All it's configurations and tasks are in the file [https://github.com/mconf/mconf-web/blob/master/config/deploy.rb config/deploy.rb].
 
-If you intend to deploy Mconf-web only once, without any code modifications, you just need to run a set of commands and the application will be deployed, so check the section *"Deploying Once"*. If you're planning on making code changes and deploying these changes, we suggest that you adapt `deploy.rb` and do some other things, so go straight to *"Deploy and Develop"*.
+If you intend to deploy Mconf-web only once, without any code modifications, you just need to run a set of commands and the application will be deployed, so check the section *Deploying Once*. If you're planning on making code changes and deploying these changes, we suggest that you adapt `deploy.rb` and do some other things, as you can read in *Deploy and Develop*.
 
-<font color="red">TODO:</font> tipo to set ssh keys to access the server
+<font color="red">TODO:</font> tip to set ssh keys to access the server
 
 ==== Deploying Once ====
 
-...
+Our deploy has a task called `setup:all` that can be used to setup a server for the first time. Run:
 
 {{{
-cap deploy:setup
-cap setup:db
-cap deploy:migrations
+SERVER=127.0.0.1 cap deploy:all
 }}}
+
+  <font color="red">*Important:*</font> Replace `127.0.0.1` by your server's IP or domain name.
+
+This task will do the following:
+  * Create the basic directories in the server;
+  * Checkout Mconf-web from github (using the branch "`stable`") and make it available to be served by Nginx;
+  * Setup the database (with the basic data needed).
+
+  <font color="red">*Important:*</font> The configuration files used in your development environment will be uploaded to the production server. So make sure you configured them. If you change any of them and need to upload to the production server, run:
+  {{{
+SERVER=127.0.0.1 cap deploy:update
+  }}}
 
 ==== Deploy and Develop ====
 
-<font color="red">TODO:</font> how to customize deploy.rb
+If you're going to develop and deploy, you will for sure deploy your application more than once. To make things easy, first edit `config/deploy.rb` to adapt the following parameters:
 
-Then standard capistrano: cap deploy:setup, cap deploy
+  * Server: search for "`set :servers`" and set the production and test servers to your domains/IPs;
+  * Repository: if you forked Mconf-web, search for "`set :repository`" and point it to your fork;
+  * Branches: to change the branch being deployed (the default is "`stable`"), search for "`set :branches`" and point it to your branches.
 
+If you need to customize anything else, take a look at the top lines of `deploy.rb`, it is fairly simple to understand and adapt.
 
-_to be continued..._
+To deploy for the first time, run:
+
+{{{
+cap deploy:all
+}}}
+
+The other tasks you will most likely need are:
+
+{{{
+cap deploy:all        # first time setup of a server
+cap deploy:udpate     # update a new release
+cap deploy:migrate    # run migrations
+cap deploy:restart    # restart Nginx
+cap setup:db          # drops, creates and populates the db with the basic data
+}}}
