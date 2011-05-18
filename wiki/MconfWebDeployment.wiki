@@ -1,5 +1,3 @@
-<font color="red">_work in progress..._</font>
-
 = Deployment =
 
 Mconf-web is a Rails application, so the deployment process is very similar to the deployment of any other Rails application.
@@ -87,7 +85,7 @@ See more about Passenger at http://www.modrails.com/ or [http://www.modrails.com
 
 If you installed Nginx in the default location, it's configuration file will be at `/opt/nginx/conf/nginx.conf`.
 
-Open this file and add the following content inside the `http` block, above the other `server` block. Don't forget to change *`your.ip.or.domain`* by the IP or domain name of your server.
+Open this file and add the following content inside the `http` block, above the other `server` block. 
 
 {{{
 server {
@@ -100,6 +98,8 @@ server {
     }
 }
 }}}
+
+  <font color="red">*Important:*</font> Don't forget to change *`your.ip.or.domain`* by the IP or domain name of your server.
 
 You can find an example of the nginx.conf we use at our repository [https://github.com/mconf/mconf-web/blob/master/config/nginx.conf.example here].
 
@@ -136,10 +136,10 @@ If you intend to deploy Mconf-web only once, without any code modifications, you
 Our deploy has a task called `setup:all` that can be used to setup a server for the first time. Run:
 
 {{{
-SERVER=127.0.0.1 cap deploy:all
+SERVER=your.ip.or.domain cap deploy:all
 }}}
 
-  <font color="red">*Important:*</font> Replace `127.0.0.1` by your server's IP or domain name.
+  <font color="red">*Important:*</font> Replace *your.ip.or.domain* by your server's IP or domain name.
 
 This task will do the following:
   * Create the basic directories in the server;
@@ -148,7 +148,7 @@ This task will do the following:
 
   <font color="red">*Important:*</font> The configuration files used in your development environment will be uploaded to the production server. So make sure you configured them. If you change any of them and need to upload to the production server, run:
   {{{
-SERVER=127.0.0.1 cap deploy:update
+SERVER=your.ip.or.domain cap deploy:update
   }}}
 
 ==== Deploy and Develop ====
