@@ -8,10 +8,10 @@ The server setup we have right now, and thus the recommended setup, uses the fol
   # Ruby is installed with [https://rvm.beginrescueend.com/ RVM]
   # [http://www.modrails.com/ Phusion Passenger] (ruby app server)
   # [http://nginx.net/ Nginx] (web server)
-  # MySQL database
+  # [http://www.mysql.com/ MySQL] database
   # [https://github.com/capistrano/capistrano Capistrano] helps you run commands on the server from your development environment
 
-The following guide will instruct you on how to setup exactly this environment.
+The following guide will instruct you on how to setup *exactly* this environment.
 
   <font color="red">*Important:*</font> The following guide assumes that you have already a development environment configured. After you set up a basic server, the rest of the deployment will be done remotely from the development environment (using Capistrano). So take a look at [MconfWeb our wiki home] to set up your development environment.
 
