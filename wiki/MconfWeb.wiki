@@ -41,14 +41,14 @@ Setting up the development environment:
     {{{
 git clone git://github.com/mconf/mconf-web.git
     }}}
-  # To proceed, you need to install the gems required by Mconf-web, so run:
+  # To proceed, you need to install some system packages and gems (libraries) used by Mconf-web. The system packages can be installed using the script called "setup" and the gems are installed using the standard Ruby "bundler":
     {{{
-gem install bundler
-bundle install
+script/setup development
+gem install bundler && bundle install
     }}}
-  # Set up your system (install system packages and create configuration files):
+  # Set up your system (it creates some configuration files and updates git submodules):
     {{{
-rake setup:system
+rake setup:basic
     }}}
   # Configuration files. The command above created some files that you need to configure to be able to run the application. They are all very simple, so it's pretty easy to edit them. They are already formatted with a standard structure, but some information is sensible and unique for each setup, so *you really need* to edit them. The files are:
     * *<tt>config/database.yml</tt>* configures the database
