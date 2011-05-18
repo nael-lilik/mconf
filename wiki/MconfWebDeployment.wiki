@@ -9,7 +9,7 @@ The server setup we have right now, and thus the recommended setup, uses the fol
   # [http://www.ubuntu.com/ Ubuntu] 10.04 operating system
   # Ruby is installed with [https://rvm.beginrescueend.com/ RVM]
   # [http://www.modrails.com/ Phusion Passenger]
-  # [http://nginx.net/ Nginx] is the web server
+  # [http://nginx.net/ Nginx]
   # Mysql2 database
   # [https://github.com/capistrano/capistrano Capistrano] helps you run commands on the server from your development environment
 
@@ -32,7 +32,7 @@ sudo passwd mconf
 
 To proceed with the setup of Mconf-web you will need to install some tools that will help you in the process (*ssh server*, *git*, and *curl*) and *ruby*.
 
-==== Tools ====
+=== Basic Tools ===
 
 In Ubuntu, you can install them with:
 
@@ -40,7 +40,7 @@ In Ubuntu, you can install them with:
 sudo apt-get install openssh-server git curl
 }}}
 
-==== Ruby and RVM ====
+=== Ruby and RVM ===
 
 Mconf-web uses Ruby *1.9.2*. To install Ruby, we suggest the use of RVM. There are scripts in Mconf-web that assume you have RVM installed, so you should use it unless you can't do it for some reason.
 
@@ -55,7 +55,7 @@ rvm use --default 1.9.2@mconf
 }}}
 
 
-=== System packages ===
+=== System Packages ===
 
 As for the development environment, you will need to install system packages to run Mconf-web in production. The packages are listed in the ruby script at [https://github.com/mconf/mconf-web/blob/master/script/setup script/setup]. To download the script and use it, run:
 
@@ -78,26 +78,74 @@ The application `passenger-install-nginx-module` is a installer that guides you 
 
   # Check for required software: If your system is missing any required software, it will warn you and tell you how to install them;
   # Automatically download and install Nginx: Select the option *"1. Yes"*;
-  # Where do you want to install Nginx to: You can choose the default location (just press enter). Nginx will be compiled and installed.
+  # Where do you want to install Nginx to: You can choose the default location (just press enter). Nginx will be compiled and installed;
+  # It will edit Nginx configuration file for you and give you an example of how to deploy an application. Ignore the example for now, the next step of this guide will show you the specific configurations for Mconf-web.
 
 See more about Passenger at http://www.modrails.com/ or [http://www.modrails.com/videos/passenger_nginx.mov check this video] to see how it can be installed along with Nginx.
 
+==== Nginx Configuration ====
+
+If you installed Nginx in the default location, it's configuration file will be at `/opt/nginx/conf/nginx.conf`.
+
+Open this file and add the following content inside the `http` block, above the other `server` block. Don't forget to change *`your.ip.or.domain`* by the IP or domain name of your server.
+
+{{{
+server {
+    listen 80;
+    server_name your.ip.or.domain;
+    root /home/mconf/mconf-web/current/public;
+    passenger_enabled on;
+    if (-f $document_root/system/maintenance.html) {
+        rewrite ^(.*)$ /system/maintenance.html break;
+    }
+}
+}}}
+
+You can find an example of the nginx.conf we use at our repository [https://github.com/mconf/mconf-web/blob/master/config/nginx.conf.example here].
+
+Since Passenger installs Nginx from source code, you won't have the script to start/stop Nginx. So we copied the script generated when you install the Nginx package in Ubuntu and made it available [https://github.com/mconf/mconf-web/blob/master/config/nginx.init.example here]. Download it to your server with:
+
+{{{
+sudo curl https://github.com/mconf/mconf-web/raw/master/config/nginx.init.example -o /etc/init.d/nginx
+}}}
+
+Now you can start/stop/restart Nginx with:
+
+{{{
+sudo /etc/init.d/nginx start
+sudo /etc/init.d/nginx stop
+sudo /etc/init.d/nginx restart
+}}}
+
+Start your web server now, open your browser and try to access it. You should see a page with the error "404 Not Found". This is ok, Nginx can't find the application because it was not deployed yet.
+
+== 2. Deploy ==
+
+After the previous steps, your server is configured and you can start to deploy the application. The following steps are all executed from your _development_ environment using Capistrano.
 
 === Capistrano ===
 
+Capistrano is a ruby gem that helps you deploy applications. All it's configuration is in the file [https://github.com/mconf/mconf-web/blob/master/config/deploy.rb config/deploy.rb].
 
+If you intend to deploy Mconf-web only once, without any code modifications, you just need to run a set of commands and the application will be deployed, so check the section *"Deploying Once"*. If you're planning on making code changes and deploying these changes, we suggest that you adapt `deploy.rb` and do some other things, so go straight to *"Deploy and Develop"*.
 
-Add:
+<font color="red">TODO:</font> tipo to set ssh keys to access the server
 
-  * Install passenger + nginx
-  * clone repo
-  * Run rake setup:full RAILS_ENV=production
-    * cap setup:basic
-    * cap setup:db
-    * how to customize deploy.rb
+==== Deploying Once ====
+
+...
+
+{{{
+cap deploy:setup
+cap setup:db
+cap deploy:migrations
+}}}
+
+==== Deploy and Develop ====
+
+<font color="red">TODO:</font> how to customize deploy.rb
 
 Then standard capistrano: cap deploy:setup, cap deploy
-
 
 
 _to be continued..._
