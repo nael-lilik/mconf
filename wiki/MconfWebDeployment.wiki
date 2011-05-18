@@ -15,6 +15,8 @@ The server setup we have right now, and thus the recommended setup, uses the fol
 
 The following guide will instruct you on how to setup exactly this environment.
 
+<font color="red">*Important:*</font> The following guide assumes that you have already a development environment configured. After you set up a basic server, most of the deployment will be done remotely from the development environment (using Capistrano). So take a look at [MconfWeb our initial page] to set up your development environment.
+
 Mconf-web should work in any operating system that has Ruby available (and most of them do have Ruby). Changing the items 1 and 2 might only require changes in the applications (packages) you'll need to install. But changes in the items 3 to 5 will certainly require modifications in the configuration files and maybe even some code changes.
 
 == 1. System setup ==
@@ -28,7 +30,7 @@ sudo useradd mconf
 sudo passwd mconf
 }}}
 
-To proceed with the setup of Mconf-web you will to install: a *ssh server*, *git*, *curl*, and *ruby*.
+To proceed with the setup of Mconf-web you will need to install: a *ssh server*, *git*, *curl*, and *ruby*.
 
 ==== Tools ====
 
@@ -52,20 +54,23 @@ rvm use --default 1.9.2@mconf
 
 
 
+...
 
 
-_*TODO:* Capistrano, deploy.rb, develop.rb_
+=== Capistrano ===
 
-=== System packages ===
+Add:
 
-The system packages needed can be found in the top of the [https://github.com/mconf/mconf-web/blob/master/script/setup setup] script. To install them, you can simply run the script with:
+  * Install system packages (script/setup production)
+  * Install passenger + nginx
+  * clone repo
+  * Run rake setup:full RAILS_ENV=production
+    * cap setup:basic
+    * cap setup:db
+    * how to customize deploy.rb
 
-{{{
-script/setup production
-}}}
+Then standard capistrano: cap deploy:setup, cap deploy
 
-The script will also create some configuration files that you need to edit. See the next section for more information.
 
-*Note:* The list of packages is outdated and needs a clean up. It was inherited from VCC and might have unnecessary packages. However, after installing all these packages you shouldn't need anything else.
 
 _to be continued..._
