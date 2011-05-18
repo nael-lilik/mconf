@@ -79,7 +79,7 @@ The application `passenger-install-nginx-module` is a installer that guides you 
   # Where do you want to install Nginx to: You can choose the default location (just press enter). Nginx will be compiled and installed;
   # It will edit Nginx configuration file for you and give you an example of how to deploy an application. Ignore the example for now, the next step of this guide will show you the specific configurations for Mconf-web.
 
-See more about Passenger at http://www.modrails.com/ or [http://www.modrails.com/videos/passenger_nginx.mov check this video] to see how it can be installed along with Nginx.
+See more about Passenger at [http://www.modrails.com/ their website] and [http://www.modrails.com/videos/passenger_nginx.mov check this video] to see how it can be installed along with Nginx.
 
 ==== Nginx Configuration ====
 
@@ -170,9 +170,11 @@ cap deploy:all
 The other tasks you will most likely need are:
 
 {{{
-cap deploy:all        # first time setup of a server
-cap deploy:udpate     # update a new release
-cap deploy:migrate    # run migrations
-cap deploy:restart    # restart Nginx
-cap setup:db          # drops, creates and populates the db with the basic data
+cap deploy:all          # first time setup of a server
+cap deploy:setup        # first setup, create directories
+cap deploy:udpate       # update a new release
+cap deploy:migrate      # run migrations
+cap deploy:restart      # restart Nginx
+cap deploy:web:disable  # start maintenance mode (the site will be offline)
+cap deploy:web:enable   # stop maintenance mode (the site will be online)
 }}}
