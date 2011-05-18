@@ -28,20 +28,27 @@ sudo useradd mconf
 sudo passwd mconf
 }}}
 
-==== Base packages ====
+To proceed with the setup of Mconf-web you will to install: a *ssh server*, *git*, *curl*, and *ruby*.
 
-To proceed with the setup of Mconf-web you will need 3 things: a ssh server, git, and curl (to install RVM only). You can install them with:
+==== Tools ====
+
+In Ubuntu, you can install most of them with:
 
 {{{
 sudo apt-get install openssh-server git curl
 }}}
 
-After that, you'll need to install Ruby.
+==== Ruby and RVM ====
 
-=== Ruby and RVM ===
+Mconf-web uses Ruby *1.9.2*. To install Ruby, we suggest the use of RVM. You can do it following our [RVMQuickSteps quick steps] or following [https://rvm.beginrescueend.com/rvm/install/ RVM's install page].
 
-We suggest that you install Ruby using RVM. You can do it following our [RVMQuickSteps quick steps] or following [https://rvm.beginrescueend.com/rvm/install/ RVM's install page].
+If you decided to use RVM, don't forget to actually install Ruby (and not only RVM) and create a gemset for Mconf-web:
 
+{{{
+rvm install 1.9.2
+rvm gemset create mconf
+rvm use --default 1.9.2@mconf
+}}}
 
 
 
