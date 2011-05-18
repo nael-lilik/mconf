@@ -36,21 +36,43 @@ The integration with !BigBlueButton is based on two gems (that are also being de
 
 Setting up the development environment:
 
-  # Install ruby. We recommend the use of [http://rvm.beginrescueend.com/ RVM]. We have made a quick steps page that you can find [RVMQuickSteps here].
-  # Run <tt>script/setup development</tt>. It will install some system packages that mconf-web uses (such as imagemagick, openssl, libxml2) and create configuration files.
-  # Install bundler with <tt>gem install bundler</tt> and run <tt>bundle install</tt> to install all gems
-  # Configuration files:
-    * The script "<tt>setup</tt>" creates some configuration files that you need to run the application. You just need to open and configure them.
-      * Database: <tt>config/database.yml</tt>
-        * You may need to insert a password if you're using mysql.
-      * Mailer: <tt>config/mail_conf.yml</tt>
-        * Mconf-web uses by default a gmail account to send emails (<tt>see config/initializers/mail_conf.rb</tt>). You just need to insert you name/password in this file.
-      * !BigBlueButton server: <tt>config/bbb_conf.yml</tt>
-        * This file holds the configuration of your !BigBlueButton server. This server will be added in the database as the default server. Currently, all !BigBlueButton rooms created through Mconf-web will use this server.
-  # Run <tt>rake setup:development</tt>. It will drop and recreate your development database, create basic data (<b>you need</b> this data to run the application) and populate the db with test data.
-  # Run <tt>rake setup:test</tt>. It will prepare the test enviroment (also creating the basic data needed).
+  # First, install Ruby. We recommend the use of [http://rvm.beginrescueend.com/ RVM], so we've made a [RVMQuickSteps brief guide] to show you how to install it.
+  # Clone mconf-web:
+    {{{
+git clone git://github.com/mconf/mconf-web.git
+    }}}
+  # To proceed, you need to install the gems required by Mconf-web, so run:
+    {{{
+gem install bundler
+bundle install
+    }}}
+  # Set up your system (install system packages and create configuration files):
+    {{{
+rake setup:system
+    }}}
+  # Configuration files. The command above created some files that you need to configure to be able to run the application. They are all very simple, so it's pretty easy to edit them. They are already formatted with a standard structure, but some information is sensible and unique for each setup, so *you really need* to edit them. The files are:
+    * *<tt>config/database.yml</tt>* configures the database
+      * You may need to insert a password if you're using mysql.
+    * *<tt>config/mail_conf.yml</tt>* configures the mail delivery
+      * Mconf-web uses by default a gmail account to send emails (<tt>see config/initializers/mail_conf.rb</tt>). You just need to insert you name/password in this file.
+    * *<tt>config/bigbluebutton_conf.yml</tt>* configures your !BigBlueButton server
+      * This !BigBlueButton server will be added in the database as the default server. Currently, all !BigBlueButton rooms created through Mconf-web will use this server.
+  # Setup the database. It will drop and recreate your _development_ database, create basic data (<b>you need</b> this data to run the application) and populate the db with test data.
+    {{{
+rake setup:db
+    }}}
+  # Setup the _test_ database.
+    {{{
+RAILS_ENV=test rake setup:db
+    }}}
 
 Then you can:
 
-  * Run the server with <tt>rails server</tt> and navigate to <tt>localhost:3000</tt>
-  * Run tests with <tt>bundle exec rake spec</tt>
+  * Run the server and navigate to <tt>localhost:3000</tt>:
+    {{{
+rails server
+    }}}
+  * Run the test set with:
+    {{{
+bundle exec rake spec
+    }}}
