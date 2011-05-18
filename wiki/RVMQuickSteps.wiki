@@ -4,6 +4,9 @@ You can use the lastest versions of RVM and rubygems. For your information, we'r
 
   * Download and run the script that installs RVM (requires <tt>curl</tt> and <tt>git</tt>):
     {{{
+sudo apt-get install curl git
+    }}}
+    {{{
 bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
 echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' >> ~/.bash_profile
     }}}
