@@ -15,9 +15,9 @@ The server setup we have right now, and thus the recommended setup, uses the fol
 
 The following guide will instruct you on how to setup exactly this environment.
 
-<font color="red">*Important:*</font> The following guide assumes that you have already a development environment configured. After you set up a basic server, most of the deployment will be done remotely from the development environment (using Capistrano). So take a look at [MconfWeb our initial page] to set up your development environment.
+<font color="red">*Important:*</font> The following guide assumes that you have already a development environment configured. After you set up a basic server, the rest of the deployment will be done remotely from the development environment (using Capistrano). So take a look at [MconfWeb our initial page] to set up your development environment.
 
-Mconf-web should work in any operating system that has Ruby available (and most of them do have Ruby). Changing the items 1 and 2 might only require changes in the applications (packages) you'll need to install. But changes in the items 3 to 5 will certainly require modifications in the configuration files and maybe even some code changes.
+Mconf-web should work in any operating system that has Ruby available (and most of them do have Ruby). Changing any of these items will certainly require modifications in the configuration files and scripts (and maybe even some code changes in some cases).
 
 == 1. System setup ==
 
@@ -30,11 +30,11 @@ sudo useradd mconf
 sudo passwd mconf
 }}}
 
-To proceed with the setup of Mconf-web you will need to install: a *ssh server*, *git*, *curl*, and *ruby*.
+To proceed with the setup of Mconf-web you will need to install some tools that will help you in the process (*ssh server*, *git*, and *curl*) and *ruby*.
 
 ==== Tools ====
 
-In Ubuntu, you can install most of them with:
+In Ubuntu, you can install them with:
 
 {{{
 sudo apt-get install openssh-server git curl
@@ -42,7 +42,9 @@ sudo apt-get install openssh-server git curl
 
 ==== Ruby and RVM ====
 
-Mconf-web uses Ruby *1.9.2*. To install Ruby, we suggest the use of RVM. You can do it following our [RVMQuickSteps quick steps] or following [https://rvm.beginrescueend.com/rvm/install/ RVM's install page].
+Mconf-web uses Ruby *1.9.2*. To install Ruby, we suggest the use of RVM. There are scripts in Mconf-web that assume you have RVM installed, so you should use it unless you can't do it for some reason.
+
+You can install RVM following our [RVMQuickSteps quick steps] or following [https://rvm.beginrescueend.com/rvm/install/ RVM's install page].
 
 If you decided to use RVM, don't forget to actually install Ruby (and not only RVM) and create a gemset for Mconf-web:
 
@@ -53,15 +55,40 @@ rvm use --default 1.9.2@mconf
 }}}
 
 
+=== System packages ===
 
-...
+As for the development environment, you will need to install system packages to run Mconf-web in production. The packages are listed in the ruby script at [https://github.com/mconf/mconf-web/blob/master/script/setup script/setup]. To download the script and use it, run:
+
+{{{
+curl https://github.com/mconf/mconf-web/raw/master/script/setup -o - | ruby - production
+}}}
+
+You will be prompted to type a password for MySQL in case you don't have it installed yet.
+
+=== Nginx + Passenger ===
+
+Nginx and Phusion Passenger are used to server the application. To install them, first install Passenger (it's a gem) and then it will help you download, compile and install Nginx. Actually, it will do it all for you. Run the following commands:
+
+{{{
+gem install passenger
+rvmsudo passenger-install-nginx-module
+}}}
+
+The application `passenger-install-nginx-module` is a installer that guides you through the installation of Nginx for Passenger. It's steps are:
+
+  # Check for required software: If your system is missing any required software, it will warn you and tell you how to install them;
+  # Automatically download and install Nginx: Select the option *"1. Yes"*;
+  # Where do you want to install Nginx to: You can choose the default location (just press enter). Nginx will be compiled and installed.
+
+See more about Passenger at http://www.modrails.com/ or [http://www.modrails.com/videos/passenger_nginx.mov check this video] to see how it can be installed along with Nginx.
 
 
 === Capistrano ===
 
+
+
 Add:
 
-  * Install system packages (script/setup production)
   * Install passenger + nginx
   * clone repo
   * Run rake setup:full RAILS_ENV=production
