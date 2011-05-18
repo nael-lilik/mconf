@@ -72,7 +72,7 @@ gem install passenger
 rvmsudo passenger-install-nginx-module
 }}}
 
-The application `passenger-install-nginx-module` is a installer that guides you through the installation of Nginx for Passenger. It's steps are:
+The application `passenger-install-nginx-module` is a installer that guides you through the installation of Nginx for Passenger. It is interactive and has the following steps:
 
   # Check for required software: If your system is missing any required software, it will warn you and tell you how to install them;
   # Automatically download and install Nginx: Select the option *"1. Yes"*;
@@ -117,7 +117,7 @@ sudo /etc/init.d/nginx stop
 sudo /etc/init.d/nginx restart
 }}}
 
-Start your web server now, open your browser and try to access it. You should see a page with the error "404 Not Found". This is ok, Nginx can't find the application because it was not deployed yet.
+Start your web server now, open your browser and try to access it. You should see a page with the error "404 Not Found". That is ok, Nginx can't find the application because it was not deployed yet.
 
 == 2. Deploy ==
 
