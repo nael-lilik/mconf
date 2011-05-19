@@ -34,6 +34,8 @@ The integration with !BigBlueButton is based on two gems (that are also being de
 
 == How to Start ==
 
+MConf-web uses Rails 3 (currently 3.0.5) and Ruby 1.9.2.
+
 Setting up the development environment:
 
   # First, install Ruby. We recommend the use of [http://rvm.beginrescueend.com/ RVM], so we've made a [RVMQuickSteps brief guide] to show you how to install it.
