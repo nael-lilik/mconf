@@ -1,6 +1,6 @@
 = Mconf-Web =
 
-|| [https://github.com/mconf/mconf-web Source code] || [MconfWeb#How_to_Start How to Start] ||
+|| [https://github.com/mconf/mconf-web Source code] || [MconfWeb#Demo Demo] || [MconfWeb#How_to_Start How to Start] ||
 
 Mconf-Web is the social network in the Mconf webconferencing system.
 
@@ -17,6 +17,13 @@ Mconf-web is a web application that connects to a !BigBlueButton server instance
 
 During the first phase of Mconf-web, we are strongly focusing on the integration with !BigBlueButton. This means that we want to have the basic libraries needed to integrate a Ruby on Rails application and !BigBlueButton fully functional and with all the features we need. The current Mconf-web is a test application for these libraries and is also an integration between !BigBlueButton and an improved version of VCC. In the future, it's possible that Mconf-web will change it's model and move away from VCC.
 
+== Demo ==
+
+A demo server for Mconf-web can be found at: http://mconfweb.inf.ufrgs.br/
+
+This server is used for tests and demonstrations, so feel free to register yourself and use it to explore Mconf-web. Be aware that any information (user data, files, comments, etc.) *can be erased at any time* if we need to do so.
+
+If you find any bugs or have suggestions, please [http://code.google.com/p/mconf/issues/list file an issue] in our issue tracking system
 
 == Differences between Mconf-web and VCC ==
 
