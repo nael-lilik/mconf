@@ -32,9 +32,9 @@ Check our github to see who's currently working on the project: https://github.c
 
 Open source systems that form the base of Mconf.
 
-=== BigBlueButton ===
+=== !BigBlueButton ===
 
-BigBlueButton (BBB) is the webconferencing system used by Mconf-Web. BBB is developed in Java and Flash, and is one of the best open source webconferencing softwares (if not the best) today.
+!BigBlueButton (BBB) is the webconferencing system used by Mconf-Web. BBB is developed in Java and Flash, and is one of the best open source webconferencing softwares (if not the best) today.
 
   * [http://www.bigbluebutton.org/ BigBlueButton.org]
   * [http://code.google.com/p/bigbluebutton/ BigBlueButton at Google Code]
