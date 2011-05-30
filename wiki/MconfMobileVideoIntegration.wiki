@@ -38,11 +38,11 @@ There is also this Issue which complains about a problem in the MediaPlayer docs
 
 http://code.google.com/p/android/issues/detail?id=2317&can=1&q=setdatasource%20localsocket&colspec=ID%20Type%20Status%20Owner%20Summary%20Stars
 
-== Alternative 2: MediaPlayer and temporary files  ==
+== Alternative 2: !MediaPlayer and temporary files  ==
 
 It is possible, but it has some problems.
 
-As the MediaPlayer class only supports 3gp and mp4 containers for local video files, we would need to manually create the header and the moov atom for each temporary file, because bbb only sends the video data (mdat atom). 3gp and mp4 containers are complicated to be created manually.
+As the !MediaPlayer class only supports 3gp and mp4 containers for local video files, we would need to manually create the header and the moov atom for each temporary file, because bbb only sends the video data (mdat atom). 3gp and mp4 containers are complicated to be created manually.
 
 The tutorial:
 http://blog.pocketjourney.com/2008/04/04/tutorial-custom-media-streaming-for-androids-mediaplayer/
