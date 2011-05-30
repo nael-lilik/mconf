@@ -7,9 +7,9 @@ Below, the tested alternatives are explained.
 
 = Details =
 
-== Alternative 1: MediaPlayer and sockets ==
+== Alternative 1: !MediaPlayer and sockets ==
 
-It is not clear on the MediaPlayer docs if it is possible to use a socket as a file descriptor as a parameter for this function:
+It is not clear on the !MediaPlayer docs if it is possible to use a socket as a file descriptor as a parameter for this function:
 
 http://developer.android.com/reference/android/media/MediaPlayer.html#setDataSource%28java.io.FileDescriptor%29
 
