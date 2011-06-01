@@ -55,11 +55,23 @@ If you are not a developer, the best you can do is testing the Android applicati
 If you are a developer and want to be part of this project, you can pick an issue and try to solve it. Of course we are totally open to help you in what you need.
 
 = Changelog =
- * Chat module
- * Listeners module
+
+v0.3beta
+ * Video integration - view one video at a time on a dialog or full screen when the phone is on landscape
+ * Mute / unmute room
+ * Join a conference by a QR code (url bigbluebutton://)
+
+
+v0.2
+ * Visualization of the participants and listeners lists
+ * Raise / lower hand
+ * Private and public chat
+ * Integration with a SIP client (Sipdroid) - full interactivity by audio
+ * Tap to speak
+ * Audio settings
+ * Mute / unmute users
 
 = Roadmap =
- * Video module (under development, some results on video-integration branch)
  * Presentation module
 
 = [https://picasaweb.google.com/108245856281359125408/BigBlueButtonForAndroidV02?feat=directlink Pics] =
