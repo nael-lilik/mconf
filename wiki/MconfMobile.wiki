@@ -74,4 +74,4 @@ v0.2
 = Roadmap =
  * Presentation module
 
-= [https://picasaweb.google.com/108245856281359125408/BigBlueButtonForAndroidV02?feat=directlink Pics] =
+= [https://picasaweb.google.com/108245856281359125408/BigBlueButtonForAndroidV03beta?feat=directlink Pics] =
