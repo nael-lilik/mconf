@@ -72,6 +72,9 @@ v0.2
  * Mute / unmute users
 
 = Roadmap =
+ * Video capture on mobile devices
+ * Multiple videos in one screen
+ * Better interfaces integrated to the video feature (Adobe Connect's app like)
  * Presentation module
 
 = [https://picasaweb.google.com/108245856281359125408/BigBlueButtonForAndroidV03beta?feat=directlink Pics] =
