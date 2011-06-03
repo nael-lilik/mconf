@@ -75,6 +75,12 @@ v0.2
  * Video capture on mobile devices
  * Multiple videos in one screen
  * Better interfaces integrated to the video feature (Adobe Connect's app like)
+ * Shared notes module
  * Presentation module
+ * Voice interface for chat
+ * Auto translation on chat
+ * Desktop share visualization
+ * Full desktop share integration
+
 
 = [https://picasaweb.google.com/108245856281359125408/BigBlueButtonForAndroidV03beta?feat=directlink Pics] =
