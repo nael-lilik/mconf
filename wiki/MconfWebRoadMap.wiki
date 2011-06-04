@@ -1,12 +1,24 @@
 #summary Development Road Map for Mconf-Web
 
-= Current Release =
+= Releases =
+
+== Current Release 0.2 ==
+
+*Planned for*: ?, 2011.
+
+  * _preliminary list..._
+  * Cleanup events (inside spaces). They will be a simple way to schedule conferences
+  * Provide a VM with a production server ready to use
+  * Other bugs and features to be implemented: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.2 Issues for Mconf-Web-Release0.2]
 
 == Release 0.1 ==
 
-Features:
+*Released*: Jun 1st, 2011.
+
   * Migration of VCC to Rails 3 ([http://code.google.com/p/mconf/issues/detail?id=9 issue 9])
   * Branding of VCC to become Mconf-Web ([http://code.google.com/p/mconf/issues/detail?id=11 issue 11])
-  * First integration of BBB in Mconf-Web using bigbluebutton-api-ruby. Simple integration totally based on API calls, with no features such as user access control, persistent data (db), monitoring, etc. ([http://code.google.com/p/mconf/issues/detail?id=10 issue 10], [http://code.google.com/p/mconf/issues/detail?id=25 issue 25], [http://code.google.com/p/mconf/issues/detail?id=26 issue 26])
-
-*(Soft) Deadline*: May 20th, 2011.
+  * First integration of BBB in Mconf-Web using bigbluebutton_rails.
+    * Every space has a webconference room ([http://code.google.com/p/mconf/issues/detail?id=25 issue 25])
+    * Users can create webconferences from their home page ([http://code.google.com/p/mconf/issues/detail?id=26 issue 26])
+  * First version in production and documentation on [http://code.google.com/p/mconf/wiki/MconfWebDeployment how to setup a production server]
+  * Other bugs and features implemented: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.1 Issues for Mconf-Web-Release0.1]
