@@ -1,0 +1,48 @@
+#summary Mconf-Web development
+
+= Mconf-Web Development =
+
+MConf-web uses Rails 3 (currently 3.0.5) and Ruby 1.9.2.
+
+Setting up the development environment:
+
+  # First, install Ruby. We recommend the use of [http://rvm.beginrescueend.com/ RVM], so we've made a [RVMQuickSteps brief guide] to show you how to install it.
+  # Clone mconf-web:
+    {{{
+git clone git://github.com/mconf/mconf-web.git
+    }}}
+  # To proceed, you need to install some system packages and gems (libraries) used by Mconf-web. The system packages can be installed using the script called "setup" and the gems are installed using the standard Ruby "bundler":
+    {{{
+script/setup development
+gem install bundler && bundle install
+    }}}
+  # Set up your system (it creates some configuration files and updates git submodules):
+    {{{
+rake setup:basic
+    }}}
+  # Configuration files. The command above created some files that you need to configure to be able to run the application. They are all very simple, so it's pretty easy to edit them. They are already formatted with a standard structure, but some information is sensible and unique for each setup, so *you really need* to edit them. The files are:
+    * *<tt>config/database.yml</tt>* configures the database
+      * You may need to insert a password if you're using mysql.
+    * *<tt>config/mail_conf.yml</tt>* configures the mail delivery
+      * Mconf-web uses by default a gmail account to send emails (<tt>see config/initializers/mail_conf.rb</tt>). You just need to insert you name/password in this file.
+    * *<tt>config/bigbluebutton_conf.yml</tt>* configures your !BigBlueButton server
+      * This !BigBlueButton server will be added in the database as the default server. Currently, all !BigBlueButton rooms created through Mconf-web will use this server.
+  # Setup the database. It will drop and recreate your _development_ database, create basic data (<b>you need</b> this data to run the application) and populate the db with test data.
+    {{{
+rake setup:db
+    }}}
+  # Setup the _test_ database.
+    {{{
+RAILS_ENV=test rake setup:db
+    }}}
+
+Then you can:
+
+  * Run the server and navigate to <tt>localhost:3000</tt>:
+    {{{
+rails server
+    }}}
+  * Run the test set with:
+    {{{
+bundle exec rake spec
+    }}}
