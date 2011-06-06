@@ -46,3 +46,5 @@ rails server
     {{{
 bundle exec rake spec
     }}}
+
+To learn more about how to test the application take a look at [MconfWebTesting].
