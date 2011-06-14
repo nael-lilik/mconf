@@ -4,7 +4,7 @@
 
 MConf-web uses Rails 3 (currently 3.0.5) and Ruby 1.9.2.
 
-Setting up the development environment:
+== Setting up the development environment ==
 
   # First, install Ruby. We recommend the use of [http://rvm.beginrescueend.com/ RVM], so we've made a [RVMQuickSteps brief guide] to show you how to install it.
   # Clone mconf-web:
@@ -31,10 +31,6 @@ rake setup:basic
     {{{
 rake setup:db
     }}}
-  # Setup the _test_ database.
-    {{{
-RAILS_ENV=test rake setup:db
-    }}}
 
 Then you can:
 
@@ -44,14 +40,11 @@ rails server
     }}}
   ... and navigate to <tt>localhost:3000</tt>
 
-  * Run the test set with:
-    {{{
-rake spec
-    }}}
+== Testing ==
 
-To learn more about how to test the application take a look at [MconfWebTesting].
+To learn how to test the application take a look at [MconfWebTesting].
 
-=== Configuring the basic website ===
+== Configuring the basic website ==
 
 When you set up the database, a default "Site" and an administrator account were created.
 
