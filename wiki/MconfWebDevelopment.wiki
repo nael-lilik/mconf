@@ -59,4 +59,4 @@ It is defined in <tt>db/seeds.rb</tt>. By default, this is the admin user/passwo
 
 The site contains the configurations of your website. Most of the definitions are in <tt>config/site_conf.yml</tt>. Change it before setting up the database.
 
-You can also edit these information later from within the management area in the application.
+You can also edit it later from within the management area in the application.
