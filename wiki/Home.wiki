@@ -5,16 +5,16 @@
 Mconf is a project that aims to create a complete and easy to use webconference system, with focus on the interaction with mobile devices and social networks.
 The project is currently built on top of the open source systems [http://www.bigbluebutton.org BigBlueButton] and [http://globalplaza.org/ Global Plaza].
 
-The source code for all subprojects can be found at https://github.com/mconf/
+The source code for all projects that compose Mconf can be found at https://github.com/mconf/
 
 You can find more information about the project at http://www.inf.ufrgs.br/prav/gtmconf (Portuguese and English)
 
-If you like this project and want to give us some feedback, please contact mconf@googlegroups.com. If you have a suggestion or discovered a bug, please [http://code.google.com/p/mconf/issues/list create an issue]. Furthermore, if you want to collaborate, send us a pull request and we will be glad to analyze and use it.
+If you like this project and want to give us some feedback, please contact us at our mailing list (mconf-dev@googlegroups.com). If you have any suggestions or discovered a bug, please [http://code.google.com/p/mconf/issues/list create an issue]. Furthermore, if you want to collaborate, send us a pull request in github and we will be glad to analyze and use it.
 
 == Subprojects ==
 
-  * [MconfMobile Mconf-Mobile]: Mconf-Mobile is an Android implementation of the [http://www.bigbluebutton.org BigBlueButton] client.
-  * [MconfWeb Mconf-Web]: Mconf-Web is the social network built on top of Global Plaza to enable access to BigBlueButton and interaction with other social networks and instant messaging clients.
+  * [MconfMobile Mconf-Mobile]: Mconf-Mobile is an Android implementation of the !BigBlueButton client.
+  * [MconfWeb Mconf-Web]: Mconf-Web is the social network built on top of Global Plaza to enable access to !BigBlueButton and the interaction with other social networks and instant messaging clients.
 
 == Mconf overview diagrams ==
 
