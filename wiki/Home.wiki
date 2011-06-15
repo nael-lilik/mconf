@@ -9,7 +9,9 @@ The source code for all projects that compose Mconf can be found at https://gith
 
 You can find more information about the project at http://www.inf.ufrgs.br/prav/gtmconf (Portuguese and English)
 
-If you like this project and want to give us some feedback, please contact us at our mailing list (mconf-dev@googlegroups.com). If you have any suggestions or discovered a bug, please [http://code.google.com/p/mconf/issues/list create an issue]. Furthermore, if you want to collaborate, send us a pull request in github and we will be glad to analyze and use it.
+  * For *feedbacks, suggestions and troubleshooting* (or anything else you need), contact us at our mailing list: `mconf-dev@googlegroups.com`
+  * Found a *bug*? Please [http://code.google.com/p/mconf/issues/list create an issue].
+  * Want to *collaborate*? Fork [https://github.com/mconf some of our repositories at github] and send a merge request!
 
 == Subprojects ==
 
@@ -23,9 +25,9 @@ https://lh3.googleusercontent.com/--l_zeWpoLew/TfgvGtCcnrI/AAAAAAAAAaA/4n5p1_s5I
 
 == Contributors ==
 
-Mconf is being developed at the Federal University of Rio Grande do Sul (UFRGS), in Porto Alegre, Brazil. Everyone involved in the project is a member of the [http://www.inf.ufrgs.br/prav/ PRAV] research group. The project is funded by [http://www.rnp.br/ RNP].
+Mconf is being developed at the Federal University of Rio Grande do Sul (UFRGS), in Porto Alegre, Brazil. Currently everyone involved in the project is a member of the [http://www.inf.ufrgs.br/prav/ PRAV] research group. The project is funded by [http://www.rnp.br/ RNP].
 
-Check our github to see who's currently working on the project: https://github.com/mconf
+Check [https://github.com/mconf our github] to see who's currently working on the project (or [http://code.google.com/p/mconf/people/list see it here at gcode]).
 
 == Mconf base systems ==
 
