@@ -19,8 +19,7 @@ If you like this project and want to give us some feedback, please contact mconf
 == Mconf overview diagrams ==
 
 === Overview of the Mconf components ===
-http://mconf.googlecode.com/svn/wiki/Mconf-diagram-overview.png
-
+https://lh3.googleusercontent.com/--l_zeWpoLew/TfgvGtCcnrI/AAAAAAAAAaA/4n5p1_s5Iic/s800/Mconf%252520-%252520diagram.png
 
 == Contributors ==
 
