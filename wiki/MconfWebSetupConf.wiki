@@ -4,17 +4,21 @@
 
 This file contains the configurations that are either loaded in the database when you create it or that are loaded in memory when the application is loaded.
 
-Remember to keep the file indented as it is. It's format and structure have semantic meaning, so you shouldn't change them.
+Remember to keep the file indented and formatted as it is. Its format and structure have semantic meaning, so you shouldn't change them.
 
 == Sections ==
 
-The file has several sections. In the first level, you can have four: "default", "development", "production" and "test".
+The file has several sections. In the first level, you can have four:
+  * default
+  * development
+  * production
+  * test
 
-The "default" section is always present and it's values are always used as the default values for the other sections. These other sections are used to define specific configurations for each Rails environment (development, production, test).
+The "default" section is always present and its values are always used as the default values for the other sections. These other sections are used to define specific configurations for each Rails environment (development, production, test).
 
-These environment sections are only useful if you want to use the same file for more than one environment. If you are using different files (a different <tt>setup_conf.yml</tt>) for the development and production environments, you can just use the "default" section and forget the others.
+The environment sections are only useful if you want to use the same configuration file for more than one environment. If you are using different files (a different <tt>setup_conf.yml</tt>) for the development and production environments, you can just use the "default" section and forget about the others.
 
-Inside each section, that are other sections, listed below.
+Inside each section, that are the sections listed below.
 
 === Admin user ===
 
@@ -76,4 +80,18 @@ When you set up the database a default space will be created, something like "a 
   default_space:
     name: "Mconf-Web Space"
     description: "Mconf-Web users space"
+}}}
+
+
+=== Deployment variables ===
+
+These configurations are used in <tt>config/deploy.rb</tt> to deploy your application. You need to configure them if you are setting up a development environment and you wish to deploy it.
+
+{{{
+  deploy:
+    server: "my-server.com"
+    branch: "v0.1"                                        # it can be a branch or a tag
+    app_name: "mconf-web"                                 # used only internally (folders/files names), don't use spaces
+    repository: "git://github.com/mconf/mconf-web.git"    # repository url
+    repository_scm: "git"                                 # see capistrano docs for available options
 }}}
