@@ -1,0 +1,79 @@
+#summary Configuring setup_conf.yml
+
+= Configuring setup_conf.yml =
+
+This file contains the configurations that are either loaded in the database when you create it or that are loaded in memory when the application is loaded.
+
+Remember to keep the file indented as it is. It's format and structure have semantic meaning, so you shouldn't change them.
+
+== Sections ==
+
+The file has several sections. In the first level, you can have four: "default", "development", "production" and "test".
+
+The "default" section is always present and it's values are always used as the default values for the other sections. These other sections are used to define specific configurations for each Rails environment (development, production, test).
+
+These environment sections are only useful if you want to use the same file for more than one environment. If you are using different files (a different <tt>setup_conf.yml</tt>) for the development and production environments, you can just use the "default" section and forget the others.
+
+Inside each section, that are other sections, listed below.
+
+=== Admin user ===
+
+This area defines the administrator user. Use a valid email and you can use a simple password here, since you are able to change it later on through the website.
+
+Currently this will be the only admin user in your application.
+
+{{{
+  admin:
+    login: "mconf"
+    fullname: "Mconf Admin"
+    email: "my-email@server.com"
+    password: "admin"
+}}}
+
+=== !BigBlueButton server ===
+
+Defines the first and default !BigBlueButton server. Currently, all !BigBlueButton rooms created through Mconf-web will use this server.
+
+  * The <tt>url</tt> should use the format "<tt>http://{server}/bigbluebutton/api</tt>". Change only the <tt>{server}</tt> part.
+
+{{{
+  bbb_server:
+    name: 'Default Server'
+    url: 'http://my-development-server/bigbluebutton/api'
+    salt: 'my-secret-salt'
+    version: '0.7'
+}}}
+
+=== Sending emails ===
+
+Currently Mconf-Web uses a Gmail account to send emails. You need to enter your username and password in this section.
+
+{{{                                                                                                                                
+  sendmail:
+    username: "my-username@gmail.com"
+    password: "my-password"
+}}}
+
+=== Website ===
+
+The information is used to create the a Site model, that defines some attributes of your website. They can be altered after the initial setup using the management area in the application.
+
+{{{
+  site:
+    name: "Mconf Dev"
+    description: "Mconf Development Website"
+    email: "my-email@server.com"
+    locale: "en"                               # this will be the default locale for the application
+    domain: "localhost"                        # your server address
+    signature: "Mconf"                         # to sign emails
+}}}
+
+=== Default space === 
+
+When you set up the database a default space will be created, something like "a space for all members of this website". You can define here some attributes for this space.
+
+{{{
+  default_space:
+    name: "Mconf-Web Space"
+    description: "Mconf-Web users space"
+}}}
