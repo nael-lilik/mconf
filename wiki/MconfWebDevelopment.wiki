@@ -2,7 +2,7 @@
 
 = Mconf-Web Development =
 
-MConf-web uses Rails 3 (currently 3.0.5) and Ruby 1.9.2.
+MConf-web uses Rails 3 and Ruby 1.9.2.
 
 == Setting up the development environment ==
 
