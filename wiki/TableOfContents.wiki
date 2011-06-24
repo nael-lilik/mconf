@@ -8,3 +8,4 @@
       * [MconfWebSetupConf Configuration file]
     * [MconfWebTesting Testing]
     * [MconfWebDeployment Deployment]
+    * [MconfWebLocalization Translating]
