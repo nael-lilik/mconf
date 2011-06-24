@@ -1,0 +1,42 @@
+= Translating Mconf-Web =
+
+Currently, the best way to translate Mconf-Web is to first [MconfWebDevelopment setup a development environment].
+
+All the language files are inside the folder <tt>config/locales</tt> and they use the [http://guides.rubyonrails.org/i18n.html YAML format].
+
+The languages maintained by the Mconf team are:
+  * English
+  * Portuguese (Brazil)
+
+See below how to *update an existent language*, *add a new language file* and how to *integrate your changes in Mconf-Web*.
+
+=== Updating an existing language file ===
+
+In the following examples, replace <tt>%locale%</tt> with the name of the locale you are trying to update ("de" for german, "fr" for french, and so on).
+
+From your development environment, run:
+
+{{{
+BASE=en LOCALE=%locale% rake translate:add_untranslated TRANSLATE=1
+}}}
+
+This command will get everything that exists in "en" and does not exists in "%locale%" and add to it. Before doing that, it will translate the strings to the target language (using Google Translate).
+
+Then you can just open the file and edit those new strings. You can also use any "diff application", such as [http://meld.sourceforge.net/ Meld]:
+
+{{{
+meld config/locales/%locale%.yml
+}}}
+
+=== Adding a new language file ===
+
+First create your new language file in the folder <tt>config/locales</tt>. Name it <tt>%locale%</tt> and add to it these two lines:
+
+{{{
+--- 
+%locale%:
+}}}
+
+
+
+=== Integrating your changes in Mconf-Web ===
