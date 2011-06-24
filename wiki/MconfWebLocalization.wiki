@@ -2,7 +2,7 @@
 
 Currently, the best way to translate Mconf-Web is to first [MconfWebDevelopment setup a development environment].
 
-All the language files are inside the folder <tt>config/locales</tt> and they use the [http://guides.rubyonrails.org/i18n.html YAML format].
+All the language files are inside the folder <tt>config/locales</tt> and they use the [http://guides.rubyonrails.org/i18n.html YAML format]. All the files in this folder are automatically loaded when the application starts.
 
 The languages maintained by the Mconf team are:
   * English
@@ -39,6 +39,7 @@ First create your new language file in the folder <tt>config/locales</tt>. Name 
 {{{
 --- 
 %locale%:
+  abc: ABC
 }}}
 
 Let's say you want to add the Swedish language file. Create a file <tt>config/locales/sv.yml</tt> with the content:
@@ -46,9 +47,17 @@ Let's say you want to add the Swedish language file. Create a file <tt>config/lo
 {{{
 ---
 sv:
+  abc: ABC
 }}}
+
+Please, use names as defined in http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes (preferably the 2 letters code). You can use a country code together with the language code if needed (as we did in "pt-br").
 
 After adding it, use the same commands from *Updating an existing language file*.
 
+The flags displayed inside the pop-down menu in the application are in the folder <tt>public/images/flags/</tt>. 
 
 === Integrating your changes in Mconf-Web ===
+
+You can either:
+  * Fork [https://github.com/mconf/mconf-web our project in GitHub] and send us a pull request; or
+  * Send the language file to our mailing list: [mconf-dev@googlegroups.com mconf-dev@googlegroups.com]
