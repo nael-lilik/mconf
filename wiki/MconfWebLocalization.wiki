@@ -60,4 +60,4 @@ The flags displayed inside the pop-down menu in the application are in the folde
 
 You can either:
   * Fork [https://github.com/mconf/mconf-web our project in GitHub] and send us a pull request; or
-  * Send the language file to our mailing list: [mconf-dev@googlegroups.com mconf-dev@googlegroups.com]
+  * Send the language file to our mailing list: mconf-dev@googlegroups.com
