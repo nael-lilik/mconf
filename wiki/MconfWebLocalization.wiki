@@ -8,11 +8,9 @@ The languages maintained by the Mconf team are:
   * English
   * Portuguese (Brazil)
 
-See below how to *update an existent language*, *add a new language file* and how to *integrate your changes in Mconf-Web*.
+See below how to *update an existent language*, *add a new language file* and how to *integrate your changes in Mconf-Web*. In the following examples, replace <tt>%locale%</tt> with the name of the locale you are trying to update ("de" for german, "fr" for french, and so on).
 
 === Updating an existing language file ===
-
-In the following examples, replace <tt>%locale%</tt> with the name of the locale you are trying to update ("de" for german, "fr" for french, and so on).
 
 From your development environment, run:
 
@@ -20,7 +18,7 @@ From your development environment, run:
 BASE=en LOCALE=%locale% rake translate:add_untranslated TRANSLATE=1
 }}}
 
-This command will get everything that exists in "en" and does not exists in "%locale%" and add to it. Before doing that, it will translate the strings to the target language (using Google Translate).
+This command will get everything that exists in "en" and does not exists in "%locale%" and add to it. Before doing that, it will translate the strings to the target language (using Google Translate). You can omit the <tt>TRANSLATE=1</tt> parameter to disable automatic translation. 
 
 Then you can just open the file and edit those new strings. You can also use any "diff application", such as [http://meld.sourceforge.net/ Meld]:
 
@@ -28,15 +26,29 @@ Then you can just open the file and edit those new strings. You can also use any
 meld config/locales/%locale%.yml
 }}}
 
+After finishing all your changes, run the following command to assure that the file is in a valid format:
+
+{{{
+LOCALE=%locale% rake translate:cleanup
+}}}
+
 === Adding a new language file ===
 
-First create your new language file in the folder <tt>config/locales</tt>. Name it <tt>%locale%</tt> and add to it these two lines:
+First create your new language file in the folder <tt>config/locales</tt>. Name it <tt>%locale%.yml</tt> and add to it these two lines:
 
 {{{
 --- 
 %locale%:
 }}}
 
+Let's say you want to add the Swedish language file. Create a file <tt>config/locales/sv.yml</tt> with the content:
+
+{{{
+---
+sv:
+}}}
+
+After adding it, use the same commands from *Updating an existing language file*.
 
 
 === Integrating your changes in Mconf-Web ===
