@@ -81,17 +81,3 @@ When you set up the database a default space will be created, something like "a 
     name: "Mconf-Web Space"
     description: "Mconf-Web users space"
 }}}
-
-
-=== Deployment variables ===
-
-These configurations are used in <tt>config/deploy.rb</tt> to deploy your application. You need to configure them if you are setting up a development environment and you wish to deploy it.
-
-{{{
-  deploy:
-    server: "my-server.com"
-    branch: "v0.1"                                        # it can be a branch or a tag
-    app_name: "mconf-web"                                 # used only internally (folders/files names), don't use spaces
-    repository: "git://github.com/mconf/mconf-web.git"    # repository url
-    repository_scm: "git"                                 # see capistrano docs for available options
-}}}
