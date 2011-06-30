@@ -90,7 +90,7 @@ Open this file and add the following content inside the `http` block, above the 
 {{{
 server {
     listen 80;
-    server_name your.ip.or.domain;
+    server_name IP_OR_DOMAIN;
     root /home/mconf/mconf-web/current/public;
     passenger_enabled on;
     if (-f $document_root/system/maintenance.html) {
@@ -99,7 +99,7 @@ server {
 }
 }}}
 
-  <font color="red">*Important:*</font> Don't forget to change *`your.ip.or.domain`* by the IP or domain name of your server.
+  <font color="red">*Important:*</font> Don't forget to change *`IP_OR_DOMAIN`* by the IP or domain name of your server.
 
 You can find an example of the nginx.conf we use at our repository [https://github.com/mconf/mconf-web/blob/master/config/nginx.conf.example here].
 
