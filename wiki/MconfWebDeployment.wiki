@@ -165,7 +165,13 @@ cap staging deploy:restart     # restart the server
 
 ==== Further information ====
 
-Capistrano has some other tasks you may need:
+Capistrano has some other tasks you may need. You can see them all running:
+
+{{{
+cap -T
+}}}
+
+Below there's a list with tasks defined by Mconf-Web that you will possibly use:
 
 {{{
 cap staging deploy:udpate       # update a new release
