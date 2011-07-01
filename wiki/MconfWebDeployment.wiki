@@ -159,8 +159,7 @@ cap staging deploy:update
 After a while, you'll want to update the code of your server. Since you already have everything setup, it's pretty simple. Just run:
 
 {{{
-cap staging deploy:migrations  # update the code and run the migrations (i.e. updates the DB)
-cap staging deploy:restart     # restart the server
+cap staging deploy:migrations  # update to a new release, run the migrations (i.e. updates the DB) and restart the web server
 }}}
 
 ==== Further information ====
@@ -174,7 +173,7 @@ cap -T
 Below there's a list with tasks defined by Mconf-Web that you will possibly use:
 
 {{{
-cap staging deploy:udpate       # update a new release
+cap staging deploy:udpate       # update to a new release
 cap staging deploy:migrate      # run migrations
 cap staging deploy:restart      # restart the web server
 cap staging deploy:web:disable  # start maintenance mode (the site will be offline)
