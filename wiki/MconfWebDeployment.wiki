@@ -141,7 +141,7 @@ All the examples below are for the "staging" stage. You can use the same command
 Our deploy has a task called `setup:all` that can be used to setup a server for the first time. Run:
 
 {{{
-cap staging deploy:all
+cap staging setup:all
 }}}
 
 This task will do the following:
@@ -168,13 +168,14 @@ cap staging deploy:restart     # restart the server
 Capistrano has some other tasks you may need:
 
 {{{
-cap staging deploy:all          # first time setup of a server
-cap staging deploy:setup        # first setup, create directories
 cap staging deploy:udpate       # update a new release
-cap staging deploy:migrate      # run the migrations (DB updates)
-cap staging deploy:restart      # restart Nginx
+cap staging deploy:migrate      # run migrations
+cap staging deploy:restart      # restart the web server
 cap staging deploy:web:disable  # start maintenance mode (the site will be offline)
 cap staging deploy:web:enable   # stop maintenance mode (the site will be online)
+cap staging deploy:rollback     # go back to the previous version
+cap staging setup:secret        # creates a new secret token (requires restart)
+cap staging setup:db            # drops, creates and populates the db with the basic data
 }}}
 
 The files used by Capistrano that you may want to edit are:
