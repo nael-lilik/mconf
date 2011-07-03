@@ -134,7 +134,25 @@ You should start by editing the file <tt>config/deploy/conf.yml</tt>. This file 
 
 All the examples below are for the "staging" stage. You can use the same commands for "production", just replace "staging" for "production".
 
-<font color="red">TODO:</font> tip to set ssh keys to access the server
+==== Set up ssh keys ====
+
+To enable capistrano to access your server you have to generate a public key for your local user (if you don't have one yet) and allow access to it in your server. You can find plenty of resources about it in the web, but shortly, you could do the following:
+
+{{{
+# generate the key
+mkdir ~/.ssh && chmod 700 ~/.ssh
+ssh-keygen -t rsa
+  -> (you will be prompted for a password)
+
+# set it in your server (NOTE: don't forget to change "deploy@myserver.com")
+cat ~/.ssh/id_rsa.pub | ssh deploy@myserver.com "cat >> .ssh/authorized_keys2"
+}}}
+
+More information at:
+
+  * https://help.ubuntu.com/community/SSH/OpenSSH/Keys
+  * http://help.github.com/deploy-keys/
+  * http://snippets.dzone.com/posts/show/5730
 
 ==== First deploment ====
 
