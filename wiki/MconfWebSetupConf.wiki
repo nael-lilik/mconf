@@ -1,12 +1,12 @@
-#summary Configuring setup_conf.yml
+#summary Configuring the application through setup_conf.yml
 
-= Configuring setup_conf.yml =
+= Configuring the application (`setup_conf.yml`) =
 
-This file contains the configurations that are either loaded in the database when you create it or that are loaded in memory when the application is loaded.
+This file contains the configurations that are either loaded in the database when it is created or that are loaded in memory when the application is loaded.
 
 Remember to keep the file indented and formatted as it is. Its format and structure have semantic meaning, so you shouldn't change them.
 
-== Sections ==
+== Structure ==
 
 The file has several sections. In the first level, you can have four:
   * default
@@ -14,11 +14,9 @@ The file has several sections. In the first level, you can have four:
   * production
   * test
 
-The "default" section is always present and its values are always used as the default values for the other sections. These other sections are used to define specific configurations for each Rails environment (development, production, test).
+The "default" section is always present and its values are used as the default values. The other sections are used to define specific configurations for each Rails environment (development, production, test). In these other sections you should specify only the parameters you want to override over the default configurations.
 
-The environment sections are only useful if you want to use the same configuration file for more than one environment. If you are using different files (a different <tt>setup_conf.yml</tt>) for the development and production environments, you can just use the "default" section and forget about the others.
-
-Inside each section, that are the sections listed below.
+Inside the default section, you will find the sections listed below.
 
 === Admin user ===
 
@@ -50,7 +48,9 @@ Defines the first and default !BigBlueButton server. Currently, all !BigBlueButt
 
 === Sending emails ===
 
-Currently Mconf-Web uses a Gmail account to send emails. You need to enter your username and password in this section.
+Currently Mconf-Web uses a Gmail account to send emails, so you can use this section to enter your username and password.
+
+You *need* to set up this account. Currently the website is not guaranteed to work if you don't do it.
 
 {{{                                                                                                                                
   sendmail:
@@ -80,4 +80,23 @@ When you set up the database a default space will be created, something like "a 
   default_space:
     name: "Mconf-Web Space"
     description: "Mconf-Web users space"
+}}}
+
+=== Notifications when the site breaks === 
+
+Notifies (by email) when an exception occurs. This feature is usually used only in the production environment, so it is disabled by default. You will usually configure it in the default section and then enable it in the production section.
+
+{{{
+exception_notification:
+    enabled: false                                            # change to true to enable, don't use quotation marks
+    prefix: "[mconf-web error] "                              # prefix added in the email subject
+    recipients: "my-email@server.com my-email2@server.com"    # space-separated list of emails
+}}}
+
+And to enable it in production:
+
+{{{
+production:
+  exception_notification:
+    enabled: true
 }}}
