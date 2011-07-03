@@ -84,7 +84,7 @@ When you set up the database a default space will be created, something like "a 
 
 === Notifications when the site breaks === 
 
-Notifies (by email) when an exception occurs. This feature is usually used only in the production environment, so it is disabled by default. You will usually configure it in the default section and then enable it in the production section.
+Notifies (by email) when an exception occurs. This feature *will only work in the production environment*^1^, so it is disabled by default. You will usually configure it in the default section and then enable it in the production section.
 
 {{{
 exception_notification:
@@ -100,3 +100,5 @@ production:
   exception_notification:
     enabled: true
 }}}
+
+_^1^Because the gem exception_notification that does it is only installed for production._
