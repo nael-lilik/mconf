@@ -14,12 +14,24 @@ For more options on how to install Mconf see [MconfInstallation this page].
 Quick steps to setup the Mconf VM:
   * Download the VM, unzip and run the file `mconf-vm.vmx`
     * _<font color=red>TODO: vm link</font>_
+
   * Login with username "`firstuser`" and password "`default`"
     * You will be prompted to change your password
+
   * Run the setup script with:
     {{{
 cd ~ && ./mconf-vm
     }}}
+
+    When it runs, at first the script will do several things on its own. At the end it will start setting up Mconf-Web and it requires user input.
+
+    _<font color=red>TODO: picture</font>_
+
+    The parameters you will be asked for a value are:
+      * *admin_email* (Admin user email): This is the email of the admin user in Mconf-Web. Use a valid email, you'll need it to administrate your server.
+      * *admin_password* (Admin user password): The password for the admin user. You can set a password here our you can leave the default value and change it later using the website.
+      * *sendmail_username* (Gmail account username): A Gmail account to be used to send any email sent from within Mconf-Web. Currently you need to set this account properly or the setup of Mconf-Web will fail.
+      * *sendmail_password* (Gmail account password): The password of the Gmail account to send emails.
 
 == Details ==
 
@@ -30,19 +42,6 @@ The Mconf VM runs over the [http://code.google.com/p/bigbluebutton/wiki/BigBlueB
   * Mconf-Web production and development environments
 
 This VM comes with the entire system already pre-configured, but there are still some things that are related to each instance of the VM. That's why `mconf-vm` exists, to help you configure these parameters.
-
-=== About `mconf-vm` ===
-
-When it runs, at first the script will do several things on its own. At the end it will start setting up Mconf-Web and it requires user input.
-
-_<font color=red>TODO: picture</font>_
-
-The parameters you will be asked for a value are:
-
-  * *admin_email* (Admin user email): This is the email of the admin user in Mconf-Web. Use a valid email, you'll need it to administrate your server.
-  * *admin_password* (Admin user password): The password for the admin user. You can set a password here our you can leave the default value and change it later using the website.
-  * *sendmail_username* (Gmail account username): A Gmail account to be used to send any email sent from within Mconf-Web. Currently you need to set this account properly or the setup of Mconf-Web will fail.
-  * *sendmail_password* (Gmail account password): The password of the Gmail account to send emails.
 
 === Passwords ===
 
