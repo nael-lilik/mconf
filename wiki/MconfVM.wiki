@@ -20,7 +20,7 @@ Quick steps to setup the Mconf VM:
 
   * Run the setup script with:
     {{{
-cd ~ && ./mconf-vm
+./mconf-vm
     }}}
 
     When it runs, at first the script will do several things on its own. At the end it will start setting up Mconf-Web and it requires user input.
