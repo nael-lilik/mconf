@@ -25,7 +25,7 @@ cd ~ && ./mconf-vm
 
     When it runs, at first the script will do several things on its own. At the end it will start setting up Mconf-Web and it requires user input.
 
-    _<font color=red>TODO: picture</font>_
+    http://mconf.googlecode.com/svn/trunk/mconf-vm-setup1.png
 
     The parameters you will be asked for a value are:
       * *admin_email* (Admin user email): This is the email of the admin user in Mconf-Web. Use a valid email, you'll need it to administrate your server.
