@@ -66,6 +66,10 @@ CLEANUP
     user: root
     password: default
 
+  * Configure deploy/conf.yml
+    server: "127.0.0.1"
+    user: "firstuser"
+
   * Erase useless files. Leave only:
     bigbluebutton-vm.vmx
     disk0.vmdk
