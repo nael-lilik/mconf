@@ -1,0 +1,74 @@
+_This is a draft used for internal development only._
+
+GENERAL
+  * user:
+    * login: firstuser
+    * password: default
+  * MySQL user:
+    * login: root
+    * password: default
+  
+
+CREATING THE VM
+
+  * Download the BigBlueButton VM
+    * ...
+
+  * Install mconf-web
+    * ...
+
+  * Install scripts
+    curl https://raw.github.com/mconf/installation-scripts/master/mconf-vm -o ~/mconf-vm
+    sudo curl https://raw.github.com/mconf/mconf-web/master/script/mconf-web-conf -o /usr/local/bin/mconf-web-conf
+    sudo curl https://raw.github.com/mconf/installation-scripts/master/mconf-bbb-conf -o /usr/local/bin/mconf-bbb-conf
+    sudo chmod a+x /usr/local/bin/mconf-bbb-conf
+    sudo chmod a+x /usr/local/bin/mconf-web-conf
+
+
+CLEANUP
+
+  * Password
+    * Change password to "default"
+      sudo passwd -d firstuser
+      passwd firstuser
+        # type "default" twice
+    * Make password expire on next login
+      sudo passwd -e firstuser
+
+  * Change MySQL root password to "default"
+    mysqladmin -u root -p password default
+      # type the current password
+
+  * Delete mconf-web
+    sudo rm -rf /home/firstuser/mconf-web
+
+  * Empty Mconf-Web DB
+    mysql -u root -p
+    DROP DATABASE mconf_production;
+    exit;
+
+  * Clear logs and sqlites:
+    rm /home/firstuser/dev/source/mconf-web/log/*
+    rm /home/firstuser/dev/source/mconf-web/db/*.sqlite3
+
+  * Update repo
+    cd ~/dev/source/mconf-web/
+    git checkout master
+    git pull origin master
+
+  * Use the standard configuration files
+    cp ~/dev/source/mconf-web/config/setup_conf.yml.example ~/dev/source/mconf-web/config/setup_conf.yml
+    cp ~/dev/source/mconf-web/config/deploy/conf.yml.example ~/dev/source/mconf-web/config/deploy/conf.yml
+
+  * Configure database.yml
+    cp ~/dev/source/mconf-web/config/database.yml.example ~/dev/source/mconf-web/config/database.yml
+    emacs ~/dev/source/mconf-web/config/database.yml
+    user: root
+    password: default
+
+  * Erase useless files. Leave only:
+    bigbluebutton-vm.vmx
+    disk0.vmdk
+  
+  * Change the VM name:
+    mv bigbluebutton-vm.vmx mconf-vm.vmx
