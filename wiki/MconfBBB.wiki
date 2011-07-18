@@ -1,6 +1,9 @@
 = Mconf - !BigBlueButton Customizations =
 
-Mconf uses a customized version of !BigBlueButton. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration changes that must be made in each instance of !BigBlueButton (you can see them in [https://github.com/mconf/installation-scripts/blob/master/mconf-bbb-conf this file])
+Mconf uses a customized version of !BigBlueButton. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration changes that must be made in each instance of !BigBlueButton.
+
+These customizations can be applied to a !BigBlueButton instance using the [MconfBBBInstallScript mconf-bbb-conf script].
+
 
 == List of modifications ==
 
