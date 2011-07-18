@@ -5,7 +5,7 @@ Mconf has three main modules: Mconf-Web, Mconf-Mobile, and !BigBlueButton (with 
 See below the options you have to get the complete solution:
 
   * *Using the Mconf VM*: This is the simplest solution but is recommended only for testing purposes. This VM comes with Mconf-Web, !BigBlueButton (0.71a) and its customizations already installed. All you'll need is to configure them (we provide scripts for that). The server is already "Mconf-Mobile"-enabled, so you can just [http://code.google.com/p/mconf/downloads/list install Mconf-Mobile] in your mobile device and use it in this VM.
-    * [MconfVM Mconf VM page]
+    * More details in the [MconfVM Mconf VM page]
 
   * *Using an existent !BigBlueButton server*: Here you have more options. You can install Mconf-Web in the !BigBlueButton server machine or in a another machine. You can also decide if you will use the Mconf customizations for !BigBlueButton or not (it includes enabling Mconf-Mobile).
     * Install Mconf-Web in a separate server: This is the recommended option. You can either install it using the script [MconfWebMconfWebConf mconf-web-conf] or you can [MconfWebDevelopment setup a development environment] in your machine and then [MconfWebDeployment deploy to your production server].
