@@ -1,0 +1,5 @@
+= mconf-bbb-conf =
+
+Script to install Mconf's customizations for !BigBlueButton.
+
+_<font color=red>TODO... </font>_
