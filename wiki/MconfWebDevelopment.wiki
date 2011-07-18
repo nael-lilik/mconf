@@ -40,6 +40,16 @@ rake setup:db
 rails server
     }}}
 
+== Fake data ==
+
+You can create fake data in your development database using the following rake task:
+
+    {{{
+rake setup:populate
+    }}}
+
+It will create users, spaces, posts and everything you need to have a populated web site and test your modifications.
+
 == Testing ==
 
 To learn how to test the application take a look at [MconfWebTesting].
