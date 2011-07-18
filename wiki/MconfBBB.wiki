@@ -1,4 +1,4 @@
-= Mconf - BigBlueButton Customizations =
+= Mconf - !BigBlueButton Customizations =
 
 Mconf's customizations for !BigBlueButton.
 
