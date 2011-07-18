@@ -69,6 +69,7 @@ CLEANUP
   * Configure deploy/conf.yml
     server: "127.0.0.1"
     user: "firstuser"
+    branch: "stable"
 
   * Erase useless files. Leave only:
     bigbluebutton-vm.vmx
