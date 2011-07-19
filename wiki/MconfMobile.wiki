@@ -52,7 +52,7 @@ A full documentation for Android developers is available [http://developer.andro
 
 = How could I contribute? =
 
-If you are not a developer, the best you can do is testing the Android application and provide us any feedback. It could be done by [http://code.google.com/p/mconf/issues/list creating a new issue] reporting a bug or specifying an enhancement. Also you can send messages to the [http://groups.google.com/group/bigbluebutton-dev !BigBlueButton developers mailing list]. If you are interested in translate the Android application to another language different from Portuguese (PT-BR) and English, send us a message and we will provide a way to do that (of course, better translations of the supported languages are welcome). :)
+If you are not a developer, the best you can do is testing the Android application and provide us any feedback. It could be done by [http://code.google.com/p/mconf/issues/list creating a new issue] reporting a bug or specifying an enhancement. Also you can send messages to the [http://groups.google.com/group/bigbluebutton-dev BigBlueButton developers mailing list]. If you are interested in translate the Android application to another language different from Portuguese (PT-BR) and English, send us a message and we will provide a way to do that (of course, better translations of the supported languages are welcome). :)
 
 If you are a developer and want to be part of this project, you can pick an issue and try to solve it. Of course we are totally open to help you in what you need.
 
