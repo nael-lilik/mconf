@@ -23,7 +23,9 @@ Quick steps to setup the Mconf VM:
 ./mconf-vm
     }}}
 
-    When it runs, at first the script will do several things on its own. At the end it will start setting up Mconf-Web and it requires user input.
+    When it runs, you will be immediately prompted for a password to run commands as root. Type in *the new password you just configured for your account*.
+
+    A few seconds later the script will start setting up Mconf-Web and it will ask you to configure some parameters. See the figure below:
 
     http://mconf.googlecode.com/svn/wiki/mconf-vm-setup1.png
 
