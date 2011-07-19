@@ -11,7 +11,7 @@ For more options on how to install Mconf see [MconfInstallation this page].
 
 == Installing Mconf VM ==
 
-Follow the steps below to setup the Mconf VM. It will take around 10 minutes (considering you have a 1Mbit/s connection):
+Follow the steps below to setup the Mconf VM. It will take around 20 minutes (considering you can download files at ~150 KiB/s):
 
   * Download the VM, unzip and run the file `mconf-vm.vmx`
     * _<font color=red>TODO: vm link</font>_
@@ -24,9 +24,11 @@ Follow the steps below to setup the Mconf VM. It will take around 10 minutes (co
 ./mconf-vm
     }}}
 
-    When it runs, you will be immediately prompted for a password to run commands as root. Type in *the new password you just configured for your account*.
+    When it runs, you will be soon prompted for a password to run commands as root. Type in *the new password you just configured for your account*.
 
-    A few seconds later the script will start setting up Mconf-Web and it will ask you to configure some parameters. See the figure below:
+    The script will then start to apply Mconf's customizations to this BigBlueButton instance (~8 minutes). 
+
+    Some minutes later the script will start setting up Mconf-Web and it will ask you to configure some parameters. See the figure below:
 
     http://mconf.googlecode.com/svn/wiki/mconf-vm-setup1.png
 
@@ -40,7 +42,7 @@ Follow the steps below to setup the Mconf VM. It will take around 10 minutes (co
 
     http://mconf.googlecode.com/svn/wiki/mconf-vm-setup2.png
 
-  * Now just relax and wait for the setup to finish (~ 8 minutes).
+  * Now just relax and wait for the setup to finish (~8 minutes).
 
   * When the setup finishes, it will print in the screen your IP and ask you to access it using your browser to test if the setup was successful. Hopefully everything will work well, but if you're facing any problems you can try to find an answer in the [MconfTroubleshoot troubleshoot page] or send a message to our mailing list: mconf-dev@googlegroups.com
 
