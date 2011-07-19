@@ -26,7 +26,7 @@ Follow the steps below to setup the Mconf VM. It will take around 20 minutes (co
 
     When it runs, you will be soon prompted for a password to run commands as root. Type in *the new password you just configured for your account*.
 
-    The script will then start to apply Mconf's customizations to this BigBlueButton instance (~8 minutes). 
+    The script will then start by applying Mconf's customizations to this !BigBlueButton instance (~8 minutes). 
 
     Some minutes later the script will start setting up Mconf-Web and it will ask you to configure some parameters. See the figure below:
 
