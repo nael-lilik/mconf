@@ -63,8 +63,8 @@ This VM comes with the entire system already pre-configured, but there are still
 The script does the following:
 
   * Acquires an IP with DHCP
-  * Runs `mconf-bbb-conf` to setup customizations over !BigBlueButton
-  * Runs `mconf-web-conf` to setup Mconf-Web
+  * Runs [MconfBBBConf mconf-bbb-conf] to setup customizations over !BigBlueButton
+  * Runs [MconfWebConf mconf-web-conf] to setup Mconf-Web
   * Restarts nginx
 
 The script will automatically detect your IP and use it. To be able to run !BigBlueButton and Mconf-Web together, !BigBlueButton will respond in the port 8888.
