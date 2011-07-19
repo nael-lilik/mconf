@@ -1,12 +1,13 @@
-_This is a draft used for internal development only._
+_<font color=red>This is a draft used for internal development only.</font>_
 
 == For future releases ==
 
   * Provide only scripts? (not a VM with things pre-installed)
-  * Fix mconf-web, installation-scripts and bigbluebutton versions (tags)
+  * Fix mconf-web, installation-scripts and bigbluebutton versions (make tags)
+  * Production only for Mconf-Web? (remove Capistrano, just release a single version)
 
 
-== Release 0.1 ==
+== VM 0.1 ==
 
 === General ===
 
@@ -24,7 +25,7 @@ _This is a draft used for internal development only._
     * http://sourceforge.net/projects/bigbluebutton/files/bigbluebutton071a-vm.zip/download
 
   * Install mconf-web
-    * Installed using mconf-web-conf
+    * Installed (mostly) using mconf-web-conf. Used --install-ruby, --install-packages, --checkout, --setup-dev
     * Nginx was installed manually. It is still an issue because BBB uses the packaged nginx and we need another version (compile by Passenger)
 
   * Copy the installation scripts to the VM
