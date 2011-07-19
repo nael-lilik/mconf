@@ -1,5 +1,7 @@
-= mconf-web-conf =
+= The script `mconf-web-conf` =
 
-Mconf-Web utility script
+`mconf-web-conf` is a utility script to help you install, configure and run maintenance tasks on Mconf-Web.
+
+You can find the last version of this file in [https://github.com/mconf/mconf-web/tree/master/script the Mconf-Web repository].
 
 _<font color=red>TODO... </font>_
