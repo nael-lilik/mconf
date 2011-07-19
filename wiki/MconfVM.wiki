@@ -1,6 +1,6 @@
 = Mconf VM =
 
-The Mconf VM comes with the whole Mconf package in a single virtual machine, to enable easy access to all Mconf's features. This VM is intended for *testing/development* purposes, it is not recommended for a production environment.
+The Mconf VM comes with the whole Mconf package in a single virtual machine, to enable easy access to all Mconf's features. This VM is intended for *testing/development* purposes, it is not yet recommended for a production environment.
 
 For more options on how to install Mconf see [MconfInstallation this page].
 
@@ -13,7 +13,7 @@ For more options on how to install Mconf see [MconfInstallation this page].
 
 Follow the steps below to setup the Mconf VM. It will take around 20 minutes (considering you can download files at ~150 KiB/s):
 
-  * Download the VM, unzip and run the file `mconf-vm.vmx`
+  * Download the last version of the VM, unzip and run the file `mconf-vm.vmx`
     * _<font color=red>TODO: vm link</font>_
 
   * Login using the username "`firstuser`" and password "`default`"
