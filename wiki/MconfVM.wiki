@@ -79,6 +79,8 @@ But you can also force an IP (or domain name) and a different port for !BigBlueB
 
 You can run the script again if you need to, but be aware that it will clean your !BigBlueButton instance and reset Mconf-Web, *dropping and recreating the DB*.
 
+You can find the latest version of the script in [https://github.com/mconf/installation-scripts this repository].
+
 === Passwords ===
 
 Default passwords used in the VM:
