@@ -1,7 +1,16 @@
 _This is a draft used for internal development only._
 
-GENERAL
-  * user:
+== For future releases ==
+
+  * Provide only scripts? (not a VM with things pre-installed)
+  * Fix mconf-web, installation-scripts and bigbluebutton versions (tags)
+
+
+== Release 0.1 ==
+
+=== General ===
+
+  * Ubuntu user:
     * login: firstuser
     * password: default
   * MySQL user:
@@ -9,65 +18,95 @@ GENERAL
     * password: default
   
 
-CREATING THE VM
+=== Creating the VM ===
 
   * Download the BigBlueButton VM
-    * ...
+    * http://sourceforge.net/projects/bigbluebutton/files/bigbluebutton071a-vm.zip/download
 
   * Install mconf-web
-    * ...
+    * Installed using mconf-web-conf
+    * Nginx was installed manually. It is still an issue because BBB uses the packaged nginx and we need another version (compile by Passenger)
 
-  * Install scripts
-    curl https://raw.github.com/mconf/installation-scripts/master/mconf-vm -o ~/mconf-vm; sudo curl https://raw.github.com/mconf/mconf-web/master/script/mconf-web-conf -o /usr/local/bin/mconf-web-conf; sudo curl https://raw.github.com/mconf/installation-scripts/master/mconf-bbb-conf -o /usr/local/bin/mconf-bbb-conf; sudo chmod a+x ~/mconf-vm; sudo chmod a+x /usr/local/bin/mconf-bbb-conf; sudo chmod a+x /usr/local/bin/mconf-web-conf
+  * Copy the installation scripts to the VM
+    {{{
+curl https://raw.github.com/mconf/installation-scripts/master/mconf-vm -o ~/mconf-vm
+sudo curl https://raw.github.com/mconf/mconf-web/master/script/mconf-web-conf -o /usr/local/bin/mconf-web-conf
+sudo curl https://raw.github.com/mconf/installation-scripts/master/mconf-bbb-conf -o /usr/local/bin/mconf-bbb-conf
+sudo chmod a+x ~/mconf-vm
+sudo chmod a+x /usr/local/bin/mconf-bbb-conf
+sudo chmod a+x /usr/local/bin/mconf-web-conf
+    }}}
 
 
-CLEANUP
+=== Cleanup ===
 
   * Change MySQL root password to "default"
-    mysqladmin -u root -p password default
-      # type the current password
+    {{{
+mysqladmin -u root -p password default # type the current password
+    }}}      
 
   * Delete mconf-web
-    sudo rm -rf /home/firstuser/mconf-web
+    {{{
+sudo rm -rf /home/firstuser/mconf-web
+    }}}
 
   * Empty Mconf-Web DB
-    mysql -u root -p
-    DROP DATABASE mconf_production;
-    exit;
+    {{{
+mysql -u root -p
+DROP DATABASE mconf_production;
+exit;
+    }}}
 
   * Clear logs and sqlites:
-    rm /home/firstuser/dev/source/mconf-web/log/*
-    rm /home/firstuser/dev/source/mconf-web/db/*.sqlite3
+    {{{
+rm /home/firstuser/dev/source/mconf-web/log/*
+rm /home/firstuser/dev/source/mconf-web/db/*.sqlite3
+    }}}
 
   * Use the standard configuration files
-    cp ~/dev/source/mconf-web/config/setup_conf.yml.example ~/dev/source/mconf-web/config/setup_conf.yml
-    cp ~/dev/source/mconf-web/config/deploy/conf.yml.example ~/dev/source/mconf-web/config/deploy/conf.yml
+    {{{
+cp ~/dev/source/mconf-web/config/setup_conf.yml.example ~/dev/source/mconf-web/config/setup_conf.yml
+cp ~/dev/source/mconf-web/config/deploy/conf.yml.example ~/dev/source/mconf-web/config/deploy/conf.yml
+    }}}
 
   * Configure database.yml
-    cp ~/dev/source/mconf-web/config/database.yml.example ~/dev/source/mconf-web/config/database.yml
-    emacs ~/dev/source/mconf-web/config/database.yml
-    user: root
-    password: default
+    {{{
+cp ~/dev/source/mconf-web/config/database.yml.example ~/dev/source/mconf-web/config/database.yml
+emacs ~/dev/source/mconf-web/config/database.yml
+# user: root
+# password: default
+    }}}
 
-  * Configure deploy/conf.yml
-    server: "127.0.0.1"
-    user: "firstuser"
-    branch: "stable"
+  * Configure `deploy/conf.yml` with:
+    {{{
+server: "127.0.0.1"
+user: "firstuser"
+branch: "stable"
+    }}}
 
   * Password
     * Change password to "default"
-      sudo passwd -d firstuser
-      passwd firstuser
-        # type "default" twice
+      {{{
+sudo passwd -d firstuser
+passwd firstuser # type "default" twice
+      }}}
     * Make password expire on next login
-      sudo passwd -e firstuser
+      {{{
+sudo passwd -e firstuser
+      }}}
 
   * Remove bash history
-    rm ~/.bash_history
+    {{{
+rm ~/.bash_history
+    }}}
 
   * Erase useless files. Leave only:
-    bigbluebutton-vm.vmx
-    disk0.vmdk
+    {{{
+bigbluebutton-vm.vmx
+disk0.vmdk
+    }}}
   
   * Change the VM name:
-    mv bigbluebutton-vm.vmx mconf-vm.vmx
+    {{{
+mv bigbluebutton-vm.vmx mconf-vm.vmx
+    }}}
