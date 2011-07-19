@@ -32,6 +32,8 @@ There are two ways of running the application:
 
 We provide mobile access in our development server at http://mconfdev.inf.ufrgs.br.
 
+*Update:* the mobile access to our development server is temporary unavailable. We are testing a new mobile demo on this server which will be distributed with the official version of BigBlueButton.
+
 = Building the app from the repository =
 
  # Install Android SDK ([http://developer.android.com/sdk/index.html link])
