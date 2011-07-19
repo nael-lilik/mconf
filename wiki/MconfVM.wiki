@@ -33,6 +33,8 @@ Quick steps to setup the Mconf VM:
       * *sendmail_username* (Gmail account username): A Gmail account to be used to send any email sent from within Mconf-Web. Currently you need to set this account properly or the setup of Mconf-Web will fail.
       * *sendmail_password* (Gmail account password): The password of the Gmail account to send emails.
 
+    You will also be asked to enter a password during the deployment of Mconf-Web. Enter *the password of your current user in the VM*. This is needed because the application is being deployed using ssh, so you're ssh'ing into your own machine.
+
 == Details ==
 
 The Mconf VM runs over the [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVM BigBlueButton VM] (Ubuntu 10.04). What you have in this machine:
