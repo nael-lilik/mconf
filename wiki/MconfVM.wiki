@@ -16,10 +16,10 @@ Follow the steps below to setup the Mconf VM. It will take around 10 minutes (co
   * Download the VM, unzip and run the file `mconf-vm.vmx`
     * _<font color=red>TODO: vm link</font>_
 
-  * Login with username "`firstuser`" and password "`default`"
-    * You will be prompted to change your password
+  * Login using the username "`firstuser`" and password "`default`"
+    * You will be prompted to change your password. Enter the "default" once and then enter the new password twice.
 
-  * Run the setup script with:
+  * After the login, run the setup script with:
     {{{
 ./mconf-vm
     }}}
@@ -36,11 +36,13 @@ Follow the steps below to setup the Mconf VM. It will take around 10 minutes (co
       * *sendmail_username* (Gmail account username): A Gmail account to be used to send any email sent from within Mconf-Web. Currently you need to set this account properly or the setup of Mconf-Web will fail.
       * *sendmail_password* (Gmail account password): The password of the Gmail account to send emails.
 
-    You will also be asked to enter a password during the deployment of Mconf-Web (image below). Enter *the password of your current user in the VM*. This is needed because the application is being deployed using ssh, so you're ssh'ing into your own machine.
+    Short after you will also be asked to enter a password for the deployment of Mconf-Web (image below). Enter *the password of your current user in the VM*. This is needed because the application is being deployed using ssh, so you're ssh'ing into your own machine.
 
     http://mconf.googlecode.com/svn/wiki/mconf-vm-setup2.png
 
   * Now just relax and wait for the setup to finish (~ 8 minutes).
+
+  * When the setup finishes, it will print in the screen your IP and ask you to access it using your browser to test if the setup was successful. Hopefully everything will work well, but if you're facing any problems you can try to find an answer in the [MconfTroubleshoot troubleshoot page] or send a message to our mailing list: mconf-dev@googlegroups.com
 
 == Details ==
 
