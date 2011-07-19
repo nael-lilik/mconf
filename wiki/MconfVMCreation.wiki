@@ -39,11 +39,6 @@ CLEANUP
     rm /home/firstuser/dev/source/mconf-web/log/*
     rm /home/firstuser/dev/source/mconf-web/db/*.sqlite3
 
-  * Update repo
-    cd ~/dev/source/mconf-web/
-    git checkout master
-    git pull origin master
-
   * Use the standard configuration files
     cp ~/dev/source/mconf-web/config/setup_conf.yml.example ~/dev/source/mconf-web/config/setup_conf.yml
     cp ~/dev/source/mconf-web/config/deploy/conf.yml.example ~/dev/source/mconf-web/config/deploy/conf.yml
