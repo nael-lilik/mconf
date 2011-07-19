@@ -23,14 +23,6 @@ CREATING THE VM
 
 CLEANUP
 
-  * Password
-    * Change password to "default"
-      sudo passwd -d firstuser
-      passwd firstuser
-        # type "default" twice
-    * Make password expire on next login
-      sudo passwd -e firstuser
-
   * Change MySQL root password to "default"
     mysqladmin -u root -p password default
       # type the current password
@@ -66,6 +58,17 @@ CLEANUP
     server: "127.0.0.1"
     user: "firstuser"
     branch: "stable"
+
+  * Password
+    * Change password to "default"
+      sudo passwd -d firstuser
+      passwd firstuser
+        # type "default" twice
+    * Make password expire on next login
+      sudo passwd -e firstuser
+
+  * Remove bash history
+    rm ~/.bash_history
 
   * Erase useless files. Leave only:
     bigbluebutton-vm.vmx
