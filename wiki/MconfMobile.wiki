@@ -15,11 +15,11 @@ We've had to "clone" the subversion repository of Flazr because we needed to ada
 
 == BBB-Java ==
 
-This is our Java implementation that uses Flazr to communicate with BigBlueButton Server. It is a client-side API and could be used as an interface between any Java application and BBB. The code is licensed under GNU Lesser General Public License (LGPL).
+This is our Java implementation that uses Flazr to communicate with !BigBlueButton Server. It is a client-side API and could be used as an interface between any Java application and BBB. The code is licensed under GNU Lesser General Public License (LGPL).
 
 == BBB-Android ==
 
-BBB-Android is our Android implementation of the BigBlueButton client. The code is licensed under GNU Lesser General Public License (LGPL).
+BBB-Android is our Android implementation of the !BigBlueButton client. The code is licensed under GNU Lesser General Public License (LGPL).
 
 *Update:* since March 2011 we changed the license of BBB-Android to GNU General Public Licence (GPL) because we started to use [http://sipdroid.org/ Sipdroid] for audio interaction. Sipdroid is a free SIP/VoIP client for Android and it's licensed under GNU General Public License (GPL).
 
@@ -27,12 +27,12 @@ BBB-Android is our Android implementation of the BigBlueButton client. The code 
 
 There are two ways of running the application:
 
- # If you want to run the application with your integrated environment (like Moodle), you need to provide custom urls for the BigBlueButton calls, replacing the protocol *`http://`* with *`bigbluebutton://`*
+ # If you want to run the application with your integrated environment (like Moodle), you need to provide custom urls for the !BigBlueButton calls, replacing the protocol *`http://`* with *`bigbluebutton://`*
  # If you want to run the application standalone, the server you are going to connect must provide the demo *`mobile.jsp`*. To do that, copy [https://raw.github.com/mconf/mconf-mobile/v0.3beta/mobile.jsp this file] to *`/var/lib/tomcat6/webapps/bigbluebutton/demo/`*.
 
 We provide mobile access in our development server at http://mconfdev.inf.ufrgs.br.
 
-*Update:* the mobile access to our development server is temporary unavailable. We are testing a new mobile demo on this server which will be distributed with the official version of BigBlueButton.
+*Update:* the mobile access to our development server is temporary unavailable. We are testing a new mobile demo on this server which will be distributed with the official version of !BigBlueButton.
 
 = Building the app from the repository =
 
@@ -52,7 +52,7 @@ A full documentation for Android developers is available [http://developer.andro
 
 = How could I contribute? =
 
-If you are not a developer, the best you can do is testing the Android application and provide us any feedback. It could be done by [http://code.google.com/p/mconf/issues/list creating a new issue] reporting a bug or specifying an enhancement. Also you can send messages to the [http://groups.google.com/group/bigbluebutton-dev BigBlueButton developers mailing list]. If you are interested in translate the Android application to another language different from Portuguese (PT-BR) and English, send us a message and we will provide a way to do that (of course, better translations of the supported languages are welcome). :)
+If you are not a developer, the best you can do is testing the Android application and provide us any feedback. It could be done by [http://code.google.com/p/mconf/issues/list creating a new issue] reporting a bug or specifying an enhancement. Also you can send messages to the [http://groups.google.com/group/bigbluebutton-dev !BigBlueButton developers mailing list]. If you are interested in translate the Android application to another language different from Portuguese (PT-BR) and English, send us a message and we will provide a way to do that (of course, better translations of the supported languages are welcome). :)
 
 If you are a developer and want to be part of this project, you can pick an issue and try to solve it. Of course we are totally open to help you in what you need.
 
