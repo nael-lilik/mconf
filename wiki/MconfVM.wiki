@@ -4,9 +4,9 @@
 
 The Mconf VM comes with the whole Mconf package in a single virtual machine, to enable easy access to all Mconf's features. This VM is intended for *testing/development* purposes, it is not yet recommended for a production environment.
 
-This VM was created installing Mconf in the !BigBlueButton VM ([http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVM see their wiki page]). It comes with Mconf-Web, !BigBlueButton (0.71a) and its customizations already installed. All you'll need is to configure them (see below how to do that). The server is already "Mconf-Mobile"-enabled, so you can just [MconfMobile install Mconf-Mobile] in your mobile device and use it in this VM.
+This VM was created installing Mconf in the !BigBlueButton VM ([http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVM see their wiki page]). It comes with [MconfWeb Mconf-Web], !BigBlueButton (0.71a) and [MconfBBB our customizations] already installed. All you need is to configure them (see below how to do that). The server is already enabled to be used with [MconfMobile Mconf-Mobile], so you can just [MconfMobile install Mconf-Mobile] in your mobile device and use it with this VM.
 
-For more options on how to install Mconf see [MconfInstallation this page].
+For other options on how to install and use Mconf see [MconfInstallation this page].
 
 == Prerequisites ==
 
