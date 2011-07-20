@@ -1,8 +1,10 @@
+<wiki:toc max_depth="2" />
+
 = Mconf VM =
 
 The Mconf VM comes with the whole Mconf package in a single virtual machine, to enable easy access to all Mconf's features. This VM is intended for *testing/development* purposes, it is not yet recommended for a production environment.
 
-This VM comes with Mconf-Web, BigBlueButton (0.71a) and its customizations already installed. All you'll need is to configure them (see below how to do that). The server is already "Mconf-Mobile"-enabled, so you can just install Mconf-Mobile in your mobile device and use it in this VM.
+This VM was created installing Mconf in the !BigBlueButton VM [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVM see their wiki page]. It comes with Mconf-Web, !BigBlueButton (0.71a) and its customizations already installed. All you'll need is to configure them (see below how to do that). The server is already "Mconf-Mobile"-enabled, so you can just [MconfMobile install Mconf-Mobile] in your mobile device and use it in this VM.
 
 For more options on how to install Mconf see [MconfInstallation this page].
 
@@ -11,7 +13,7 @@ For more options on how to install Mconf see [MconfInstallation this page].
   * VMWare Player (or VMWare Workstation) for Windows or Unix, or VM Fusion for Mac
   * A DHCP Server for the VM to acquire an IP address
 
-== Installing Mconf VM ==
+== Installing the Mconf VM ==
 
 Follow the steps below to setup the Mconf VM. It will take around 20 minutes (considering you can download files at ~150 KiB/s):
 
@@ -50,7 +52,11 @@ Follow the steps below to setup the Mconf VM. It will take around 20 minutes (co
 
   * When the setup finishes, it will print in the screen your IP and ask you to access it using your browser to test if the setup was successful. Hopefully everything will work well, but if you're facing any problems you can try to find an answer in the [MconfTroubleshoot troubleshoot page] or send a message to our mailing list: mconf-dev@googlegroups.com
 
-== Details ==
+== Updating the VM ==
+
+We will provide instructions on how to update your VM when the next version is released.
+
+== Details about the VM ==
 
 The Mconf VM runs over the [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVM BigBlueButton VM] (Ubuntu 10.04). What you have in this machine:
 
@@ -82,6 +88,15 @@ But you can also force an IP (or domain name) and a different port for !BigBlueB
 You can run the script again if you need to, but be aware that it will clean your !BigBlueButton instance and reset Mconf-Web, *dropping and recreating the DB*.
 
 You can find the latest version of the script in [https://github.com/mconf/installation-scripts this repository].
+
+=== Directories ===
+
+This is where you can find Mconf in your VM:
+
+  * !BigBlueButton is installed using Ubuntu packages (see [http://code.google.com/p/bigbluebutton/wiki/InstallationUbuntu this page]);
+  * !BigBlueButton source code is checked out at `/home/firstuser/dev/source/bigbluebutton/`. We use it to customize !BigBlueButton (see [MconfBBB this page]);
+  * Mconf-Web source code (development environment) is checked out at `/home/firstuser/dev/source/mconf-web/`. It is used to deploy the application (see the next item) and you can also use it to develop;
+  * Mconf-Web production environment is at `/home/firstuser/mconf-web/`. You shouldn't edit anything inside this folder directly. It is controlled by Capistrano from inside your development environment (see [MconfWebDeployment this page]).
 
 === Passwords ===
 
