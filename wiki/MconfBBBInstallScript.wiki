@@ -1,5 +1,7 @@
-= mconf-bbb-conf =
+= The script `mconf-bbb-conf` =
 
-Script to install Mconf's customizations for !BigBlueButton.
+This script is used to install Mconf's customizations in a !BigBlueButton server.
+
+You can find the latest version of this file in [https://github.com/mconf/installation-scripts this repository]
 
 _<font color=red>TODO... </font>_
