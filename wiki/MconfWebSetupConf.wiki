@@ -62,9 +62,9 @@ sendmail_password: "my-password"    	       	       # gmail password
 The information is used to create the a Site model, that defines some attributes of your website. They can be altered after the initial setup using the management area in the application.
 
 {{{
-site_name: "Mconf Dev"  	       	       	       # website name
+site_name: "Mconf Dev"  	       	       	# website name
 site_description: "Mconf Development Website"   # website description
-site_email: "my-email@server.com"       	       # website contact email
+site_email: "my-email@server.com"       	# website contact email
 site_locale: "en"                               # this will be the default locale for the application
 site_domain: "localhost"                        # your server address
 site_signature: "Mconf"                         # to sign emails
@@ -84,7 +84,7 @@ default_space_description: "Mconf-Web users space"       # space's description
 Notifies (by email) when an exception occurs. This feature *will only work in the production environment*^1^, so it is disabled by default. You will usually configure it in the default section and then enable it in the production section.
 
 {{{
-exception_notification_enabled: "false"                                            # change to true to enable, don't use quotation marks
+exception_notification_enabled: "false"                                          # change to true to enable, don't use quotation marks
 exception_notification_prefix: "[mconf-web error] "                              # prefix added in the email subject
 exception_notification_recipients: "my-email@server.com my-email2@server.com"    # space-separated list of emails
 }}}
