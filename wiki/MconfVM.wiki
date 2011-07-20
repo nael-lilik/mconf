@@ -18,7 +18,7 @@ For other options on how to install and use Mconf see [MconfInstallation this pa
 Follow the steps below to setup the Mconf VM. It will take around 20 minutes (considering you can download files at ~150 KiB/s):
 
   * Download the last version of the VM, unzip and run the file `mconf-vm.vmx`
-    * _<font color=red>TODO: vm link</font>_
+    * Current release: "0.1 beta1" [http://sourceforge.net/projects/mconf/files/vm/mconf-vm-0.1-beta1.zip/download download link] (2.9 GB)
 
   * Login using the username "`firstuser`" and password "`default`"
     * You will be prompted to change your password. Enter the "default" once and then enter the new password twice.
@@ -61,8 +61,8 @@ We will provide instructions on how to update your VM when the next version is r
 The Mconf VM runs over the [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVM BigBlueButton VM] (Ubuntu 10.04). What you have in this machine:
 
   * !BigBlueButton 0.71a installed from Ubuntu packages
-  * !BigBlueButton's source code with Mconf's customizations, from our repository at https://github.com/mconf/bigbluebutton
-  * Mconf-Web production and development environments
+  * !BigBlueButton's source code with [MconfBBB Mconf's customizations], from our repository at https://github.com/mconf/bigbluebutton
+  * [MconfWeb Mconf-Web] production and development environments
 
 This VM comes with the entire system already pre-configured, but there are still some things that are related to each instance of the VM. That's why `mconf-vm` exists, to help you configure these parameters.
 
