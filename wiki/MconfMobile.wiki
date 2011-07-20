@@ -1,10 +1,12 @@
 = Mconf-Mobile =
 
-|| [https://github.com/mconf/mconf-mobile Source code] || [MconfMobile#If_you_want_to_run_our_app How to Start] || 
+|| [https://github.com/mconf/mconf-mobile Source code] || [MconfMobile#If_you_want_to_run_our_app How to Start] || [http://code.google.com/p/mconf/downloads/list Download] ||
 
 Mconf-Mobile is an Android implementation of the [http://www.bigbluebutton.org BigBlueButton] client. If you would like more information about the project, please visit http://www.inf.ufrgs.br/prav/gtmconf (Portuguese and English).
 
 *Video demo 1:* http://www.youtube.com/watch?v=v4Du20LsWGs
+
+*Download*: Check our [http://code.google.com/p/mconf/downloads/list download section].
 
 = About the subprojects =
 == Flazr - a Java implementation of multimedia streaming protocols ==
