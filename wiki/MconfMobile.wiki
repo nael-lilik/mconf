@@ -6,7 +6,7 @@ Mconf-Mobile is an Android implementation of the [http://www.bigbluebutton.org B
 
 *Video demo 1:* http://www.youtube.com/watch?v=v4Du20LsWGs
 
-*Download*: Check our [http://code.google.com/p/mconf/downloads/list download section].
+*Download*: Check our [http://code.google.com/p/mconf/downloads/list downloads section].
 
 = About the subprojects =
 == Flazr - a Java implementation of multimedia streaming protocols ==
