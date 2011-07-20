@@ -2,13 +2,11 @@
 
 = Configuring the application (`setup_conf.yml`) =
 
-This file contains the configurations that are either loaded in the database when it is created or that are loaded in memory when the application is loaded.
-
-Remember to keep the file indented and formatted as it is. Its format and structure have semantic meaning, so you shouldn't change them.
+This file contains the configurations that are either loaded in the database when it is created or that are loaded in memory when the application is loaded. Remember to keep the file indented and formatted as it is. Its format and structure have semantic meaning, so you shouldn't change them.
 
 == Structure ==
 
-The file has several sections. In the first level, you can have four:
+The file has up to four sections:
   * default
   * development
   * production
@@ -16,11 +14,11 @@ The file has several sections. In the first level, you can have four:
 
 The "default" section is always present and its values are used as the default values. The other sections are used to define specific configurations for each Rails environment (development, production, test). In these other sections you should specify only the parameters you want to override over the default configurations.
 
-Inside the default section, you will find the sections listed below.
+Inside the default section, you will find the parameters listed below.
 
 === Admin user ===
 
-This area defines the administrator user. Use a valid email and you can use a simple password here, since you are able to change it later on through the website.
+These parameters define the administrator user. Use a valid email and you can use a simple password here, since you are able to change it later on through the website.
 
 Currently this will be the only admin user in your application.
 
@@ -33,7 +31,7 @@ admin_password: "admin"  	       	       	       # admin's password
 
 === !BigBlueButton server ===
 
-Defines the first and default !BigBlueButton server. This is used during the setup of your DB, but you're able to modify it later on using the website.
+Defines the first and default !BigBlueButton server. This is used during the setup of your DB, but you are able to modify this server later on using the website.
 
 Currently, all !BigBlueButton rooms created through Mconf-web will use this server.
 
