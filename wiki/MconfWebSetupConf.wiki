@@ -25,25 +25,25 @@ This area defines the administrator user. Use a valid email and you can use a si
 Currently this will be the only admin user in your application.
 
 {{{
-  admin:
-    login: "mconf"     	       	       	       # admin's login
-    fullname: "Mconf Admin"    	       	       # admin's full name
-    email: "my-email@server.com"       	       # admin's email
-    password: "admin"  	       	       	       # admin's password
+admin_login: "mconf"     	       	       	       # admin's login
+admin_fullname: "Mconf Admin"    	       	       # admin's full name
+admin_email: "my-email@server.com"       	       # admin's email
+admin_password: "admin"  	       	       	       # admin's password
 }}}
 
 === !BigBlueButton server ===
 
-Defines the first and default !BigBlueButton server. Currently, all !BigBlueButton rooms created through Mconf-web will use this server.
+Defines the first and default !BigBlueButton server. This is used during the setup of your DB, but you're able to modify it later on using the website.
+
+Currently, all !BigBlueButton rooms created through Mconf-web will use this server.
 
   * The <tt>url</tt> should use the format "<tt>http://{server}/bigbluebutton/api</tt>". Change only the <tt>{server}</tt> part.
 
 {{{
-  bbb_server:
-    name: 'Default Server'     	       	       	       	   # server name
-    url: 'http://my-development-server/bigbluebutton/api'  # server url in the	format http://<server>/bigbluebutton/api
-    salt: 'my-secret-salt'     	       	       	       	   # server salt
-    version: '0.7'     	       	       	       	       	   # bbb version
+bbb_server_name: 'Default Server'                                 # server name
+bbb_server_url: 'http://my-development-server/bigbluebutton/api'  # server url in the	format http://<server>/bigbluebutton/api
+bbb_server_salt: 'my-secret-salt'                                 # server salt
+bbb_server_version: '0.7'                                         # bbb version
 }}}
 
 === Sending emails ===
@@ -53,9 +53,8 @@ Currently Mconf-Web uses a Gmail account to send emails, so you can use this sec
 You *need* to set up this account. Currently the website is not guaranteed to work if you don't do it.
 
 {{{                                                                                                                                
-  sendmail:
-    username: "my-username@gmail.com"  	       # gmail username
-    password: "my-password"    	       	       # gmail password
+sendmail_username: "my-username@gmail.com"  	       # gmail username
+sendmail_password: "my-password"    	       	       # gmail password
 }}}
 
 === Website ===
@@ -63,13 +62,12 @@ You *need* to set up this account. Currently the website is not guaranteed to wo
 The information is used to create the a Site model, that defines some attributes of your website. They can be altered after the initial setup using the management area in the application.
 
 {{{
-  site:
-    name: "Mconf Dev"  	       	       	       # website name
-    description: "Mconf Development Website"   # website description
-    email: "my-email@server.com"       	       # website contact email
-    locale: "en"                               # this will be the default locale for the application
-    domain: "localhost"                        # your server address
-    signature: "Mconf"                         # to sign emails
+site_name: "Mconf Dev"  	       	       	       # website name
+site_description: "Mconf Development Website"   # website description
+site_email: "my-email@server.com"       	       # website contact email
+site_locale: "en"                               # this will be the default locale for the application
+site_domain: "localhost"                        # your server address
+site_signature: "Mconf"                         # to sign emails
 }}}
 
 === Default space === 
@@ -77,9 +75,8 @@ The information is used to create the a Site model, that defines some attributes
 When you set up the database a default space will be created, something like "a space for all members of this website". You can define here some attributes for this space.
 
 {{{
-  default_space:
-    name: "Mconf-Web Space"    	       	       # space's name
-    description: "Mconf-Web users space"       # space's description
+default_space_name: "Mconf-Web Space"                    # space's name
+default_space_description: "Mconf-Web users space"       # space's description
 }}}
 
 === Notifications when the site breaks === 
@@ -87,18 +84,16 @@ When you set up the database a default space will be created, something like "a 
 Notifies (by email) when an exception occurs. This feature *will only work in the production environment*^1^, so it is disabled by default. You will usually configure it in the default section and then enable it in the production section.
 
 {{{
-exception_notification:
-    enabled: false                                            # change to true to enable, don't use quotation marks
-    prefix: "[mconf-web error] "                              # prefix added in the email subject
-    recipients: "my-email@server.com my-email2@server.com"    # space-separated list of emails
+exception_notification_enabled: "false"                                            # change to true to enable, don't use quotation marks
+exception_notification_prefix: "[mconf-web error] "                              # prefix added in the email subject
+exception_notification_recipients: "my-email@server.com my-email2@server.com"    # space-separated list of emails
 }}}
 
 And to enable it in production:
 
 {{{
 production:
-  exception_notification:
-    enabled: true
+  exception_notification_enabled: "true"
 }}}
 
 _^1^Because the gem exception_notification that does it is only installed for production._
