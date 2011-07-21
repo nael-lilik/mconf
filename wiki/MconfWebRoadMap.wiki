@@ -1,7 +1,7 @@
 #summary Development Road Map for Mconf-Web
 
 === Shortcuts ===
-  * [http://code.google.com/p/mconf/issues/list?can=2&q=component:Mconf-Web%20OR%20component:BigBlueButtonRails%20OR%20component:BigBlueButtonAPIRuby&sort=component+milestone&colspec=ID%20Type%20Milestone%20Status%20Priority%20Reporter%20Owner%20Component%20Summary Open issues]
+  * [http://code.google.com/p/mconf/issues/list?can=2&q=component:Mconf-Web%20OR%20component:BigBlueButtonRails%20OR%20component:BigBlueButtonAPIRuby&sort=component+milestone&colspec=ID%20Type%20Milestone%20Status%20Priority%20Reporter%20Owner%20Component%20Summary All open issues]
 
 
 = Releases =
@@ -9,12 +9,14 @@
 
 == Current Release 0.2 ==
 
-*Planned for*: ?, 2011.
+*Planned for*: early August, 2011.
 
-  * _preliminary list..._
-  * Cleanup events (inside spaces). They will be a simple way to schedule conferences
-  * Provide a VM with a production server ready to use
-  * Other bugs and features to be implemented: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.2 Issues for Mconf-Web-Release0.2]
+  * Cleanup events (inside spaces). They will be a simple way to schedule conferences.
+  * Provide a VM with the development and production environments.
+  * Provide scripts to easily install Mconf-Web (development and production)
+  * Join conference URLs using the style: http://server/webconf/my-room
+  * Activity monitor to see what's happening in a !BigBlueButton server.
+  * Other bug fixes, cleanup of broken features and usability issues. See: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.2 Issues for Mconf-Web-Release0.2]
 
 == Release 0.1 ==
 
