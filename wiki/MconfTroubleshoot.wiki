@@ -13,12 +13,24 @@
 If you're running the rake task `db:seed` (or any other task that triggers this task, like `setup:db`) and you're facing this error:
 
 {{{
- ** [out :: 127.0.0.1] * Create the administrator account
- ...
- ** [out :: 127.0.0.1] rake aborted!
- ** [out :: 127.0.0.1] 535-5.7.1 Username and Password not accepted. Learn more at
- ** [out :: 127.0.0.1] 
- ** [out :: 127.0.0.1] (See full trace by running task with --trace)
+* Create the administrator account
+...
+rake aborted!
+535-5.7.1 Username and Password not accepted. Learn more at
+(See full trace by running task with --trace)
 }}}
 
 It means that the parameters `sendmail_username` and/or `sendmail_password` in your configuration file (`config/setup_conf.yml`) are not correct. See more about this file [MconfWebSetupConf at this page].
+
+==== Mysql2 related errors ====
+
+The following box shows an example of an error that occurs when your Mysql2 user and/or password are wrong and you're trying to setup Mconf-Web. The following error has happened trying to setup a production environment using the wrong database password for the user "root".
+
+{{{
+Couldn't drop mconf_production : #<Mysql2::Error: Access denied for user 'root'@'localhost' (using password: YES)>
+* Running the task: db:create
+Access denied for user 'root'@'localhost' (using password: YES).
+Please provide the root password for your mysql installation
+}}}
+
+The database username and password are configured in the file `config/database.yml`. See more about this file [MconfWebDatabaseConf at this page].
