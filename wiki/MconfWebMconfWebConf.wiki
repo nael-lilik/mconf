@@ -1,7 +1,39 @@
+<wiki:toc max_depth="2" />
+
 = The script `mconf-web-conf` =
 
 `mconf-web-conf` is a utility script to help you install, configure and run maintenance tasks on Mconf-Web.
 
+The script has several tasks that will be described below. You can also see them using the script's help command: `mconf-web-conf --help`.
+
 You can find the last version of this file in [https://github.com/mconf/mconf-web/tree/master/script the Mconf-Web repository].
 
-_<font color=red>TODO... </font>_
+= Tasks =
+
+== System setup ==
+
+=== `--install-ruby` ===
+
+=== `--install-packages` ===
+
+== Development environment ==
+
+=== `--checkout` ===
+
+=== `--setup-dev` ===
+
+=== `--config` ===
+
+== Production environment ==
+
+=== `--setup-prod` ===
+
+=== `--deploy-first-time` ===
+
+=== `--deploy-update` ===
+
+=== `--deploy-restart` ===
+
+== Mconf VM ==
+
+=== `--setup-vm` ===
