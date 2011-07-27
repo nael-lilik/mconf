@@ -1,5 +1,7 @@
 #summary Configuring the application through setup_conf.yml
 
+<wiki:toc max_depth="3" />
+
 = Configuring the application (`setup_conf.yml`) =
 
 This file contains the configurations that are either loaded in the database when it is created or that are loaded in memory when the application is loaded. Remember to keep the file indented and formatted as it is. Its format and structure have semantic meaning, so you shouldn't change them.
@@ -15,6 +17,8 @@ The file has up to four sections:
 The "default" section is always present and its values are used as the default values. The other sections are used to define specific configurations for each Rails environment (development, production, test). In these other sections you should specify only the parameters you want to override over the default configurations.
 
 Inside the default section, you will find the parameters listed below.
+
+== Sections ==
 
 === Admin user ===
 
@@ -95,3 +99,11 @@ production:
 }}}
 
 _^1^Because the gem exception_notification that does it is only installed for production._
+
+=== Other options === 
+
+See below some other options you can configure in `setup_conf.yml`.
+
+{{{
+analytics_code: ""    # Google Analytics tracking code. Leave it empty to disable. Use the format: "UA-12345678-9".
+}}}
