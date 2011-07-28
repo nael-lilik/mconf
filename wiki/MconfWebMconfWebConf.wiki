@@ -8,6 +8,36 @@ The script has several tasks that will be described below. You can also see them
 
 The latest version of this file can be found in [https://github.com/mconf/mconf-web/tree/master/script the Mconf-Web repository].
 
+= Usage Scenarios =
+
+These are the most common uses of `mconf-web-conf`.
+
+*To setup a development environment*:
+{{{
+mconf-web-conf --install-ruby                   # install ruby
+mconf-web-conf --install-packages development   # install system packages
+mconf-web-conf --checkout                       # get the code
+mconf-web-conf --setup-dev                      # setup config files
+}}}
+
+*To setup a production environment*:
+{{{
+mconf-web-conf --install-ruby                   # install ruby
+mconf-web-conf --install-packages production    # install system packages
+mconf-web-conf --setup-prod                     # setup gems and the web server
+}}}
+
+*To deploy the application* (you need both development and production environments to do it):
+{{{
+mconf-web-conf --deploy-first-time              # use the dev environment to deploy the application
+}}}
+
+*To updated and/or restart the deployed application*:
+{{{
+mconf-web-conf --deploy-update                  # update the code in the deployed application (git pull)
+mconf-web-conf --deploy-restart                 # restart the web application
+}}}
+
 = Tasks =
 
 == System setup ==
