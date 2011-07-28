@@ -30,7 +30,7 @@ If you're installing Mconf-Web in the same machine where you already have BigBlu
 
 == (2) Deploy ==
 
-To deploy the application you need a development environment. If you already have one in another machine, take a look at the Deploy section in the [MconfWebDeploymentManual manual deployment page].
+To deploy the application you need a development environment. If you already have one in another machine, take a look at the [MconfWebDeploymentManual#(2)_Deploy Deploy section in the manual deployment page].
 
 If you don't have a development environment, you can either [MconfWebDevelopment do it manually] or [MconfWebMconfWebConf using the script mconf-web-conf] (see the usage scenarios). You can setup the development environment in the same machine as the production environment if you want to.
 
