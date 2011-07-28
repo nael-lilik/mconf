@@ -2,11 +2,11 @@
 
 = The script `mconf-web-conf` =
 
-`mconf-web-conf` is a utility script to help you install, configure and run maintenance tasks on Mconf-Web.
+`mconf-web-conf` is a utility script to help you install, configure and run some maintenance tasks on Mconf-Web. You can use it to setup a deployment or production environment.
 
 The script has several tasks that will be described below. You can also see them using the script's help command: `mconf-web-conf --help`.
 
-You can find the last version of this file in [https://github.com/mconf/mconf-web/tree/master/script the Mconf-Web repository].
+The latest version of this file can be found in [https://github.com/mconf/mconf-web/tree/master/script the Mconf-Web repository].
 
 = Tasks =
 
@@ -14,11 +14,57 @@ You can find the last version of this file in [https://github.com/mconf/mconf-we
 
 === `--install-ruby` ===
 
+{{{
+mconf-web-conf --install-ruby
+}}}
+
+This tasks install ruby using RVM. What it does is basically what's written in our [RVMQuickSteps RVM quick steps guide].
+
+It will be installed for the current user only (it is not a system-wide installation). See the "Single-User Installation" at the [https://rvm.beginrescueend.com/rvm/install/ RVM website].
+
+Steps:
+
+  * Install RVM (if not installed);
+  * Install the system packages required by RVM (`rvm notes`);
+  * Install ruby 1.9 and creates a gemset for Mconf.
+
 === `--install-packages` ===
+
+{{{
+mconf-web-conf --install-packages [ENV]
+}}}
+
+Installs the system packages required to run Mconf-Web. The script currently supports only Ubuntu, and the list of packages to be installed is download from [https://github.com/mconf/mconf-web/blob/master/config/packages.ubuntu this file] at our repository.
+
+You can decide if you want to install the packages for development, production or both:
+
+{{{
+mconf-web-conf --install-packages development  # packages for development
+mconf-web-conf --install-packages production   # packages for production
+mconf-web-conf --install-packages              # packages for both environments
+}}}
+
+Steps:
+  * Download the `packages.<platform>` file with the list of packages (currently only for Ubuntu);
+  * Installs the packages.
 
 == Development environment ==
 
 === `--checkout` ===
+
+{{{
+mconf-web-conf --checkout [REPO]
+}}}
+
+This task clones our repository from GitHub and places it at `~/dev/source/mconf-web`. If there's already a Mconf-Web repository at the destination directory, it will be updated only.
+
+You can change the repository URL using the "`REPO`" parameter and you can change the destination directory with the `--source` option:
+
+{{{
+mconf-web-conf --checkout git://github.com/my-user/mconf-web.git --source ~/destination/directory
+}}}
+
+The command above will clone the fork of Mconf-Web that the user "my-user" created at GitHub and put it in the directory "`destination/directory`" inside the current user's home.
 
 === `--setup-dev` ===
 
