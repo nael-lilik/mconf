@@ -1,7 +1,10 @@
 = Mconf-Web Deployment With mconf-web-conf =
 
-TODO: install the script
+For more details about the script see [MconfWebMconfWebConf this page]. You can download and install it with:
 
+{{{
+sudo curl https://raw.github.com/mconf/mconf-web/master/script/mconf-web-conf -o /usr/local/bin/mconf-web-conf
+}}}
 
 == (1) Configuring the server ==
 
@@ -25,7 +28,7 @@ mconf-web-conf --setup-prod
 
 If you're installing Mconf-Web in a standalone machine, the script you ask you if you want to use Apache or Nginx. You can use the one you prefer.
 
-If you're installing Mconf-Web in the same machine where you already have BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually.
+If you're installing Mconf-Web in the same machine where you already have !BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually.
 
 
 == (2) Deploy ==
