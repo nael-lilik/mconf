@@ -29,5 +29,5 @@ sudo apt-get install openssh-server git curl
 
 From now on, you can either install everything manually or use the script `mconf-web-conf` to help you with these tasks:
 
-  * [MconfWebDeploymentWithScript Using mconf-web-conf] (if you chose this option, take a look at the manual installation some time later, it has lots of useful information).
+  * [MconfWebDeploymentWithScript Using mconf-web-conf]. This is the easier option. If you chose this option, take a look at the manual installation if you're having problems.
   * [MconfWebDeploymentManual Manual installation].
