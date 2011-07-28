@@ -27,7 +27,11 @@ curl https://github.com/mconf/mconf-web/raw/master/script/setup -o - | ruby - pr
 
 You will be prompted to type a password for MySQL in case you don't have it installed yet.
 
-=== Nginx + Passenger ===
+=== Passenger + Web Server ===
+
+==== Apache ====
+
+==== Nginx ====
 
 Nginx and Phusion Passenger are used to server the application. To install them, first install Passenger (it's a gem) and then it will help you download, compile and install Nginx. Actually, it will do it all for you. Run the following commands:
 
@@ -45,7 +49,7 @@ The application `passenger-install-nginx-module` is a installer that guides you 
 
 See more about Passenger at [http://www.modrails.com/ their website] and [http://www.modrails.com/videos/passenger_nginx.mov check this video] to see how it can be installed along with Nginx.
 
-==== Nginx Configuration ====
+===== Nginx Configuration =====
 
 If you installed Nginx in the default location, it's configuration file will be at `/opt/nginx/conf/nginx.conf`.
 
@@ -82,6 +86,7 @@ sudo /etc/init.d/nginx restart
 }}}
 
 Start your web server now, open your browser and try to access it. You should see a page with the error "404 Not Found". That is ok, Nginx can't find the application because it was not deployed yet.
+
 
 == (2) Deploy ==
 
