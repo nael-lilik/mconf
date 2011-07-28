@@ -6,6 +6,10 @@ MConf-web uses Rails 3 and Ruby 1.9.2.
 
 == Setting up the development environment ==
 
+You can do it either manually (see below) or using the [MconfWebMconfWebConf script mconf-web-conf] (see the usage scenarios).
+
+=== Manual setup ===
+
   * First, install Ruby. We recommend the use of [http://rvm.beginrescueend.com/ RVM], so we've made a [RVMQuickSteps brief guide] to show you how to install it.
 
   * Clone mconf-web:
