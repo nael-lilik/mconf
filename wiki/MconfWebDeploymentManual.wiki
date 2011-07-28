@@ -79,7 +79,7 @@ You can find an example of the nginx.conf we use at our repository [https://gith
 Since Passenger installs Nginx from source code, you won't have the script to start/stop Nginx. So we copied the script generated when you install the Nginx package in Ubuntu and made it available [https://github.com/mconf/mconf-web/blob/master/config/nginx.init.example here]. Download it to your server with:
 
 {{{
-sudo curl https://raw.github.com/mconf/mconf-web/master/config/nginx.init.example -o -o /etc/init.d/nginx
+sudo curl https://raw.github.com/mconf/mconf-web/master/config/nginx.init.example -o /etc/init.d/nginx
 }}}
 
 Now you can start/stop/restart Nginx with:
