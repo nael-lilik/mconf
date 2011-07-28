@@ -6,7 +6,7 @@ MConf-web uses Rails 3 and Ruby 1.9.2.
 
 == Setting up the development environment ==
 
-You can do it either manually (see below) or using the [MconfWebMconfWebConf script mconf-web-conf] (see the usage scenarios).
+You can do it either manually (see below) or using the [MconfWebMconfWebConf#Usage_Scenarios script mconf-web-conf] (see the usage scenario for a development environment).
 
 === Manual setup ===
 
