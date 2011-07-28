@@ -34,7 +34,7 @@ To deploy the application you need a development environment. If you already hav
 
 If you don't have a development environment, you can either [MconfWebDevelopment do it manually] or [MconfWebMconfWebConf using the script mconf-web-conf] (see the usage scenarios). You can setup the development environment in the same machine as the production environment if you want to.
 
-The easiest way to setup a development environment in the same machine and deploy the application, run the following commands:
+The easiest way to setup a development environment in the same machine and deploy the application, is to run the following commands:
 
 {{{
 mconf-web-conf --install-packages development   # install system packages
