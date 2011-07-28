@@ -1,0 +1,44 @@
+= Mconf-Web Deployment With mconf-web-conf =
+
+TODO: install the script
+
+
+== (1) Configuring the server ==
+
+=== Ruby and RVM ===
+
+{{{
+mconf-web-conf --install-ruby
+}}}
+
+=== System Packages ===
+
+{{{
+mconf-web-conf --install-packages production
+}}}
+
+=== Passenger + Web Server ===
+
+{{{
+mconf-web-conf --setup-prod
+}}}
+
+If you're installing Mconf-Web in a standalone machine, the script you ask you if you want to use Apache or Nginx. You can use the one you prefer.
+
+If you're installing Mconf-Web in the same machine where you already have BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually.
+
+
+== (2) Deploy ==
+
+To deploy the application you need a development environment. If you already have one in another machine, take a look at the Deploy section in the [MconfWebDeploymentManual manual deployment page].
+
+If you don't have a development environment, you can either [MconfWebDevelopment do it manually] or [MconfWebMconfWebConf using the script mconf-web-conf] (see the usage scenarios). You can setup the development environment in the same machine as the production environment if you want to.
+
+The easiest way to setup a development environment in the same machine and deploy the application, run the following commands:
+
+{{{
+mconf-web-conf --install-packages development   # install system packages
+mconf-web-conf --checkout                       # get the code
+mconf-web-conf --setup-dev                      # setup config files
+mconf-web-conf --deploy-first-time              # deploy
+}}}
