@@ -7,7 +7,13 @@
 = Releases =
 
 
-== Current Release 0.2 ==
+== Current Development: Release 0.3 ==
+
+  * Fixes in the "documents" tab inside spaces.
+  * _preliminary list..._
+  * Tickets for this release: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.3 Issues for Mconf-Web-Release0.3]
+
+== Release 0.2 ==
 
 *Planned for*: early August, 2011.
 
