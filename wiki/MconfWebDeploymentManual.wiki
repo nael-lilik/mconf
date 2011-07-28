@@ -19,10 +19,13 @@ rvm use --default 1.9.2@mconf
 
 === System Packages ===
 
-As for the development environment, you will need to install system packages to run Mconf-web in production. The packages are listed in the ruby script at [https://github.com/mconf/mconf-web/blob/master/script/setup script/setup]. To download the script and use it, run:
+You need to install system packages to run Mconf-web in production. The packages are listed in a file that you can find at [https://github.com/mconf/mconf-web/blob/master/config/packages.ubuntu config/packages.ubuntu]. You can download this list and install the packages with:
 
 {{{
-curl https://github.com/mconf/mconf-web/raw/master/script/setup -o - | ruby - production
+curl https://raw.github.com/mconf/mconf-web/master/config/packages.ubuntu -o packages.ubuntu
+source packages.ubuntu
+sudo apt-get install ${PACKAGES_PRODUCTION[@]}
+rm packages.ubuntu
 }}}
 
 You will be prompted to type a password for MySQL in case you don't have it installed yet.
@@ -30,6 +33,8 @@ You will be prompted to type a password for MySQL in case you don't have it inst
 === Passenger + Web Server ===
 
 ==== Apache ====
+
+_To be documented..._
 
 ==== Nginx ====
 
