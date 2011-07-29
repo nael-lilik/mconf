@@ -80,13 +80,15 @@ Steps:
 
 == Development environment ==
 
+Obs: In all tasks below you can use the flag `--source` to change the local directory where Mconf-Web is.
+
 === `--checkout` ===
 
 {{{
 mconf-web-conf --checkout [REPO]
 }}}
 
-This task clones our repository from GitHub and places it at `~/dev/source/mconf-web`. If there's already a Mconf-Web repository at the destination directory, it will be updated only.
+This task will simply clone our repository from !GitHub and place it at `~/dev/source/mconf-web`. If there's already a Mconf-Web repository at the destination directory, it will be updated.
 
 You can change the repository URL using the "`REPO`" parameter and you can change the destination directory with the `--source` option:
 
@@ -94,11 +96,36 @@ You can change the repository URL using the "`REPO`" parameter and you can chang
 mconf-web-conf --checkout git://github.com/my-user/mconf-web.git --source ~/destination/directory
 }}}
 
-The command above will clone the fork of Mconf-Web that the user "my-user" created at GitHub and put it in the directory "`destination/directory`" inside the current user's home.
+The command above will clone the fork of Mconf-Web that the user "my-user" created at !GitHub and put it in the directory "`destination/directory`" inside the current user's home.
 
 === `--setup-dev` ===
 
+{{{
+mconf-web-conf --setup-dev
+mconf-web-conf --setup-dev --source ~/code/mconf-web
+}}}
+
+This task will execute the steps to setup the development environment.
+
+Steps:
+
+  * Installs gems;
+  * Creates the configuration files;
+  * Prompt the user to configure these files (same as `--config`, see below);
+  * Set up the database.
+
+
 === `--config` ===
+
+{{{
+mconf-web-conf --config
+mconf-web-conf --config --source ~/code/mconf-web
+}}}
+
+Prompts the user to configure some variables in the development environment.
+
+The variables configured are the most important variables in the files `config/setup_conf.yml`, `config/database.yml` and `config/deploy/conf.yml`. You can as well just open these files and configure them (they have some documentation inside them).
+
 
 == Production environment ==
 
