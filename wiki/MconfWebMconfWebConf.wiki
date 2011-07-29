@@ -206,3 +206,11 @@ Requires:
 == Mconf VM ==
 
 === `--setup-vm` ===
+
+This task is used by the [MconfVM Mconf VM] to configure the VM once it runs for the first time. It *should not be used outside this VM*.
+
+Steps:
+
+  * Configures the files in the development environment (a simplified version of `--config`);
+  * Updates the source code;
+  * Deploys the application (same as `--deploy-first-time`).
