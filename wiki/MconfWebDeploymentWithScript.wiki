@@ -28,7 +28,7 @@ mconf-web-conf --setup-prod
 
 If you're installing Mconf-Web in a standalone machine, the script will ask you if you want to use Apache or Nginx. You can use the one you prefer.
 
-If you're installing Mconf-Web in the same machine where you already have !BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually (see [MconfWebDeploymentWithBigBlueButtonAndNginx this page]).
+If you're installing Mconf-Web in the same machine where you already have !BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually (see more about this issue [MconfWebDeployInBBBMachine in this page]).
 
 
 == (2) Deploy ==
