@@ -1,4 +1,4 @@
-_This page is a continuation of [MconfWebDeploymentWithScript this page]._
+_This page is a continuation of [MconfWebDeployment this page]._
 
 = Mconf-Web Deployment With mconf-web-conf =
 
