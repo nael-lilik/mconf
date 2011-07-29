@@ -32,7 +32,7 @@ You will be prompted to type a password for MySQL in case you don't have it inst
 
 === Passenger + Web Server ===
 
-You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache.
+You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache if you're installing Mconf-Web in the same machine that has !BigBlueButton. If Mconf-Web will be installed in a standalone machine, you can pick your favorite server.
 
 ==== Apache ====
 
