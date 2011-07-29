@@ -43,9 +43,8 @@ The integration with !BigBlueButton is based on two gems (that are also being de
 
 See:
 
-  * [MconfWebDevelopment Learn how to setup a development environment]
-  * [MconfWebTesting How to test]
-  * [MconfWebDeployment Create a deployment server for your application]
+  * [MconfWebDevelopment Learn how to setup a development environment] (and then [MconfWebTesting how to test the application])
+  * [MconfWebDeployment Create a deployment server]
   * [MconfWebMconfWebConf Take a look at our script that can help you setup a development or production environment]
 
 More:
