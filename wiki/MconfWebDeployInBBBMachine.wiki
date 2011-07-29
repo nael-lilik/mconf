@@ -1,8 +1,5 @@
 #summary Deploy Mconf-Web in the same machine that has BigBlueButton installed
 
-<wiki:toc max_depth="2" />
-
-
 = Mconf-Web Deployment with !BigBlueButton = 
 
 You can setup a Mconf-Web server in the same machine that already has !BigBlueButton. This page contains some considerations about it.
@@ -40,9 +37,9 @@ sudo bbb-conf --setip $IP:$PORT              # Tell BBB to respond in another po
 
 _In these examples, replace $IP with your machine's IP and $PORT with the port you want for !BigBlueButton_
 
-!BigBlueButton should respond in a port different than 80, since Mconf-Web will use the port 80. By default our script changes it to port 8888, but you can use another one if you want to. 
+!BigBlueButton should respond in a port different than 80, since Mconf-Web will use the port 80. By default our script changes its port to 8888, but you can use another one if you want to. Be aware that remote users accessing !BigBlueButton from behind a firewall can no longer tunnel through port 80 to !BigBlueButton. See more about it in the [http://code.google.com/p/bigbluebutton/wiki/FAQ#I_have_an_existing_server_with_web_application_already_running_o BigBlueButton FAQ].
 
-Next, we install Apache using Passenger. Passenger is a ruby gem that serves Ruby on Rails applications. You need to have Ruby installed at this point and then install Passenger with "`gem install passenger`". With Passenger installed, use the following command to install Apache and the needed modules:
+Next, we install Apache using [http://www.modrails.com/ Passenger]. Passenger is a ruby gem that serves Ruby on Rails applications. You need to have Ruby installed at this point and then install Passenger with "`gem install passenger`". With Passenger installed, use the following command to install Apache and the needed modules:
 
 {{{
 rvmsudo passenger-install-apache2-module
@@ -87,8 +84,16 @@ sudo /etc/init.d/apache2 restart
 With this you have the production server up and ready to receive a deployed Mconf-Web. To deploy, you can again use our script or do it manually. Proceed to [MconfWebDeployment this page] to learn how to do that.
 
 
-
 == Use both applications with Nginx ==
 
+Mconf-Web uses the gem [http://www.modrails.com/ Passenger], that's used to serve Rails applications. To run Passenger with Nginx, you need a compiled version of Nginx that has the Passenger module enabled. Since !BigBlueButton uses a packaged version of Nginx, we cannot serve Mconf-Web with Passenger using this same version.
 
-_ work in progress... _
+There are two options we know of to solve this:
+
+  * Use [http://code.macournoyer.com/thin/ Thin] instead of Passenger:
+    * Thin doesn't need to compile Nginx to use it, so you can use Thin with the packaged version of Nginx.
+    * [MconfWebWithNginxAndThin This page] has some tips on how to use Thin and Nginx.
+
+  * Install the Passenger-enabled Nginx on top of the packaged Nginx. And then configure Nginx to run both Mconf-Web and !BigBlueButton:
+    * Take a look at [MconfWebDeploymentManual#Passenger_+_Web_Server this page] to know how to install Nginx using Passenger.
+    * The packaged version of Nginx is installed at `/etc/nginx/`, so install the new version in this same place.
