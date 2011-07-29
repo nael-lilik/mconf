@@ -32,9 +32,11 @@ You will be prompted to type a password for MySQL in case you don't have it inst
 
 === Passenger + Web Server ===
 
+You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache.
+
 ==== Apache ====
 
-_To be documented..._
+_To be written..._
 
 ==== Nginx ====
 
