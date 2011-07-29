@@ -21,10 +21,10 @@ Test if Thin is ok:
 bundle exec thin start
 }}}
 
-Create a config file (_replace the path with the path to your application_):
+Create a config file to run Thin (_replace `<MCONF_WEB_PATH>` with the path to your application_):
 
 {{{
-thin config -C mconf-web.yml -c /home/firstuser/dev/source/mconf-web/ --servers 3 -e production
+thin config -C mconf-web.yml -c <MCONF_WEB_PATH> --servers 3 -e production -p 3000
 }}}
 
 Create a virtual host for Mconf-Web in Nginx:
