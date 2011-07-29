@@ -1,0 +1,94 @@
+#summary Deploy Mconf-Web in the same machine that has BigBlueButton installed
+
+<wiki:toc max_depth="2" />
+
+
+= Mconf-Web Deployment with !BigBlueButton = 
+
+You can setup a Mconf-Web server in the same machine that already has !BigBlueButton. This page contains some considerations about it.
+
+What you have to consider is the web server you will use for Mconf-Web. See the sections below.
+
+== Use Mconf-Web with Apache and !BigBlueButton with Nginx ==
+
+This is the default solution, and requires just a few configurations on both web servers. 
+
+If you deploy Mconf-Web [MconfWebDeploymentWithScript using our script] it will already detect that !BigBlueButton is installed and, if you choose to install Apache, it will configure both Apache and Nginx to work with both applications.
+
+If you can't use the script for some reason, here are some guidelines of what you need to configure in Apache and Nginx.
+
+=== Manual configuration ===
+
+If you know some bash script you can take a look at the following section in [https://github.com/mconf/mconf-web/blob/master/script/mconf-web-conf our script] and you will find out how to configure the web servers:
+
+{{{
+if [ $SETUP_PROD ]; then
+...
+    is_bigbluebutton_installed
+    if [ $REPLY ]; then
+        # here is where we ask the user what to do since BigBlueButton is installed
+        # and if he chooses to install Apache we will do it automatically.
+...
+}}}
+
+The first steps are:
+
+{{{
+sudo rm /etc/nginx/sites-enabled/default     # Disable the default config in nginx that uses the port 80
+sudo bbb-conf --setip $IP:$PORT              # Tell BBB to respond in another port
+}}}
+
+_In these examples, replace $IP with your machine's IP and $PORT with the port you want for !BigBlueButton_
+
+!BigBlueButton should respond in a port different than 80, since Mconf-Web will use the port 80. By default our script changes it to port 8888, but you can use another one if you want to. 
+
+Next, we install Apache using Passenger. Passenger is a ruby gem that serves Ruby on Rails applications. You need to have Ruby installed at this point and then install Passenger with "`gem install passenger`". With Passenger installed, use the following command to install Apache and the needed modules:
+
+{{{
+rvmsudo passenger-install-apache2-module
+}}}
+
+This will start an interactive application that will help you install all you need.
+
+After, we cleanup Apache and setup Mconf-Web. In the following commands `$APACHE_PATH` is the path where Apache is, usually `/etc/apache2`.
+
+Enable the module "rewrite" and disable any default site existent:
+
+{{{
+sudo ln -f -s $APACHE_PATH/mods-available/rewrite.load $APACHE_PATH/mods-enabled/rewrite.load
+sudo rm $APACHE_PATH/sites-enabled/*
+}}}
+
+Enable Passenger in Apache:
+
+{{{
+rvmsudo passenger-install-apache2-module --snippet | sudo tee /etc/apache2/conf.d/mconf-passenger
+}}}
+
+Then let's configure and create the Mconf-Web virtual host. You can copy [https://raw.github.com/mconf/mconf-web/master/config/apache2.conf.example this example file], edit it and copy to `$APACHE_PATH/sites-enabled/mconf-web`. Our script does it with these commands:
+
+{{{
+TEMP=`mktemp`
+curl https://raw.github.com/mconf/mconf-web/master/config/apache2.conf.example -o $TEMP
+sudo sed -i "s#ServerName .*#ServerName $IP#g" $TEMP
+sudo sed -i "s#DocumentRoot .*#DocumentRoot /home/firstuser/mconf-web/current/public#g" $TEMP
+sudo sed -i "s#<Directory .*>#<Directory /home/firstuser/mconf-web/current/public>#g" $TEMP
+sudo mv $TEMP $APACHE_PATH/sites-available/mconf-web
+sudo ln -f -s $APACHE_PATH/sites-available/mconf-web $APACHE_PATH/sites-enabled/mconf-web &>/dev/null
+}}}
+
+Then restart Apache:
+
+{{{
+sudo /etc/init.d/apache2 restart
+}}}
+
+
+With this you have the production server up and ready to receive a deployed Mconf-Web. To deploy, you can again use our script or do it manually. Proceed to [MconfWebDeployment this page] to learn how to do that.
+
+
+
+== Use both applications with Nginx ==
+
+
+_ work in progress... _
