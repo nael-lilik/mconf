@@ -107,6 +107,10 @@ mconf-web-conf --setup-dev --source ~/code/mconf-web
 
 This task will execute the steps to setup the development environment.
 
+Requires:
+
+  * Mconf-Web source code (`--checkout`).
+
 Steps:
 
   * Installs gems;
@@ -126,16 +130,78 @@ Prompts the user to configure some variables in the development environment.
 
 The variables configured are the most important variables in the files `config/setup_conf.yml`, `config/database.yml` and `config/deploy/conf.yml`. You can as well just open these files and configure them (they have some documentation inside them).
 
+Requires:
+
+  * Mconf-Web source code (`--checkout`).
+
 
 == Production environment ==
 
 === `--setup-prod` ===
 
+{{{
+mconf-web-conf --setup-prod
+}}}
+
+Configures a production environment. After this, Mconf-Web will be ready to be deployed to this machine.
+
+Requires:
+
+  * Ruby installed (RVM).
+
+Steps:
+
+  * Install gems;
+  * Installs the web server:
+    * The user will be prompted to choose between Apache or Nginx.
+
 === `--deploy-first-time` ===
+
+{{{
+mconf-web-conf --deploy-first-time
+}}}
+
+This tasks goes to the development environment and run a Capistrano task that deploys the application to the server configured in `config/deploy/conf.yml`. If you configure this file to deploy to 127.0.0.1, it will deploy in the same machine.
+
+Same as `cap production deploy:all`. See more at [MconfWebDeploymentManual#Capistrano this page].
+
+Requires:
+
+  * Mconf-Web source code (`--checkout`);
+  * A development environment properly configured (`--setup-dev` and `--config`).
+  * The setup of a production environment (`--setup-prod`).
 
 === `--deploy-update` ===
 
+{{{
+mconf-web-conf --deploy-update
+}}}
+
+Similar to `--deploy-first-time`, but just updates the application instead of deploying from scratch.
+
+Same as `cap production deploy:migrations`. See more at [MconfWebDeploymentManual#Capistrano this page].
+
+Requires:
+
+  * Mconf-Web source code (`--checkout`);
+  * A development environment properly configured (`--setup-dev` and `--config`).
+  * A production environment with the application deployed (`--setup-prod` and `--deploy-first-time`).
+
 === `--deploy-restart` ===
+
+{{{
+mconf-web-conf --deploy-restart
+}}}
+
+Similar to `--deploy-udpate`. Restarts the web server. Useful if you changed something in the configuration files and need to reload it.
+
+Same as `cap production deploy:restart`. See more at [MconfWebDeploymentManual#Capistrano this page].
+
+Requires:
+
+  * Mconf-Web source code (`--checkout`);
+  * A development environment properly configured (`--setup-dev` and `--config`).
+  * A production environment with the application deployed (`--setup-prod` and `--deploy-first-time`).
 
 == Mconf VM ==
 
