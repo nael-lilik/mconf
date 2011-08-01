@@ -117,6 +117,8 @@ Open your browser and try to access your localhost. You should see a page with t
 
 ==== Nginx ====
 
+_*Note:* If you're installing Mconf-Web in the same machine where you already have !BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually (see more about this issue [MconfWebDeployInBBBMachine in this page])._
+
 To use Nginx with Passenger, first install Passenger (it's a ruby gem) and then it will help you download, compile and install Nginx. Actually, it will do it all for you. Run the following commands:
 
 {{{
