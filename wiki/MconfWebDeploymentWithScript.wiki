@@ -10,16 +10,16 @@ sudo curl https://raw.github.com/mconf/mconf-web/master/script/mconf-web-conf -o
 
 == (1) Configuring the server ==
 
-=== Ruby and RVM ===
-
-{{{
-mconf-web-conf --install-ruby
-}}}
-
 === System Packages ===
 
 {{{
 mconf-web-conf --install-packages production
+}}}
+
+=== Ruby and RVM ===
+
+{{{
+mconf-web-conf --install-ruby
 }}}
 
 === Passenger + Web Server ===
