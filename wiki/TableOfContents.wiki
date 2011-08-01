@@ -11,7 +11,7 @@
       * [MconfWebSetupConf Configuration file]
     * [MconfWebTesting Testing]
     * [MconfWebDeployment Deployment]
-      * [MconfWebDeploymentWithScript Using our installation script]
+      * [MconfWebDeploymentWithScript Using the installation script]
       * [MconfWebDeploymentManual Manual deploy]
     * [MconfWebLocalization Translating]
     * [MconfWebMconfWebConf Installation script]
