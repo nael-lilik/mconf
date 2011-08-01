@@ -2,7 +2,7 @@
 
 This is a draft with tips on how to serve Mconf-Web using [http://code.macournoyer.com/thin/ Thin] and Nginx. If you have a better solution of if you found any errors please contact us at mconf-dev@googlegroups.com.
 
-== Installing Thin ==
+== How To ==
 
 Add thin to the Mconf-Web Gemfile:
 {{{
@@ -85,3 +85,9 @@ To serve the application you need to run both Thin and Nginx:
 thin start -C mconf-web.yml
 sudo /etc/init.d/nginx restart
 }}}
+
+== More resources ==
+
+  * Thin: http://code.macournoyer.com/thin/
+  * http://articles.slicehost.com/2008/5/27/ubuntu-hardy-nginx-rails-and-thin
+  * http://gautamrege.wordpress.com/2009/11/10/capistrano-nginx-thin-deployment-on-linode/
