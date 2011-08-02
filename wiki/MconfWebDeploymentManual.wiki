@@ -67,7 +67,7 @@ See more about Passenger at [http://www.modrails.com/ their website] and [http:/
 
 ===== Apache Configuration =====
 
-By default Apache is installed at `/etc/apache2/` and it's configuration file will be at `/etc/apache2/httpd.conf`.
+By default Apache is installed at `/etc/apache2/` and it's configuration file will be at `/etc/apache2/apache2.conf`.
 You can add configuration files at `/etc/apache2/conf.d/` and sites at `/etc/apache2/sites-available/`.
 
 At first, enable the Passenger module in Apache:
