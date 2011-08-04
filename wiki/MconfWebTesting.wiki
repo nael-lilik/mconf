@@ -53,5 +53,5 @@ RAILS_ENV=test rake setup:db
 Or use the safer and more complete method that will set up the database and run all tests:
 
 {{{
-rake spec
+bundle exec rake
 }}}
