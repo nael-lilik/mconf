@@ -15,7 +15,7 @@ The following guide will instruct you on how to setup this environment.
 
 Mconf-web should work on any operating system that has Ruby available (and most of them do have Ruby). Changing any of these items will certainly require modifications in the configuration files and scripts (and maybe even some code changes in some cases).
 
-  <font color="red">*Important:*</font> The deployment of Mconf-Web has two steps: (1) configuring the server and (2) deploying the application. To deploy the application you need to have a development environment configured. After you set up a basic server (1), the rest of the deployment is done remotely from the development environment (using Capistrano). So take a look at [MconfWebDevelopment this page] to learn how to set up your development environment.
+  <font color="red">*Important:*</font> The deployment of Mconf-Web has two steps: (1) configuring the server and (2) deploying the application. To deploy the application you need to have a development environment configured. After you set up a basic server (1), the rest of the deployment is done remotely from the development environment (using Capistrano).
 
 == (0) First steps ==
 
