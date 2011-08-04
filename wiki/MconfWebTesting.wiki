@@ -9,7 +9,7 @@ Mconf-Web uses the [http://relishapp.com/rspec rspec framework] for automated te
 To run the tests, first you need to set up your [MconfWebDevelopment development environment]. Then you can run the tests with:
 
 {{{
-rake spec
+bundle exec rake
 }}}
 
 This command will erase your entire test database, populate it with the seed data (see `db/seeds.rb`) and run *all* tests. It might take some time, but it runs the complete suite of tests to assure that everything is working properly.
@@ -18,7 +18,7 @@ Alternatively, you can set up the test database and run single tests to speed up
 
 Run the following command to set up a test database and populate it with the seed data:
 {{{
-RAILS_ENV=test rake setup:db
+RAILS_ENV=test bundle exec rake setup:db
 }}}
 
 Then run the tests using the `rspec` command. The first argument you need to pass to this command is the folder that contains the test files or the files you want to run. You can also specify a single line in a file to run a single test or a block of tests inside a scope. 
