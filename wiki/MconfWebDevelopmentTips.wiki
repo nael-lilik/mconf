@@ -1,0 +1,51 @@
+<wiki:toc max_depth="3" />
+
+= Mconf-Web Development Tips =
+
+== Sending emails in development ==
+
+E-mails are sent by `delayed_job`, so you must run it's daemon:
+
+{{{
+rake jobs:clear                 # if you don't clear, all emails stored in the delayed_job table will be sent
+script/delayed_job -n 2 start   # start 2 daemons
+script/delayed_job stop         # to stop the daemons later
+}}}
+
+== Testing ==
+
+See the [MconfWebTesting testing page].
+
+== Testing migrations ==
+
+We only test migrations that need to alter data in the DB. Simple migrations don't need to be tested.
+
+We use `yaml_db` to get the server data and add it to the local database.
+The test should apply the migration and test if the data was correctly migrated.
+
+The server dump should be in the same version of your current database. The migration you're testing is a new migration, that wasn't applied in the server database yet.
+
+{{{
+RAILS_ENV=test bundle exec rake db:migrate                           # so that rails will recognize the new migration
+cap production db:pull                                               # download the server dump (to db/data.yml)
+RAILS_ENV=test bundle exec rake db:data:load                         # add it to the local test DB
+bundle exec rspec spec/migration/MY_TEST_NAME.rb -t migration_real   # run the test
+}}}
+
+Also, tag your test with "migration_real":
+
+{{{
+context "using real data", :migration_real => true do
+  ...
+end
+}}}
+
+
+*Note*: Comment the following lines in your `spec_helper.rb` or your test will not run. We still have to find a better solution for this.
+
+{{{
+config.filter_run_excluding :migration => true
+config.run_all_when_everything_filtered = true
+}}}
+
+
