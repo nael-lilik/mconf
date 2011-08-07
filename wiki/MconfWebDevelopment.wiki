@@ -56,7 +56,11 @@ It will create users, spaces, posts and everything you need to have a populated 
 
 == Testing ==
 
-To learn how to test the application take a look at [MconfWebTesting].
+Proceed to [MconfWebTesting this page].
+
+== Development Tips ==
+
+Proceed to [MconfWebDevelopmentTips this page].
 
 == Configuring the website ==
 
