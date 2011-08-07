@@ -9,7 +9,7 @@
     * [MconfWebRoadMap Road Map]
     * [MconfWebDevelopment Development]
       * [MconfWebSetupConf Configuration file]
-    * [MconfWebTesting Testing]
+      * [MconfWebTesting Testing]
     * [MconfWebDeployment Deployment]
       * [MconfWebDeploymentWithScript Using the installation script]
       * [MconfWebDeploymentManual Manual deploy]
