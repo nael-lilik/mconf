@@ -52,7 +52,7 @@ bbb_server_version: '0.7'                                         # bbb version
 
 Currently Mconf-Web uses a Gmail account to send emails, so you can use this section to enter your username and password.
 
-You *need* to set up this account. Currently the website is not guaranteed to work if you don't do it.
+You need to set up this account. If you don't, you won't be able to use some features in the website (the user registration for example, needs to send a confirmation email to the user).
 
 {{{                                                                                                                                
 sendmail_username: "my-username@gmail.com"  	       # gmail username
