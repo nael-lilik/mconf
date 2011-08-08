@@ -107,3 +107,15 @@ See below some other options you can configure in `setup_conf.yml`.
 {{{
 analytics_code: ""    # Google Analytics tracking code. Leave it empty to disable. Use the format: "UA-12345678-9".
 }}}
+
+
+= Configuring the database (`database.yml`) =
+
+The database is configured in the file `config/database.yml`. This is a standard configuration file used by Rails applications, so you can find plenty of resources about it on the Internet (for example, [http://guides.rubyonrails.org/getting_started.html#configuring-a-database this page]).
+
+You can also take a look at the examples in our repository:
+
+
+  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.example Default example]: Uses SQLite3 for development and testing and MySQL for production;
+  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.mysql.example MySQL example]: Example on how to use MySQL;
+  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.example Default example]: Example on how to use SQLite3.
