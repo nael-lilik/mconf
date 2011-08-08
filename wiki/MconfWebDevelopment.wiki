@@ -29,10 +29,8 @@ rake setup:basic
     }}}
 
   * Configuration files. The command above created some files that you need to configure to be able to run the application. They are already formatted with a standard structure, but some information is sensible and unique for each setup, so *you really need* to edit them. The files are:
-    * *<tt>config/database.yml</tt>*: configures the database.
-      The default file uses sqlite for development and testing and mysql for production, but you can change it. There are examples files both for sqlite (<tt>database.yml.sqlite.example</tt>) and mysql (<tt>database.yml.mysql.example</tt>). Note: You will probably need to insert a password if you're using mysql.
-    * *<tt>config/setup_conf.yml</tt>* contains the basic configuration data that will be used during the database setup and when the application is initialized.
-      See [MconfWebSetupConf this page] for more details on how to configure this file.
+    * *<tt>config/database.yml</tt>*: configures the database. See [MconfWebSetupConf#Configuring_the_database_(_database.yml_) this page] for more details about this file.
+    * *<tt>config/setup_conf.yml</tt>* contains the basic configuration data that will be used during the database setup and when the application is initialized. See [MconfWebSetupConf#Configuring_the_application_(_setup_conf.yml_) this page] for more details about this file.
 
   * Setup the database. It will drop and recreate your _development_ database, create basic data (<b>you need</b> this data to run the application) and populate the db with test data.
     {{{
