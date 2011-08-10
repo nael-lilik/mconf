@@ -65,4 +65,26 @@ There are two options we know of to solve this:
 
 == Configuring Mconf-Web to use the local !BigBlueButton ==
 
-_to be written..._
+When configuring Mconf-Web, either with `mconf-web-conf --setup-dev` or manually, there are some parameters you'll need to change to configure Mconf-Web to use a !BigBlueButton installation that's in the same machine.
+
+At first, if you're using MySQL (it is used by default for Mconf-Web in production) you'll need to set the root password:
+
+{{{
+mysqladmin -u root -p password $PASSWORD  # Change "PASSWORD" for the real password
+}}}
+
+Then, configure Mconf-Web with the following parameters (note: replace the red texts with proper values for your server):
+
+  * GENERAL configurations:
+    * bbb_server_url: <font color=red>your server's API URL in the format "http://SERVER_IP:8888/bigbluebutton/api"</font> 
+    * bbb_server_salt: <font color=red>the salt of your BBB server</font>
+    * bbb_server_version: <font color=red>the version of your BBB server</font>
+  * DATABASE configurations:
+    * username: root
+    * password: <font color=red>the password you configured for the root user in MySQL</font>
+  * DEPLOYMENT configurations:
+    * server: 127.0.0.1
+    * user: firstuser
+
+If you're configuring manually, these parameters are in the files `config/setup_conf.yml` and `config/deploy/conf.yml` in your development environment.
+
