@@ -4,9 +4,7 @@
 
 = Mconf-Web Deployment with !BigBlueButton = 
 
-You can setup a Mconf-Web server in the same machine that already has !BigBlueButton. This page contains some considerations about it.
-
-What you have to consider is the web server you will use for Mconf-Web. You can use either Apache (recommended) or Nginx.
+You can setup a Mconf-Web server in the same machine that already has !BigBlueButton. This page contains some considerations about it. You have to be careful choosing the web server you will use for Mconf-Web. You can use either Apache (recommended) or Nginx.
 
 Also, in this page we provide some tips on how to configure Mconf-Web to use the local !BigBlueButton installation.
 
