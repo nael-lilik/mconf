@@ -2,11 +2,15 @@
 
 = The script `mconf-web-conf` =
 
-`mconf-web-conf` is a utility script to help you install, configure and run some maintenance tasks on Mconf-Web. You can use it to setup a deployment or production environment.
-
-The script has several tasks that will be described below. You can also see them using the script's help command: `mconf-web-conf --help`.
+`mconf-web-conf` is a utility script to help you install, configure and run some maintenance tasks on Mconf-Web. You can use it to setup a deployment or production environment. The script has several tasks that will be described below. You can also see them using the script's help command: `mconf-web-conf --help`.
 
 The latest version of this file can be found in [https://github.com/mconf/mconf-web/tree/master/script the Mconf-Web repository].
+
+You can download and install it (in Ubuntu) with:
+
+{{{
+sudo curl https://raw.github.com/mconf/mconf-web/master/script/mconf-web-conf -o /usr/local/bin/mconf-web-conf
+}}}
 
 = Usage Scenarios =
 
