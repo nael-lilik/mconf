@@ -9,7 +9,7 @@ To run tests on the android app, [http://code.google.com/p/robotium/ Robotium] i
 = If you want to run the tests =
 To run the tests in bbb-androidTests, the following steps are needed
 
-  # Follow the steps to run the app, listed here ([http://code.google.com/p/mconf/wiki/MconfMobile MConf-Mobile])
+  # Follow the steps to run the app, listed here ([http://code.google.com/p/mconf/wiki/MconfMobile Mconf-Mobile])
   # Import *`bbb-androidTests`* projects, in Eclipse
   # Run as an Android JUnit Test
   # Collect the results
