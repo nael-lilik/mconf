@@ -1,0 +1,5 @@
+#summary Explanation of how the video support was added to the MconfMobile application
+
+= Introduction =
+
+This chapter will present how the video support was added to the MconfMobile application. For purpose of better understanding, let's divide the implementation in two parts: one responsible for capturing, encoding and publishing the video ([MconfMobileVideoPublish described here]) and one responsible for receiving, decoding and rendering the video ([MconfMobileVideoReceive described here]).
