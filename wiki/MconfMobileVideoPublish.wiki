@@ -2,6 +2,7 @@
 
 = Introduction =
 
+This chapter will explain how the video capturing, encoding and publishing was implemented to the MconfMobile. 
 
 = Details =
 
