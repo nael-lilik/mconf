@@ -2,11 +2,11 @@
 
 = Introduction =
 
-This chapter will present how the video support was added to the MconfMobile application. For purpose of better understanding, let's divide the implementation in two parts: one responsible for capturing, encoding and publishing the video ([MconfMobileVideoPublish described here]) and one responsible for receiving, decoding and rendering the video ([MconfMobileVideoReceive described here]).
+This chapter will present how the video support was added to the MconfMobile application.
 
 = Details =
 
-The files directly related to the video integration are:
+The files directly related to the video integration and created for the mconfmobile are:
 
 1) From the org.mconf.bbb.android.video package:
 {{{
@@ -42,3 +42,13 @@ The files directly related to the video integration are:
 /bbb-android/jni/mconfnative/VideoEncoder.cpp
 /bbb-android/jni/mconfnative/VideoEncoder.h
 }}}
+
+4) Layout elements:
+{{{
+/bbb-android/res/layout/video_capture_fullscreen.xml
+/bbb-android/res/layout/video_capture.xml
+/bbb-android/res/layout/video_window_fullscreen.xml
+/bbb-android/res/layout/video_window.xml
+}}}
+
+For purpose of better understanding, let's divide the implementation in two parts: one responsible for capturing, encoding and publishing the video ([MconfMobileVideoPublish explained here]) and one responsible for receiving, decoding and rendering the video ([MconfMobileVideoReceive explained here]). Both parts basically follow the same strategy: they use the rtmp protocol to publish/receive video (thanks to the flazr lib) and encode/decode video with the ffmpeg lib compiled to Android in C.
