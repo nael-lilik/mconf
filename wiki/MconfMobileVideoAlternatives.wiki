@@ -1,0 +1,81 @@
+#summary Alternatives that didn't work.
+
+= Introduction =
+
+We basically tested 2 alternatives on trying to play the video data on Android with the MediaPlayer class. None of them worked well, so it seems that the best way now is to use ffmpeg.
+Below, the tested alternatives are explained.
+
+= Details =
+
+== Alternative 1: !MediaPlayer and sockets ==
+
+It is not clear on the !MediaPlayer docs if it is possible to use a socket as a file descriptor as a parameter for this function:
+
+http://developer.android.com/reference/android/media/MediaPlayer.html#setDataSource%28java.io.FileDescriptor%29
+
+It seems it is not possible because that function would allow only seekable file descriptors (a socket is not seekable). In case it is true, then it is not possible to use sockets to feed the MediaPlayer.
+
+We could not confirm from an official source that it is impossible. However, on the tests we made, we got the following error:
+
+{{{
+MediaPlayer: offset error
+java.io.IOException: setDataSourceFD failed: status=0x80000000
+}}}
+
+This error is the same error that was found by many other developers who tried to use socket and MediaPlayer. For example:
+
+http://groups.google.com/group/android-developers/browse_thread/thread/248a2dbd1e1ac931?pli=1
+
+http://groups.google.com/group/android-developers/browse_thread/thread/4f99f153381666b7
+
+http://groups.google.com/group/android-developers/browse_thread/thread/6cf46cf5d1c8af45
+
+http://groups.google.com/group/android-developers/browse_thread/thread/592e0b6d2d13dbaa
+
+www.dn.fh-koeln.de/download/arbeiten/Dominic_Janssen_2010.pdf
+
+There is also this Issue which complains about a problem in the MediaPlayer docs:
+
+http://code.google.com/p/android/issues/detail?id=2317&can=1&q=setdatasource%20localsocket&colspec=ID%20Type%20Status%20Owner%20Summary%20Stars
+
+== Alternative 2: !MediaPlayer and temporary files  ==
+
+It is possible, but it has some problems.
+
+As the !MediaPlayer class only supports 3gp and mp4 containers for local video files, we would need to manually create the header and the moov atom for each temporary file, because bbb only sends the video data (mdat atom). 3gp and mp4 containers are complicated to be created manually.
+
+The tutorial:
+http://blog.pocketjourney.com/2008/04/04/tutorial-custom-media-streaming-for-androids-mediaplayer/
+
+works well for audio because the .mp3 file structure eases a lot this task.
+
+The work:
+
+www.dn.fh-koeln.de/download/arbeiten/Dominic_Janssen_2010.pdf
+
+implements this alternative but it states that this technique is not good for live chat because of its high delay. According to that work, the delays would be:
+{{{
+transmission delay
++
+file length (in seconds) + a tolerance time
++
+time to generate the header and the moov atom
++
+time to start the MediaPlayer (0.83s according to that work)
+}}}
+
+The file length would have to be equal or greater than the other delays, as showed in this example:
+
+Consider the other delays equal to 0.9s. Then a 0.1s file would take 0.1+0.9s to be played. In the meanwhile, another 10 files of 0.1s had already been created and none of them were reproduced yet. So, we would have a 0.9s pause in the rendering for each 0.1s file.
+
+So, our delay would be at least:
+
+{{{
+1.66
++
+transmission delay
++
+time to generate the header and the moov atom
++
+tolerance
+}}}
