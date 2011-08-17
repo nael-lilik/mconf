@@ -46,5 +46,11 @@ It does the following (in this order): stops the preview, releases the buffers u
 === VideoCapture decisions ===
 As said above, everything is managed by the VideoCapture class. So, where, when and how it decides if the video should be started, stopped, paused or resumed? 
 
-WHERE: It decides it inside the onSurfaceCreated, onSurfaceChanged and onSurfaceDestroyed methods. 
+WHERE: It decides it inside the onSurfaceCreated, onSurfaceChanged and onSurfaceDestroyed methods.
+
 WHEN: The onSurfaceCreated method is called on the following situations:
+* when a new instance of the VideoCapture class is created. Lets call it CASE 1.
+* when the screen is rotated and there is a VideoCapture instance created for that activity. Lets call it CASE 2.
+The onSurfaceDestroyed method is called when an activity, which created an instance of the VideoCapture class, is sent to
+
+TO BE CONTINUED
