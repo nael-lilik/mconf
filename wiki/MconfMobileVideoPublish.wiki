@@ -2,13 +2,15 @@
 
 = Introduction =
 
-This chapter will explain how the video capturing, encoding and publishing was implemented to the MconfMobile.
-
 
 = Details =
 
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+There is a layout element:
+{{{
+/bbb-android/res/layout/video_capture.xml
+}}}
+It contains a view that is an instance of the VideoCapture class. When this element is part of the layout of an activity X, a new instance of the VideoCapture class will be created when the activity X starts. To add this element to an activity X, just add the following line to the layout file of the activity X.
+{{{
+<include layout="@layout/video_capture" />
+}}}
+There is no need to add code related to video to your activity X (it is only needed to add the layout element using the line above) because everything is managed by the VideoCapture class. In other words, it is the VideoCapture class who will decide when it is time to pause, start, stop or resume the video. The only exception to this rule is the Client activity, which allows the user to start or stop the video. So, it is necessary to add the layout element (using the line above) to every activity in the application that is a child of the Client activity.
