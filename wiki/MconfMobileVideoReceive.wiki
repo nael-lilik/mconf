@@ -3,12 +3,3 @@
 = Introduction =
 
 This chapter will explain how the video receiving, decoding and rendering was implemented to the MconfMobile.
-
-
-= Details =
-
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
