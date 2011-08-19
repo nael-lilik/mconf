@@ -16,7 +16,7 @@ It contains a view that is an instance of the VideoCapture class. When this elem
 {{{
 <include layout="@layout/video_capture" />
 }}}
-There is no need to add code related to video to your activity X (it is only needed to add the layout element using the line above) because everything is managed by the VideoCapture class. In other words, it is the VideoCapture class who will decide when it is time to pause, start, stop or resume the video. The only exception to this rule is the Client activity, which allows the user to start or stop the video. So, it is necessary to add the layout element (using the line above) to every activity in the application that is a child of the Client activity.
+There is no need to add code related to video to your activity X (it is only needed to add the layout element using the line above) because everything is managed by the VideoCapture class. In other words, it is the VideoCapture class who will decide when it is time to pause, start, stop or resume the video. The only exception to this rule is the Client activity, which allows the user to start or stop the video. So, it is necessary to add the layout element (using the line above) to every activity in the application that is a child (or a sub-child) of the Client activity.
 
 Note that the layout element has size 1x1. This is necessary because we want to hide the preview from the user, as Android requires that the capture can only occur if it has a preview.
 
@@ -24,7 +24,7 @@ Note that the layout element has size 1x1. This is necessary because we want to 
 The VideoCapture class (/bbb-android/src/org/mconf/bbb/android/video/VideoCapture.java) is instantiated automatically when an activity which includes the video_capture layout element starts. This class is responsible for deciding when to start, stop, pause and resume the video, based on an user decision or not.
 
 === The VideoCapture.startCapture method ===
-It is can be called by the user (by clicking on the "start video" button on the Client activity), or by the VideoCapture class (when the VideoCapture class decides it should start a capture).
+It can be called by the user (by clicking on the "start video" button on the Client activity), or by the VideoCapture class (when the VideoCapture class decides it should start a capture).
 
 It does the following (in this order): acquires the camera, sets the capture parameters, starts the native side, starts a video publish connection, calls the VideoCapture.resumeCapture method and shows a notification to the user.
 
@@ -44,13 +44,13 @@ It can't be called by the user. It is called only by the VideoCapture.stopCaptur
 It does the following (in this order): stops the preview, releases the buffers used for the callback and releases the preview display.
 
 === VideoCapture decisions ===
-As said above, everything is managed by the VideoCapture class. So, where, when and how it decides if the video should be started, stopped, paused or resumed? 
+As said above, everything is managed by the VideoCapture class. So, WHERE and HOW it decides if the video should be started, stopped, paused or resumed? 
 
 WHERE: It decides it inside the onSurfaceCreated, onSurfaceChanged and onSurfaceDestroyed methods.
 
-WHEN: The onSurfaceCreated method is called on the following situations:
-* when a new instance of the VideoCapture class is created. Lets call it CASE 1.
-* when the screen is rotated and there is a VideoCapture instance created for that activity. Lets call it CASE 2.
-The onSurfaceDestroyed method is called when an activity, which created an instance of the VideoCapture class, is sent to
-
-TO BE CONTINUED
+HOW: It is important to read this section while looking at the onSurfaceCreated, onSurfaceChanged and onSurfaceDestroyed methods. They have some important comments for a better understanding. Basically, the situations that are relevant are the following (for all the situations bellow, suppose that the user is currently publishing his video. If he is not publishing, then nothing is done):
+  * When the user rotates the device, the current preview surface is destroyed and a new one is created. The VideoCapture class detects this situation and calls the VideoCapture.pauseCapture method. When the new surface is created, the VideoCapture class, inside the onSurfaceCreated method, calls the VideoCapture.resumeCapture method.
+  * When the activity changes (the application leaves an activity X and goes to an activity Y, both children or sub-children of the Client activity, or one of them is the Client activity) the current preview surface is destroyed and a new one is created. The VideoCapture class detects this situation and calls the VideoCapture.pauseCapture method. When the new surface is created, the VideoCapture class, inside the onSurfaceCreated method, calls the VideoCapture.resumeCapture method.
+  * When the Client's "quit" method is called, the VideoCapture.stopCapture is called. The "quit" method means that the user left the room.
+  * When the application goes to background, the VideoCapture.surfaceDestroyed method is called. It detects this situation and calls the VideoCapture.stopCapture method. When the application goes back to foreground, the onSurfaceCreated method will call the VideoCapture.startCapture method to keep the previous state.
+  * When the user is on the Client activity and decides to see his preview or other user's video, the Dialog that will appear contains the view defined by the video_capture layout element. It means that we will have two active preview surfaces at this moment: the surface included by the Client layout and the surface included by the Dialog layout. It is the onSurfaceChanged method that will detect this situation. The onSurfaceChanged method from the Client's VideoCapture instance will then call the VideoCapture.pauseCapture method of the Client's VideoCapture instance. The onSurfaceChanged method from the Dialog's VideoCapture instance will then call the VideoCapture.resumeCapture method of the Dialog's VideoCapture instance.
