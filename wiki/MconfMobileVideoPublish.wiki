@@ -23,7 +23,7 @@ Note that the layout element has size 1x1. This is necessary because we want to 
 The two important classes that will be presented are the VideoPublish class and the VideoCapture class.
 
 == The VideoPublish class ==
-The VideoPublish class (/bbb-android/src/org/mconf/bbb/android/video/VideoPublish?.java) is global to the application. Basically, the class is responsible to keep the current capture context active (keeping, for example, the camera opened and the publish connection active) when needed. The class is necessary because the VideoCapture class couldn't do this job (the VideoCapture class is not global).
+The VideoPublish class (/bbb-android/src/org/mconf/bbb/android/video/VideoPublish.java) is global to the application. Basically, the class is responsible to keep the current capture context active (keeping, for example, the camera opened and the publish connection active) when needed. The class is necessary because the VideoCapture class couldn't do this job (the VideoCapture class is not global).
 
 == The VideoCapture class ==
 The VideoCapture class (/bbb-android/src/org/mconf/bbb/android/video/VideoCapture.java) is instantiated automatically when an activity which includes the video_capture layout element starts. This class is responsible for deciding when to start, stop, pause and resume the video, based on an user decision or not.
