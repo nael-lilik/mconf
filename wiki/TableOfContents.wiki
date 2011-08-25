@@ -1,6 +1,6 @@
   * [Home Home]
   * [MconfInstallation Installing Mconf]
-    * [MconfVM The Mconf VM]
+    * [MconfVM Mconf VM]
   * [MconfBBB Mconf-BBB]
   * [MconfMobile Mconf-Mobile]
     * [MconfMobileVideoIntegration Video-Integration]
