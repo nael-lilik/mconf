@@ -22,7 +22,7 @@ rake aborted!
 
 It means that the parameters `sendmail_username` and/or `sendmail_password` in your configuration file (`config/setup_conf.yml`) are not correct. See more about this file [MconfWebSetupConf at this page].
 
-==== Mysql2 related errors ====
+==== Wrong username and/or password for MySQL ====
 
 The following box shows an example of an error that occurs when your Mysql2 user and/or password are wrong and you're trying to setup Mconf-Web. The following error has happened trying to setup a production environment using the wrong database password for the user "root".
 
