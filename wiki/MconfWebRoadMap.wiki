@@ -9,11 +9,15 @@
 
 == Current Development: Release 0.3 ==
 
-*Planned for*: ?, 2011.
+*Planned for*: Sept 5th, 2011.
 
-  * Fixes in the "documents" tab inside spaces.
-  * _preliminary list..._
-  * Tickets for this release: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.3 Issues for Mconf-Web-Release0.3]
+  * Fixes in the upload of documents, specially in the "documents" tab inside spaces.
+  * New FAQ and Help pages.
+  * Improved permission check for BigBlueButton rooms and servers (Issue 107).
+  * Users now have only one webconference room.
+  * Added a feedback page that is shown when the user logs out of a webconference (Issue 188).
+  * Improvements in the script mconf-web-conf, specially to use Mconf-Web with Apache (Issue 190).
+  * Several other bug fixes and cleanup in the website. See: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.3 Issues for Mconf-Web-Release0.3]
 
 == Release 0.2 ==
 
