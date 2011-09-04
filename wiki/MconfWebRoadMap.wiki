@@ -34,10 +34,10 @@
 
 *Released*: Jun 1st, 2011.
 
-  * Migration of VCC to Rails 3 ([http://code.google.com/p/mconf/issues/detail?id=9 issue 9])
-  * Branding of VCC to become Mconf-Web ([http://code.google.com/p/mconf/issues/detail?id=11 issue 11])
+  * Migration of VCC to Rails 3 (Issue 9)
+  * Branding of VCC to become Mconf-Web (Issue 11)
   * First integration of BBB in Mconf-Web using bigbluebutton_rails.
-    * Every space has a webconference room ([http://code.google.com/p/mconf/issues/detail?id=25 issue 25])
-    * Users can create webconferences from their home page ([http://code.google.com/p/mconf/issues/detail?id=26 issue 26])
+    * Every space has a webconference room (Issue 25)
+    * Users can create webconferences from their home page (Issue 26)
   * First version in production and documentation on [http://code.google.com/p/mconf/wiki/MconfWebDeployment how to setup a production server]
   * Other bugs and features implemented: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.1 Issues for Mconf-Web-Release0.1]
