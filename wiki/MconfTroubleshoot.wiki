@@ -46,7 +46,8 @@ connection failed for: 127.0.0.1 (Net::SSH::AuthenticationFailed:mconf)
 
 You're probably trying to setup a production environment and there's a problem in the SSH connection between your development and production environments, since Capistrano can't establish a connection.
 
-The most common error is that you're trying to deploy using a user that doesn't exists in your server. Take a look at the file `config/deploy/conf.yml` and check the user being used to deploy.
+The most common error is that you're trying to deploy using an user that doesn't exists in your server. Take a look at the file `config/deploy/conf.yml` and check the user configured to be used to deploy.
+For instance, in case you're using the !BigBlueButton VM you should change the "user" parameter to "firstuser", the default user in this VM.
 
 It's also possible that you're typing the wrong password or that the ssh keys are wrong (in case you're using them).
 
