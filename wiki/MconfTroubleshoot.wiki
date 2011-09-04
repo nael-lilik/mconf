@@ -6,7 +6,7 @@
 
 == Mconf-Web ==
 
-=== Problems running the rake tasks to setup a development or production environment ===
+=== Problems running the rake tasks or using mconf-web-conf to setup a development or production environment ===
 
 ==== Error: "Username and Password not accepted. Learn more at" ====
 
@@ -35,7 +35,25 @@ Please provide the root password for your mysql installation
 
 The database username and password are configured in the file `config/database.yml`. See more about this file [MconfWebDatabaseConf at this page].
 
-==== Emails are not being sent ====
+
+==== `Net::SSH::AuthenticationFailed` ====
+
+If you're getting the an error similar to the following:
+
+{{{
+connection failed for: 127.0.0.1 (Net::SSH::AuthenticationFailed:mconf)
+}}}
+
+You're probably trying to setup a production environment and there's a problem in the SSH connection between your development and production environments, since Capistrano can't establish a connection.
+
+The most common error is that you're trying to deploy using a user that doesn't exists in your server. Take a look at the file `config/deploy/conf.yml` and check the user being used to deploy.
+
+It's also possible that you're typing the wrong password or that the ssh keys are wrong (in case you're using them).
+
+See more details at: http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#(2)_Deploy
+
+
+=== Emails are not being sent ===
 
 The emails are sent using a background job run by the gem delayed_job. If you're in a development environment, you can run it with:
 
