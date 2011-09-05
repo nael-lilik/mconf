@@ -33,7 +33,19 @@ Access denied for user 'root'@'localhost' (using password: YES).
 Please provide the root password for your mysql installation
 }}}
 
-The database username and password are configured in the file `config/database.yml`. See more about this file [MconfWebDatabaseConf at this page].
+The database username and password are configured in the file `config/database.yml`. See more about this file [MconfWebSetupConf#Configuring_the_database_(_database.yml_) at this page].
+
+If you haven't set up a password for mysql yet, you can do it with:
+
+{{{
+mysqladmin -u root password "NEW-PASSWORD"
+}}}
+
+Or, in case you want to change the password:
+
+{{{
+mysqladmin -u root -p password "NEW-PASSWORD"
+}}}
 
 
 ==== `Net::SSH::AuthenticationFailed` ====
