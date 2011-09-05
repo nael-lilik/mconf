@@ -14,6 +14,7 @@
   * Fixes in the upload of documents, specially in the documents tab inside spaces.
   * New FAQ and Help pages.
   * Users now have only one permanent webconference room.
+  * Integration with Mconf-Mobile.
   * Improved permission check for !BigBlueButton rooms and servers (Issue 107).
   * Added a feedback page that is shown when the user logs out of a webconference (Issue 188).
   * Improvements in the script mconf-web-conf, specially to use Mconf-Web with Apache (Issue 190).
