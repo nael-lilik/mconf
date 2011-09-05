@@ -70,6 +70,8 @@ site_email: "my-email@server.com"       	# website contact email
 site_locale: "en"                               # this will be the default locale for the application
 site_domain: "localhost"                        # your server address
 site_signature: "Mconf"                         # to sign emails
+site_feedback_url: ""                           # URL to be opened when a user logs out of a conference. Leave
+                                                # it blank to use the default page
 }}}
 
 === Default space === 
