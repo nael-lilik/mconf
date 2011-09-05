@@ -61,13 +61,21 @@ If you are a developer and want to be part of this project, you can pick an issu
 
 = Changelog =
 
-v0.3beta
+v0.4.1 (September 5th 2011 - bugfix release)
+
+v0.4 (August 25th 2011)
+ * Moderator is able to lower hand of a participant
+ * Dialog with some informations about the meeting
+ * Improvement on the app notifications
+ * Integration with Mconf-Web
+ * Video capture and publish
+
+v0.3beta (May 28th 2011)
  * Video integration - view one video at a time on a dialog or full screen when the phone is on landscape
  * Mute / unmute room
  * Join a conference by a QR code (url bigbluebutton://)
 
-
-v0.2
+v0.2 (May 6th 2011)
  * Visualization of the participants and listeners lists
  * Raise / lower hand
  * Private and public chat
@@ -77,7 +85,6 @@ v0.2
  * Mute / unmute users
 
 = Roadmap =
- * Video capture on mobile devices
  * Multiple videos in one screen
  * Better interfaces integrated to the video feature (Adobe Connect's app like)
  * Shared notes module
