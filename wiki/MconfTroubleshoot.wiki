@@ -86,3 +86,10 @@ You should see messages like the ones below when delayed_job is started:
  ** [out :: mconf.inf.ufrgs.br] delayed_job.0: process with pid 4752 started.
  ** [out :: mconf.inf.ufrgs.br] delayed_job.1: process with pid 4758 started.
 }}}
+
+
+== Mconf-Mobile / BBB-Android ==
+
+=== I can connect to the audio conference but I can't hear anything. What's wrong? ===
+
+By default the application doesn't enable the loudspeaker (it enables the earphone speaker) - you need to press "Menu" and then "Loudspeaker" if you want to hear anything without put the phone next to your ear. The icon will turn enabled.
