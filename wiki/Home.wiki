@@ -26,7 +26,7 @@ See [MconfInstallation this page] to find out how to install and use Mconf.
 == Mconf overview diagrams ==
 
 === Overview of the Mconf components ===
-https://lh3.googleusercontent.com/--l_zeWpoLew/TfgvGtCcnrI/AAAAAAAAAaA/4n5p1_s5Iic/s800/Mconf%252520-%252520diagram.png
+https://lh4.googleusercontent.com/-yEYMKaQrqz0/TmhcqoQhccI/AAAAAAAAAgc/HK3zEMWa8ns/Mconf%252520-%252520diagram%252520-%252520actual%2525202.png
 
 == Contributors ==
 
