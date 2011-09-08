@@ -39,15 +39,28 @@ It is important to run `rspec` with `bundle exec` so that the tests will run usi
 We only test migrations that need to alter data in the DB. Simple migrations don't need to be tested.
 
 We use `yaml_db` to get the server data and add it to the local database.
-The test should apply the migration and test if the data was correctly migrated.
+The test should apply the migration and test if the data was correctly migrated. The server dump should be in the same version of your current database.
 
-The server dump should be in the same version of your current database. The migration you're testing is a new migration, that wasn't applied in the server database yet.
+This is a normal workflow to test a migration named "20110101010022_my_migration". The previous migration is the version 20110101010011. The test will only check if the database state is as it should be after the migration.
 
 {{{
-RAILS_ENV=test bundle exec rake db:migrate                           # so that rails will recognize the new migration
-cap production db:pull                                               # download the server dump (to db/data.yml)
-RAILS_ENV=test bundle exec rake db:data:load                         # add it to the local test DB
-bundle exec rspec spec/migration/MY_TEST_NAME.rb -t migration_real   # run the test
+# rollback to the previous version
+bundle exec rake db:migrate RAILS_ENV=test VERSION=20110101010011
+
+# dump the database and download it
+# then load the data in your test DB
+cap production db:pull
+bundle exec rake db:data:load RAILS_ENV=test
+
+# if you need to edit your database to add data that should be tested, do it now
+# and then store the data so that you can load it later to run the test again
+bundle exec rake db:data:dump
+
+# migrate to the target version, the migration tested
+bundle exec rake db:migrate RAILS_ENV=test VERSION=20110101010022
+
+# run the test that will check if the DB is consistent after being migrated
+bundle exec rspec spec/migrations/my_migration_spec.rb
 }}}
 
 Also, tag your test with "migration_real":
