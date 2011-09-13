@@ -19,7 +19,7 @@ During the first phase of Mconf-web, we are strongly focusing on the integration
 
 == Demo ==
 
-A demo server for Mconf-web can be found at: http://mconf.inf.ufrgs.br/
+A demo server for Mconf-web can be found at: http://mconf.org/
 
 This server is used for tests and demonstrations, so feel free to register yourself and use it to explore Mconf-web. Be aware that any information (user data, files, comments, etc.) *can be modified or erased at any time* if we need to do so.
 
