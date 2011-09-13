@@ -1,6 +1,6 @@
 = Mconf =
 
-|| [https://github.com/mconf/ Source code] || [Home#Subprojects Subprojects] ||
+|| [https://github.com/mconf/ Source code] || [Home#Subprojects Subprojects] || [Home#Demo_Server Demo Server] ||
 
 Mconf is a project that aims to create a complete and easy to use webconference system, with focus on the interaction with mobile devices and social networks.
 The project is currently built on top of the open source systems [http://www.bigbluebutton.org BigBlueButton] and [http://globalplaza.org/ Global Plaza].
@@ -12,6 +12,10 @@ You can find more information about the project at http://www.inf.ufrgs.br/prav/
   * For *feedbacks, suggestions and troubleshooting* (or anything else you need), contact us at our mailing list: `mconf-dev@googlegroups.com`
   * Found a *bug*? Please [http://code.google.com/p/mconf/issues/list create an issue].
   * Want to *collaborate*? Fork [https://github.com/mconf some of our repositories at github] and send a pull request!
+
+== Demo Server ==
+
+A demo server for Mconf-web can be found at: http://mconf.org/
 
 == Installing Mconf ==
 
