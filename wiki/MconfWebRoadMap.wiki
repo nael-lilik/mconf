@@ -6,10 +6,15 @@
 
 = Releases =
 
+== Current Development: Release 0.4 ==
 
-== Current Development: Release 0.3 ==
+*Planned for*: ?, 2011.
 
-*Planned for*: Sept 5th, 2011.
+  * See: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.4 Issues for Mconf-Web-Release0.4]
+
+== Release 0.3 ==
+
+*Released*: Sept 5th, 2011.
 
   * Fixes in the upload of documents, specially in the documents tab inside spaces.
   * New FAQ and Help pages.
