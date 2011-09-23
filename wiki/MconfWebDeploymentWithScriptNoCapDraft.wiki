@@ -19,21 +19,21 @@ sudo chmod a+x /usr/local/bin/mconf-web-conf
 
 The steps you will need to install the application are:
 
-  * Install dependencies (system packages);
-  * Install ruby;
-  * Install the web server and basic gems;
-  * Edit some configuration files;
-  * Finaly, deploy.
+  # Install dependencies (system packages);
+  # Install ruby;
+  # Install the web server and download the application;
+  # Edit some configuration files;
+  # Finaly, deploy.
 
-== (1) Configuring the server ==
+*Note:* Don't run the commands as sudo. When superuser permissions are required the script will ask you for a password.
 
-=== System Packages ===
+=== 1. System Packages ===
 
 {{{
 mconf-web-conf --install-packages production
 }}}
 
-=== Ruby (using RVM) ===
+=== 2. Ruby (using RVM) ===
 
 {{{
 mconf-web-conf --install-ruby
@@ -41,7 +41,9 @@ mconf-web-conf --install-ruby
 
 Ruby will be installed using [http://beginrescueend.com/ RVM], as multi-user. This means that ruby will be available to all users.
 
-=== Web Server and basic gems ===
+=== 3. Install web server and download the aplication ===
+
+This command will install the web server and checkout the source code for Mconf-Web.
 
 {{{
 mconf-web-conf --setup-deploy
@@ -51,18 +53,22 @@ If you're installing Mconf-Web in a standalone machine, the script will ask you 
 
 If you're installing Mconf-Web in the same machine where you already have !BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually (see more about this issue [MconfWebDeployInBBBMachine in this page]).
 
+=== 4. Edit the configuration files ===
 
-== (2) Deploy ==
-
-To deploy the application you need a development environment. If you already have one in another machine, take a look at the [MconfWebDeploymentManual#(2)_Deploy Deploy section in the manual deployment page].
-
-If you don't have a development environment, you can either [MconfWebDevelopment create one manually] or [MconfWebMconfWebConf using the script mconf-web-conf] (see the usage scenarios). You can setup the development environment in the same machine as the production environment if you want to.
-
-The easiest way to setup a development environment in the same machine and then deploy the application, is to run the following commands:
+There are two files that need to be configured. At first, copy the example files:
 
 {{{
-mconf-web-conf --install-packages development   # install system packages
-mconf-web-conf --checkout                       # get the code
-mconf-web-conf --setup-dev                      # setup config files
-mconf-web-conf --deploy-first-time              # deploy
+cp mconf-web/config/setup_conf.yml.example mconf-web/config/setup_conf.yml
+cp mconf-web/config/database.yml.example mconf-web/config/database.yml
+}}}
+
+`setup_conf.yml` has general configurations for the web application and `database.yml` configures the database. By default, MySQL will be used.
+
+To configure these files, see [MconfWebSetupConf this page].
+
+
+=== 5. Deploy ===
+
+{{{
+mconf-web-conf --deploy
 }}}
