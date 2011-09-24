@@ -66,6 +66,15 @@ If you're installing Mconf-Web in a standalone machine, the script will ask you 
 
 If you're installing Mconf-Web in the same machine where you already have !BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually (see more about this issue [MconfWebDeployInBBBMachine in this page]).
 
+Notice also that the script will always download the latest version available. All the versions are marked as tags in the repository. To see all available versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page].
+
+If you want an specific version, you can change the variable `DEPLOY_VERSION` in the script, such as:
+
+{{{
+DEPLOY_VERSION=v0.3      # this will install version 0.3
+DEPLOY_VERSION=stable    # you can also specify any branch existent in the repository
+}}}
+
 === 4. Edit the configuration files (manual configuration) ===
 
 There are two files that need to be configured. At first, copy the example files:
@@ -108,8 +117,6 @@ mconf-web-conf --update
 mconf-web-conf --restart
 }}}
 
-The update task will download the latest version available. All the versions are marked as tags in the repository. To see all available versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page].
-
-Notice that the application is simply a git repository with the application's source code. So if you know how to use git, you can just update your repository whenever you want to (or even point it to another branches, if needed).
+The update task will download the latest version available, just like the task `--deploy-setup` does. Notice that the application is simply a git repository with the application's source code. So if you know how to use git, you can just update your repository whenever you want to (or even point it to another branches, if needed).
 
 Also, using this script the deployment is not using Capistrano, because Capistrano requires a development environment. Capistrano is very useful to update your application, specially if you have several application servers (one for production and another one for testing, for instance). If you want to know more about it, check the [MconfWebDeploymentManual manual installation guide].
