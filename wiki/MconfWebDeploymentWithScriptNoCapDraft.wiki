@@ -2,6 +2,8 @@ _This page is a continuation of [MconfWebDeployment this page]._
 
 = Mconf-Web Deployment With mconf-web-conf =
 
+Note: From version 0.3, the script has changed quite a bit. The documentation for the old version [MconfWebDeploymentWithScript0.2 can be found here].
+
 == Overview ==
 
 This guide is destined to those who who want an easy way to install Mconf-Web or those who doesn't have experience with Ruby/Rails applications. If you're searching for a more flexible installation (possibly with using more advanced tools), see the [MconfWebDeploymentManual manual installation guide].
