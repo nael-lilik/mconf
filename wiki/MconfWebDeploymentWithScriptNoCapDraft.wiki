@@ -97,6 +97,7 @@ mconf-web-conf --deploy-configure
 
 This command will use the configurations from `setup_conf.yml` and `database.yml` to create the database and start the application for the first time. Be aware that this command will erase your database, so this should not be used if you already have application data in your database.
 
+When it finishes, open your browser and navigate to the IP of the machine where you installed the application to access it. If might take some seconds the first time while the application environment is loaded.
 
 === 6. Maintenance tasks ===
 
