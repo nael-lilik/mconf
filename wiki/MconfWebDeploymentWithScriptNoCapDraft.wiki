@@ -68,7 +68,7 @@ Then edit the files `setup_conf.yml` and `database.yml`. *To configure these fil
 `setup_conf.yml` has general configurations for the web application and `database.yml` configures the database. By default, MySQL will be used. If you haven't set up a password for MySQL yet, you can do it with:
 
 {{{
-mysqladmin -u root password "NEW-PASSWORD"
+mysqladmin -u root password "NEW-PASSWORD" # Use the quotes, they are not part of the password
 }}}
 
 Or, in case you want to change the password:
