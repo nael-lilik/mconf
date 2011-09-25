@@ -56,7 +56,7 @@ mconf-web-conf --install-ruby
 
 Ruby will be installed using [http://beginrescueend.com/ RVM], as multi-user. This means that ruby will be available to all users.
 
-<font color=red>*Important note:*</font> after installing ruby, you should close your terminal and open it again, so that RVM will be fully operational.
+<font color=red>*Important note:*</font> After installing ruby, you should close your terminal and open it again, so that RVM will be fully operational.
 
 === 3. Install a web server and download the aplication ===
 
@@ -70,7 +70,7 @@ If you're installing Mconf-Web in a standalone machine, the script will ask you 
 
 If you're installing Mconf-Web in the same machine where you already have !BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually (see more about this issue [MconfWebDeployInBBBMachine in this page]).
 
-Notice also that the script will always download the latest version available. All the versions are marked as tags in the repository. To see all available versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page].
+Notice also that the script will always download the latest version available. All versions are marked as tags in the repository. To see all available versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page].
 
 If you want an specific version, you can change the variable `DEPLOY_VERSION` in the script, such as:
 
