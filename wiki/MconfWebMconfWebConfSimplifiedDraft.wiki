@@ -88,98 +88,40 @@ Steps:
 mconf-web-conf --deploy-configure
 }}}
 
-This command should be used after editing the configuration files (see [MconfWebDeploymentWithScript this page]) to configure the application's database.
+This command is used to configure the application's database. It should be used after editing the configuration files (see [MconfWebDeploymentWithScript this page]).
 
 <font color=red>*Important note:*</font> Be aware that this command will erase your database, so this should not be used if you already have application data in your database.
 
 Requires:
 
   * Ruby installed with RVM;
-  * The application downloaded and configured (`--deploy-setup`).
+  * The application deployed in ~/mconf-web as a git repository (it will happen if you run `--deploy-setup`).
 
 Steps:
 
-  * Configures the database (run the command `rake setup:db`);
+  * Configures the database (runs the command `rake setup:db`);
   * Creates a new secret key ([http://www.railsrocket.com/rake-secret what is this?]).
 
 === `--update` ===
 
 {{{
-mconf-web-conf --deploy-update
+mconf-web-conf --update
 }}}
 
-Similar to `--deploy-first-time`, but just updates the application instead of deploying from scratch.
-
-Same as `cap production deploy:migrations`. See more at [MconfWebDeploymentManual#Capistrano this page].
+Updates the application to the latest version available. All versions are marked as tags in the repository. To see all available versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page.
 
 Requires:
 
-  * Mconf-Web source code (`--checkout`);
-  * A development environment properly configured (`--setup-dev` and `--config`).
-  * A production environment with the application deployed (`--setup-prod` and `--deploy-first-time`).
+  * The application deployed in ~/mconf-web as a git repository (it will happen if you run `--deploy-setup`).
 
 === `--restart` ===
 
 {{{
-mconf-web-conf --deploy-restart
+mconf-web-conf --restart
 }}}
 
-Similar to `--deploy-udpate`. Restarts the web server. Useful if you changed something in the configuration files and need to reload it.
-
-Same as `cap production deploy:restart`. See more at [MconfWebDeploymentManual#Capistrano this page].
+Restarts the application. Useful if you change the configuration files and need to reload them.
 
 Requires:
 
-  * Mconf-Web source code (`--checkout`);
-  * A development environment properly configured (`--setup-dev` and `--config`).
-  * A production environment with the application deployed (`--setup-prod` and `--deploy-first-time`).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-= Usage Scenarios =
-
-These are the most common uses of `mconf-web-conf`.
-
-*To setup a development environment*:
-{{{
-mconf-web-conf --install-packages development   # install system packages
-mconf-web-conf --install-ruby                   # install ruby
-mconf-web-conf --checkout                       # get the code
-mconf-web-conf --setup-dev                      # setup config files
-}}}
-
-*To setup a production environment*:
-{{{
-mconf-web-conf --install-packages production    # install system packages
-mconf-web-conf --install-ruby                   # install ruby
-mconf-web-conf --setup-prod                     # setup gems and the web server
-}}}
-
-*To deploy the application* (you need both development and production environments to do it):
-{{{
-mconf-web-conf --deploy-first-time              # use the dev environment to deploy the application
-}}}
-
-*To updated and/or restart the deployed application*:
-{{{
-mconf-web-conf --deploy-update                  # update the code in the deployed application (git pull)
-mconf-web-conf --deploy-restart                 # restart the web application
-}}}
+  * The application deployed in ~/mconf-web as a git repository (it will happen if you run `--deploy-setup`).
