@@ -119,4 +119,4 @@ mconf-web-conf --restart
 
 The update task will download the latest version available, just like the task `--deploy-setup` does. Notice that the application is simply a git repository with the application's source code. So if you know how to use git, you can just update your repository whenever you want to (or even point it to another branches, if needed).
 
-Also, using this script the deployment is not using Capistrano, because Capistrano requires a development environment. Capistrano is very useful to update your application, specially if you have several application servers (one for production and another one for testing, for instance). If you want to know more about it, check the [MconfWebDeploymentManual manual installation guide].
+Also, in this script the deployment process doesn't use Capistrano, because Capistrano requires a development environment. Capistrano is very useful to update your application, specially if you have several application servers (one for production and another one for testing, for instance). If you want to know more about it, check the [MconfWebDeploymentManual manual installation guide].
