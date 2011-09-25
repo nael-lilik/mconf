@@ -39,17 +39,19 @@ We provide mobile access in our development server at http://mconfdev.inf.ufrgs.
 = Building the app from the repository =
 
  # Install Android SDK ([http://developer.android.com/sdk/index.html link])
+ # Install Android NDK ([http://developer.android.com/sdk/ndk/index.html link])
+ # Install Apache Ant ([http://ant.apache.org/ link])
+ # Clone the repository
+ # Copy *`./local.properties.template`* to *`./local.properties`* and edit this file to reproduce your environment
+ # Run *`ant build-all`*
+
+If you want to work with Eclipse:
+
  # Install Eclipse ([http://www.eclipse.org/downloads/ link])
  # Configure the environment (Eclipse + Android SDK integration) ([http://developer.android.com/sdk/eclipse-adt.html link])
- # Install Apache Ant ([http://ant.apache.org/ link])
- # Install Android NDK by CrystaX.Net ([http://www.crystax.net/android/ndk-r4.php link]) - only if you want to modify the native code
- # Clone the repository
- # Run *`git submodule init; git submodule update`* to clone the submodules
- # Run *`ant dist`* inside *`flazr/`*
- # In order to compile the native code (only if you modify it), run *`./<NDK-DIR>/ndk-build`* inside the modified project
  # Import all the projects in your workspace on Eclipse
  # Just wait while Eclipse build the code
- # Run *`bbb-android`* as an Android application
+ # Run *`bbb-android`* or *`mconf-mobile`* as an Android application
 
 A full documentation for Android developers is available [http://developer.android.com/index.html here].
 
