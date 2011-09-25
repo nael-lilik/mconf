@@ -1,14 +1,17 @@
 _This page is a continuation of [MconfWebDeployment this page]._
 
+Note: From version 0.3, the script has changed quite a bit. The documentation for the old version [MconfWebDeploymentWithScript0.2 can be found here].
+
+
 = Mconf-Web Deployment With mconf-web-conf =
 
-Note: From version 0.3, the script has changed quite a bit. The documentation for the old version [MconfWebDeploymentWithScript0.2 can be found here].
+<wiki:toc max_depth="3" />
 
 == Overview ==
 
 This guide is destined to those who who want an easy way to install Mconf-Web or those who doesn't have experience with Ruby/Rails applications. If you're searching for a more flexible installation (possibly with using more advanced tools), see the [MconfWebDeploymentManual manual installation guide].
 
-== Starting ==
+== Installing Mconf-Web ==
 
 At first, you have to download and install the script `mconf-web-conf`. For more details about it see [MconfWebMconfWebConf this page].
 
@@ -33,8 +36,7 @@ The steps you will need to install the application are:
   # Install ruby;
   # Install the web server and download the application;
   # Edit some configuration files;
-  # Finaly, deploy;
-  # Maintenance tasks.
+  # Finaly, deploy.
 
 *Note:* Don't run the commands as sudo. When superuser permissions are required the script will ask you for a password.
 
@@ -108,7 +110,7 @@ This command will use the configurations from `setup_conf.yml` and `database.yml
 
 When it finishes, open your browser and navigate to the IP of the machine where you installed the application to access it. If might take some seconds the first time while the application environment is loaded.
 
-=== 6. Maintenance tasks ===
+== Maintenance tasks ==
 
 The script also provides commands to update your application and restart it. They are:
 
