@@ -1,0 +1,8 @@
+We are using [http://code.google.com/p/acra/ ACRA] to receive crash reports from users.
+
+On the Google Docs Spreadsheet, we use colors to differentiate the status of the issues reported:
+
+ * Not handled yet
+ * <font color="red">Won't be fixed</font>
+ * <font color="blue">Reported on Google Code</font>
+ * <font color="green">Fixed</font>
