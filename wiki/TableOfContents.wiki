@@ -3,6 +3,7 @@
     * [MconfVM Mconf VM]
   * [MconfBBB Mconf-BBB]
   * [MconfMobile Mconf-Mobile]
+    * [MconfMobileCrashReport Crash report]
     * [MconfMobileVideoIntegration Video-Integration]
       * [MconfMobileVideoAlternatives Alternatives that didn't work]
       * [MconfMobileVideoImplementation Implementation description]
