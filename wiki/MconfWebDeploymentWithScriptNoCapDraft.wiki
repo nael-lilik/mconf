@@ -9,7 +9,7 @@ Note: From version 0.3, the script has changed quite a bit. The documentation fo
 
 == Overview ==
 
-This guide is destined to those who search an easy way to install Mconf-Web or those who haven't experience with Ruby/Rails applications. If you're searching for a more flexible installation (possibly with using more advanced tools), see the [MconfWebDeploymentManual manual installation guide].
+This guide is destined to those who search an easy way to install Mconf-Web or those that have no experience with Ruby/Rails applications. If you're searching for a more flexible installation (possibly with using more advanced tools), see the [MconfWebDeploymentManual manual installation guide].
 
 == Installing Mconf-Web ==
 
