@@ -1,0 +1,163 @@
+_This page is a continuation of [MconfWebDeployment this page]._
+
+Note: From version 0.3, the script has changed quite a bit. The documentation for the old version [MconfWebDeploymentManual0.2 can be found here].
+
+= Mconf-Web Manual Deployment (step-by-step guide) =
+
+<wiki:toc max_depth="3" />
+
+== Overview ==
+
+This is a step-by-step guide showing every detail needed to install Mconf-Web. If you have experience deploying a Rails application this guide should look very familiar to you. Otherwise, if you don't have experience with that or if you're searching for an easier way to install the application, [MconfWebDeploymentWithScript check this page]. 
+
+We tried to keep this page in the same format as the page that describes how to install Mconf-Web using the script `mconf-web-conf` ([http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript here], so that you can easily relate both guides and solve any doubts you may have.
+
+== Installing Mconf-Web ==
+
+
+=== 1. System Packages ===
+
+You need to install some system packages before you can run Mconf-web in production. The packages are listed in a file that you can find at [https://github.com/mconf/mconf-web/blob/master/config/packages.ubuntu config/packages.ubuntu]. You can download this file and install the packages with:
+
+{{{
+curl https://raw.github.com/mconf/mconf-web/master/config/packages.ubuntu -o packages.ubuntu
+source packages.ubuntu
+sudo apt-get install ${PACKAGES_PRODUCTION[@]}
+rm packages.ubuntu
+}}}
+
+You will be prompted to type a password for MySQL in case you don't have it installed yet.
+
+=== 2. Ruby ===
+
+<font color=red>*TODO:* Update to install RVM as multi-user</font>
+
+Mconf-web uses Ruby *1.9.2*. To install Ruby, we suggest the use of RVM. There are scripts in Mconf-web that assume you have RVM installed, so you should use it unless you can't do it for some reason.
+
+You can install RVM following our [RVMQuickSteps quick steps] or following [https://rvm.beginrescueend.com/rvm/install/ RVM's install page]. 
+
+If you decided to use RVM, don't forget to actually install Ruby (and not only RVM) and create a gemset for Mconf-web:
+
+{{{
+rvm install 1.9.2
+rvm gemset create mconf
+rvm use --default 1.9.2@mconf
+}}}
+
+=== 3. Install a web server ===
+
+You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache if you're installing Mconf-Web in the same machine that has !BigBlueButton. If Mconf-Web will be installed in a standalone machine, you can pick your favorite server.
+
+The guides to install the web server are in separate wiki pages:
+
+  * [MconfWebDeploymentInstallApache Guide to install Apache]
+  * [MconfWebDeploymentInstallNginx Guide to install Nginx]
+
+
+=== 4. Edit the configuration files (manual configuration) ===
+
+=== 5. Deploy for the first time ===
+
+== Maintenance tasks ==
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+== (2) Deploy ==
+
+After the previous steps, your server is configured and you can start to deploy the application. The following steps are all executed from your _development_ environment using Capistrano.
+
+=== Capistrano ===
+
+Capistrano is a ruby gem that helps you deploy applications. You run commands from your development environment and they affect your production server.
+
+You should start by editing the file <tt>config/deploy/conf.yml</tt>. This file contains the configurations for the "two stages" we use for deployment:
+
+  * "staging": this is a stage to test your application before deploying it to the real production server;
+  * "production": the real production server.
+
+All the examples below are for the "staging" stage. You can use the same commands for "production", just replace "staging" for "production".
+
+==== Set up ssh keys ====
+
+To enable capistrano to access your server you have to generate a public key for your local user (if you don't have one yet) and allow access to it in your server. You can find plenty of resources about it in the web, but shortly, you could do the following:
+
+{{{
+# generate the key
+mkdir ~/.ssh && chmod 700 ~/.ssh
+ssh-keygen -t rsa
+  -> (you will be prompted for a password)
+
+# set it in your server (NOTE: don't forget to change "deploy@myserver.com")
+cat ~/.ssh/id_rsa.pub | ssh deploy@myserver.com "cat >> .ssh/authorized_keys2"
+}}}
+
+More information at:
+
+  * https://help.ubuntu.com/community/SSH/OpenSSH/Keys
+  * http://help.github.com/deploy-keys/
+  * http://snippets.dzone.com/posts/show/5730
+
+==== First deploment ====
+
+Our deploy has a task called `setup:all` that can be used to setup a server for the first time. Run:
+
+{{{
+cap staging setup:all
+}}}
+
+This task will do the following:
+  * Create the basic directories in the server;
+  * Checkout Mconf-web from github (using the branch you specified in <tt>conf.yml</tt>) and make it available to be served by Nginx;
+  * Setup the database (with the basic data needed).
+
+  <font color="red">*Important:*</font> The configuration files used in your development environment will be uploaded to the production server. So make sure you configured them. If you change any of them and need to upload to the production server, run:
+  {{{
+cap staging deploy:update
+  }}}
+
+==== Updating the server ====
+
+After a while, you'll want to update the code of your server. Since you already have everything setup, it's pretty simple. Just run:
+
+{{{
+cap staging deploy:migrations  # update to a new release, run the migrations (i.e. updates the DB) and restart the web server
+}}}
+
+==== Further information ====
+
+Capistrano has some other tasks you may need. You can see them all running:
+
+{{{
+cap -T
+}}}
+
+Below there's a list with tasks defined by Mconf-Web that you will possibly use:
+
+{{{
+cap staging deploy:udpate       # update to a new release
+cap staging deploy:migrate      # run migrations
+cap staging deploy:restart      # restart the web server
+cap staging deploy:web:disable  # start maintenance mode (the site will be offline)
+cap staging deploy:web:enable   # stop maintenance mode (the site will be online)
+cap staging deploy:rollback     # go back to the previous version
+cap staging setup:secret        # creates a new secret token (requires restart)
+cap staging setup:db            # drops, creates and populates the db with the basic data
+}}}
+
+The files used by Capistrano that you may want to edit are:
+
+  * <tt>config/deploy.rb</tt>
+  * <tt>config/deploy/conf.yml</tt>
+  * <tt>config/deploy/production.rb</tt>
+  * <tt>config/deploy/staging.rb</tt>
+
+Links:
+
+  * Capistrano documentation: https://github.com/capistrano/capistrano/wiki
+  * Multiple stages in Capistrano: https://github.com/capistrano/capistrano/wiki/2.x-Multistage-Extension
