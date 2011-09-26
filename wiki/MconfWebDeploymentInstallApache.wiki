@@ -1,0 +1,80 @@
+_This page is part of the Mconf-Web deployment described in [MconfWebDeploymentManual this page]._
+
+== Installing Apache for Mconf-Web ==
+
+To use Apache with Passenger, you first need to install Apache and some other dependencies required by Passenger. There are several packages needed. You can download the list and install the packages with:
+
+{{{
+curl https://raw.github.com/mconf/mconf-web/master/config/packages.ubuntu -o packages.ubuntu
+source packages.ubuntu
+sudo apt-get install ${PACKAGES_APACHE[@]}
+rm packages.ubuntu
+}}}
+
+You can also see the list of packages [https://github.com/mconf/mconf-web/blob/master/config/packages.ubuntu in this file] in our repository
+
+Next, install Passenger (it's a ruby gem) and it's module for Apache. Passenger has a nice installer that will compile the Apache module and install it for you. If some dependency is missing it will warn you and help you install it. Run the following commands:
+
+{{{
+gem install passenger
+rvmsudo passenger-install-apache2-module
+}}}
+
+The application `passenger-install-apache2-module` is interactive and has the following steps:
+
+  # Check for dependencies: If your system is missing any required software, it will warn you and tell you how to install them;
+  # Automatically compile and install the module for Apache;
+  # It will show you some lines that must be added the you Apache configuration file. Ignore this for now, the next step of this guide will show you how to configure it.
+  # In the last step it will give you an example of how to deploy an application. Ignore the example for now, the next step of this guide will show you the specific configurations for Mconf-web.
+
+See more about Passenger at [http://www.modrails.com/ their website] and [http://www.modrails.com/videos/passenger.mov check this video] to see how it can be installed along with Apache.
+
+=== Apache Configuration ===
+
+By default Apache is installed at `/etc/apache2/` and it's configuration file will be at `/etc/apache2/apache2.conf`.
+You can add configuration files at `/etc/apache2/conf.d/` and sites at `/etc/apache2/sites-available/`.
+
+At first, enable the Passenger module in Apache:
+
+{{{
+rvmsudo passenger-install-apache2-module --snippet | sudo tee /etc/apache2/conf.d/mconf-passenger
+}}}
+
+This will create a new configuration file with the Passenger module snippet, the same block Passenger showed you in the item 3. in the previous section. If you already added these lines to you config file, ignore this step.
+
+Next, we enable the rewrite module in Apache and remove any default site existent:
+
+{{{
+sudo ln -f -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
+sudo rm /etc/apache2/sites-enabled/*
+}}}
+
+Now you need to add a configuration file for Mconf-Web. You might just download our example edit it:
+
+{{{
+curl https://raw.github.com/mconf/mconf-web/master/config/apache2.conf.example -o /etc/apache2/sites-available/mconf-web
+}}}
+
+This is the content of this file:
+
+{{{
+<VirtualHost *:80>
+  ServerName www.yourhost.com
+  DocumentRoot /somewhere/public
+  <Directory /somewhere/public>
+    AllowOverride all
+    Options -MultiViews
+  </Directory>
+</VirtualHost>
+}}}
+
+You should change "`www.yourhost.com`" for your IP or domain and "`/somewhere/public`" (both occurrences) for the path to your Mconf-Web application. Following this guide, the path should be "`/home/mconf/mconf-web/current/public`".
+
+
+Last, restart Apache and it should be ready to serve Mconf-Web:
+
+{{{
+sudo /etc/init.d/apache2 restart
+}}}
+
+Open your browser and try to access your localhost. You should see a page with the error "404 Not Found". That is ok, Apache can't find the application because it was not deployed yet. Proceed to the [MconfWebDeploymentManual#(2)_Deploy (2) Deploy] section.
