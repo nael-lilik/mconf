@@ -79,7 +79,8 @@ Steps:
   * Installs the web server:
     * The user will be prompted to choose between Apache or Nginx.
   * Downloads the latest version of Mconf-Web (the latest tag in our git repository);
-  * Installs the rest of the dependencies (the gems specified in the Gemfile and git submodules).
+  * Installs the rest of the dependencies (the gems specified in the Gemfile and git submodules);
+  * Installs god, a process monitoring framework (see more about it in the [MconfWebDeploymentManual installation page]).
 
 
 === `--deploy-configure` ===
