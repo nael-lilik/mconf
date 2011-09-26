@@ -15,7 +15,7 @@ This guide is destined to those who search an easy way to install Mconf-Web or t
 
 At first, you have to download and install the script `mconf-web-conf`. For more details about it see [MconfWebMconfWebConf this page].
 
-You can download it and use from your local folder with:
+You can download it and use from your local folder with (note: install curl if you don't have it yet):
 
 {{{
 curl https://raw.github.com/mconf/mconf-web/master/script/mconf-web-conf -o mconf-web-conf
