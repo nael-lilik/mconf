@@ -44,7 +44,9 @@ rvm gemset create mconf
 rvm use --default 1.9.2@mconf
 }}}
 
-=== 3. Install a web server ===
+=== 3. Install a web server, more dependencies and download the aplication ===
+
+==== 3.1. Web server ====
 
 You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache if you're installing Mconf-Web in the same machine that has !BigBlueButton. If Mconf-Web will be installed in a standalone machine, you can pick your favorite server.
 
@@ -54,110 +56,134 @@ The guides to install the web server are in separate wiki pages:
   * [MconfWebDeploymentInstallNginx Guide to install Nginx]
 
 
+==== 3.2. Other dependencies ====
+
+In this step the script `mconf-web-conf` installs: bundler, passenger, god and all the other gems needed (they are installed using bundler). Following this manual guide, you've already installed passenger. The other gems will be installed after checking out the repository. So what we need here is to install bundler and god.
+
+*Bundler* is pretty simple. The latest version should work, but if not, try the version set in GEM_VERSION_BUNDLER in `mconf-web-conf`. Bundler is used to install and manage all other gems that Mconf-Web uses. Install it with:
+
+{{{
+gem install god
+}}}
+
+*God* is a process monitoring framework and is also a gem. But god is a little bit trickier to install. We need to install it as a system-wide application and configure it as such. God should be always running, just like your web server will always be running.
+
+At first, install it with:
+
+{{{
+gem install god 0.11.0
+}}}
+
+If you're using RVM you need to create a wrapper for god:
+
+{{{
+rvm wrapper 1.9.2@mconf bootup god
+}}}
+
+Next, we'll create a configuration file for god at `/etc/god/config`, that will simply load any other configuration file in `/etc/god/conf.d/`.
+
+{{{
+sudo mkdir -p /etc/god/conf.d/
+sudo curl https://raw.github.com/mconf/mconf-web/master/config/god/config -o /etc/god/config
+}}}
+
+God for now is used to monitor the process `delayed_job` (used to deliver emails, mostly). So you need to install god's configuration file for delayed_job:
+
+{{{
+sudo curl https://raw.github.com/mconf/mconf-web/master/config/god/delayed_job.god -o /etc/god/conf.d/delayed_job.god
+}}}
+
+This file has a line that points to Mconf-Web's path, so it should be edited to match the path where you will place Mconf-Web. You can use the following command to edit it (replace `%PATH%` with the actual path):
+
+{{{
+sudo sed -i "s:^RAILS_ROOT =.*:RAILS_ROOT = \"%PATH%\":g" /etc/god/conf.d/delayed_job.god
+}}}
+
+To start and stop god, we'll install an init script in `/etc/init.d/`:
+
+{{{
+sudo curl https://raw.github.com/mconf/mconf-web/simplify_install_script/config/god/init_script -o /etc/init.d/god
+sudo chmod a+x /etc/init.d/god
+sudo update-rc.d god defaults
+}}}
+
+Then you can start/stop god with:
+
+{{{
+sudo /etc/init.d/god {start|stop|restart|status}
+}}}
+
+==== 3.3. Checkout the code ====
+
+<font color=red>*Note:* </font>This and the following steps are not necessary if you want to use Capistrano. Capistrano will checkout the code for you in your production server. See [MconfWebDeploymentWithCapistrano this page] to know how to deploy with Capistrano.
+
+Install git if you don't have it and clone Mconf-Web:
+
+{{{
+sudo apt-get install git-core
+git clone git://github.com/mconf/mconf-web.git ~/mconf-web
+}}}
+
+Your application will be deployed at `~/mconf-web/`, but you can change it if you need to.
+
+Next, change your repository to the version you want to deploy. If you don't do this, you'll be deploying the master branch, and it is not recommended.
+
+{{{
+cd ~/mconf-web/
+git checkout v0.3  # go to version 0.3
+}}}
+
+The versions available are the tags available. To see all versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page]. 
+
+With the repository you can now install the other dependencies that we skipped in the step 3.2. Go to the repository and run:
+
+{{{
+bundle install
+}}}
+
+
 === 4. Edit the configuration files (manual configuration) ===
 
+<font color=red>*Note:* </font>If you'll use Capistrano, you should never edit the configuration files in you server. Edit them in your development machine and they will be uploaded to the server. See [MconfWebDeploymentWithCapistrano this page].
+
+
+There are two files that need to be configured. At first, copy the example files:
+
+{{{
+cp ~/mconf-web/config/setup_conf.yml.example ~/mconf-web/config/setup_conf.yml
+cp ~/mconf-web/config/database.yml.example ~/mconf-web/config/database.yml
+}}}
+
+Then edit the files `setup_conf.yml` and `database.yml`. *To configure these files, see [MconfWebSetupConf this page]*.
+
+`setup_conf.yml` has general configurations for the web application and `database.yml` configures the database. By default, MySQL will be used. If you haven't set up a password for MySQL yet, you can do it with:
+
+{{{
+mysqladmin -u root password "NEW-PASSWORD" # Use the quotes, they are not part of the password
+}}}
+
+Or, in case you want to change the password:
+
+{{{
+mysqladmin -u root -p password "NEW-PASSWORD"
+}}}
+
 === 5. Deploy for the first time ===
+
+<font color=red>*Note:* </font>If you'll use Capistrano this is not needed. See [MconfWebDeploymentWithCapistrano this page].
+
+.....
+
+{{{
+bundle exec rake setup:db RAILS_ENV=production
+bundle exec rake secret RAILS_ENV=production
+}}}
+
+restart all
 
 == Maintenance tasks ==
 
 
+update code
 
--------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-== (2) Deploy ==
-
-After the previous steps, your server is configured and you can start to deploy the application. The following steps are all executed from your _development_ environment using Capistrano.
-
-=== Capistrano ===
-
-Capistrano is a ruby gem that helps you deploy applications. You run commands from your development environment and they affect your production server.
-
-You should start by editing the file <tt>config/deploy/conf.yml</tt>. This file contains the configurations for the "two stages" we use for deployment:
-
-  * "staging": this is a stage to test your application before deploying it to the real production server;
-  * "production": the real production server.
-
-All the examples below are for the "staging" stage. You can use the same commands for "production", just replace "staging" for "production".
-
-==== Set up ssh keys ====
-
-To enable capistrano to access your server you have to generate a public key for your local user (if you don't have one yet) and allow access to it in your server. You can find plenty of resources about it in the web, but shortly, you could do the following:
-
-{{{
-# generate the key
-mkdir ~/.ssh && chmod 700 ~/.ssh
-ssh-keygen -t rsa
-  -> (you will be prompted for a password)
-
-# set it in your server (NOTE: don't forget to change "deploy@myserver.com")
-cat ~/.ssh/id_rsa.pub | ssh deploy@myserver.com "cat >> .ssh/authorized_keys2"
-}}}
-
-More information at:
-
-  * https://help.ubuntu.com/community/SSH/OpenSSH/Keys
-  * http://help.github.com/deploy-keys/
-  * http://snippets.dzone.com/posts/show/5730
-
-==== First deploment ====
-
-Our deploy has a task called `setup:all` that can be used to setup a server for the first time. Run:
-
-{{{
-cap staging setup:all
-}}}
-
-This task will do the following:
-  * Create the basic directories in the server;
-  * Checkout Mconf-web from github (using the branch you specified in <tt>conf.yml</tt>) and make it available to be served by Nginx;
-  * Setup the database (with the basic data needed).
-
-  <font color="red">*Important:*</font> The configuration files used in your development environment will be uploaded to the production server. So make sure you configured them. If you change any of them and need to upload to the production server, run:
-  {{{
-cap staging deploy:update
-  }}}
-
-==== Updating the server ====
-
-After a while, you'll want to update the code of your server. Since you already have everything setup, it's pretty simple. Just run:
-
-{{{
-cap staging deploy:migrations  # update to a new release, run the migrations (i.e. updates the DB) and restart the web server
-}}}
-
-==== Further information ====
-
-Capistrano has some other tasks you may need. You can see them all running:
-
-{{{
-cap -T
-}}}
-
-Below there's a list with tasks defined by Mconf-Web that you will possibly use:
-
-{{{
-cap staging deploy:udpate       # update to a new release
-cap staging deploy:migrate      # run migrations
-cap staging deploy:restart      # restart the web server
-cap staging deploy:web:disable  # start maintenance mode (the site will be offline)
-cap staging deploy:web:enable   # stop maintenance mode (the site will be online)
-cap staging deploy:rollback     # go back to the previous version
-cap staging setup:secret        # creates a new secret token (requires restart)
-cap staging setup:db            # drops, creates and populates the db with the basic data
-}}}
-
-The files used by Capistrano that you may want to edit are:
-
-  * <tt>config/deploy.rb</tt>
-  * <tt>config/deploy/conf.yml</tt>
-  * <tt>config/deploy/production.rb</tt>
-  * <tt>config/deploy/staging.rb</tt>
-
-Links:
-
-  * Capistrano documentation: https://github.com/capistrano/capistrano/wiki
-  * Multiple stages in Capistrano: https://github.com/capistrano/capistrano/wiki/2.x-Multistage-Extension
+restart server
