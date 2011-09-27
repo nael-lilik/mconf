@@ -138,6 +138,8 @@ The versions available are the tags available. To see all versions, go to [https
 With the repository you can now install the other dependencies that we skipped in the step 3.2. Go to the repository and run:
 
 {{{
+git submodule init
+git submodule update
 bundle install
 }}}
 
@@ -168,22 +170,39 @@ Or, in case you want to change the password:
 mysqladmin -u root -p password "NEW-PASSWORD"
 }}}
 
+
 === 5. Deploy for the first time ===
 
 <font color=red>*Note:* </font>If you'll use Capistrano this is not needed. See [MconfWebDeploymentWithCapistrano this page].
 
-.....
+This step consists of everything that was not possible to be done at 3. because we needed the configuration files properly edited.
+
+We'll setup the database and generate a new [http://www.railsrocket.com/rake-secret secret key] for rails:
 
 {{{
 bundle exec rake setup:db RAILS_ENV=production
 bundle exec rake secret RAILS_ENV=production
 }}}
 
-restart all
+After that, you should restart your application. See the maintenance tasks below.
+
 
 == Maintenance tasks ==
 
 
-update code
+=== Restart ===
+
+To restart the application you need to restart the web server and god:
+
+{{{
+sudo /etc/init.d/apache2 restart  # if you're using apache
+sudo /etc/init.d/god restart
+}}}
+
+You don't always need to restart god, only if you changed anything in it's configuration files. The web server you'll need to restart every time you change anything in the application (source code) or configuration files.
+
+=== Update ===
+
+........
 
 restart server
