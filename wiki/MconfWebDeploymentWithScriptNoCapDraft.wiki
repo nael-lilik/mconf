@@ -58,9 +58,9 @@ Ruby will be installed using [http://beginrescueend.com/ RVM], as multi-user. Th
 
 <font color=red>*Important note:*</font> After installing ruby, you should close your terminal and open it again, so that RVM will be fully operational.
 
-=== 3. Install a web server and download the aplication ===
+=== 3. Install a web server, more dependencies and download the aplication ===
 
-This command will install the web server and checkout the source code for Mconf-Web.
+This command will install the web server, other dependencies (gems) and checkout the source code for Mconf-Web.
 
 {{{
 mconf-web-conf --deploy-setup
