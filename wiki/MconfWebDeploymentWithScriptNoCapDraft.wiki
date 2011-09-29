@@ -23,22 +23,19 @@ chmod a+x mconf-web-conf
 }}}
 
 
-Or install it in your system:
+Or install it in your system to be available to all users:
 
 {{{
 sudo curl https://raw.github.com/mconf/mconf-web/master/script/mconf-web-conf -o /usr/local/bin/mconf-web-conf
 sudo chmod a+x /usr/local/bin/mconf-web-conf
 }}}
 
-The steps you will need to install the application are:
-
-  # Install dependencies (system packages);
-  # Install ruby;
-  # Install the web server and download the application;
-  # Edit some configuration files;
-  # Finaly, deploy.
+After downloading the script, follow the steps below to install the application.
 
 *Note:* Don't run the commands as sudo. When superuser permissions are required the script will ask you for a password.
+
+
+
 
 === 1. System Packages ===
 
@@ -48,6 +45,9 @@ mconf-web-conf --install-packages
 
 You can see the list of packages that will be installed [https://github.com/mconf/mconf-web/blob/master/config/packages.ubuntu in this file].
 
+
+
+
 === 2. Ruby ===
 
 {{{
@@ -56,7 +56,10 @@ mconf-web-conf --install-ruby
 
 Ruby will be installed using [http://beginrescueend.com/ RVM], as multi-user. This means that ruby will be available to all users.
 
-<font color=red>*Important note:*</font> After installing ruby, you should close your terminal and open it again, so that RVM will be fully operational.
+<font color=red>*Important: *</font>After installing ruby, you should close your terminal and open it again, so that RVM will be fully operational.
+
+
+
 
 === 3. Download the application ===
 
@@ -72,6 +75,7 @@ If you want an specific version, you can change the variable `DEPLOY_VERSION` in
 DEPLOY_VERSION=v0.3      # this will install version 0.3
 DEPLOY_VERSION=stable    # you can also specify any branch existent in the repository
 }}}
+
 
 
 === 4. Edit the configuration files (manual configuration) ===
@@ -97,30 +101,29 @@ Or, in case you want to change the password:
 mysqladmin -u root -p password "NEW-PASSWORD"
 }}}
 
+
+
 === 5. Install a web server, configure the application and deploy ===
 
-This command will install the web server, other dependencies (gems) and checkout the source code for Mconf-Web.
+This command will install the web server, configure the application using the configuration files you edited earlier, and with that the application will be deployed.
 
 {{{
 mconf-web-conf --deploy-setup
 }}}
 
+==== 5.1 Web server ====
+
 If you're installing Mconf-Web in a standalone machine, the script will ask you if you want to use Apache or Nginx. You can use the one you prefer.
 
 If you're installing Mconf-Web in the same machine where you already have !BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually (see more about this issue [MconfWebDeployInBBBMachine in this page]).
 
+==== 5.2 Configuration and deploy ====
 
-=== 5. Deploy for the first time ===
+This command will use the configurations from `setup_conf.yml` and `database.yml` to create the database and start the application for the first time. When it finishes, open your browser and navigate to the IP of the machine where you installed the application to access it. If might take some seconds the first time while the application environment is loaded.
 
-{{{
-mconf-web-conf --deploy-configure
-}}}
+<font color=red>*Important:* </font>Be aware that this command will erase your database, so this should not be used if you already have application data in your database.
 
-This command will use the configurations from `setup_conf.yml` and `database.yml` to create the database and start the application for the first time.
 
-<font color=red>*Important note:*</font> Be aware that this command will erase your database, so this should not be used if you already have application data in your database.
-
-When it finishes, open your browser and navigate to the IP of the machine where you installed the application to access it. If might take some seconds the first time while the application environment is loaded.
 
 == Maintenance tasks ==
 
