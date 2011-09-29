@@ -12,6 +12,7 @@ This is a step-by-step guide showing every detail needed to install Mconf-Web. I
 
 We tried to keep this page in the same format as the page that describes how to install Mconf-Web using the script `mconf-web-conf` ([http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript here], so that you can easily relate both guides and solve any doubts you may have.
 
+
 == Installing Mconf-Web ==
 
 
@@ -27,6 +28,9 @@ rm packages.ubuntu
 }}}
 
 You will be prompted to type a password for MySQL in case you don't have it installed yet.
+
+
+
 
 === 2. Ruby ===
 
@@ -44,9 +48,77 @@ rvm gemset create mconf
 rvm use --default 1.9.2@mconf
 }}}
 
-=== 3. Install a web server, more dependencies and download the aplication ===
 
-==== 3.1. Web server ====
+
+
+=== 3. Download the application ===
+
+<font color=blue>Note about Capistrano: </font>This is not necessary if you want to use Capistrano, it will checkout the code for you in your production server. So you can skip this step if you'll use Capistrano. See [MconfWebDeploymentWithCapistrano this page] to know how to deploy with Capistrano. 
+
+Install git if you don't have it and clone Mconf-Web:
+
+{{{
+sudo apt-get install git-core
+mkdir -p ~/mconf-web/current/
+git clone git://github.com/mconf/mconf-web.git ~/mconf-web/current/
+}}}
+
+Your application will be deployed at `~/mconf-web/current/`, but you can change it if you need to. It is the default path, so it should require less configurations if you don't change it.
+
+Next, change your repository to the version you want to deploy. If you don't do this, you'll be deploying the master branch, and it is not recommended.
+
+{{{
+cd ~/mconf-web/
+git checkout v0.3  # go to version 0.3
+}}}
+
+The versions available are the tags available. To see all versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page]. 
+
+With the repository you can now install the dependencies. All dependencies are either gems (and are listed in the Gemfile) or submodules. However, to install the gems first we need to manually install bundler, that will be used to install all the other dependencies. See the commands below:
+
+{{{
+git submodule init
+git submodule update
+gem install bundler -v 1.0.18
+bundle install
+}}}
+
+
+
+
+=== 4. Edit the configuration files (manual configuration) ===
+
+<font color=blue>Note about Capistrano: </font>If you'll use Capistrano, you should never edit the configuration files in you server. Edit them in your development machine and they will be uploaded to the server. See [MconfWebDeploymentWithCapistrano this page].
+
+
+There are two files that need to be configured. At first, copy the example files:
+
+{{{
+cp ~/mconf-web/config/setup_conf.yml.example ~/mconf-web/config/setup_conf.yml
+cp ~/mconf-web/config/database.yml.example ~/mconf-web/config/database.yml
+}}}
+
+Then edit the files `setup_conf.yml` and `database.yml`. *To configure these files, see [MconfWebSetupConf this page]*.
+
+`setup_conf.yml` has general configurations for the web application and `database.yml` configures the database. By default, MySQL will be used. If you haven't set up a password for MySQL yet, you can do it with:
+
+{{{
+mysqladmin -u root password "NEW-PASSWORD" # Use the quotes, they are not part of the password
+}}}
+
+Or, in case you want to change the password:
+
+{{{
+mysqladmin -u root -p password "NEW-PASSWORD"
+}}}
+
+
+
+
+
+=== 5. Install a web server, configure the application and deploy ===
+
+==== 5.1. Web server ====
 
 You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache if you're installing Mconf-Web in the same machine that has !BigBlueButton. If Mconf-Web will be installed in a standalone machine, you can pick your favorite server.
 
@@ -56,15 +128,8 @@ The guides to install the web server are in separate wiki pages:
   * [MconfWebDeploymentInstallNginx Guide to install Nginx]
 
 
-==== 3.2. Other dependencies ====
+==== 5.2. System-wide configurations ====
 
-In this step the script `mconf-web-conf` installs: bundler, passenger, god and all the other gems needed (they are installed using bundler). Following this manual guide, you've already installed passenger. The other gems will be installed after checking out the repository. So what we need here is to install bundler and god.
-
-*Bundler* is pretty simple. The latest version should work, but if not, try the version set in GEM_VERSION_BUNDLER in `mconf-web-conf`. Bundler is used to install and manage all other gems that Mconf-Web uses. Install it with:
-
-{{{
-gem install god
-}}}
 
 *God* is a process monitoring framework and is also a gem. But god is a little bit trickier to install. We need to install it as a system-wide application and configure it as such. God should be always running, just like your web server will always be running.
 
@@ -113,67 +178,11 @@ Then you can start/stop god with:
 sudo /etc/init.d/god {start|stop|restart|status}
 }}}
 
-==== 3.3. Checkout the code ====
 
-<font color=red>*Note:* </font>This and the following steps are not necessary if you want to use Capistrano. Capistrano will checkout the code for you in your production server. See [MconfWebDeploymentWithCapistrano this page] to know how to deploy with Capistrano.
+==== 5.3. Application configurations ====
 
-Install git if you don't have it and clone Mconf-Web:
+<font color=blue>Note about Capistrano: </font>If you'll use Capistrano this is not needed. See [MconfWebDeploymentWithCapistrano this page].
 
-{{{
-sudo apt-get install git-core
-git clone git://github.com/mconf/mconf-web.git ~/mconf-web
-}}}
-
-Your application will be deployed at `~/mconf-web/`, but you can change it if you need to.
-
-Next, change your repository to the version you want to deploy. If you don't do this, you'll be deploying the master branch, and it is not recommended.
-
-{{{
-cd ~/mconf-web/
-git checkout v0.3  # go to version 0.3
-}}}
-
-The versions available are the tags available. To see all versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page]. 
-
-With the repository you can now install the other dependencies that we skipped in the step 3.2. Go to the repository and run:
-
-{{{
-git submodule init
-git submodule update
-bundle install
-}}}
-
-
-=== 4. Edit the configuration files (manual configuration) ===
-
-<font color=red>*Note:* </font>If you'll use Capistrano, you should never edit the configuration files in you server. Edit them in your development machine and they will be uploaded to the server. See [MconfWebDeploymentWithCapistrano this page].
-
-
-There are two files that need to be configured. At first, copy the example files:
-
-{{{
-cp ~/mconf-web/config/setup_conf.yml.example ~/mconf-web/config/setup_conf.yml
-cp ~/mconf-web/config/database.yml.example ~/mconf-web/config/database.yml
-}}}
-
-Then edit the files `setup_conf.yml` and `database.yml`. *To configure these files, see [MconfWebSetupConf this page]*.
-
-`setup_conf.yml` has general configurations for the web application and `database.yml` configures the database. By default, MySQL will be used. If you haven't set up a password for MySQL yet, you can do it with:
-
-{{{
-mysqladmin -u root password "NEW-PASSWORD" # Use the quotes, they are not part of the password
-}}}
-
-Or, in case you want to change the password:
-
-{{{
-mysqladmin -u root -p password "NEW-PASSWORD"
-}}}
-
-
-=== 5. Deploy for the first time ===
-
-<font color=red>*Note:* </font>If you'll use Capistrano this is not needed. See [MconfWebDeploymentWithCapistrano this page].
 
 This step consists of everything that was not possible to be done at 3. because we needed the configuration files properly edited.
 
