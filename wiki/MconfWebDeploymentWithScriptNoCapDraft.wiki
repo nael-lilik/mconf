@@ -48,7 +48,7 @@ mconf-web-conf --install-packages
 
 You can see the list of packages that will be installed [https://github.com/mconf/mconf-web/blob/master/config/packages.ubuntu in this file].
 
-=== 2. Ruby (using RVM) ===
+=== 2. Ruby ===
 
 {{{
 mconf-web-conf --install-ruby
