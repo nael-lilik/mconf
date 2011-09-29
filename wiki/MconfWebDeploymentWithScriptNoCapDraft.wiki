@@ -69,6 +69,8 @@ mconf-web-conf --checkout
 
 This command will download the application from git. The script will always download the latest version available, the ones that are marked as tags in the repository. To see all available versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page].
 
+The application will be checked out to `~/mconf-web/current/`.
+
 If you want an specific version, you can change the variable `DEPLOY_VERSION` in the script, such as:
 
 {{{
@@ -83,8 +85,8 @@ DEPLOY_VERSION=stable    # you can also specify any branch existent in the repos
 There are two files that need to be configured. At first, copy the example files:
 
 {{{
-cp ~/mconf-web/config/setup_conf.yml.example ~/mconf-web/config/setup_conf.yml
-cp ~/mconf-web/config/database.yml.example ~/mconf-web/config/database.yml
+cp ~/mconf-web/current/config/setup_conf.yml.example ~/mconf-web/current/config/setup_conf.yml
+cp ~/mconf-web/current/config/database.yml.example ~/mconf-web/current/config/database.yml
 }}}
 
 Then edit the files `setup_conf.yml` and `database.yml`. *To configure these files, see [MconfWebSetupConf this page]*.
