@@ -4,10 +4,12 @@ _This page is part of the Mconf-Web deployment described in [MconfWebDeploymentM
 
 _*Note:* If you're installing Mconf-Web in the same machine where you already have !BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually (see more about this issue [MconfWebDeployInBBBMachine in this page])._
 
-To use Nginx with Passenger, first install Passenger (it's a ruby gem) and then it will help you download, compile and install Nginx. Actually, it will do it all for you. Run the following commands:
+To use Nginx with Passenger, first install Passenger (it's a ruby gem) and then it will help you download, compile and install Nginx. If you're following the [MconfWebDeploymentManual manual deployment guide], you already have Passenger installed, so you don't need to do it again.
+
+Run the following commands:
 
 {{{
-gem install passenger
+gem install passenger -v 3.0.7          # this version is also defined in the Gemfile
 rvmsudo passenger-install-nginx-module
 }}}
 
