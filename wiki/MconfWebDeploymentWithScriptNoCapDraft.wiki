@@ -22,6 +22,7 @@ curl https://raw.github.com/mconf/mconf-web/master/script/mconf-web-conf -o mcon
 chmod a+x mconf-web-conf
 }}}
 
+*Note:* If you run from your local folder, you'll have to run the commands below with "`./mconf-web-conf`" instead of "`mconf-web-conf`" only.
 
 Or install it in your system to be available to all users:
 
