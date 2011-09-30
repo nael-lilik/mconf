@@ -43,9 +43,9 @@ You can install RVM following our [RVMQuickSteps quick steps] or following [http
 If you decided to use RVM, don't forget to actually install Ruby (and not only RVM) and create a gemset for Mconf-web:
 
 {{{
-rvm install 1.9.2
+rvm install 1.9.2-p290
 rvm gemset create mconf
-rvm use --default 1.9.2@mconf
+rvm use --default 1.9.2-p290@mconf
 }}}
 
 
@@ -69,7 +69,7 @@ Next, change your repository to the version you want to deploy. If you don't do 
 
 {{{
 cd ~/mconf-web/
-git checkout v0.3  # go to version 0.3
+git checkout v0.4  # go to version 0.3
 }}}
 
 The versions available are the tags available. To see all versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page]. 
