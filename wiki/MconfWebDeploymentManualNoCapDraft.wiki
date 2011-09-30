@@ -69,7 +69,7 @@ Next, change your repository to the version you want to deploy. If you don't do 
 
 {{{
 cd ~/mconf-web/
-git checkout v0.4  # go to version 0.3
+git checkout v0.4  # go to version 0.4
 }}}
 
 The versions available are the tags available. To see all versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page]. 
@@ -139,7 +139,7 @@ God is already installed with the other gems when you run `bundle install`, and 
 If you're using RVM you need to create a wrapper for God, so that it runs with the correct environment setup:
 
 {{{
-rvm wrapper 1.9.2@mconf bootup god
+rvm wrapper 1.9.2-p290@mconf bootup god
 }}}
 
 Next, we'll create a configuration file for god at `/etc/god/config`. This file will simply load any other configuration file in the folder `/etc/god/conf.d/`, that will also be created.
