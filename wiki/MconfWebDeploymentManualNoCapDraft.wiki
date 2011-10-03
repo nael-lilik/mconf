@@ -165,7 +165,7 @@ sudo sed -i "s:^RAILS_ROOT =.*:RAILS_ROOT = \"%PATH%\":g" /etc/god/conf.d/delaye
 To start and stop God, we'll install an init script in `/etc/init.d/`:
 
 {{{
-sudo curl https://raw.github.com/mconf/mconf-web/simplify_install_script/config/god/init_script -o /etc/init.d/god
+sudo curl https://raw.github.com/mconf/mconf-web/master/config/god/init_script -o /etc/init.d/god
 sudo chmod a+x /etc/init.d/god
 sudo update-rc.d god defaults
 }}}
