@@ -162,7 +162,7 @@ This file has a line that points to Mconf-Web's path, so it should be edited to 
 sudo sed -i "s:^RAILS_ROOT =.*:RAILS_ROOT = \"%PATH%\":g" /etc/god/conf.d/delayed_job.god
 
 # example:
-sudo sed -i "s:^RAILS_ROOT =.*:RAILS_ROOT = \"/home/mconf/mconf-web/current/\":g" /etc/god/conf.d/delayed_job.god
+sudo sed -i "s:^RAILS_ROOT =.*:RAILS_ROOT = \"/home/mconf/mconf-web/current\":g" /etc/god/conf.d/delayed_job.god
 }}}
 
 To start and stop God, we'll install an init script in `/etc/init.d/`:
@@ -186,6 +186,16 @@ Then you can start/stop god with:
 
 {{{
 sudo /etc/init.d/god {start|stop|restart|status}
+}}}
+
+Start it, check if it's running. If not, check the messages in the log file:
+
+{{{
+sudo /etc/init.d/god start
+ps ax | grep god              
+
+# "ps" should show a process similar to:
+#   /usr/local/rvm/rubies/ruby-1.9.2-p290/bin/ruby /usr/local/rvm/gems/ruby-1.9.2-p290@mconf/bin/god -c /etc/god/config -l /var/log/god.log --no-syslog --log-level warn
 }}}
 
 
