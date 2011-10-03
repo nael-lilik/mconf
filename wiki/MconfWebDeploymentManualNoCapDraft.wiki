@@ -176,10 +176,10 @@ sudo update-rc.d god defaults
 This script is already configured to load the configuration file `/etc/god/config` and save the log at `/var/log/god.log`. You can change the log directory to your application folder with (replace `%PATH%` with the actual path):
 
 {{{
-sudo sed -i "s:^GOD_LOG=.*:GOD_LOG=%PATH%:g" /etc/init.d/god
+sudo sed -i "s:^GOD_LOG=.*:GOD_LOG=%PATH%/god.log:g" /etc/init.d/god
 
 # example:
-sudo sed -i "s:^GOD_LOG=.*:GOD_LOG=/home/mconf/mconf-web/current/:g" /etc/init.d/god
+sudo sed -i "s:^GOD_LOG=.*:GOD_LOG=/home/mconf/mconf-web/current/log/god.log:g" /etc/init.d/god
 }}}
 
 Then you can start/stop god with:
