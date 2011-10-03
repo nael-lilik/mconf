@@ -34,7 +34,7 @@ You will be prompted to type a password for MySQL in case you don't have it inst
 
 === 2. Ruby ===
 
-<font color=red>*TODO:* Update to install RVM as multi-user</font>
+<font color=red>*TODO:* This is a little outdated. You should install RVM as multi-user. This guide will soon be updated.</font>
 
 Mconf-web uses Ruby *1.9.2*. To install Ruby, we suggest the use of RVM. There are scripts in Mconf-web that assume you have RVM installed, so you should use it unless you can't do it for some reason.
 
@@ -68,7 +68,7 @@ Your application will be deployed at `~/mconf-web/current/`, but you can change 
 Next, change your repository to the version you want to deploy. If you don't do this, you'll be deploying the master branch, and it is not recommended.
 
 {{{
-cd ~/mconf-web/
+cd ~/mconf-web/current
 git checkout v0.4  # go to version 0.4
 }}}
 
@@ -216,6 +216,8 @@ bundle exec rake secret RAILS_ENV=production
 After that, you should restart your application. See the maintenance tasks below.
 
 
+
+
 == Maintenance tasks ==
 
 
@@ -230,8 +232,52 @@ sudo /etc/init.d/god restart
 
 You don't always need to restart god, only if you changed anything in it's configuration files. The web server you'll need to restart every time you change anything in the application (source code) or configuration files.
 
+
 === Update ===
 
-........
+At first, update your repository and checkout the version you want:
 
-restart server
+{{{
+cd ~/mconf-web/current
+git pull
+git checkout v0.4  # go to version 0.4
+}}}
+
+Update the dependencies:
+
+{{{
+git submodule update
+bundle install --without=development test
+}}}
+
+Migrate the database:
+
+{{{
+bundle exec rake db:migrate RAILS_ENV=production
+}}}
+
+Restart the web server as described in the previous section.
+
+
+
+=== Backup ===
+
+The most important backup you need is your database. If you're using MySQL, you can use the following commands to backup (and restore) the database used by Mconf-Web:
+
+{{{
+# backup
+mysqldump -u root -p mconf_production > mconf_production-`date +%F`.sql
+
+# restore
+mysql -u root -p mconf_production < mconf_production-2011-06-21.sql
+}}}
+
+There are also files that are not stored in the database, such as user images and attachments. And you also might want to backup your log files.
+
+So make sure you backup the files in the following folders:
+
+{{{
+(...)/mconf-web/attachments/
+(...)/mconf-web/public/logos/
+(...)/mconf-web/log/
+}}}
