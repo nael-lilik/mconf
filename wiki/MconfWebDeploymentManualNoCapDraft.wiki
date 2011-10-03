@@ -134,11 +134,12 @@ This contains the extra configurations you need to do on your server to run Mcon
 
 *God* is a process monitoring framework that Mconf-Web uses to monitor other processes. It is installed as a system-wide application and configured as such. God should be always running, just like your web server will always be running.
 
-God is already installed with the other gems when you run `bundle install`, and you should already have done it by now.
+God is already installed with the other gems when you run `bundle install`, and you should already have done it by now. If you're using Capistrano, tough, you will have to install it.
 
-If you're using RVM you need to create a wrapper for God, so that it runs with the correct environment setup:
+Install God and, if you're using RVM, create a wrapper for it, so that it runs with the correct environment setup:
 
 {{{
+gem install god -v 0.11.0                # this version is also defined in the Gemfile
 rvm wrapper 1.9.2-p290@mconf bootup god
 }}}
 
