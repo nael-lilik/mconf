@@ -160,6 +160,9 @@ This file has a line that points to Mconf-Web's path, so it should be edited to 
 
 {{{
 sudo sed -i "s:^RAILS_ROOT =.*:RAILS_ROOT = \"%PATH%\":g" /etc/god/conf.d/delayed_job.god
+
+# example:
+sudo sed -i "s:^RAILS_ROOT =.*:RAILS_ROOT = \"/home/mconf/mconf-web/current/\":g" /etc/god/conf.d/delayed_job.god
 }}}
 
 To start and stop God, we'll install an init script in `/etc/init.d/`:
@@ -174,6 +177,9 @@ This script is already configured to load the configuration file `/etc/god/confi
 
 {{{
 sudo sed -i "s:^GOD_LOG=.*:GOD_LOG=%PATH%:g" /etc/init.d/god
+
+# example:
+sudo sed -i "s:^GOD_LOG=.*:GOD_LOG=/home/mconf/mconf-web/current/:g" /etc/init.d/god
 }}}
 
 Then you can start/stop god with:
