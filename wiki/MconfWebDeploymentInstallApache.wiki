@@ -13,9 +13,7 @@ rm packages.ubuntu
 
 You can also see the list of packages [https://github.com/mconf/mconf-web/blob/master/config/packages.ubuntu in this file] in our repository
 
-Next, install Passenger (it's a ruby gem) and it's module for Apache. If you're following the [MconfWebDeploymentManual manual deployment guide], you already have passenger installed, so you don't need to do it again.
-
-Passenger has a nice installer that will compile the Apache module and install it for you. If some dependency is missing it will warn you and help you install it. Run the following commands:
+Next, install Passenger (it's a ruby gem) and it's module for Apache. Passenger has a nice installer that will compile the Apache module and install it for you. If some dependency is missing it will warn you and help you install it. Run the following commands:
 
 {{{
 gem install passenger -v 3.0.7            # this version is also defined in the Gemfile
