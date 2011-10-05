@@ -8,7 +8,7 @@ _This page is a continuation of [MconfWebDeployment this page]._
 
 Mconf-web uses Ruby *1.9.2*. To install Ruby, we suggest the use of RVM. There are scripts in Mconf-web that assume you have RVM installed, so you should use it unless you can't do it for some reason.
 
-You can install RVM following our [RVMQuickSteps quick steps] or following [https://rvm.beginrescueend.com/rvm/install/ RVM's install page].
+You can install RVM following [https://rvm.beginrescueend.com/rvm/install/ RVM's install page].
 
 If you decided to use RVM, don't forget to actually install Ruby (and not only RVM) and create a gemset for Mconf-web:
 
