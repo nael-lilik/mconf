@@ -10,7 +10,7 @@ You can do it either manually (see below) or using the [MconfWebMconfWebConf#Usa
 
 === Manual setup ===
 
-  * First, install Ruby. We recommend the use of [http://rvm.beginrescueend.com/ RVM]. See [http://beginrescueend.com/rvm/install/ this page] to now how to install and use the single-user installation. After RVM is installed, install Ruby and create a gemset for mconf with:
+  * First, install Ruby. We recommend the use of [http://rvm.beginrescueend.com/ RVM]. See [http://beginrescueend.com/rvm/install/ this page] to now how to install it (use the single-user installation). After RVM is installed, install Ruby and create a gemset for mconf with:
     {{{
 rvm install 1.9.2-p290
 rvm gemset create mconf
