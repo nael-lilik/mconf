@@ -71,7 +71,7 @@ This is the content of this file:
 You should change "`www.yourhost.com`" to your IP or domain and "`/somewhere/public`" (both occurrences) for the path to your Mconf-Web application, that should be something like "`/home/mconf/mconf-web/current/public`".
 
 
-Last, restart Apache and it should be ready to serve Mconf-Web:
+At last, restart Apache and it should be ready to serve Mconf-Web:
 
 {{{
 sudo /etc/init.d/apache2 restart
