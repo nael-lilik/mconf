@@ -69,7 +69,8 @@ Next, change your repository to the version you want to deploy. If you don't do 
 
 {{{
 cd ~/mconf-web/current
-git checkout v0.4  # go to version 0.4
+git checkout v0.4       # go to version 0.4
+git checkout latest     # branch that points to the latest version
 }}}
 
 The versions available are the tags available. To see all versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page]. You can also deploy the branch "latest", it will always point to the latest version available.
