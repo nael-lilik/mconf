@@ -8,9 +8,20 @@
 
 == Current Development: Release 0.4 ==
 
-*Planned for*: ?, 2011.
+*Planned for*: Oct 7th, 2011.
 
-  * See: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.4 Issues for Mconf-Web-Release0.4]
+  * User rooms can be set as private (Issue 241).
+  * Layout changes in the homepage: focusing the spaces, now in the center.
+  * Layout fixes for Internet Explorer.
+  * Admin users can set other users as admins (Issue 165).
+  * `mconf-web-conf` version 0.3 with several changes: RVM is installed as multi-user and capistrano is not required anymore.
+  * Using [http://god.rubyforge.org/ god] to monitor processes (only delayed_job currently).
+  * Several other bug fixes.
+
+See also:
+
+  * [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.4 Issues for Mconf-Web-Release0.4].
+  * [https://github.com/mconf/mconf-web/compare/v0.3...branch-v0.4 Source code changes].
 
 == Release 0.3 ==
 
@@ -23,7 +34,12 @@
   * Improved permission check for !BigBlueButton rooms and servers (Issue 107).
   * Added a feedback page that is shown when the user logs out of a webconference (Issue 188).
   * Improvements in the script mconf-web-conf, specially to use Mconf-Web with Apache (Issue 190).
-  * Several other bug fixes and cleanup in the website. See: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.3 Issues for Mconf-Web-Release0.3]
+  * Several other bug fixes and cleanup in the website.
+
+See also:
+
+  * [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.3 Issues for Mconf-Web-Release0.3].
+  * [https://github.com/mconf/mconf-web/compare/v0.2...v0.3 Source code changes].
 
 == Release 0.2 ==
 
@@ -34,7 +50,12 @@
   * Provide scripts to easily install Mconf-Web (development and production)
   * Join conference URLs using the style: http://server/webconf/my-room
   * Activity monitor to see what's happening in a !BigBlueButton server.
-  * Other bug fixes, cleanup of broken features and usability issues. See: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.2 Issues for Mconf-Web-Release0.2]
+  * Other bug fixes, cleanup of broken features and usability issues.
+
+See also:
+
+  * [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.2 Issues for Mconf-Web-Release0.2].
+  * [https://github.com/mconf/mconf-web/compare/v0.1...v0.2 Source code changes].
 
 == Release 0.1 ==
 
@@ -46,4 +67,9 @@
     * Every space has a webconference room (Issue 25)
     * Users can create webconferences from their home page (Issue 26)
   * First version in production and documentation on [http://code.google.com/p/mconf/wiki/MconfWebDeployment how to setup a production server]
-  * Other bugs and features implemented: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.1 Issues for Mconf-Web-Release0.1]
+  * Several other bugs and features implemented.
+
+See also:
+
+  * [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.1 Issues for Mconf-Web-Release0.1].
+  * [https://github.com/mconf/mconf-web/compare/ging:master...mconf:v0.1 Source code changes].
