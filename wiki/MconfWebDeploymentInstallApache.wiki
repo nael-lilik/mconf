@@ -45,7 +45,7 @@ This will create a new configuration file with the Passenger module snippet, the
 Next, we enable the rewrite module in Apache and remove any default site existent:
 
 {{{
-sudo ln -f -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
+sudo a2enmod rewrite
 sudo rm /etc/apache2/sites-enabled/*
 }}}
 
@@ -55,10 +55,19 @@ Now you need to add a configuration file for Mconf-Web. You might just download 
 curl https://raw.github.com/mconf/mconf-web/master/config/apache2.conf.example -o /etc/apache2/sites-available/mconf-web
 }}}
 
-This is the content of this file:
+The file will be saved at `/etc/apache2/sites-available/mconf-web`. This is the content of this file:
 
 {{{
 <VirtualHost *:80>
+
+  # Shows the maintenance page if it exists                                                                                                                                       
+  ErrorDocument 503 /system/maintenance.html
+  RewriteEngine On
+  RewriteCond %{REQUEST_URI} !\.(css|gif|jpg|png)$
+  RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
+  RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+  RewriteRule ^.*$  -  [redirect=503,last]
+
   ServerName www.yourhost.com
   DocumentRoot /somewhere/public
   <Directory /somewhere/public>
@@ -70,6 +79,11 @@ This is the content of this file:
 
 You should change "`www.yourhost.com`" to your IP or domain and "`/somewhere/public`" (both occurrences) to the path to your Mconf-Web application, that should be something like "`/home/mconf/mconf-web/current/public`" (don't forget to point to the *public* directory!).
 
+After editing the file, enable it in apache with:
+
+{{{
+sudo a2ensite mconf-web
+}}}
 
 At last, restart Apache and it should be ready to serve Mconf-Web:
 
