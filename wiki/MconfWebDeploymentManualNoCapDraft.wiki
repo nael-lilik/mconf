@@ -34,11 +34,12 @@ You will be prompted to type a password for MySQL in case you don't have it inst
 
 === 2. Ruby ===
 
-<font color=red>*TODO:* This is a little outdated. You should install RVM as multi-user. This guide will soon be updated.</font>
+Mconf-web uses Ruby *1.9.2* (p290). To install Ruby, we suggest the use of RVM (that's how we install ruby in development and production). But you have other options:
 
-Mconf-web uses Ruby *1.9.2*. To install Ruby, we suggest the use of RVM. There are scripts in Mconf-web that assume you have RVM installed, so you should use it unless you can't do it for some reason.
+  * Using RVM (recommended): See [http://beginrescueend.com/rvm/install/ this page]. RVM can be installed as single-user or multi-user. For a production environment it is recommended to use the *multi-user* installation.
+  * Using apt packages: Ruby can also be installed using apt packages in Ubuntu, but unfortunately they are out of date. Installing ruby 1.9.2 would actually install version 1.9.2-p0 instead of 1.9.2-p290. BigBlueButton 0.8 uses a nice script to compile ruby from source and install it as a package that you can [http://code.google.com/p/bigbluebutton/wiki/08InstallationUbuntu#2._Install_Ruby see here].
+  * From source: You can also download and install ruby manually, similarly to what's done in the script used by BigBlueButton but skipping the packaging. Make sure you use version 1.9.2-p290. 
 
-You can install RVM following our [RVMQuickSteps quick steps] or following [https://rvm.beginrescueend.com/rvm/install/ RVM's install page]. 
 
 If you decided to use RVM, don't forget to actually install Ruby (and not only RVM) and create a gemset for Mconf-web:
 
@@ -47,7 +48,6 @@ rvm install 1.9.2-p290
 rvm gemset create mconf
 rvm use --default 1.9.2-p290@mconf
 }}}
-
 
 
 
