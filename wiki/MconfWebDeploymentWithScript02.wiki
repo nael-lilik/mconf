@@ -1,6 +1,6 @@
 _This page is a continuation of [MconfWebDeployment this page]._
 
-= Mconf-Web Deployment With mconf-web-conf =
+= Mconf-Web Deployment With mconf-web-conf 0.2 =
 
 For more details about the script see [MconfWebMconfWebConf this page]. You can download and install it with:
 
