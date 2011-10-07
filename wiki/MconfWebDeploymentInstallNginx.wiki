@@ -1,3 +1,5 @@
+#summary How to deploy Mconf-Web using Nginx
+
 _This page is part of the Mconf-Web deployment described in [MconfWebDeploymentManual this page]._
 
 == Installing Nginx for Mconf-Web ==
