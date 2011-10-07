@@ -1,0 +1,221 @@
+<wiki:toc max_depth="2" />
+
+= The script `mconf-web-conf` =
+
+`mconf-web-conf` is a utility script to help you install, configure and run some maintenance tasks on Mconf-Web. You can use it to setup a deployment or production environment. The script has several tasks that will be described below. You can also see them using the script's help command: `mconf-web-conf --help`.
+
+The latest version of this file can be found in [https://github.com/mconf/mconf-web/tree/master/script the Mconf-Web repository].
+
+You can download and install it (in Ubuntu) with:
+
+{{{
+sudo curl https://raw.github.com/mconf/mconf-web/master/script/mconf-web-conf -o /usr/local/bin/mconf-web-conf
+sudo chmod a+x /usr/local/bin/mconf-web-conf
+}}}
+
+= Usage Scenarios =
+
+These are the most common uses of `mconf-web-conf`.
+
+*To setup a development environment*:
+{{{
+mconf-web-conf --install-packages development   # install system packages
+mconf-web-conf --install-ruby                   # install ruby
+mconf-web-conf --checkout                       # get the code
+mconf-web-conf --setup-dev                      # setup config files
+}}}
+
+*To setup a production environment*:
+{{{
+mconf-web-conf --install-packages production    # install system packages
+mconf-web-conf --install-ruby                   # install ruby
+mconf-web-conf --setup-prod                     # setup gems and the web server
+}}}
+
+*To deploy the application* (you need both development and production environments to do it):
+{{{
+mconf-web-conf --deploy-first-time              # use the dev environment to deploy the application
+}}}
+
+*To updated and/or restart the deployed application*:
+{{{
+mconf-web-conf --deploy-update                  # update the code in the deployed application (git pull)
+mconf-web-conf --deploy-restart                 # restart the web application
+}}}
+
+= Tasks =
+
+== System setup ==
+
+=== `--install-packages` ===
+
+{{{
+mconf-web-conf --install-packages [ENV]
+}}}
+
+Installs the system packages required to run Mconf-Web. The script currently supports only Ubuntu, and the list of packages to be installed is download from [https://github.com/mconf/mconf-web/blob/master/config/packages.ubuntu this file] at our repository.
+
+You can decide if you want to install the packages for development, production or both:
+
+{{{
+mconf-web-conf --install-packages development  # packages for development
+mconf-web-conf --install-packages production   # packages for production
+mconf-web-conf --install-packages              # packages for both environments
+}}}
+
+Steps:
+  * Download the `packages.<platform>` file with the list of packages (currently only for Ubuntu);
+  * Installs the packages.
+
+=== `--install-ruby` ===
+
+{{{
+mconf-web-conf --install-ruby
+}}}
+
+This tasks install ruby using RVM. What it does is basically what's written in our [RVMQuickSteps RVM quick steps guide].
+
+It will be installed for the current user only (it is not a system-wide installation). See the "Single-User Installation" at the [https://rvm.beginrescueend.com/rvm/install/ RVM website].
+
+Steps:
+
+  * Install RVM (if not installed);
+  * Install the system packages required by RVM (`rvm notes`);
+  * Install ruby 1.9 and creates a gemset for Mconf.
+
+== Development environment ==
+
+Obs: In all tasks below you can use the flag `--source` to change the local directory where Mconf-Web is.
+
+=== `--checkout` ===
+
+{{{
+mconf-web-conf --checkout [REPO]
+}}}
+
+This task will simply clone our repository from !GitHub and place it at `~/dev/source/mconf-web`. If there's already a Mconf-Web repository at the destination directory, it will be updated.
+
+You can change the repository URL using the "`REPO`" parameter and you can change the destination directory with the `--source` option:
+
+{{{
+mconf-web-conf --checkout git://github.com/my-user/mconf-web.git --source ~/destination/directory
+}}}
+
+The command above will clone the fork of Mconf-Web that the user "my-user" created at !GitHub and put it in the directory "`destination/directory`" inside the current user's home.
+
+=== `--setup-dev` ===
+
+{{{
+mconf-web-conf --setup-dev
+mconf-web-conf --setup-dev --source ~/code/mconf-web
+}}}
+
+This task will execute the steps to setup the development environment.
+
+Requires:
+
+  * Mconf-Web source code (`--checkout`).
+
+Steps:
+
+  * Installs gems;
+  * Creates the configuration files;
+  * Prompt the user to configure these files (same as `--config`, see below);
+  * Set up the database.
+
+
+=== `--config` ===
+
+{{{
+mconf-web-conf --config
+mconf-web-conf --config --source ~/code/mconf-web
+}}}
+
+Prompts the user to configure some variables in the development environment.
+
+The variables configured are the most important variables in the files `config/setup_conf.yml`, `config/database.yml` and `config/deploy/conf.yml`. You can as well just open these files and configure them (they have some documentation inside them).
+
+Requires:
+
+  * Mconf-Web source code (`--checkout`).
+
+
+== Production environment ==
+
+=== `--setup-prod` ===
+
+{{{
+mconf-web-conf --setup-prod
+}}}
+
+Configures a production environment. After this, Mconf-Web will be ready to be deployed to this machine.
+
+Requires:
+
+  * Ruby installed (RVM).
+
+Steps:
+
+  * Install gems;
+  * Installs the web server:
+    * The user will be prompted to choose between Apache or Nginx.
+
+=== `--deploy-first-time` ===
+
+{{{
+mconf-web-conf --deploy-first-time
+}}}
+
+This tasks goes to the development environment and run a Capistrano task that deploys the application to the server configured in `config/deploy/conf.yml`. If you configure this file to deploy to 127.0.0.1, it will deploy in the same machine.
+
+Same as `cap production deploy:all`. See more at [MconfWebDeploymentManual#Capistrano this page].
+
+Requires:
+
+  * Mconf-Web source code (`--checkout`);
+  * A development environment properly configured (`--setup-dev` and `--config`).
+  * The setup of a production environment (`--setup-prod`).
+
+=== `--deploy-update` ===
+
+{{{
+mconf-web-conf --deploy-update
+}}}
+
+Similar to `--deploy-first-time`, but just updates the application instead of deploying from scratch.
+
+Same as `cap production deploy:migrations`. See more at [MconfWebDeploymentManual#Capistrano this page].
+
+Requires:
+
+  * Mconf-Web source code (`--checkout`);
+  * A development environment properly configured (`--setup-dev` and `--config`).
+  * A production environment with the application deployed (`--setup-prod` and `--deploy-first-time`).
+
+=== `--deploy-restart` ===
+
+{{{
+mconf-web-conf --deploy-restart
+}}}
+
+Similar to `--deploy-udpate`. Restarts the web server. Useful if you changed something in the configuration files and need to reload it.
+
+Same as `cap production deploy:restart`. See more at [MconfWebDeploymentManual#Capistrano this page].
+
+Requires:
+
+  * Mconf-Web source code (`--checkout`);
+  * A development environment properly configured (`--setup-dev` and `--config`).
+  * A production environment with the application deployed (`--setup-prod` and `--deploy-first-time`).
+
+== Mconf VM ==
+
+=== `--setup-vm` ===
+
+This task is used by the [MconfVM Mconf VM] to configure the VM once it runs for the first time. It *should not be used outside this VM*.
+
+Steps:
+
+  * Configures the files in the development environment (a simplified version of `--config`);
+  * Updates the source code;
+  * Deploys the application (same as `--deploy-first-time`).
