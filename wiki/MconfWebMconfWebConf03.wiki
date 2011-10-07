@@ -1,4 +1,4 @@
-#summary Documentation for the script mconf-web-conf until Mconf-Web 0.4 (script version 0.3)
+#summary Documentation for the script mconf-web-conf in Mconf-Web 0.3 (script version 0.2)
 
 <wiki:toc max_depth="2" />
 
