@@ -1,27 +1,24 @@
 _This page is a continuation of [MconfWebDeployment this page]._
 
-= Mconf-Web Manual Deployment =
+Note: From version 0.3, the script has changed quite a bit. The documentation for the old version [MconfWebDeploymentManual02 can be found here].
 
-== (1) Configuring the server ==
+= Mconf-Web Manual Deployment (step-by-step guide) =
 
-=== Ruby and RVM ===
+<wiki:toc max_depth="3" />
 
-Mconf-web uses Ruby *1.9.2*. To install Ruby, we suggest the use of RVM. There are scripts in Mconf-web that assume you have RVM installed, so you should use it unless you can't do it for some reason.
+== Overview ==
 
-You can install RVM following [https://rvm.beginrescueend.com/rvm/install/ RVM's install page].
+This is a step-by-step guide showing every detail needed to install Mconf-Web. If you have experience deploying a Rails application this guide should look very familiar to you. Otherwise, if you don't have experience with that or if you're searching for an easier way to install the application, [MconfWebDeploymentWithScript check this page]. 
 
-If you decided to use RVM, don't forget to actually install Ruby (and not only RVM) and create a gemset for Mconf-web:
-
-{{{
-rvm install 1.9.2
-rvm gemset create mconf
-rvm use --default 1.9.2@mconf
-}}}
+We tried to keep this page in the same format as the page that describes how to install Mconf-Web using the script `mconf-web-conf` ([http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript here], so that you can easily relate both guides and solve any doubts you may have.
 
 
-=== System Packages ===
+== Installing Mconf-Web ==
 
-You need to install system packages to run Mconf-web in production. The packages are listed in a file that you can find at [https://github.com/mconf/mconf-web/blob/latest/config/packages.ubuntu config/packages.ubuntu]. You can download this list and install the packages with:
+
+=== 1. System Packages ===
+
+You need to install some system packages before you can run Mconf-web in production. The packages are listed in a file that you can find at [https://github.com/mconf/mconf-web/blob/latest/config/packages.ubuntu config/packages.ubuntu]. You can download this file and install the packages with:
 
 {{{
 curl https://raw.github.com/mconf/mconf-web/latest/config/packages.ubuntu -o packages.ubuntu
@@ -32,238 +29,191 @@ rm packages.ubuntu
 
 You will be prompted to type a password for MySQL in case you don't have it installed yet.
 
-=== Passenger + Web Server ===
+
+
+
+=== 2. Ruby ===
+
+Mconf-web uses Ruby *1.9.2* (p290). To install Ruby, we suggest the use of RVM (that's how we install ruby in development and production). But you have other options:
+
+  * Using RVM (recommended): See [http://beginrescueend.com/rvm/install/ this page]. RVM can be installed as single-user or multi-user. For a production environment it is recommended to use the *multi-user* installation.
+  * Using apt packages: Ruby can also be installed using apt packages in Ubuntu, but unfortunately they are out of date. Installing ruby 1.9.2 would actually install version 1.9.2-p0 instead of 1.9.2-p290. BigBlueButton 0.8 uses a nice script to compile ruby from source and install it as a package that you can [http://code.google.com/p/bigbluebutton/wiki/08InstallationUbuntu#2._Install_Ruby see here].
+  * From source: You can also download and install ruby manually, similarly to what's done in the script used by BigBlueButton but skipping the packaging. Make sure you use version 1.9.2-p290. 
+
+
+If you decided to use RVM, don't forget to actually install Ruby (and not only RVM) and create a gemset for Mconf-web:
+
+{{{
+rvm install 1.9.2-p290
+rvm gemset create mconf
+rvm use --default 1.9.2-p290@mconf
+}}}
+
+
+
+=== 3. Download the application ===
+
+<font color=blue>Note about Capistrano: </font>This is not necessary if you want to use Capistrano, it will checkout the code for you in your production server. So you can skip this step if you'll use Capistrano. See [MconfWebDeploymentWithCapistrano this page] to know how to deploy with Capistrano. 
+
+Install git if you don't have it and clone Mconf-Web:
+
+{{{
+sudo apt-get install git-core
+mkdir -p ~/mconf-web/current/
+git clone git://github.com/mconf/mconf-web.git ~/mconf-web/current/
+}}}
+
+Your application will be deployed at `~/mconf-web/current/`, but you can change it if you need to. It is the default path, so it should require less configurations if you don't change it.
+
+Next, change your repository to the version you want to deploy. If you don't do this, you'll be deploying the master branch, and it is not recommended.
+
+{{{
+cd ~/mconf-web/current
+git checkout v0.4       # go to version 0.4
+git checkout latest     # branch that points to the latest version
+}}}
+
+The versions available are the tags available. To see all versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page]. You can also deploy the branch "latest", it will always point to the latest version available.
+
+With the repository you can now install the dependencies. All dependencies are either gems (and are listed in the Gemfile) or submodules. However, to install the gems first we need to manually install bundler, that will be used to install all the other dependencies. See the commands below:
+
+{{{
+git submodule init
+git submodule update
+gem install bundler -v 1.0.18
+bundle install
+}}}
+
+
+
+
+=== 4. Edit the configuration files (manual configuration) ===
+
+<font color=blue>Note about Capistrano: </font>If you'll use Capistrano, you should never edit the configuration files in you server. Edit them in your development machine and they will be uploaded to the server. See [MconfWebDeploymentWithCapistrano this page].
+
+
+There are two files that need to be configured. At first, copy the example files:
+
+{{{
+cp ~/mconf-web/config/setup_conf.yml.example ~/mconf-web/config/setup_conf.yml
+cp ~/mconf-web/config/database.yml.example ~/mconf-web/config/database.yml
+}}}
+
+Then edit the files `setup_conf.yml` and `database.yml`. *To configure these files, see [MconfWebSetupConf this page]*.
+
+`setup_conf.yml` has general configurations for the web application and `database.yml` configures the database. By default, MySQL will be used. If you haven't set up a password for MySQL yet, you can do it with:
+
+{{{
+mysqladmin -u root password "NEW-PASSWORD" # Use the quotes, they are not part of the password
+}}}
+
+Or, in case you want to change the password:
+
+{{{
+mysqladmin -u root -p password "NEW-PASSWORD"
+}}}
+
+
+
+
+
+=== 5. Install a web server, configure the application and deploy ===
+
+==== 5.1. Web server ====
 
 You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache if you're installing Mconf-Web in the same machine that has !BigBlueButton. If Mconf-Web will be installed in a standalone machine, you can pick your favorite server.
 
-==== Apache ====
+The guides to install the web server are in separate wiki pages:
 
-To use Apache with Passenger, you first need to install Apache and some other dependencies required by Passenger. There are several packages needed. You can download the list and install the packages with:
+  * [MconfWebDeploymentInstallApache Guide to install Apache]
+  * [MconfWebDeploymentInstallNginx Guide to install Nginx]
 
-{{{
-curl https://raw.github.com/mconf/mconf-web/latest/config/packages.ubuntu -o packages.ubuntu
-source packages.ubuntu
-sudo apt-get install ${PACKAGES_APACHE[@]}
-rm packages.ubuntu
-}}}
 
-You can also see the list of packages [https://github.com/mconf/mconf-web/blob/latest/config/packages.ubuntu in this file] in our repository
+==== 5.2. System-wide configurations ====
 
-Next, install Passenger (it's a ruby gem) and it's module for Apache. Passenger has a nice installer that will compile the Apache module and install it for you. If some dependency is missing it will warn you and help you install it. Run the following commands:
+This contains the extra configurations you need to do on your server to run Mconf-Web. Currently, it consists only in installing and configuring God.
 
-{{{
-gem install passenger
-rvmsudo passenger-install-apache2-module
-}}}
+  * [MconfWebDeploymentInstallGod Guide to install God]
 
-The application `passenger-install-apache2-module` is interactive and has the following steps:
+==== 5.3. Application configurations ====
 
-  # Check for dependencies: If your system is missing any required software, it will warn you and tell you how to install them;
-  # Automatically compile and install the module for Apache;
-  # It will show you some lines that must be added the you Apache configuration file. Ignore this for now, the next step of this guide will show you how to configure it.
-  # In the last step it will give you an example of how to deploy an application. Ignore the example for now, the next step of this guide will show you the specific configurations for Mconf-web.
+<font color=blue>Note about Capistrano: </font>If you'll use Capistrano this is not needed. See [MconfWebDeploymentWithCapistrano this page].
 
-See more about Passenger at [http://www.modrails.com/ their website] and [http://www.modrails.com/videos/passenger.mov check this video] to see how it can be installed along with Apache.
 
-===== Apache Configuration =====
+This step consists of everything that was not possible to be done at 3. because we needed the configuration files properly edited.
 
-By default Apache is installed at `/etc/apache2/` and it's configuration file will be at `/etc/apache2/apache2.conf`.
-You can add configuration files at `/etc/apache2/conf.d/` and sites at `/etc/apache2/sites-available/`.
-
-At first, enable the Passenger module in Apache:
+We'll setup the database and generate a new [http://www.railsrocket.com/rake-secret secret key] for rails:
 
 {{{
-rvmsudo passenger-install-apache2-module --snippet | sudo tee /etc/apache2/conf.d/mconf-passenger
+bundle exec rake setup:db RAILS_ENV=production
+bundle exec rake secret RAILS_ENV=production
 }}}
 
-This will create a new configuration file with the Passenger module snippet, the same block Passenger showed you in the item 3. in the previous section. If you already added these lines to you config file, ignore this step.
+After that, you should restart your application. See the maintenance tasks below.
 
-Next, we enable the rewrite module in Apache and remove any default site existent:
+
+
+
+== Maintenance tasks ==
+
+
+=== Restart ===
+
+To restart the application you need to restart the web server and god:
 
 {{{
-sudo ln -f -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
-sudo rm /etc/apache2/sites-enabled/*
+sudo /etc/init.d/apache2 restart  # if you're using apache
+sudo /etc/init.d/god restart
 }}}
 
-Now you need to add a configuration file for Mconf-Web. You might just download our example edit it:
+You don't always need to restart god, only if you changed anything in it's configuration files. The web server you'll need to restart every time you change anything in the application (source code) or configuration files.
+
+
+=== Update ===
+
+At first, update your repository and checkout the version you want:
 
 {{{
-curl https://raw.github.com/mconf/mconf-web/latest/config/apache2.conf.example -o /etc/apache2/sites-available/mconf-web
+cd ~/mconf-web/current
+git pull
+git checkout v0.4  # go to version 0.4
 }}}
 
-This is the content of this file:
+Update the dependencies:
 
 {{{
-<VirtualHost *:80>
-  ServerName www.yourhost.com
-  DocumentRoot /somewhere/public
-  <Directory /somewhere/public>
-    AllowOverride all
-    Options -MultiViews
-  </Directory>
-</VirtualHost>
+git submodule update
+bundle install --without=development test
 }}}
 
-You should change "`www.yourhost.com`" for your IP or domain and "`/somewhere/public`" (both occurrences) for the path to your Mconf-Web application. Following this guide, the path should be "`/home/mconf/mconf-web/current/public`".
-
-
-Last, restart Apache and it should be ready to serve Mconf-Web:
+Migrate the database:
 
 {{{
-sudo /etc/init.d/apache2 restart
+bundle exec rake db:migrate RAILS_ENV=production
 }}}
 
-Open your browser and try to access your localhost. You should see a page with the error "404 Not Found". That is ok, Apache can't find the application because it was not deployed yet. Proceed to the [MconfWebDeploymentManual#(2)_Deploy (2) Deploy] section.
+Restart the web server as described in the previous section.
 
-==== Nginx ====
 
-_*Note:* If you're installing Mconf-Web in the same machine where you already have !BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually (see more about this issue [MconfWebDeployInBBBMachine in this page])._
 
-To use Nginx with Passenger, first install Passenger (it's a ruby gem) and then it will help you download, compile and install Nginx. Actually, it will do it all for you. Run the following commands:
+=== Backup ===
+
+The most important backup you need is your database. If you're using MySQL, you can use the following commands to backup (and restore) the database used by Mconf-Web:
 
 {{{
-gem install passenger
-rvmsudo passenger-install-nginx-module
+# backup
+mysqldump -u root -p mconf_production > mconf_production-`date +%F`.sql
+
+# restore
+mysql -u root -p mconf_production < mconf_production-2011-06-21.sql
 }}}
 
-The application `passenger-install-nginx-module` is a installer that guides you through the installation of Nginx for Passenger. It is interactive and has the following steps:
+There are also files that are not stored in the database, such as user images and attachments. And you also might want to backup your log files.
 
-  # Check for dependencies: If your system is missing any required software, it will warn you and tell you how to install them;
-  # Automatically download and install Nginx: Select the option *"1. Yes"*;
-  # Where do you want to install Nginx to: You can choose the default location (just press enter). Nginx will be compiled and installed;
-  # It will edit Nginx configuration file for you and give you an example of how to deploy an application. Ignore the example for now, the next step of this guide will show you the specific configurations for Mconf-web.
-
-See more about Passenger at [http://www.modrails.com/ their website] and [http://www.modrails.com/videos/passenger_nginx.mov check this video] to see how it can be installed along with Nginx.
-
-===== Nginx Configuration =====
-
-If you installed Nginx in the default location, it's configuration file will be at `/opt/nginx/conf/nginx.conf`.
-
-Open this file and add the following content inside the `http` block, above the other `server` block. 
+So make sure you backup the files in the following folders:
 
 {{{
-server {
-    listen 80;
-    server_name IP_OR_DOMAIN;
-    root /home/mconf/mconf-web/current/public;
-    passenger_enabled on;
-    if (-f $document_root/system/maintenance.html) {
-        rewrite ^(.*)$ /system/maintenance.html break;
-    }
-}
+(...)/mconf-web/attachments/
+(...)/mconf-web/public/logos/
+(...)/mconf-web/log/
 }}}
-
-  <font color="red">*Important:*</font> Don't forget to change *`IP_OR_DOMAIN`* by the IP or domain name of your server.
-
-You can find an example of the nginx.conf we use at our repository [https://github.com/mconf/mconf-web/blob/latest/config/nginx.conf.example here].
-
-Since Passenger installs Nginx from source code, you won't have the script to start/stop Nginx. So we copied the script generated when you install the Nginx package in Ubuntu and made it available [https://github.com/mconf/mconf-web/blob/latest/config/nginx.init.example here]. Download it to your server with:
-
-{{{
-sudo curl https://raw.github.com/mconf/mconf-web/latest/config/nginx.init.example -o /etc/init.d/nginx
-}}}
-
-Now you can start/stop/restart Nginx with:
-
-{{{
-sudo /etc/init.d/nginx start
-sudo /etc/init.d/nginx stop
-sudo /etc/init.d/nginx restart
-}}}
-
-Start your web server now, open your browser and try to access it. You should see a page with the error "404 Not Found". That is ok, Nginx can't find the application because it was not deployed yet.
-
-
-== (2) Deploy ==
-
-After the previous steps, your server is configured and you can start to deploy the application. The following steps are all executed from your _development_ environment using Capistrano.
-
-=== Capistrano ===
-
-Capistrano is a ruby gem that helps you deploy applications. You run commands from your development environment and they affect your production server.
-
-You should start by editing the file <tt>config/deploy/conf.yml</tt>. This file contains the configurations for the "two stages" we use for deployment:
-
-  * "staging": this is a stage to test your application before deploying it to the real production server;
-  * "production": the real production server.
-
-All the examples below are for the "staging" stage. You can use the same commands for "production", just replace "staging" for "production".
-
-==== Set up ssh keys ====
-
-To enable capistrano to access your server you have to generate a public key for your local user (if you don't have one yet) and allow access to it in your server. You can find plenty of resources about it in the web, but shortly, you could do the following:
-
-{{{
-# generate the key
-mkdir ~/.ssh && chmod 700 ~/.ssh
-ssh-keygen -t rsa
-  -> (you will be prompted for a password)
-
-# set it in your server (NOTE: don't forget to change "deploy@myserver.com")
-cat ~/.ssh/id_rsa.pub | ssh deploy@myserver.com "cat >> .ssh/authorized_keys2"
-}}}
-
-More information at:
-
-  * https://help.ubuntu.com/community/SSH/OpenSSH/Keys
-  * http://help.github.com/deploy-keys/
-  * http://snippets.dzone.com/posts/show/5730
-
-==== First deploment ====
-
-Our deploy has a task called `setup:all` that can be used to setup a server for the first time. Run:
-
-{{{
-cap staging setup:all
-}}}
-
-This task will do the following:
-  * Create the basic directories in the server;
-  * Checkout Mconf-web from github (using the branch you specified in <tt>conf.yml</tt>) and make it available to be served by Nginx;
-  * Setup the database (with the basic data needed).
-
-  <font color="red">*Important:*</font> The configuration files used in your development environment will be uploaded to the production server. So make sure you configured them. If you change any of them and need to upload to the production server, run:
-  {{{
-cap staging deploy:update
-  }}}
-
-==== Updating the server ====
-
-After a while, you'll want to update the code of your server. Since you already have everything setup, it's pretty simple. Just run:
-
-{{{
-cap staging deploy:migrations  # update to a new release, run the migrations (i.e. updates the DB) and restart the web server
-}}}
-
-==== Further information ====
-
-Capistrano has some other tasks you may need. You can see them all running:
-
-{{{
-cap -T
-}}}
-
-Below there's a list with tasks defined by Mconf-Web that you will possibly use:
-
-{{{
-cap staging deploy:udpate       # update to a new release
-cap staging deploy:migrate      # run migrations
-cap staging deploy:restart      # restart the web server
-cap staging deploy:web:disable  # start maintenance mode (the site will be offline)
-cap staging deploy:web:enable   # stop maintenance mode (the site will be online)
-cap staging deploy:rollback     # go back to the previous version
-cap staging setup:secret        # creates a new secret token (requires restart)
-cap staging setup:db            # drops, creates and populates the db with the basic data
-}}}
-
-The files used by Capistrano that you may want to edit are:
-
-  * <tt>config/deploy.rb</tt>
-  * <tt>config/deploy/conf.yml</tt>
-  * <tt>config/deploy/production.rb</tt>
-  * <tt>config/deploy/staging.rb</tt>
-
-Links:
-
-  * Capistrano documentation: https://github.com/capistrano/capistrano/wiki
-  * Multiple stages in Capistrano: https://github.com/capistrano/capistrano/wiki/2.x-Multistage-Extension
