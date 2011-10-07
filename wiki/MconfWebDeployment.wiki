@@ -1,3 +1,5 @@
+#summary How to deploy Mconf-Web
+
 = Deployment =
 
 Mconf is developed in and targeted to Ubuntu systems. We recommend the use of Ubuntu 10.04 (the latest LTS version, the same used by !BigBlueButton), but it has been tested in newer versions and should work as well.
