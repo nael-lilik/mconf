@@ -1,12 +1,14 @@
 = The script `mconf-web-conf` =
 
+Note: From Mconf-Web 0.4, this script has changed quite a bit. The documentation for the old version [MconfWebMconfWebConf03 can be found here].
+
 <wiki:toc max_depth="3" />
 
 == Overview ==
 
 `mconf-web-conf` is a utility script to help you install, configure and run some maintenance tasks on Mconf-Web. The script was created to help in the setup of a *production environment*. This page will detail how the script works. If you want a brief guide showing how to use it to install Mconf-Web, check [MconfWebDeploymentWithScript this page].
 
-The script has several tasks that will be described below and that can also be seen with the command: `mconf-web-conf --help`. The latest version of this file can be found in [https://github.com/mconf/mconf-web/tree/master/script the Mconf-Web repository].
+The script has several tasks that will be described below and that can also be seen with the command: `mconf-web-conf --help`. The latest version of this file can be found in [https://github.com/mconf/mconf-web/tree/latest/script the Mconf-Web repository].
 
 The script is written for bash and works only on Ubuntu systems (it will detect your system abort if you're not on Ubuntu). But it shouldn't be hard to adapt it to other unix distros. Patches are very welcome! You can also get our help using our mailing list (check it in the [http://code.google.com/p/mconf/ home page]).
 
@@ -15,19 +17,22 @@ The script is written for bash and works only on Ubuntu systems (it will detect 
 You can download it and use from your local folder with:
 
 {{{
-curl https://raw.github.com/mconf/mconf-web/master/script/mconf-web-conf -o mconf-web-conf
+curl https://raw.github.com/mconf/mconf-web/latest/script/mconf-web-conf -o mconf-web-conf
 chmod a+x mconf-web-conf
 }}}
 
 Or install it in your system so that all users can access it:
 
 {{{
-sudo curl https://raw.github.com/mconf/mconf-web/master/script/mconf-web-conf -o /usr/local/bin/mconf-web-conf
+sudo curl https://raw.github.com/mconf/mconf-web/latest/script/mconf-web-conf -o /usr/local/bin/mconf-web-conf
 sudo chmod a+x /usr/local/bin/mconf-web-conf
 }}}
 
 
 == Commands ==
+
+
+
 
 === `--install-packages` ===
 
@@ -35,11 +40,14 @@ sudo chmod a+x /usr/local/bin/mconf-web-conf
 mconf-web-conf --install-packages
 }}}
 
-Installs the system packages required to run Mconf-Web. The script currently supports only Ubuntu, and the list of packages to be installed is download from [https://github.com/mconf/mconf-web/blob/master/config/packages.ubuntu this file] at our repository. This file contains separate package lists for the production and development environments. The script installs packages only for a production environment.
+Installs the system packages required to run Mconf-Web. The script currently supports only Ubuntu, and the list of packages to be installed is download from [https://github.com/mconf/mconf-web/blob/latest/config/packages.ubuntu this file] at our repository. This file contains separate package lists for the production and development environments. The script installs packages only for a production environment.
 
 Steps:
   * Download the `packages.<platform>` file with the list of packages (currently only for Ubuntu);
   * Installs the packages using apt-get.
+
+
+
 
 === `--install-ruby` ===
 
@@ -51,7 +59,7 @@ This tasks install ruby using RVM.
 
 RVM will be installed for all users in the system. See the "Multi-User Installation" at the [https://rvm.beginrescueend.com/rvm/install/ RVM website].
 
-<font color=red>*Important note:*</font> After installing ruby, you should close your terminal and open it again, so that RVM will be fully operational.
+<font color=red>*Important:*</font> After installing ruby, you should close your terminal and open it again, so that RVM will be fully operational.
 
 Steps:
 
@@ -61,47 +69,56 @@ Steps:
   * Installs ruby 1.9.2 and creates a gemset for Mconf.
 
 
+
+
+=== `--checkout` ===
+
+{{{
+mconf-web-conf --checkout
+}}}
+
+This command will checkout the code for Mconf-Web, place it at `~/mconf-web/current` and install some dependencies.
+
+Requires:
+
+  * Dependencies (system packages) installed;
+  * Ruby installed.
+
+
+Steps:
+  * Downloads the latest version of Mconf-Web (the latest tag in our git repository);
+  * Installs the dependencies, the gems specified in the Gemfile and git submodules;
+
+
+
+
 === `--deploy-setup` ===
 
 {{{
 mconf-web-conf --deploy-setup
 }}}
 
-Configures the production environment. After this, Mconf-Web will be almost ready to be deployed to this machine, you just need to edit the configuration files and setup the database (with `--deploy-configure`).
+Configures the production environment and deploys the application. It requires that you have the application code at `~/mconf-web/current` and have already edited the configuration files properly (see [MconfWebDeploymentWithScript this page]).
+
+This command will install several things you need in your server and also configure the application's database.
+
+<font color=red>*Important:*</font> Be aware that this command will erase your database, so this should not be used if you already have application data in your database.
 
 Requires:
 
-  * Ruby installed with RVM.
+  * Dependencies (system packages) installed;
+  * Ruby installed;
+  * The application at `~/mconf-web/current` and configured.
 
 Steps:
 
-  * Installs some basic gems;
   * Installs the web server:
     * The user will be prompted to choose between Apache or Nginx.
-  * Downloads the latest version of Mconf-Web (the latest tag in our git repository);
-  * Installs the rest of the dependencies (the gems specified in the Gemfile and git submodules);
-  * Installs god, a process monitoring framework (see more about it in the [MconfWebDeploymentManual installation page]).
-
-
-=== `--deploy-configure` ===
-
-{{{
-mconf-web-conf --deploy-configure
-}}}
-
-This command is used to configure the application's database. It should be used after editing the configuration files (see [MconfWebDeploymentWithScript this page]).
-
-<font color=red>*Important note:*</font> Be aware that this command will erase your database, so this should not be used if you already have application data in your database.
-
-Requires:
-
-  * Ruby installed with RVM;
-  * The application deployed in ~/mconf-web as a git repository (it will happen if you run `--deploy-setup`).
-
-Steps:
-
+  * Installs god, a process monitoring framework (see more about it in the [MconfWebDeploymentManual installation page]);
   * Configures the database (runs the command `rake setup:db`);
   * Creates a new secret key ([http://www.railsrocket.com/rake-secret what is this?]).
+
+
 
 === `--update` ===
 
@@ -113,7 +130,10 @@ Updates the application to the latest version available. All versions are marked
 
 Requires:
 
-  * The application deployed in ~/mconf-web as a git repository (it will happen if you run `--deploy-setup`).
+  * The application deployed in ~/mconf-web/latest as a git repository (it will happen if you run `--deploy-setup`).
+
+
+
 
 === `--restart` ===
 
@@ -125,4 +145,4 @@ Restarts the application. Useful if you change the configuration files and need 
 
 Requires:
 
-  * The application deployed in ~/mconf-web as a git repository (it will happen if you run `--deploy-setup`).
+  * The application deployed in ~/mconf-web/latest as a git repository (it will happen if you run `--deploy-setup`).
