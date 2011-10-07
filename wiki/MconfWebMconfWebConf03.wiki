@@ -1,3 +1,5 @@
+#summary Documentation for the script mconf-web-conf until Mconf-Web 0.4 (script version 0.3)
+
 <wiki:toc max_depth="2" />
 
 = The script `mconf-web-conf` =
