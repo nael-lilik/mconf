@@ -1,6 +1,8 @@
 = Deployment =
 
-Mconf-web is a Rails application, so the deployment process is very similar to the deployment of any other Rails application.
+Mconf is developed in and targeted to Ubuntu systems. We recommend the use of Ubuntu 10.04 (the latest LTS version, the same used by !BigBlueButton), but it has been tested in newer versions and should work as well.
+
+But you can of course adapt it to your needs. Mconf-web is a Rails application, so the deployment process is very similar to the deployment of any other Rails application.
 
 The server setup we have right now, and thus the recommended setup, uses the following:
 
@@ -11,23 +13,15 @@ The server setup we have right now, and thus the recommended setup, uses the fol
   # [http://www.mysql.com/ MySQL] database
   # [https://github.com/capistrano/capistrano Capistrano] helps you run commands on the server from your development environment
 
-The following guide will instruct you on how to setup this environment.
+The following guides will instruct you on how to setup this environment.
 
-Mconf-web should work on any operating system that has Ruby available (and most of them do have Ruby). Changing any of these items will certainly require modifications in the configuration files and scripts (and maybe even some code changes in some cases).
+Mconf-web should work on any operating system that has Ruby available (and most of them do have Ruby). Changing any of these items will probably require modifications in the configuration files and scripts (and maybe even some code changes).
 
-  <font color="red">*Important:*</font> The deployment of Mconf-Web has two steps: (1) configuring the server and (2) deploying the application. To deploy the application you need to have a development environment configured. After you set up a basic server (1), the rest of the deployment is done remotely from the development environment (using Capistrano).
-
-== (0) First steps ==
+== Deployment guides ==
 
 Basically all you need to start is a machine with Ubuntu (10.04 is recommended) and a user (suggested name: "mconf").
 
-You need also some basic tools: git, curl and a ssh server. You can install them in Ubuntu with:
-
-{{{
-sudo apt-get install openssh-server git curl
-}}}
-
 From now on, you can either install everything manually or use the script `mconf-web-conf` to help you with these tasks:
 
-  * [MconfWebDeploymentWithScript Using mconf-web-conf]. This is the easier option. If you chose this option, take a look at the manual installation if you're having problems.
+  * *[MconfWebDeploymentWithScript Using mconf-web-conf]*. This is the easier option. If you chose this option, take a look at the manual installation if you're having problems.
   * [MconfWebDeploymentManual Manual installation].
