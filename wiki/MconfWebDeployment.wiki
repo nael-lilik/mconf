@@ -6,12 +6,12 @@ But you can of course adapt it to your needs. Mconf-web is a Rails application, 
 
 The server setup we have right now, and thus the recommended setup, uses the following:
 
-  # [http://www.ubuntu.com/ Ubuntu] 10.04 operating system
-  # Ruby is installed with [https://rvm.beginrescueend.com/ RVM]
-  # [http://www.modrails.com/ Phusion Passenger] (ruby app server)
-  # [http://httpd.apache.org/ Apache] (but you can also use [http://nginx.net/ Nginx])
-  # [http://www.mysql.com/ MySQL] database
-  # [https://github.com/capistrano/capistrano Capistrano] helps you run commands on the server from your development environment
+  # [http://www.ubuntu.com/ Ubuntu] 10.04 operating system.
+  # Ruby is installed with [https://rvm.beginrescueend.com/ RVM].
+  # [http://www.modrails.com/ Phusion Passenger] (ruby app server).
+  # [http://httpd.apache.org/ Apache] (but you can also use [http://nginx.net/ Nginx]).
+  # [http://www.mysql.com/ MySQL] database.
+  # Optionally, [https://github.com/capistrano/capistrano Capistrano]. It helps you run commands on the server from your development environment.
 
 The following guides will instruct you on how to setup this environment.
 
@@ -23,5 +23,6 @@ Basically all you need to start is a machine with Ubuntu (10.04 is recommended) 
 
 From now on, you can either install everything manually or use the script `mconf-web-conf` to help you with these tasks:
 
-  * [MconfWebDeploymentWithScript Using mconf-web-conf]. This is the easier option. If you chose this option, take a look at the manual installation if you're having problems.
-  * [MconfWebDeploymentManual Manual installation].
+  * *[MconfWebDeploymentWithScript Using mconf-web-conf]*: This is the easier option. You'll use a script called `mconf-web-conf` that will install and configure everything it can and ask for your help in things it cannot do automatically. If you chose this option, take a look at the manual installation if you're having problems.
+
+  * *[MconfWebDeploymentManual Manual installation]*: This is a detailed guide showing how to install Mconf-Web. It allows a more flexible installation and can also help you find errors in your setup, but will require more time to be completed.
