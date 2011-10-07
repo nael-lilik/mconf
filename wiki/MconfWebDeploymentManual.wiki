@@ -1,6 +1,6 @@
 _This page is a continuation of [MconfWebDeployment this page]._
 
-Note: From version 0.3, the script has changed quite a bit. The documentation for the old version [MconfWebDeploymentManual02 can be found here].
+Note: From Mconf-Web 0.4, this process has changed quite a bit. The documentation for the old version [MconfWebDeploymentManual03 can be found here].
 
 = Mconf-Web Manual Deployment (step-by-step guide) =
 
