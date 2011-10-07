@@ -1,50 +1,142 @@
 _This page is a continuation of [MconfWebDeployment this page]._
 
+Note: From version 0.3, the script has changed quite a bit. The documentation for the old version [MconfWebDeploymentWithScript02 can be found here].
+
+
 = Mconf-Web Deployment With mconf-web-conf =
 
-For more details about the script see [MconfWebMconfWebConf this page]. You can download and install it with:
+<wiki:toc max_depth="3" />
+
+== Overview ==
+
+This guide is destined to those who search an easy way to install Mconf-Web or those that have no experience with Ruby/Rails applications. If you're searching for a more flexible installation (possibly with using more advanced tools), see the [MconfWebDeploymentManual manual installation guide].
+
+== Installing Mconf-Web ==
+
+At first, you have to download and install the script `mconf-web-conf`. For more details about it see [MconfWebMconfWebConf this page].
+
+You can download it and use from your local folder with (note: install curl if you don't have it yet):
+
+{{{
+curl https://raw.github.com/mconf/mconf-web/latest/script/mconf-web-conf -o mconf-web-conf
+chmod a+x mconf-web-conf
+}}}
+
+*Note:* If you run from your local folder, you'll have to run the commands below with "`./mconf-web-conf`" instead of "`mconf-web-conf`" only.
+
+Or install it in your system to be available to all users:
 
 {{{
 sudo curl https://raw.github.com/mconf/mconf-web/latest/script/mconf-web-conf -o /usr/local/bin/mconf-web-conf
 sudo chmod a+x /usr/local/bin/mconf-web-conf
 }}}
 
-== (1) Configuring the server ==
+After downloading the script, follow the steps below to install the application.
 
-=== System Packages ===
+*Note:* Don't run the commands as sudo. When superuser permissions are required the script will ask you for a password.
+
+
+
+
+=== 1. System Packages ===
 
 {{{
-mconf-web-conf --install-packages production
+mconf-web-conf --install-packages
 }}}
 
-=== Ruby and RVM ===
+You can see the list of packages that will be installed [https://github.com/mconf/mconf-web/blob/latest/config/packages.ubuntu in this file].
+
+
+
+
+=== 2. Ruby ===
 
 {{{
 mconf-web-conf --install-ruby
 }}}
 
-=== Passenger + Web Server ===
+Ruby will be installed using [http://beginrescueend.com/ RVM], as multi-user. This means that ruby will be available to all users.
+
+<font color=red>*Important: *</font>After installing ruby, you should close your terminal and open it again, so that RVM will be fully operational.
+
+
+
+
+=== 3. Download the application ===
 
 {{{
-mconf-web-conf --setup-prod
+mconf-web-conf --checkout
 }}}
+
+This command will download the application from git. The script will always download the latest version available, the ones that are marked as tags in the repository. To see all available versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page].
+
+The application will be checked out to `~/mconf-web/current/`.
+
+If you want an specific version, you can change the variable `DEPLOY_VERSION` in the script, such as:
+
+{{{
+DEPLOY_VERSION=v0.3      # this will install version 0.3
+DEPLOY_VERSION=stable    # you can also specify any branch existent in the repository
+}}}
+
+
+
+=== 4. Edit the configuration files (manual configuration) ===
+
+There are two files that need to be configured. At first, copy the example files:
+
+{{{
+cp ~/mconf-web/current/config/setup_conf.yml.example ~/mconf-web/current/config/setup_conf.yml
+cp ~/mconf-web/current/config/database.yml.example ~/mconf-web/current/config/database.yml
+}}}
+
+Then edit the files `setup_conf.yml` and `database.yml`. *To configure these files, see [MconfWebSetupConf this page]*.
+
+`setup_conf.yml` has general configurations for the web application and `database.yml` configures the database. By default, MySQL will be used. If you haven't set up a password for MySQL yet, you can do it with:
+
+{{{
+mysqladmin -u root password "NEW-PASSWORD" # Use the quotes, they are not part of the password
+}}}
+
+Or, in case you want to change the password:
+
+{{{
+mysqladmin -u root -p password "NEW-PASSWORD"
+}}}
+
+
+
+=== 5. Install a web server, configure the application and deploy ===
+
+This command will install the web server, configure the application using the configuration files you edited earlier, and with that the application will be deployed.
+
+{{{
+mconf-web-conf --deploy-setup
+}}}
+
+==== 5.1 Web server ====
 
 If you're installing Mconf-Web in a standalone machine, the script will ask you if you want to use Apache or Nginx. You can use the one you prefer.
 
 If you're installing Mconf-Web in the same machine where you already have !BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually (see more about this issue [MconfWebDeployInBBBMachine in this page]).
 
+==== 5.2 Configuration and deploy ====
 
-== (2) Deploy ==
+This command will use the configurations from `setup_conf.yml` and `database.yml` to create the database and start the application for the first time. When it finishes, open your browser and navigate to the IP of the machine where you installed the application to access it. If might take some seconds the first time while the application environment is loaded.
 
-To deploy the application you need a development environment. If you already have one in another machine, take a look at the [MconfWebDeploymentManual#(2)_Deploy Deploy section in the manual deployment page].
+<font color=red>*Important:* </font>Be aware that this command will erase your database, so this should not be used if you already have application data in your database.
 
-If you don't have a development environment, you can either [MconfWebDevelopment create one manually] or [MconfWebMconfWebConf using the script mconf-web-conf] (see the usage scenarios). You can setup the development environment in the same machine as the production environment if you want to.
 
-The easiest way to setup a development environment in the same machine and then deploy the application, is to run the following commands:
+
+== Maintenance tasks ==
+
+The script also provides commands to update your application and restart it. They are:
 
 {{{
-mconf-web-conf --install-packages development   # install system packages
-mconf-web-conf --checkout                       # get the code
-mconf-web-conf --setup-dev                      # setup config files
-mconf-web-conf --deploy-first-time              # deploy
+mconf-web-conf --update
+mconf-web-conf --restart
 }}}
+
+The update task will download the latest version available, just like the task `--deploy-setup` does. Notice that the application is simply a git repository with the application's source code. So if you know how to use git, you can just update your repository whenever you want to (or even point it to another branches, if needed).
+
+Also, in this script the deployment process doesn't use Capistrano, because Capistrano requires a development environment. Capistrano is very useful to update your application, specially if you have several application servers (one for production and another one for testing, for instance). If you want to know more about it, check the [MconfWebDeploymentManual manual installation guide].
