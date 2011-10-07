@@ -1,3 +1,5 @@
+#summary Step-by-step guide on how to deploy Mconf-Web
+
 _This page is a continuation of [MconfWebDeployment this page]._
 
 Note: From Mconf-Web 0.4, this process has changed quite a bit. The documentation for the old version [MconfWebDeploymentManual03 can be found here].
