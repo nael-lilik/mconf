@@ -1,3 +1,5 @@
+#summary How to install God in a Mconf-Web production server
+
 _This page is part of the Mconf-Web deployment described in [MconfWebDeploymentManual this page]._
 
 == Installing God for Mconf-Web ==
