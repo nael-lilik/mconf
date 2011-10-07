@@ -23,5 +23,5 @@ Basically all you need to start is a machine with Ubuntu (10.04 is recommended) 
 
 From now on, you can either install everything manually or use the script `mconf-web-conf` to help you with these tasks:
 
-  * *[MconfWebDeploymentWithScript Using mconf-web-conf]*. This is the easier option. If you chose this option, take a look at the manual installation if you're having problems.
+  * [MconfWebDeploymentWithScript Using mconf-web-conf]. This is the easier option. If you chose this option, take a look at the manual installation if you're having problems.
   * [MconfWebDeploymentManual Manual installation].
