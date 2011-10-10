@@ -6,9 +6,16 @@
 
 = Releases =
 
-== Current Development: Release 0.4 ==
+== Current Development: Release 0.5 ==
 
-*Planned for*: Oct 7th, 2011.
+*Planned for*: ?, 2011.
+
+  * See: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.5 Issues for Mconf-Web-Release0.5].
+
+
+== Release 0.4 ==
+
+*Released*: Oct 7th, 2011.
 
   * User rooms can be set as private (Issue 241).
   * Layout changes in the homepage: focusing the spaces, now in the center.
