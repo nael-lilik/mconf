@@ -77,7 +77,7 @@ The application will be checked out to `~/mconf-web/current/`.
 If you want an specific version, you can change the variable `DEPLOY_VERSION` in the script, such as:
 
 {{{
-DEPLOY_VERSION=v0.3      # this will install version 0.3
+DEPLOY_VERSION=v0.4      # this will install version 0.4
 DEPLOY_VERSION=stable    # you can also specify any branch existent in the repository
 }}}
 
