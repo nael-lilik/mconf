@@ -61,7 +61,7 @@ This tasks install ruby using RVM.
 
 RVM will be installed for all users in the system. See the "Multi-User Installation" at the [https://rvm.beginrescueend.com/rvm/install/ RVM website].
 
-<font color=red>*Important:*</font> After installing ruby, you should close your terminal and open it again, so that RVM will be fully operational.
+<font color=red>*Important: *</font> After installing ruby, you should close your terminal and open it again, so that RVM will be fully operational.
 
 Steps:
 
@@ -104,7 +104,7 @@ Configures the production environment and deploys the application. It requires t
 
 This command will install several things you need in your server and also configure the application's database.
 
-<font color=red>*Important:*</font> Be aware that this command will erase your database, so this should not be used if you already have application data in your database.
+<font color=red>*Important: *</font> Be aware that this command will erase your database, so this should not be used if you already have application data in your database.
 
 Requires:
 
@@ -132,7 +132,7 @@ Updates the application to the latest version available. All versions are marked
 
 Requires:
 
-  * The application deployed in ~/mconf-web/latest as a git repository (it will happen if you run `--deploy-setup`).
+  * The application deployed in ~/mconf-web/current as a git repository (it will happen if you run `--deploy-setup`).
 
 
 
@@ -147,4 +147,4 @@ Restarts the application. Useful if you change the configuration files and need 
 
 Requires:
 
-  * The application deployed in ~/mconf-web/latest as a git repository (it will happen if you run `--deploy-setup`).
+  * The application deployed in ~/mconf-web/current as a git repository (it will happen if you run `--deploy-setup`).
