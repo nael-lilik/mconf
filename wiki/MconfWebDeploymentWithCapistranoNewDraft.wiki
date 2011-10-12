@@ -1,0 +1,104 @@
+Steps:
+
+  # System Packages
+  # Ruby
+  # Use capistrano...
+  # Install a web server and some other system-wide applications
+
+The two first steps can be both manual or using the script. Then use Capistrano. Then install some other things, preferably using the manual guide.
+
+
+
+
+
+
+
+=== Capistrano ===
+
+Capistrano is a ruby gem that helps you deploy applications. You run commands from your development environment and they affect your production server.
+
+You should start by editing the file <tt>config/deploy/conf.yml</tt>. This file contains the configurations for the "two stages" we use for deployment:
+
+  * "staging": this is a stage to test your application before deploying it to the real production server;
+  * "production": the real production server.
+
+All the examples below are for the "staging" stage. You can use the same commands for "production", just replace "staging" for "production".
+
+==== Set up ssh keys ====
+
+To enable capistrano to access your server you have to generate a public key for your local user (if you don't have one yet) and allow access to it in your server. You can find plenty of resources about it in the web, but shortly, you could do the following:
+
+{{{
+# generate the key
+mkdir ~/.ssh && chmod 700 ~/.ssh
+ssh-keygen -t rsa
+  -> (you will be prompted for a password)
+
+# set it in your server (NOTE: don't forget to change "deploy@myserver.com")
+cat ~/.ssh/id_rsa.pub | ssh deploy@myserver.com "cat >> .ssh/authorized_keys2"
+}}}
+
+More information at:
+
+  * https://help.ubuntu.com/community/SSH/OpenSSH/Keys
+  * http://help.github.com/deploy-keys/
+  * http://snippets.dzone.com/posts/show/5730
+
+==== First deploment ====
+
+Our deploy has a task called `setup:all` that can be used to setup a server for the first time. Run:
+
+{{{
+cap staging setup:all
+}}}
+
+This task will do the following:
+  * Create the basic directories in the server;
+  * Checkout Mconf-web from github (using the branch you specified in <tt>conf.yml</tt>) and make it available to be served by Nginx;
+  * Setup the database (with the basic data needed).
+
+  <font color="red">*Important:*</font> The configuration files used in your development environment will be uploaded to the production server. So make sure you configured them. If you change any of them and need to upload to the production server, run:
+  {{{
+cap staging deploy:update
+  }}}
+
+==== Updating the server ====
+
+After a while, you'll want to update the code of your server. Since you already have everything setup, it's pretty simple. Just run:
+
+{{{
+cap staging deploy:migrations  # update to a new release, run the migrations (i.e. updates the DB) and restart the web server
+}}}
+
+==== Further information ====
+
+Capistrano has some other tasks you may need. You can see them all running:
+
+{{{
+cap -T
+}}}
+
+Below there's a list with tasks defined by Mconf-Web that you will possibly use:
+
+{{{
+cap staging deploy:udpate       # update to a new release
+cap staging deploy:migrate      # run migrations
+cap staging deploy:restart      # restart the web server
+cap staging deploy:web:disable  # start maintenance mode (the site will be offline)
+cap staging deploy:web:enable   # stop maintenance mode (the site will be online)
+cap staging deploy:rollback     # go back to the previous version
+cap staging setup:secret        # creates a new secret token (requires restart)
+cap staging setup:db            # drops, creates and populates the db with the basic data
+}}}
+
+The files used by Capistrano that you may want to edit are:
+
+  * <tt>config/deploy.rb</tt>
+  * <tt>config/deploy/conf.yml</tt>
+  * <tt>config/deploy/production.rb</tt>
+  * <tt>config/deploy/staging.rb</tt>
+
+Links:
+
+  * Capistrano documentation: https://github.com/capistrano/capistrano/wiki
+  * Multiple stages in Capistrano: https://github.com/capistrano/capistrano/wiki/2.x-Multistage-Extension
