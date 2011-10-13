@@ -70,5 +70,6 @@ ps ax | grep god
 The "ps" command above should show a process similar to:
 
 {{{
-/usr/local/rvm/rubies/ruby-1.9.2-p290/bin/ruby /usr/local/rvm/gems/ruby-1.9.2-p290@mconf/bin/god -c /etc/god/config -l /var/log/god.log --no-syslog --log-level warn
+/usr/local/rvm/rubies/ruby-1.9.2-p290/bin/ruby /usr/local/rvm/gems/ruby-1.9.2-p290@mconf/bin/god
+   -c /etc/god/config -l /var/log/god.log --no-syslog --log-level warn
 }}}
