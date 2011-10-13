@@ -1,26 +1,105 @@
-=== Capistrano ===
+#summary Deploy Mconf-Web using Capistrano
 
-Capistrano is a ruby gem that helps you deploy applications. You run commands from your development environment and they affect your production server.
+<wiki:toc max_depth="3" />
 
-You should start by editing the file <tt>config/deploy/conf.yml</tt>. This file contains the configurations for the "two stages" we use for deployment:
+= Capistrano =
 
-  * "staging": this is a stage to test your application before deploying it to the real production server;
-  * "production": the real production server.
+[https://github.com/capistrano/capistrano Capistrano] is a ruby gem that helps you deploy applications. You run commands from your development environment and they affect your production server. It is great if you're a developer and/or if you have multiple servers to update.
 
-All the examples below are for the "staging" stage. You can use the same commands for "production", just replace "staging" for "production".
+This guide will show you how to setup a production server using Capistrano to deploy the application.
 
-==== Set up ssh keys ====
+== Requirements ==
 
-To enable capistrano to access your server you have to generate a public key for your local user (if you don't have one yet) and allow access to it in your server. You can find plenty of resources about it in the web, but shortly, you could do the following:
+You need a *development* environment with the Mconf-Web repository checked out and with the configuration files properly edited. This is important because *your local configuration files will be uploaded to the server and be used to configure the deployed application*.
+
+You can see how to do it [MconfWebDevelopment in this page].
+
+== Setting up a production server (quick guide) ==
+
+All the necessary steps to setup a production server are documented in our deployment page. This page will focus on the use of Capistrano and we will point to the deployment page whenever possible.
+
+The steps necessary are:
+
+  # Install system packages:
+    * Using a script: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript#1._System_Packages link] (recommended)
+    * Manually: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#1._System_Packages link]
+  # Install ruby;
+    * Using a script: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript#2._Ruby link] (recommended)
+    * Manually: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#2._Ruby link]
+  # Use Capistrano to deploy the application;
+    * See below how to do it.
+  # Install a web server and some other system-wide applications.
+    * You shouldn't use the script here.
+    * Manually: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#5._Install_a_web_server,_configure_the_application_and_deploy link] (sections "Web server" and "System-wide configurations")
+
+
+As you can see above, steps 1, 2, and 4 are documented in the deployment guides and you have the links above. We recommend that you use the script for steps 1 and 2 and perform step 4 manually.
+
+Step 3 is where you'll use Capistrano.
+
+
+=== Step 3: Capistrano ===
+
+These are the quick steps to use Capistrano. For more information see the other section in this page.
+
+*In your server:*
+
+Capistrano will access your server using ssh, so you need to install a ssh server in your server machine. In Ubuntu you can install it with:
 
 {{{
-# generate the key
-mkdir ~/.ssh && chmod 700 ~/.ssh
-ssh-keygen -t rsa
-  -> (you will be prompted for a password)
+sudo apt-get install openssh-server
+}}}
 
-# set it in your server (NOTE: don't forget to change "deploy@myserver.com")
-cat ~/.ssh/id_rsa.pub | ssh deploy@myserver.com "cat >> .ssh/authorized_keys2"
+You can also setup ssh keys to avoid the need to enter a password every time you run a command (which is quite annoying). See how to [MconfWebDeploymentWithCapistrano#Set_up_ssh_keys here].
+
+Then install bundler with:
+
+{{{
+gem install bundler -v 1.0.18
+}}}
+
+*In your development machine:*
+
+At first, configure the file `config/deploy/conf.yml`. See how to [MconfWebDeploymentWithCapistrano#Configurations here].
+
+Now you can finally run a capistrano command that will setup the application in your production server:
+
+{{{
+cap staging setup:all  # change "staging" to "production" to use the production stage
+}}}
+
+This task will do the following:
+  * Create the basic directories in the server;
+  * Checkout Mconf-web from github (using the branch you specified in <tt>conf.yml</tt>) and make it available to be served by Nginx;
+  * Setup the database (with the basic data needed).
+
+It might take some time, it will download the application and install several gems.
+
+
+That's it. Try to access your server and the application should be deployed. Keep reading this page for more information on how to update the application and others.
+
+
+
+== Detailed information ==
+
+
+
+=== Set up ssh keys ===
+
+You can find plenty of resources about it in the web, but here's a quick guide.
+
+Start by generating your personal key if you don't have one yet:
+
+{{{
+mkdir ~/.ssh
+chmod 700 ~/.ssh
+ssh-keygen -t rsa # you will be prompted for a password
+}}}
+
+Then you have to add your public key to the list of authorized keys in your server (note: don't forget to change "deploy@myserver.com"):
+
+{{{
+cat ~/.ssh/id_rsa.pub | ssh deploy@myserver.com "mkdir -p .ssh/ && cat >> .ssh/authorized_keys2"
 }}}
 
 More information at:
@@ -29,33 +108,59 @@ More information at:
   * http://help.github.com/deploy-keys/
   * http://snippets.dzone.com/posts/show/5730
 
-==== First deploment ====
 
-Our deploy has a task called `setup:all` that can be used to setup a server for the first time. Run:
+
+
+=== Configurations ===
+
+There are several configuration files used by Capistrano, but the most important one (and probably the only one you'll have to edit) is <tt>config/deploy/conf.yml</tt>. This file contains the configurations for the *two stages* we use for deployment. A stage is basically a server, so we use two servers that correspond to the stages below:
+
+  * "staging": this is a server to test your application before deploying it to the real production server;
+  * "production": the real production server.
+
+All the examples in this page use the "staging" stage, but you can use exactly the same commands for "production" (just replace "staging" for "production").
+
+In the "staging" area of your `conf.yml` you should have something like this:
 
 {{{
-cap staging setup:all
+staging:
+  server: "127.0.0.1"                                 # Deployment server IP or domain
+  application: "mconf-web"                            # Application name, do not use spaces
+  user: "mconf"                                       # User (in the server) used to deploy
+  repository: "git://github.com/mconf/mconf-web.git"  # Repository to get the app from
+  scm: "git"                                          # Repository scm
+  branch: "v0.4"                                      # Branch or tag to be deployed
 }}}
 
-This task will do the following:
-  * Create the basic directories in the server;
-  * Checkout Mconf-web from github (using the branch you specified in <tt>conf.yml</tt>) and make it available to be served by Nginx;
-  * Setup the database (with the basic data needed).
+The parameters are very simple and you can see their meaning reading the comments besides them. The ones you'll most likely change are "server" and "branch". "server" should be the IP or the domain of your server, and "branch" should be any branch or tag in the repository pointed by "repository". This branch will be used to deploy the application.
 
-  <font color="red">*Important:*</font> The configuration files used in your development environment will be uploaded to the production server. So make sure you configured them. If you change any of them and need to upload to the production server, run:
-  {{{
+Whenever you change this file (e.g. if you change the branch), you can update the deployed application with:
+
+{{{
 cap staging deploy:update
-  }}}
-
-==== Updating the server ====
-
-After a while, you'll want to update the code of your server. Since you already have everything setup, it's pretty simple. Just run:
-
-{{{
-cap staging deploy:migrations  # update to a new release, run the migrations (i.e. updates the DB) and restart the web server
 }}}
 
-==== Further information ====
+
+
+=== Updating the server ===
+
+After a while, you'll want to update the code of your server. Since you already have everything set up, it's pretty simple. Just run:
+
+{{{
+# update to a new release, run the migrations (i.e. updates the DB) and restart the web server
+cap staging deploy:migrations
+}}}
+
+
+Also, as already commented, your local configuration files will be uploaded to the server and be used to configure the deployed application. So if you change the your local configurations and want to apply them in the server, run:
+
+{{{
+cap staging deploy:update
+}}}
+
+
+
+=== Further information ===
 
 Capistrano has some other tasks you may need. You can see them all running:
 
