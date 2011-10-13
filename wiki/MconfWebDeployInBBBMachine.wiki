@@ -8,31 +8,16 @@ You can setup a Mconf-Web server in the same machine that already has !BigBlueBu
 
 Also, in this page we provide some tips on how to configure Mconf-Web to use the local !BigBlueButton installation.
 
-== Web Server ==
 
-=== Use Mconf-Web with Apache and !BigBlueButton with Nginx (recommended) ===
 
-This is the default solution, and requires just a few configurations on both web servers. 
 
-If you deploy Mconf-Web [MconfWebDeploymentWithScript using our script] it will already detect that !BigBlueButton is installed and, if you choose to install Apache, it will configure both Apache and Nginx to work with both applications.
+== Use Mconf-Web with Apache and !BigBlueButton with Nginx (recommended) ==
 
-If you can't use the script for some reason, here are some guidelines of what you need to configure in Apache and Nginx.
+This is the default solution, and requires just a few configurations on both web servers. You'll need to change the port used by !BigBlueButton, since Mconf-Web will use the port 80.
 
-==== Manual configuration ====
+You can install Mconf-Web following our [MconfWebDeployment deployment guide] (either using the script or manually).
 
-If you know some bash script you can take a look at the following section in [https://github.com/mconf/mconf-web/blob/master/script/mconf-web-conf our script] and you will find out how to configure the web servers:
-
-{{{
-if [ $SETUP_PROD ]; then
-...
-    is_bigbluebutton_installed
-    if [ $REPLY ]; then
-        # here is where we ask the user what to do since BigBlueButton is installed
-        # and if he chooses to install Apache we will do it automatically.
-...
-}}}
-
-The first steps are:
+Then disable any nginx website that might be answering in the port 80 and set !BigBlueButton to answer in a different port:
 
 {{{
 sudo rm /etc/nginx/sites-enabled/default     # Disable the default config in nginx that uses the port 80
@@ -43,12 +28,10 @@ _Replace $IP with your machine's IP and $PORT with the port you want for !BigBlu
 
 !BigBlueButton should respond in a port different than 80, since Mconf-Web will use the port 80. By default our script changes its port to 8888, but you can use another one if you want to. Be aware that remote users accessing !BigBlueButton from behind a firewall can no longer tunnel through port 80 to !BigBlueButton. See more about it in the [http://code.google.com/p/bigbluebutton/wiki/FAQ#I_have_an_existing_server_with_web_application_already_running_o BigBlueButton FAQ].
 
-Next, we install Apache using [http://www.modrails.com/ Passenger]. At our [MconfWebDeploymentManual#Apache manual deployment page] you can find a guide on how to install Passenger and Apache. Follow the section "Apache" in that page and then come back to this page.
-
-With this you have the production server up and ready to receive a deployed Mconf-Web. To deploy, you can again use our script or do it manually. Proceed to [MconfWebDeployment this page] to learn how to do that.
 
 
-=== Use both applications with Nginx ===
+
+== Use both applications with Nginx ==
 
 Mconf-Web uses the gem [http://www.modrails.com/ Passenger], that's used to serve Rails applications. To run Passenger with Nginx, you need a compiled version of Nginx that has the Passenger module enabled. Since !BigBlueButton uses a packaged version of Nginx, we cannot serve Mconf-Web with Passenger using this same version.
 
@@ -61,6 +44,9 @@ There are two options we know of to solve this:
   * Install the Passenger-enabled Nginx on top of the packaged Nginx. And then configure Nginx to run both Mconf-Web and !BigBlueButton:
     * Take a look at [MconfWebDeploymentManual#Nginx this page] to know how to install Nginx using Passenger.
     * The packaged version of Nginx is installed at `/etc/nginx/`, so install the new version in this same place.
+
+
+
 
 
 == Configuring Mconf-Web to use the local !BigBlueButton ==
@@ -87,4 +73,3 @@ Then, configure Mconf-Web with the following parameters (note: replace the red t
     * user: firstuser
 
 If you're configuring manually, these parameters are in the files `config/setup_conf.yml` and `config/deploy/conf.yml` in your development environment.
-
