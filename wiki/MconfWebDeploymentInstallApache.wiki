@@ -51,7 +51,7 @@ sudo a2enmod rewrite
 sudo rm /etc/apache2/sites-enabled/*
 }}}
 
-Now you need to add a configuration file for Mconf-Web. You might just download our example edit it:
+Now you need to add a configuration file for Mconf-Web. You might just download our example and edit it:
 
 {{{
 sudo curl https://raw.github.com/mconf/mconf-web/master/config/apache2.conf.example -o /etc/apache2/sites-available/mconf-web
