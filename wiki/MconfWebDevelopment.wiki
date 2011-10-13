@@ -30,8 +30,10 @@ sudo apt-get install ${PACKAGES_DEVELOPMENT[@]}
 rm packages.ubuntu
     }}}
 
-   * Then install the gems with:
+   * Install gems and git submodules with:
     {{{
+git submodule init
+git submodule update
 gem install bundler && bundle install
     }}}
 
