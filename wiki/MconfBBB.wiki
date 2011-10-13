@@ -1,8 +1,10 @@
+<font color=red>Important: </font> These modifications are for !BigBlueButton 0.71a. If you are using !BigBlueButton 0.8, all of these customizations will already be enabled.
+
 = Mconf - !BigBlueButton Customizations =
 
-Mconf uses a customized version of !BigBlueButton. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration changes that must be made in each instance of !BigBlueButton.
+Mconf uses a customized version of !BigBlueButton. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration that must be made in each instance of !BigBlueButton.
 
-These customizations can be applied to a !BigBlueButton instance using the [MconfBBBInstallScript mconf-bbb-conf script].
+These customizations can be applied to a !BigBlueButton instance using the [MconfBBB#Install_script mconf-bbb-conf script].
 
 
 == List of modifications ==
@@ -11,5 +13,17 @@ Today, all the modifications purposed by the Mconf Team is merged to the master 
 
  * The possibility to specify in the configuration file which resolutions the user can use during the conference;
  * Improved the video windows resize;
- * Automatic layout to organize the video windows;
+ * A video dock to organize video windows;
  * The right configuration to enable Speex audio codec, which improves the audio quality.
+
+== Install script ==
+
+You can find the latest version of this file in [https://github.com/mconf/installation-scripts this repository]
+
+To apply the modifications, download the script and run it in your !BigBlueButton server:
+
+{{{
+wget https://raw.github.com/mconf/installation-scripts/master/mconf-bbb-conf
+chmod a+x mconf-bbb-conf
+./mconf-bbb-conf
+}}}
