@@ -1,12 +1,46 @@
-Steps:
+<wiki:toc max_depth="3" />
 
-  # System Packages
-  # Ruby
-  # Use capistrano...
-  # Install a web server and some other system-wide applications
+= Capistrano =
 
-The two first steps can be both manual or using the script. Then use Capistrano. Then install some other things, preferably using the manual guide.
+[https://github.com/capistrano/capistrano Capistrano] is a ruby gem that helps you deploy applications. You run commands from your development environment and they affect your production server. It is great if you're a developer and/or if you have multiple servers to update.
 
+This guide will show you how to setup a production server using Capistrano to deploy the application.
+
+
+== Setting up a production server ==
+
+All the necessary steps to setup a production server are documented in our deployment page. This page will focus on the use of Capistrano and we will point to the deployment page whenever possible.
+
+The steps necessary are:
+
+  # Install system packages:
+    * Using a script: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript#1._System_Packages link]
+    * Manually: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#1._System_Packages link]
+  # Install ruby;
+    * Using a script: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript#2._Ruby link]
+    * Manually: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#2._Ruby link]
+  # Use Capistrano to deploy the application;
+    * See below how to do it.
+  # Install a web server and some other system-wide applications.
+    * You shouldn't use the script here.
+    * Manually: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#5._Install_a_web_server,_configure_the_application_and_deploy link]
+
+
+As you can see above, steps 1, 2, and 4 are documented in the deployment guides and you have the links above. We recommend that you use the script for steps 1 and 2 and perform step 4 manually.
+
+Step 2 is where you'll use Capistrano.
+
+
+=== Step 2: Capistrano ===
+
+  * Install shh server. openssh-server
+  * To enable Capistrano to access you server and avoid the need to enter a password every time you run a command (which is quite annoying), you can setup the ssh keys in your server to allow your user to connect.
+
+  * configure your local conf.yml
+  * gem install bundler -v 1.0.18
+  * cap staging setup:all
+    * it might take some time, it is downloading the application
+  *s
 
 
 
@@ -26,16 +60,20 @@ All the examples below are for the "staging" stage. You can use the same command
 
 ==== Set up ssh keys ====
 
-To enable capistrano to access your server you have to generate a public key for your local user (if you don't have one yet) and allow access to it in your server. You can find plenty of resources about it in the web, but shortly, you could do the following:
+You can find plenty of resources about it in the web, but here's a quick guide.
+
+First generate your personal key if you don't have it yet:
 
 {{{
-# generate the key
-mkdir ~/.ssh && chmod 700 ~/.ssh
-ssh-keygen -t rsa
-  -> (you will be prompted for a password)
+mkdir ~/.ssh
+chmod 700 ~/.ssh
+ssh-keygen -t rsa # you will be prompted for a password
+}}}
 
-# set it in your server (NOTE: don't forget to change "deploy@myserver.com")
-cat ~/.ssh/id_rsa.pub | ssh deploy@myserver.com "cat >> .ssh/authorized_keys2"
+Then you have to add your public key to the list of authorized keys in your server (note: don't forget to change "deploy@myserver.com"):
+
+{{{
+cat ~/.ssh/id_rsa.pub | ssh deploy@myserver.com "mkdir -p .ssh/ && cat >> .ssh/authorized_keys2"
 }}}
 
 More information at:
@@ -61,6 +99,19 @@ This task will do the following:
   {{{
 cap staging deploy:update
   }}}
+
+
+
+
+
+
+
+
+
+
+
+== Management tasks and further information ==
+
 
 ==== Updating the server ====
 
