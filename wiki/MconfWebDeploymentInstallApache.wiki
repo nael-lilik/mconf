@@ -93,4 +93,4 @@ At last, restart Apache and it should be ready to serve Mconf-Web:
 sudo /etc/init.d/apache2 restart
 }}}
 
-Open your browser and try to access your localhost. You might see a page with the error "404 Not Found". That is ok, Apache can't find the application if it was not deployed yet. 
+Open your browser and try to access your localhost. You might see a page with the error "404 Not Found", but that is ok in case the application not deployed yet. 
