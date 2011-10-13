@@ -4,7 +4,7 @@
 
 Mconf uses a customized version of !BigBlueButton. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration that must be made in each instance of !BigBlueButton.
 
-These customizations can be applied to a !BigBlueButton instance using [MconfBBB#Install_script our script.
+These customizations can be applied to a !BigBlueButton instance using [MconfBBB#Install_script our script].
 
 
 == List of modifications ==
