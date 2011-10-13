@@ -9,9 +9,7 @@ These customizations can be applied to a !BigBlueButton instance using [MconfBBB
 
 == List of modifications ==
 
-Today, all the modifications purposed by the Mconf Team is merged to the master tree of !BigBlueButton.
-
- * The possibility to specify in the configuration file which resolutions the user can use during the conference;
+ * Possibility to specify in the configuration file which resolutions the user can use during the conference;
  * Improved the video windows resize;
  * A video dock to organize video windows;
  * The right configuration to enable Speex audio codec, which improves the audio quality.
