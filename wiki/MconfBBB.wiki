@@ -16,12 +16,23 @@ These customizations can be applied to a !BigBlueButton instance using [MconfBBB
 
 == Installation script ==
 
-You can find the latest version of this file in [https://github.com/mconf/installation-scripts this repository]
+We have written a shell script to automatically configure a BigBlueButton 0.71a environment to use exactly the same system we are using on [mconf.org]. *This script is for a development environment* - to setup the BigBlueButton 0.71a development environment, please follow [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVM this steps].
 
-To apply the modifications, download the script and run it in your !BigBlueButton server:
+You can find the latest version of this file in [https://github.com/mconf/installation-scripts this repository].
+
+To apply the modifications, download the script and run it in your !BigBlueButton development server:
 
 {{{
 wget https://raw.github.com/mconf/installation-scripts/master/mconf-bbb-conf
 chmod a+x mconf-bbb-conf
 ./mconf-bbb-conf
 }}}
+
+The script does:
+ * download the source code from Mconf repository
+ * install some dependencies (like Apache Ant)
+ * add an environment variable to `~/.profile`
+ * setup the development environment for the client, web and apps
+ * compile and deploy all the components
+ * download the application to enable mobile support
+ * restart the server
