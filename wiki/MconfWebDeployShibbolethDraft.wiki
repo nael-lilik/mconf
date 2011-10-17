@@ -1,0 +1,28 @@
+
+Instalar o SP no servidor. Seguir manual da instituição alvo, a gente usa o da CAFe:
+
+Guide: http://wiki.rnp.br/display/cafewebsite/Roteiro+de+Atividades+para+Entrada+de+um+SP
+
+Steps:
+  * Basic Ubuntu setup: http://wiki.rnp.br/pages/viewpage.action?pageId=41616299
+  * Certificate: http://wiki.rnp.br/pages/viewpage.action?pageId=41616278
+  * SP: http://wiki.rnp.br/pages/viewpage.action?pageId=41616305
+
+
+Comentar sobre as configurações finais do apache como devem ficar
+  - apontar pros arquivos no repo
+
+Como habilitar os sites:
+  a2ensite mconf-web-ssl
+
+Habilitar o SSL no portal:
+  * pela interface (antes de setar o ssl, senão não funciona)
+  * por linha de comando
+    * ./script/rails runner -e production "Site.current.update_attributes(:ssl => true)"
+
+Habilitar o Shibboleth:
+  * Como habilitar no site
+    * Sobre os campos email e nome
+  
+
+Alguns comentários sobre como funciona internamente
