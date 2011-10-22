@@ -16,7 +16,7 @@ These customizations can be applied to a !BigBlueButton instance using [MconfBBB
 
 == Installation script ==
 
-We have written a shell script to automatically configure a "BigBlueButton 0.71a environment to use exactly the same system we are using on [https://mconf.org mconf.org]. *This script is for a development environment* - to setup the "BigBlueButton 0.71a development environment, please follow [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVM this steps].
+We have written a shell script to automatically configure a !BigBlueButton 0.71a environment to use exactly the same system we are using on [https://mconf.org mconf.org]. *This script is for a development environment* - to setup the !BigBlueButton 0.71a development environment, please follow [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVM this steps].
 
 You can find the latest version of this file in [https://github.com/mconf/installation-scripts this repository].
 
