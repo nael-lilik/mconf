@@ -10,6 +10,12 @@
 
 *Planned for*: ?, 2011.
 
+  * `setup_conf.yml` is now optional and only used to create the seed data in the database.
+  * First version of the federated login using Shibboleth (Issue 198).
+  * Several parameters that were only configurable via `setup_conf.yml` or command line are now available in the website interface (in the "manage" area).
+  * Users can request a resend of the confirmation email if needed (to confirm their registration).
+  * Mconf-Web can be used with SSL (Issue 262).
+
   * See: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.5 Issues for Mconf-Web-Release0.5].
 
 
@@ -27,10 +33,15 @@
 
 <font color=red>^1, 2^ </font>Due to these changes, you'll need to do some additional configuration in your server to migrate to this version. You can see all the necessary steps in [MconfWebDeploymentManual this wiki page] (search for RVM and god). If you have additional questions contact us in our mailing list.
 
+*Release 0.4.1* (Oct 18th, 2011):
+
+  * Small adjustments in the installation scripts.
+
 See also:
 
   * [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.4 Issues for Mconf-Web-Release0.4].
   * [https://github.com/mconf/mconf-web/compare/v0.3...branch-v0.4 Source code changes].
+
 
 == Release 0.3 ==
 
