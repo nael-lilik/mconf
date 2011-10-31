@@ -27,7 +27,7 @@ BBB-Android is an Android implementation of the !BigBlueButton client. The code 
 
 == Mconf-Mobile ==
 
-Mconf-Mobile is an mobile client for Mconf. It interacts with the web portal (https://mconf.org), and the user can join any conference room he could access from a web browser. The code is licensed under GNU Lesser General Public License (LGPL).
+Mconf-Mobile is an mobile client for Mconf. It interacts with the web portal (https://mconf.org), and the user can join any conference room he could access from a web browser. The code is licensed under GNU General Public License (LGPL).
 
 = Running BBB-Android =
 
