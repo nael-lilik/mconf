@@ -63,6 +63,10 @@ If you are a developer and want to be part of this project, you can pick an issu
 
 = Changelog =
 
+[http://code.google.com/p/mconf/issues/list?can=1&q=label%3AMilestone-bbb-android-0.4.2 v0.4.2] (October 31th 2011)
+ * Improvements on stability
+ * First version released on Android Market
+
 [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3Dbbb-android-0.4.1 v0.4.1] (September 5th 2011 - bugfix release)
  * Anonymous data is sent to the dev team when the app crashes
 
