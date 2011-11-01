@@ -83,7 +83,7 @@ With the repository you can now install the dependencies. All dependencies are e
 git submodule init
 git submodule update
 gem install bundler -v 1.0.18
-bundle install
+bundle install --without=development test
 }}}
 
 
