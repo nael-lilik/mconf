@@ -6,17 +6,29 @@
 
 = Releases =
 
-== Current Development: Release 0.5 ==
+== Current Development: Release 0.6 ==
 
 *Planned for*: ?, 2011.
+
+  * [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.6 Issues for Mconf-Web-Release0.6].
+
+
+== Release 0.5 ==
+
+*Released*: Nov 1st, 2011.
 
   * `setup_conf.yml` is now optional and only used to create the seed data in the database.
   * First version of the federated login using Shibboleth (Issue 198).
   * Several parameters that were only configurable via `setup_conf.yml` or command line are now available in the website interface (in the "manage" area).
   * Users can request a resend of the confirmation email if needed (to confirm their registration).
   * Mconf-Web can be used with SSL (Issue 262).
+  * Better email and success notices when a webconference invitation is sent.
 
-  * See: [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.5 Issues for Mconf-Web-Release0.5].
+See also:
+
+  * [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.5 Issues for Mconf-Web-Release0.5].
+  * [https://github.com/mconf/mconf-web/compare/v0.4.1...v0.5 Source code changes].
+
 
 
 == Release 0.4 ==
@@ -40,7 +52,8 @@
 See also:
 
   * [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.4 Issues for Mconf-Web-Release0.4].
-  * [https://github.com/mconf/mconf-web/compare/v0.3...branch-v0.4 Source code changes].
+  * [https://github.com/mconf/mconf-web/compare/v0.3...v0.4.1 Source code changes].
+
 
 
 == Release 0.3 ==
