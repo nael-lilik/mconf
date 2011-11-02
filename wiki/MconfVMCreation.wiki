@@ -1,13 +1,7 @@
 _<font color=red>This is a draft used for internal development only.</font>_
 
-== For future releases ==
 
-  * Provide only scripts? (not a VM with things pre-installed)
-  * Fix mconf-web, installation-scripts and bigbluebutton versions (make tags)
-  * Production only for Mconf-Web? (remove Capistrano, just release a single version)
-
-
-== VM 0.1 ==
+== VM 0.2 ==
 
 === General ===
 
@@ -21,17 +15,16 @@ _<font color=red>This is a draft used for internal development only.</font>_
 
 === Creating the VM ===
 
-  * Download the BigBlueButton VM
+  * Download the BigBlueButton VM, or use the previous Mconf VM
     * http://sourceforge.net/projects/bigbluebutton/files/bigbluebutton071a-vm.zip/download
 
-  * Install mconf-web
-    * Installed (mostly) using mconf-web-conf. Used --install-ruby, --install-packages, --checkout, --setup-dev
-    * Nginx was installed manually. It is still an issue because BBB uses the packaged nginx and we need another version (compile by Passenger)
+  * Install mconf-web (if not installed yet)
+    * use mconf-web-conf
 
   * Copy the installation scripts to the VM
     {{{
 curl https://raw.github.com/mconf/installation-scripts/master/mconf-vm -o ~/mconf-vm
-sudo curl https://raw.github.com/mconf/mconf-web/master/script/mconf-web-conf -o /usr/local/bin/mconf-web-conf
+sudo curl https://raw.github.com/mconf/mconf-web/latest/script/mconf-web-conf -o /usr/local/bin/mconf-web-conf
 sudo curl https://raw.github.com/mconf/installation-scripts/master/mconf-bbb-conf -o /usr/local/bin/mconf-bbb-conf
 sudo chmod a+x ~/mconf-vm
 sudo chmod a+x /usr/local/bin/mconf-bbb-conf
@@ -46,30 +39,6 @@ sudo chmod a+x /usr/local/bin/mconf-web-conf
 mysqladmin -u root -p password default # type the current password
     }}}      
 
-  * Delete mconf-web
-    {{{
-sudo rm -rf /home/firstuser/mconf-web
-    }}}
-
-  * Empty Mconf-Web DB
-    {{{
-mysql -u root -p
-DROP DATABASE mconf_production;
-exit;
-    }}}
-
-  * Clear logs and sqlites:
-    {{{
-rm /home/firstuser/dev/source/mconf-web/log/*
-rm /home/firstuser/dev/source/mconf-web/db/*.sqlite3
-    }}}
-
-  * Use the standard configuration files
-    {{{
-cp ~/dev/source/mconf-web/config/setup_conf.yml.example ~/dev/source/mconf-web/config/setup_conf.yml
-cp ~/dev/source/mconf-web/config/deploy/conf.yml.example ~/dev/source/mconf-web/config/deploy/conf.yml
-    }}}
-
   * Configure database.yml
     {{{
 cp ~/dev/source/mconf-web/config/database.yml.example ~/dev/source/mconf-web/config/database.yml
@@ -78,7 +47,7 @@ emacs ~/dev/source/mconf-web/config/database.yml
 # password: default
     }}}
 
-  * Configure `deploy/conf.yml` with:
+  * Check `deploy/conf.yml`:
     {{{
 server: "127.0.0.1"
 user: "firstuser"
@@ -96,9 +65,11 @@ passwd firstuser # type "default" twice
 sudo passwd -e firstuser
       }}}
 
-  * Remove bash history
+  * Cleanup
     {{{
-rm ~/.bash_history
+curl https://raw.github.com/mconf/installation-scripts/master/mconf-vm-cleanup -o ~/mconf-vm-cleanup
+./mconf-vm-cleanup
+rm mconf-vm-cleanup
     }}}
 
   * Erase useless files. Leave only:
