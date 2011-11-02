@@ -82,3 +82,5 @@ disk0.vmdk
     {{{
 mv bigbluebutton-vm.vmx mconf-vm.vmx
     }}}
+
+  * ZIP, upload to sourceforge and update the wiki (http://code.google.com/p/mconf/wiki/MconfVM)
