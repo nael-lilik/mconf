@@ -68,6 +68,7 @@ sudo passwd -e firstuser
   * Cleanup
     {{{
 curl https://raw.github.com/mconf/installation-scripts/master/mconf-vm-cleanup -o ~/mconf-vm-cleanup
+sudo chmod a+x ~/mconf-vm-cleanup
 ./mconf-vm-cleanup
 rm mconf-vm-cleanup
     }}}
