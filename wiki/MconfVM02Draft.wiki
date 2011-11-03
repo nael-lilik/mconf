@@ -12,15 +12,17 @@ For other options on how to install and use Mconf see [MconfInstallation this pa
 
 == Prerequisites ==
 
-  * VMWare Player (or VMWare Workstation) for Windows or Unix, or VM Fusion for Mac; Or you can also use VirtualBox.
+  * VMWare Player (or VMWare Workstation) for Windows or Unix, or VM Fusion for Mac. Or you can also use VirtualBox.
   * Network access: you must have an IP defined for your network interface (can be either static or dynamic).
 
 == Installing the Mconf VM ==
 
 Follow the steps below to setup the Mconf VM. It will take around 8 minutes:
 
-  * Download the last version of the VM, unzip and run the file `mconf-vm.vmx`
+  * Download the last version of the VM and unzip it.
     * Current release: "0.2" [http://sourceforge.net/projects/mconf/files/vm/mconf-vm-0.2.zip/download download link] (2.5 GB)
+    * To run on VMWare, install the VMPlayer and run the file `mconf-vm-0.2.vmx`.
+    * To run on VirtualBox you can follow [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVMVirtualBox this guide] in the !BigBlueButton wiki.
 
   * Login using the username "`firstuser`" and password "`default`"
     * You will be prompted to change your password. Enter "default" once again and then enter the new password *twice*.
@@ -60,6 +62,13 @@ The Mconf VM runs over the [http://code.google.com/p/bigbluebutton/wiki/BigBlueB
   * [MconfWeb Mconf-Web] production environment
 
 This VM comes with the entire system already pre-configured, but there are still some things that are related to each instance of the VM. That's why `mconf-vm` exists, to help you configure these parameters.
+
+=== VM for development and testing ===
+
+This virtual machine was created to allow people to easily develop and test Mconf. We don't recommend the use of this virtual machine in a production environment for some reasons:
+
+......
+
 
 === The script `mconf-vm` ===
 
