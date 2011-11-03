@@ -1,0 +1,109 @@
+_*Notice:* If you're already using the Mconf VM, please send us feedback! You can contact us at our mailing list: mconf-dev@googlegroups.com (or directly at mconf.prav@gmail.com if you don't want to join the mailing list)._
+
+<wiki:toc max_depth="2" />
+
+= Mconf VM =
+
+The Mconf VM comes with the whole Mconf package in a single virtual machine, to enable easy access to all Mconf's features. This VM is intended for *testing/development* purposes, it is not recommended for a production environment.
+
+This VM was created installing Mconf in the !BigBlueButton VM ([http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVM see their wiki page]). It comes with [MconfWeb Mconf-Web], !BigBlueButton (0.71a) and [MconfBBB our customizations] already installed. All you need is to configure them (see below how to do that). The server is already enabled to be used with [MconfMobile Mconf-Mobile], so you can just [MconfMobile install Mconf-Mobile] in your mobile device and use it with this VM.
+
+For other options on how to install and use Mconf see [MconfInstallation this page].
+
+== Prerequisites ==
+
+  * VMWare Player (or VMWare Workstation) for Windows or Unix, or VM Fusion for Mac; Or you can also use VirtualBox.
+  * Network access: you must have an IP defined for your network interface (can be either static or dynamic).
+
+== Installing the Mconf VM ==
+
+Follow the steps below to setup the Mconf VM. It will take around 8 minutes:
+
+  * Download the last version of the VM, unzip and run the file `mconf-vm.vmx`
+    * Current release: "0.2" [http://sourceforge.net/projects/mconf/files/vm/mconf-vm-0.2.zip/download download link] (2.5 GB)
+
+  * Login using the username "`firstuser`" and password "`default`"
+    * You will be prompted to change your password. Enter "default" once again and then enter the new password *twice*.
+
+  * After the login, make sure your virtual machine has an IP address. If your network has a DHCP server, just run the "dhclient" command and you might receive an IP address:
+    {{{
+sudo dhclient
+    }}}
+
+    Note: Also make sure the networking is set to Bridged in VMWare Player (or in the VirtualBox player), not NAT.
+
+  * After the login, run the setup script with:
+    {{{
+./mconf-vm
+    }}}
+
+    _<b>Note</b>: read more about this script in the end of this page._
+
+    When it runs, you will be immediately prompted for a password to run commands as root. Type in *the new password you just configured for your account*.
+
+    The script will then start configuring Mconf's customizations to this !BigBlueButton instance and then will start setting up Mconf-Web.
+
+  * When the setup finishes, it will print in the screen your IP and ask you to access it using your browser to test if the setup was successful. Hopefully everything will work well, but if you're facing any problems you can try to find an answer in the [MconfTroubleshoot troubleshoot page] or send a message to our mailing list: mconf-dev@googlegroups.com
+
+== Details about the VM ==
+
+The Mconf VM runs over the [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVM BigBlueButton VM] (Ubuntu 10.04). What you have in this machine:
+
+  * !BigBlueButton 0.71a installed from Ubuntu packages
+  * !BigBlueButton's source code with [MconfBBB Mconf's customizations], from our repository at https://github.com/mconf/bigbluebutton
+  * [MconfWeb Mconf-Web] production environment
+
+This VM comes with the entire system already pre-configured, but there are still some things that are related to each instance of the VM. That's why `mconf-vm` exists, to help you configure these parameters.
+
+=== The script `mconf-vm` ===
+
+The script `mconf-vm` does the minimum necessary to setup the already pre-installed softwares !BigBlueButton and Mconf-Web. In short, the script does the following:
+
+  * Configure !BigBlueButton with the VM's IP and a new port (since Mconf-Web will run in the port 80);
+  * Set a new salt for !BigBlueButton;
+  * Configure Mconf-Web to use this !BigBlueButton instance as the default webconference server;
+  * Setup the Mconf-Web database;
+  * Start Mconf-Web.
+
+The script will automatically detect your IP and use it. To be able to run !BigBlueButton and Mconf-Web together, !BigBlueButton will respond in the port 8888. You can also force an IP (or domain name) and a different port for !BigBlueButton, see the examples below:
+
+{{{
+./mconf-vm -a 192.168.0.100
+./mconf-vm -a 192.168.0.100 -p 1234
+./mconf-vm -a my.domain.com -p 8585
+}}}
+
+You can run the script again if you need to, but be aware that it will clean your !BigBlueButton instance and reset Mconf-Web, *dropping and recreating the DB*.
+
+You can find the latest version of the script in [https://github.com/mconf/installation-scripts this repository].
+
+
+
+
+
+
+
+------------------
+
+
+
+
+=== Directories ===
+
+This is where you can find Mconf in your VM:
+
+  * !BigBlueButton is installed using Ubuntu packages (see [http://code.google.com/p/bigbluebutton/wiki/InstallationUbuntu this page]);
+  * !BigBlueButton source code is checked out at `/home/firstuser/dev/source/bigbluebutton/`. We use it to customize !BigBlueButton (see [MconfBBB this page]);
+  * Mconf-Web source code (development environment) is checked out at `/home/firstuser/dev/source/mconf-web/`. It is used to deploy the application (see the next item) and you can also use it to develop;
+  * Mconf-Web production environment is at `/home/firstuser/mconf-web/`. You shouldn't edit anything inside this folder directly. It is controlled by Capistrano from inside your development environment (see [MconfWebDeployment this page]).
+
+=== Passwords ===
+
+Default passwords used in the VM:
+
+  * System user:
+    * login: firstuser
+    * password: default
+  * MySQL user:
+    * login: root
+    * password: default
