@@ -43,7 +43,13 @@ sudo dhclient
 
     The script will then start configuring Mconf's customizations to this !BigBlueButton instance and then will start setting up Mconf-Web.
 
-  * When the setup finishes, it will print in the screen your IP and ask you to access it using your browser to test if the setup was successful. Hopefully everything will work well, but if you're facing any problems you can try to find an answer in the [MconfTroubleshoot troubleshoot page] or send a message to our mailing list: mconf-dev@googlegroups.com
+  * When the setup finishes, it will print in the screen your IP and ask you to access it using your browser to test if the setup was successful. Access it from your browser and log in into Mconf-Web using the default administrator account:
+    {{{
+username: admin
+password: admin
+    }}}
+
+    Hopefully everything will work well, but if you're facing any problems you can try to find an answer in the [MconfTroubleshoot troubleshoot page] or send a message to our mailing list: mconf-dev@googlegroups.com
 
 == Details about the VM ==
 
@@ -79,31 +85,27 @@ You can find the latest version of the script in [https://github.com/mconf/insta
 
 
 
-
-
-
-
-------------------
-
-
-
-
-=== Directories ===
-
-This is where you can find Mconf in your VM:
+=== Where to find Mconf ===
 
   * !BigBlueButton is installed using Ubuntu packages (see [http://code.google.com/p/bigbluebutton/wiki/InstallationUbuntu this page]);
-  * !BigBlueButton source code is checked out at `/home/firstuser/dev/source/bigbluebutton/`. We use it to customize !BigBlueButton (see [MconfBBB this page]);
-  * Mconf-Web source code (development environment) is checked out at `/home/firstuser/dev/source/mconf-web/`. It is used to deploy the application (see the next item) and you can also use it to develop;
-  * Mconf-Web production environment is at `/home/firstuser/mconf-web/`. You shouldn't edit anything inside this folder directly. It is controlled by Capistrano from inside your development environment (see [MconfWebDeployment this page]).
+  * !BigBlueButton source code is checked out at `/home/firstuser/dev/source/bigbluebutton/`. We use it to customize !BigBlueButton (see [MconfBBB this page]). The following !BigBlueButton components are executed from their source code instead of packages:
+    * bigbluebutton-client
+    * bigbluebutton-apps
+    * bbb-voice
+  * Mconf-Web production environment is at `/home/firstuser/mconf-web/current/`. It is a git repository that was installed using `mconf-web-conf`. For more information on how it is used see [MconfWebDeploymentWithScript this page].
+
 
 === Passwords ===
 
 Default passwords used in the VM:
 
-  * System user:
+  * Ubuntu user:
     * login: firstuser
     * password: default
   * MySQL user:
     * login: root
     * password: default
+  * Mconf-Web default administrator:
+    * login: admin
+    * email: admin@default.com
+    * password: admin
