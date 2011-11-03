@@ -12,7 +12,7 @@ For other options on how to install and use Mconf see [MconfInstallation this pa
 
 == Prerequisites ==
 
-  * VMWare Player (or VMWare Workstation) for Windows or Unix, or VM Fusion for Mac. Or you can also use VirtualBox.
+  * VMWare Player (or VMWare Workstation) for Windows or Unix, or VM Fusion for Mac. Or you can also use !VirtualBox.
   * Network access: you must have an IP defined for your network interface (can be either static or dynamic).
 
 == Downloading and installing the Mconf VM ==
@@ -22,7 +22,7 @@ Follow the steps below to setup the Mconf VM. It will take around 10 minutes:
   * Download the last version of the VM and unzip it.
     * Current release: "0.2" [http://sourceforge.net/projects/mconf/files/vm/mconf-vm-0.2.zip/download download link] (2.5 GB)
     * To run on VMWare, install the VMPlayer and run the file `mconf-vm-0.2.vmx`.
-    * To run on VirtualBox you can follow [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVMVirtualBox this guide] in the !BigBlueButton wiki.
+    * To run on !VirtualBox you can follow [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVMVirtualBox this guide] in the !BigBlueButton wiki.
 
   * Login using the username "`firstuser`" and password "`default`"
     * You will be prompted to change your password. Enter "default" once again and then enter the new password *twice*.
@@ -32,7 +32,7 @@ Follow the steps below to setup the Mconf VM. It will take around 10 minutes:
 sudo dhclient
     }}}
 
-    Note: Also make sure the networking is set to Bridged in VMWare Player (or in the VirtualBox player), not NAT.
+    Note: Also make sure the networking is set to Bridged in VMWare Player (or in the !VirtualBox player), not NAT.
 
   * After the login, run the setup script with:
     {{{
