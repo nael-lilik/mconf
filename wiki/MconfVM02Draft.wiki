@@ -12,7 +12,7 @@ For other options on how to install and use Mconf see [MconfInstallation this pa
 
 == Prerequisites ==
 
-  * VMWare Player (or VMWare Workstation) for Windows or Unix, or VM Fusion for Mac. Or you can also use !VirtualBox.
+  * VMWare Player (or VMWare Workstation) for Windows or Unix, or VM Fusion for Mac. Or you can also use !VirtualBox ([https://www.virtualbox.org/wiki/Downloads link]).
   * Network access: you must have an IP defined for your network interface (can be either static or dynamic).
 
 == Downloading and installing the Mconf VM ==
