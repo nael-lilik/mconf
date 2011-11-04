@@ -51,7 +51,9 @@ username: admin
 password: admin
     }}}
 
-    Hopefully everything will work well, but if you're facing any problems you can try to find an answer in the [MconfTroubleshoot troubleshoot page] or send a message to our mailing list: mconf-dev@googlegroups.com
+  To now khow to configure Mconf-Web for the first time, see [MconfWebConfiguring this page].
+
+  * Hopefully everything will work well, but if you're facing any problems you can try to find an answer in the [MconfTroubleshoot troubleshoot page] or send a message to our mailing list: mconf-dev@googlegroups.com
 
 
 == Details about the VM ==
