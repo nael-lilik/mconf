@@ -1,0 +1,15 @@
+= Configuring Mconf-Web =
+
+Mconf-Web stores all its configurations in a database and provides a management interface in the website where the admin user can edit most of these configurations.
+
+All important site-wide configurations *should* be available in this management page. If they are not, feel free to require a change posting an issue in our [http://code.google.com/p/mconf/issues/list issue list].
+
+There are basically 3 ways to configure the website:
+
+  * Using the website, in the management area: this is what you should do, see more about it below;
+  * Pre-populate the database before creating it, using the `setup_conf.yml` file: useful for development or to setup more than one website (see [MconfWebSetupConf this page]);
+  * Hacking the source code and directly editing the database: you'll only need to do it if you need to change something that is not yet configurable using the management page. You'll also need knowledge in Rails if you need this.
+
+== Management area ==
+
+
