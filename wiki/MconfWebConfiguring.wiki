@@ -6,10 +6,35 @@ All important site-wide configurations *should* be available in this management 
 
 There are basically 3 ways to configure the website:
 
-  * Using the website, in the management area: this is what you should do, see more about it below;
+  * Using the website, in the management area: *this is what you should do*, see more about it below;
   * Pre-populate the database before creating it, using the `setup_conf.yml` file: useful for development or to setup more than one website (see [MconfWebSetupConf this page]);
   * Hacking the source code and directly editing the database: you'll only need to do it if you need to change something that is not yet configurable using the management page. You'll also need knowledge in Rails if you need this.
 
 == Management area ==
 
+When you first setup Mconf-Web, an administrator user will be created. The default username, email and password are defined [https://github.com/mconf/mconf-web/blob/latest/config/setup_conf.yml.example in this file]. Log in with this user and you will have access to the management area using a link in the top bar:
 
+https://lh5.googleusercontent.com/-7gfOnBb2dEQ/TrQatPoox6I/AAAAAAAAAkw/xjfhbb9Kt1E/s428/manage-link.png
+
+Clicking in this link will take you to the page showing the site configurations. It will look something like the image below:
+
+https://lh4.googleusercontent.com/-0fVt1zMy8yI/TrQavGKbZzI/AAAAAAAAAk4/H43eFgDFrCg/s657/site-show.png
+
+Clicking in the "Edit" button you can edit all these parameters and also see tooltips explaining how they work:
+
+https://lh4.googleusercontent.com/-3oPK_rfPY9Y/TrQb0DLzOdI/AAAAAAAAAlM/gEOwAAtarMs/s418/site-edit-tooltip.png
+
+Besides site-wide configurations, the management area tab shows link to manage spaces, users, spams, and your !BigBlueButton servers and rooms. The !BigBlueButton page will look similar to:
+
+https://lh3.googleusercontent.com/-phB83TCsOlc/TrQcUQJlXgI/AAAAAAAAAlk/TxFZWqbJR7o/s657/bbb-show.png
+
+In this page you can alter your !BigBlueButton server's information, manage its rooms and also see the current activity in the server. *Note:* currently only one !BigBlueButton server can be used. Even if you add more servers, all rooms will be created in the first one.
+
+
+Another important feature is to be able to make any user in the website an administrator. To do that, go to the user management page, find the target user and click in the "edit" icon near his/her name:
+
+https://lh5.googleusercontent.com/-OMUgrUfDgvM/TrQe_qX-Y6I/AAAAAAAAAl8/35q41gZKOTQ/s657/user-edit.png
+
+You will see a page where you can edit the information about the user and, in the bottom, you can mark a checkbox that turns the user into an administrator (he/she will have full control of the website!):
+
+https://lh4.googleusercontent.com/-3Q5-VZCunew/TrQfATp-VCI/AAAAAAAAAmE/BkEp8VbR76g/s659/user-edit2.png
