@@ -33,7 +33,7 @@ Follow the steps below to setup the Mconf VM. It will take around 10 minutes:
 
   * *Acquire an IP*:
 
-    <font color=red>Important: </font>Before trying to acquire an IP, make sure the networking is set to Bridged in VMWare Player (or in the !VirtualBox player), not NAT.
+    <font color=red>Important: </font>Before trying to acquire an IP, make sure the networking is set to Bridged in VMWare Player (or in the !VirtualBox player), not NAT ([VMBridgedMode how to]]).
 
     After the login, make sure your virtual machine has an IP address. If your network has a DHCP server, just run the "dhclient" command and you might receive an IP address:
     {{{
@@ -64,6 +64,8 @@ password: admin
   * *Configure Mconf-Web:*
 
     The first time you setup the VM you'll need to configure Mconf-Web. You need, for instance, to setup an email and password that will be used to send emails from Mconf-Web. If you don't do it, people won't be able to use the website properly! (the users receive a confirmation email when they register in the website and they need to answer it).
+
+    <img src="https://lh4.googleusercontent.com/-0fVt1zMy8yI/TrQavGKbZzI/AAAAAAAAAk4/H43eFgDFrCg/s657/site-show.png" width="219" height="171" alt="Mconf-Web management page" title="Mconf-Web management page">
 
     To configure Mconf-Web, see [MconfWebConfiguring this page].
 
