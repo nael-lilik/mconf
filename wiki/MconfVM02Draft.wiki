@@ -33,12 +33,12 @@ Follow the steps below to setup the Mconf VM. It will take around 10 minutes:
 
   * *Acquire an IP*:
 
+    <font color=red>Important: </font>Before trying to acquire an IP, make sure the networking is set to Bridged in VMWare Player (or in the !VirtualBox player), not NAT.
+
     After the login, make sure your virtual machine has an IP address. If your network has a DHCP server, just run the "dhclient" command and you might receive an IP address:
     {{{
 sudo dhclient
     }}}
-
-    Note: Also make sure the networking is set to Bridged in VMWare Player (or in the !VirtualBox player), not NAT.
 
   * *Setup Mconf*:
 
@@ -58,6 +58,8 @@ sudo dhclient
 username: admin
 password: admin
     }}}
+
+    <font color=red>Note: </font>The first time you access the website after restarting it, it should take several seconds to load the page. This is normal, it's the time required for the Rails environment to be loaded.
 
   * *Configure Mconf-Web:*
 
