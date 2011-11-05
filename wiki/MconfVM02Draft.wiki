@@ -79,7 +79,7 @@ password: admin
 
   * *Finished!*
 
-    Hopefully everything will work well, but if you're facing any problems you can try to find an answer in the [MconfTroubleshoot troubleshoot page] or send a message to our mailing list: mconf-dev@googlegroups.com
+    Hopefully everything will work well, but if you're facing any problems you can try to find an answer in the [MconfFAQ FAQ page] or send a message to our mailing list: mconf-dev@googlegroups.com
 
 
 == Details about the VM ==
