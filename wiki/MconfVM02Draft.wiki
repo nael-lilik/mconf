@@ -53,7 +53,9 @@ sudo dhclient
 ./mconf-vm
     }}}
 
-    When it runs, you will be immediately prompted for a password to run commands as root. Type in the new password you just configured for your account. The script will then start configuring Mconf's customizations to this !BigBlueButton instance and then will start setting up Mconf-Web.
+    When it runs, you will be immediately prompted for a password to run commands as root. Type in the new password you just configured for your account. The script will then start configuring Mconf's customizations to this !BigBlueButton instance and then will start setting up Mconf-Web. See below an example of the expected output when the script finishes:
+
+    https://lh6.googleusercontent.com/-TkR0_92-lkg/TrWaE6XFaII/AAAAAAAAAns/x-kBi1kgEYk/s651/vm-expected-output.png
 
     You can read more about this script in the end of this page.
 
@@ -125,7 +127,7 @@ You can find the latest version of the script in [https://github.com/mconf/insta
 
 === Changing the IP ===
 
-Later on, if you changed the IP of your machine and you need to reconfigure Mconf, use this script with the option `--setip`. The script will simply change the IP of !BigBlueButton, but it *will not* recreate Mconf-Web's database. You will also need to *manually* alter the address of your !BigBlueButton server in Mconf-Web (see [MconfWebConfiguring this page]).
+Later on, if you changed the IP of your machine and you need to reconfigure Mconf, use this script with the option `--setip`. The script will simply change the IP of !BigBlueButton, but it *will not* recreate Mconf-Web's database. You will also need to *manually* alter the address of your !BigBlueButton server in Mconf-Web (see the [MconfWebConfiguring Mconf-Web management page]).
 
 {{{
 ./mconf-vm --setip
