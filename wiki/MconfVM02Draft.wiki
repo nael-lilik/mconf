@@ -19,41 +19,55 @@ For other options on how to install and use Mconf see [MconfInstallation this pa
 
 Follow the steps below to setup the Mconf VM. It will take around 10 minutes:
 
-  * Download the last version of the VM and unzip it.
-    * Current release: "0.2" [http://sourceforge.net/projects/mconf/files/vm/mconf-vm-0.2.zip/download download link] (2.5 GB)
-    * To run on VMWare, install the VMPlayer and run the file `mconf-vm-0.2.vmx`.
-    * To run on !VirtualBox you can follow [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVMVirtualBox this guide] in the !BigBlueButton wiki.
+  * *Download*:
 
-  * Login using the username "`firstuser`" and password "`default`"
-    * You will be prompted to change your password. Enter "default" once again and then enter the new password *twice*.
+    Download the last version of the VM and unzip it.
 
-  * After the login, make sure your virtual machine has an IP address. If your network has a DHCP server, just run the "dhclient" command and you might receive an IP address:
+    Current release: "0.2" [http://sourceforge.net/projects/mconf/files/vm/mconf-vm-0.2.zip/download download link] (2.5 GB)
+     * To run on VMWare, install the VMPlayer and run the file `mconf-vm-0.2.vmx`.
+     * To run on !VirtualBox you can follow [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVMVirtualBox this guide] in the !BigBlueButton wiki.
+
+  * *Login*:
+
+    Use the username "`firstuser`" and password "`default`". You will be prompted to change your password. Enter "default" once again and then enter the new password *twice*.
+
+  * *Acquire an IP*:
+
+    After the login, make sure your virtual machine has an IP address. If your network has a DHCP server, just run the "dhclient" command and you might receive an IP address:
     {{{
 sudo dhclient
     }}}
 
     Note: Also make sure the networking is set to Bridged in VMWare Player (or in the !VirtualBox player), not NAT.
 
-  * After the login, run the setup script with:
+  * *Setup Mconf*:
+
+    After the login, run the setup script with:
     {{{
 ./mconf-vm
     }}}
 
-    _<b>Note</b>: read more about this script in the end of this page._
+    When it runs, you will be immediately prompted for a password to run commands as root. Type in the new password you just configured for your account. The script will then start configuring Mconf's customizations to this !BigBlueButton instance and then will start setting up Mconf-Web.
 
-    When it runs, you will be immediately prompted for a password to run commands as root. Type in *the new password you just configured for your account*.
+    You can read more about this script in the end of this page.
 
-    The script will then start configuring Mconf's customizations to this !BigBlueButton instance and then will start setting up Mconf-Web.
+  * *Login in Mconf-Web:*
 
-  * When the setup finishes, it will print in the screen your IP and ask you to access it using your browser to test if the setup was successful. Access it from your browser and log in into Mconf-Web using the default administrator account:
+    When the setup finishes, it will print in the screen your IP and ask you to access it using your browser to test if the setup was successful. Access it from your browser and log in into Mconf-Web using the default administrator account:
     {{{
 username: admin
 password: admin
     }}}
 
-  To now khow to configure Mconf-Web for the first time, see [MconfWebConfiguring this page].
+  * *Configure Mconf-Web:*
 
-  * Hopefully everything will work well, but if you're facing any problems you can try to find an answer in the [MconfTroubleshoot troubleshoot page] or send a message to our mailing list: mconf-dev@googlegroups.com
+    The first time you setup the VM you'll need to configure Mconf-Web. You need, for instance, to setup an email and password that will be used to send emails from Mconf-Web. If you don't do it, people won't be able to use the website properly! (the users receive a confirmation email when they register in the website and they need to answer it).
+
+    To configure Mconf-Web, see [MconfWebConfiguring this page].
+
+  * *Finished!*
+
+    Hopefully everything will work well, but if you're facing any problems you can try to find an answer in the [MconfTroubleshoot troubleshoot page] or send a message to our mailing list: mconf-dev@googlegroups.com
 
 
 == Details about the VM ==
@@ -84,7 +98,7 @@ The script `mconf-vm` does the minimum necessary to setup the already pre-instal
   * Configure !BigBlueButton with the VM's IP and a new port (since Mconf-Web will run in the port 80);
   * Set a new salt for !BigBlueButton;
   * Configure Mconf-Web to use this !BigBlueButton instance as the default webconference server;
-  * Setup the Mconf-Web database;
+  * Setup the Mconf-Web database (only if the option --setip was *not* passed; see more about it below);
   * Start Mconf-Web.
 
 The script will automatically detect your IP and use it. To be able to run !BigBlueButton and Mconf-Web together, !BigBlueButton will respond in the port 8888. You can also force an IP (or domain name) and a different port for !BigBlueButton, see the examples below:
@@ -95,9 +109,17 @@ The script will automatically detect your IP and use it. To be able to run !BigB
 ./mconf-vm -a my.domain.com -p 8585
 }}}
 
-You can run the script again if you need to, but be aware that it will clean your !BigBlueButton instance and reset Mconf-Web, *dropping and recreating the DB*.
 
 You can find the latest version of the script in [https://github.com/mconf/installation-scripts this repository].
+
+
+=== Changing the IP ===
+
+Later on, if you changed the IP of your machine and you need to reconfigure Mconf, use this script with the option `--setip`. The script will simply change the IP of !BigBlueButton, but it *will not* recreate Mconf-Web's database. You will also need to *manually* alter the address of your !BigBlueButton server in Mconf-Web (see [MconfWebConfiguring this page]).
+
+{{{
+./mconf-vm --setip
+}}}
 
 
 
