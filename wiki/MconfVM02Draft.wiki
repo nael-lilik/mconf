@@ -33,7 +33,7 @@ Follow the steps below to setup the Mconf VM. It will take around 10 minutes:
 
   * *Acquire an IP*:
 
-    <font color=red>Important: </font>Before trying to acquire an IP, make sure the networking is set to Bridged in VMWare Player (or in the !VirtualBox player), not NAT ([VMBridgedMode how to]]).
+    <font color=red>Important: </font>Before trying to acquire an IP, make sure the networking is set to Bridged in VMWare Player (or in the !VirtualBox player), not NAT ([VMBridgedMode how to]).
 
     After the login, make sure your virtual machine has an IP address. If your network has a DHCP server, just run the "dhclient" command and you might receive an IP address:
     {{{
