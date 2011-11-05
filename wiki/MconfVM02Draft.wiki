@@ -29,7 +29,13 @@ Follow the steps below to setup the Mconf VM. It will take around 10 minutes:
 
   * *Login*:
 
-    Use the username "`firstuser`" and password "`default`". You will be prompted to change your password. Enter "default" once again and then enter the new password *twice*.
+    Use:
+    {{{
+username: firstuser
+password: default
+    }}}
+
+    You will be prompted to change your password. Enter "default" once again and then enter a new password *twice*.
 
   * *Acquire an IP*:
 
