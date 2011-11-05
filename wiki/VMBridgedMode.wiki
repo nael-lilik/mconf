@@ -10,7 +10,7 @@ In the network configuration dialog select the option "Bridged":
 
 https://lh5.googleusercontent.com/-4muMIbQCxos/TrWRiTxuktI/AAAAAAAAAmw/xJmHkDsOAjA/s576/vmware-bridged-2.png
 
-== VirtualBox ==
+== !VirtualBox ==
 
 In the right bottom corner of your VM player, right click the network icon to access the network properties for this VM:
 
