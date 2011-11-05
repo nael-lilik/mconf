@@ -22,4 +22,4 @@
     * [MconfWebConfiguring Configuring the website]
     * [MconfWebLocalization Translating]
     * [MconfWebMconfWebConf Installation script]
-  * [MconfTroubleshoot Troubleshooting]
+  * [MconfFAQ FAQ]
