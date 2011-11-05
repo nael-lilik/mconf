@@ -1,0 +1,99 @@
+#summary Here you can find a list of possible problems in the setup, development, deployment or use of Mconf
+
+= Mconf FAQ =
+
+Our goal with this page is to have a central place where people can easily find tips and solutions to problems related to Mconf. If you did not find here what you were searching, contact us at our mailing list (mconf-dev@googlegroups.com) and we will try to answer your question and also improve this page.
+
+
+<wiki:toc />
+
+
+== Mconf-Web ==
+
+=== Problems running the rake tasks or using mconf-web-conf to setup a development or production environment ===
+
+==== Error: "Username and Password not accepted. Learn more at" ====
+
+If you're running the rake task `db:seed` (or any other task that triggers this task, like `setup:db`) and you're facing this error:
+
+{{{
+* Create the administrator account
+...
+rake aborted!
+535-5.7.1 Username and Password not accepted. Learn more at
+(See full trace by running task with --trace)
+}}}
+
+It means that the parameters `sendmail_username` and/or `sendmail_password` in your configuration file (`config/setup_conf.yml`) are not correct. See more about this file [MconfWebSetupConf at this page].
+
+==== Wrong username and/or password for MySQL ====
+
+The following box shows an example of an error that occurs when your Mysql2 user and/or password are wrong and you're trying to setup Mconf-Web. The following error has happened trying to setup a production environment using the wrong database password for the user "root".
+
+{{{
+Couldn't drop mconf_production : #<Mysql2::Error: Access denied for user 'root'@'localhost' (using password: YES)>
+* Running the task: db:create
+Access denied for user 'root'@'localhost' (using password: YES).
+Please provide the root password for your mysql installation
+}}}
+
+The database username and password are configured in the file `config/database.yml`. See more about this file [MconfWebSetupConf#Configuring_the_database_(_database.yml_) at this page].
+
+If you haven't set up a password for mysql yet, you can do it with:
+
+{{{
+mysqladmin -u root password "NEW-PASSWORD"
+}}}
+
+Or, in case you want to change the password:
+
+{{{
+mysqladmin -u root -p password "NEW-PASSWORD"
+}}}
+
+
+==== `Net::SSH::AuthenticationFailed` ====
+
+If you're getting the an error similar to the following:
+
+{{{
+connection failed for: 127.0.0.1 (Net::SSH::AuthenticationFailed:mconf)
+}}}
+
+You're probably trying to setup a production environment and there's a problem in the SSH connection between your development and production environments, since Capistrano can't establish a connection.
+
+The most common error is that you're trying to deploy using an user that doesn't exists in your server. Take a look at the file `config/deploy/conf.yml` and check the user configured to be used to deploy.
+For instance, in case you're using the !BigBlueButton VM you should change the "user" parameter to "firstuser", the default user in this VM.
+
+It's also possible that you're typing the wrong password or that the ssh keys are wrong (in case you're using them).
+
+See more details at: http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#(2)_Deploy
+
+
+=== Emails are not being sent ===
+
+The emails are sent using a background job run by the gem delayed_job. If you're in a development environment, you can run it with:
+
+{{{
+bundle exec script/delayed_job -n 2 start
+}}}
+
+If you're using Capistrano, you can run the task "jobs:start" to start delayed_job in the production server. For example:
+
+{{{
+cap production jobs:restart
+}}}
+
+You should see messages like the ones below when delayed_job is started:
+
+{{{
+ ** [out :: mconf.inf.ufrgs.br] delayed_job.0: process with pid 4752 started.
+ ** [out :: mconf.inf.ufrgs.br] delayed_job.1: process with pid 4758 started.
+}}}
+
+
+== Mconf-Mobile / BBB-Android ==
+
+=== I can connect to the audio conference but I can't hear anything. What's wrong? ===
+
+By default the application doesn't enable the loudspeaker (it enables the earphone speaker) - you need to press "Menu" and then "Loudspeaker" if you want to hear anything without put the phone next to your ear. The icon will turn enabled.
