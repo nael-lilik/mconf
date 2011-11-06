@@ -1,3 +1,5 @@
+#summary A virtual machine for development and testing
+
 _*Notice:* If you're already using the Mconf VM, please send us feedback! You can contact us at our mailing list: mconf-dev@googlegroups.com (or directly at mconf.prav@gmail.com if you don't want to join the mailing list)._
 
 <wiki:toc max_depth="2" />
