@@ -29,7 +29,7 @@ Follow the steps below to setup the Mconf VM. It will take around 10 minutes:
 
   * *Login*:
 
-    Use:
+    Log in with:
     {{{
 username: firstuser
 password: default
@@ -41,7 +41,11 @@ password: default
 
     <font color=red>Important: </font>Before trying to acquire an IP, make sure the networking is set to Bridged in VMWare Player (or in the !VirtualBox player), not NAT ([VMBridgedMode how to]).
 
-    After the login, make sure your virtual machine has an IP address. If your network has a DHCP server, just run the "dhclient" command and you might receive an IP address:
+    After the login, the virtual machine will try to acquire an IP using DHCP. You should see an welcome message like the one in the image below showing your IP (marked in red):
+
+    <img src="https://lh6.googleusercontent.com/-CJHBjUyqii0/TrYOn0v4jGI/AAAAAAAAAn8/l6Efb6yE8ig/s647/vm-output-start-ip.png" width="390" height="324">
+
+    You can also run the command "dhclient" and to force your machine to acquire an IP:
     {{{
 sudo dhclient
     }}}
@@ -55,7 +59,7 @@ sudo dhclient
 
     When it runs, you will be immediately prompted for a password to run commands as root. Type in the new password you just configured for your account. The script will then start configuring Mconf's customizations to this !BigBlueButton instance and then will start setting up Mconf-Web. See below an example of the expected output when the script finishes:
 
-    https://lh6.googleusercontent.com/-TkR0_92-lkg/TrWaE6XFaII/AAAAAAAAAns/x-kBi1kgEYk/s651/vm-expected-output.png
+    <img src="https://lh6.googleusercontent.com/-TkR0_92-lkg/TrWaE6XFaII/AAAAAAAAAns/x-kBi1kgEYk/s651/vm-expected-output.png" width="390" height="324">
 
     You can read more about this script in the end of this page.
 
