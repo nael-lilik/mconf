@@ -28,3 +28,5 @@ From now on, you can either install everything manually or use the script `mconf
   * *[MconfWebDeploymentWithScript Using mconf-web-conf]*: This is the easier option. You'll use a script called `mconf-web-conf` that will install and configure everything it can and ask for your help in things it cannot do automatically. If you chose this option, take a look at the manual installation if you're having problems.
 
   * *[MconfWebDeploymentManual Manual installation]*: This is a detailed guide showing how to install Mconf-Web. It allows a more flexible installation and can also help you find errors in your setup, but will require more time to be completed.
+
+  * *[MconfWebDeploymentWithCapistrano Using Capistrano]*: Capistrano is very useful for developers that want to deploy the application and be able to easily update it. It requires a development environment and at least some basic knowledge of Ruby and Rails.
