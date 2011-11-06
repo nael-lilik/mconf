@@ -102,9 +102,11 @@ cp ~/mconf-web/config/setup_conf.yml.example ~/mconf-web/config/setup_conf.yml
 cp ~/mconf-web/config/database.yml.example ~/mconf-web/config/database.yml
 }}}
 
-Then edit the files `setup_conf.yml` and `database.yml`. *To configure these files, see [MconfWebSetupConf this page]*.
+Then edit the files `setup_conf.yml` and `database.yml`. To configure these files, see [MconfWebSetupConf this page].
 
-`setup_conf.yml` has general configurations for the web application and `database.yml` configures the database. By default, MySQL will be used. If you haven't set up a password for MySQL yet, you can do it with:
+`setup_conf.yml` has general configurations for the web application and it's optional: if you don't edit it now you can edit its properties from Mconf-Web's interface (see [MconfWebConfiguring this page)].
+
+`database.yml` configures the database and you *have* to configure it now. By default, MySQL will be used. If you haven't set up a password for MySQL yet, you can do it with:
 
 {{{
 mysqladmin -u root password "NEW-PASSWORD" # Use the quotes, they are not part of the password
@@ -172,7 +174,7 @@ sudo /etc/init.d/god start
 
 The web server you'll need to restart every time you change anything in the application (source code) or configuration files.
 
-You don't always need to restart god, only if you changed anything in its configuration files or in files that the monitored processes use (for example, if you change the Gmail account settings used to send emails). If you're not sure, restart it. Also, we use the action "terminate" so that god will also stop all monitored processes before stopping itself. It will, for instance, stop delayed_job and then, when god is restarted, delayed_job will also be restarted (and so your new configurations will be applied).
+You don't always need to restart god, only if you changed anything in its configuration files or in files that the monitored processes use (for example, if you change the Gmail account settings used to send emails). If you're not sure, restart it. Also, we use the action "terminate" so that god will also stop all monitored processes before stopping itself. It will, for instance, stop delayed_job  (a gem used to send emails) and then, when god is restarted, delayed_job will also be restarted (and so your new configurations will be applied).
 
 
 === Update ===
