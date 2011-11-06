@@ -166,10 +166,13 @@ To restart the application you need to restart the web server and god:
 
 {{{
 sudo /etc/init.d/apache2 restart  # if you're using apache
-sudo /etc/init.d/god restart
+sudo /etc/init.d/god terminate
+sudo /etc/init.d/god start
 }}}
 
-You don't always need to restart god, only if you changed anything in it's configuration files. The web server you'll need to restart every time you change anything in the application (source code) or configuration files.
+The web server you'll need to restart every time you change anything in the application (source code) or configuration files.
+
+You don't always need to restart god, only if you changed anything in its configuration files or in files that the monitored processes use (for example, if you change the Gmail account settings used to send emails). If you're not sure, restart it. Also, we use the action "terminate" so that god will also stop all monitored processes before stopping itself. It will, for instance, stop delayed_job and then, when god is restarted, delayed_job will also be restarted (and so your new configurations will be applied).
 
 
 === Update ===
