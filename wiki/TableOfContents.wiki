@@ -19,6 +19,7 @@
     * [MconfWebDeployment Deployment]
       * [MconfWebDeploymentWithScript Using the installation script]
       * [MconfWebDeploymentManual Manual deploy]
+      * [MconfWebDeploymentWithCapistrano Using Capistrano]
     * [MconfWebConfiguring Configuring the website]
     * [MconfWebLocalization Translating]
     * [MconfWebMconfWebConf Installation script]
