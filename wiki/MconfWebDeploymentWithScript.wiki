@@ -92,9 +92,12 @@ cp ~/mconf-web/current/config/setup_conf.yml.example ~/mconf-web/current/config/
 cp ~/mconf-web/current/config/database.yml.example ~/mconf-web/current/config/database.yml
 }}}
 
-Then edit the files `setup_conf.yml` and `database.yml`. *To configure these files, see [MconfWebSetupConf this page]*.
+Then edit the files `setup_conf.yml` and `database.yml`. To configure these files, see [MconfWebSetupConf this page].
 
-`setup_conf.yml` has general configurations for the web application and `database.yml` configures the database. By default, MySQL will be used. If you haven't set up a password for MySQL yet, you can do it with:
+`setup_conf.yml` has general configurations for the web application and it's optional: if you don't edit it now you can edit its properties from Mconf-Web's interface (see [MconfWebConfiguring this page]).
+
+`database.yml` configures the database and you *have* to configure it now. By default, MySQL will be used. If you haven't set up a password for MySQL yet, you can do it with:
+
 
 {{{
 mysqladmin -u root password "NEW-PASSWORD" # Use the quotes, they are not part of the password
@@ -116,6 +119,8 @@ This command will install the web server, configure the application using the co
 mconf-web-conf --deploy-setup
 }}}
 
+<font color=red>*Important:* </font>Be aware that this command will erase your database, so this should not be used if you already have application data in your database.
+
 ==== 5.1 Web server ====
 
 If you're installing Mconf-Web in a standalone machine, the script will ask you if you want to use Apache or Nginx. You can use the one you prefer.
@@ -126,8 +131,7 @@ If you're installing Mconf-Web in the same machine where you already have !BigBl
 
 This command will use the configurations from `setup_conf.yml` and `database.yml` to create the database and start the application for the first time. When it finishes, open your browser and navigate to the IP of the machine where you installed the application to access it. If might take some seconds the first time while the application environment is loaded.
 
-<font color=red>*Important:* </font>Be aware that this command will erase your database, so this should not be used if you already have application data in your database.
-
+You also might want to know how to [MconfWebConfiguring configure the application].
 
 
 == Maintenance tasks ==
