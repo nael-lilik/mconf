@@ -104,7 +104,7 @@ cp ~/mconf-web/config/database.yml.example ~/mconf-web/config/database.yml
 
 Then edit the files `setup_conf.yml` and `database.yml`. To configure these files, see [MconfWebSetupConf this page].
 
-`setup_conf.yml` has general configurations for the web application and it's optional: if you don't edit it now you can edit its properties from Mconf-Web's interface (see [MconfWebConfiguring this page)].
+`setup_conf.yml` has general configurations for the web application and it's optional: if you don't edit it now you can edit its properties from Mconf-Web's interface (see [MconfWebConfiguring this page]).
 
 `database.yml` configures the database and you *have* to configure it now. By default, MySQL will be used. If you haven't set up a password for MySQL yet, you can do it with:
 
