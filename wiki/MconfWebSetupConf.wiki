@@ -1,10 +1,12 @@
-#summary Configuring the application through setup_conf.yml
+#summary Configuring the application using setup_conf.yml
 
 <wiki:toc max_depth="3" />
 
-= Configuring the application (`setup_conf.yml`) =
+= Configuring the application (setup_conf.yml) =
 
-This file contains the configurations that are either loaded in the database when it is created or that are loaded in memory when the application is loaded. Remember to keep the file indented and formatted as it is. Its format and structure have semantic meaning, so you shouldn't change them.
+This file contains configurations that are used to populate the database the first time you setup your application. It is *optional*: if you don't configure it default values will be used and you will be able to edit them using [MconfWebConfiguring Mconf-Web's management page].
+
+Remember to keep the file indented and formatted as it is. Its format and structure have semantic meaning, so you shouldn't change them.
 
 == Structure ==
 
@@ -33,6 +35,8 @@ admin_email: "my-email@server.com"       	       # admin's email
 admin_password: "admin"  	       	       	       # admin's password
 }}}
 
+
+
 === !BigBlueButton server ===
 
 Defines the first and default !BigBlueButton server. This is used during the setup of your DB, but you are able to modify this server later on using the website.
@@ -42,76 +46,75 @@ Currently, all !BigBlueButton rooms created through Mconf-web will use this serv
   * The <tt>url</tt> should use the format "<tt>http://{server}/bigbluebutton/api</tt>". Change only the <tt>{server}</tt> part.
 
 {{{
-bbb_server_name: 'Default Server'                                 # server name
-bbb_server_url: 'http://my-development-server/bigbluebutton/api'  # server url in the	format http://<server>/bigbluebutton/api
-bbb_server_salt: 'my-secret-salt'                                 # server salt
-bbb_server_version: '0.7'                                         # bbb version
+bbb_server_name: 'Default Server'                     # server name
+bbb_server_url: 'http://my-server/bigbluebutton/api'  # server url in the format http://<server>/bigbluebutton/api
+bbb_server_salt: 'my-secret-salt'                     # server salt
+bbb_server_version: '0.7'                             # bbb version
 }}}
 
-=== Sending emails ===
 
-Currently Mconf-Web uses a Gmail account to send emails, so you can use this section to enter your username and password.
-
-You need to set up this account. If you don't, you won't be able to use some features in the website (the user registration for example, needs to send a confirmation email to the user).
-
-{{{                                                                                                                                
-sendmail_username: "my-username@gmail.com"  	       # gmail username
-sendmail_password: "my-password"    	       	       # gmail password
-}}}
 
 === Website ===
 
-The information is used to create the a Site model, that defines some attributes of your website. They can be altered after the initial setup using the management area in the application.
+The information is used to create the a Site model, that defines some attributes of your website. The basic configurations are:
 
 {{{
-site_name: "Mconf Dev"  	       	       	# website name
-site_description: "Mconf Development Website"   # website description
-site_email: "my-email@server.com"       	# website contact email
-site_locale: "en"                               # this will be the default locale for the application
-site_domain: "localhost"                        # your server address
-site_signature: "Mconf"                         # to sign emails
+site_name: "Mconf Dev"  	       	       	# Website name
+site_description: "Mconf Development Website"   # Website description
+site_locale: "en"                               # This will be the default locale for the application
+site_domain: "localhost"                        # Your server address
+site_signature: "Mconf"                         # To sign emails
+site_ssl: "false"                               # Change to "true" to enable SSL
+site_analytics_code: ""                         # Google Analytics tracking code. Leave it empty to disable.
+                                                # Use the format: "UA-12345678-9".
 site_feedback_url: ""                           # URL to be opened when a user logs out of a conference. Leave
                                                 # it blank to use the default page
 }}}
 
-=== Default space === 
-
-When you set up the database a default space will be created, something like "a space for all members of this website". You can define here some attributes for this space.
+Currently Mconf-Web uses a Gmail account to send emails, so you can use this section to enter your username and password. You need to set up this account. If you don't, you won't be able to use some features in the website (the user registration for example, needs to send a confirmation email to the user).
 
 {{{
-default_space_name: "Mconf-Web Space"                    # space's name
-default_space_description: "Mconf-Web users space"       # space's description
+site_email: "my-username@gmail.com"  	         # gmail username
+site_email_password: "my-password"    	         # gmail password
 }}}
 
-=== Notifications when the site breaks === 
 
-Notifies (by email) when an exception occurs. This feature *will only work in the production environment*^1^, so it is disabled by default. You will usually configure it in the default section and then enable it in the production section.
+Another part in this section is used to notify (by email) when an exception occurs in the website. This feature *will only work in the production environment*^1^, so it is disabled by default. You will usually configure it in the default section and then enable it in the production section.
 
 {{{
-exception_notification_enabled: "false"                                          # change to true to enable, don't use quotation marks
-exception_notification_prefix: "[mconf-web error] "                              # prefix added in the email subject
-exception_notification_recipients: "my-email@server.com my-email2@server.com"    # space-separated list of emails
+site_exception_notifications: "false"                         # Change to "true" to enable
+site_exception_notifications_prefix: "[Mconf-Web Error]"      # Prefix added in the email subject
+
+# Emails that should receive the notification. Use a space, comma of semi-colon to separate multiple emails.
+# Example: "my-email@server.com my-email2@server.com email3@server2.com"
+site_exception_notifications_recipients: ""
 }}}
 
 And to enable it in production:
 
 {{{
 production:
-  exception_notification_enabled: "true"
+  site_exception_notifications: "true"
 }}}
 
 _^1^Because the gem exception_notification that does it is only installed for production._
 
-=== Other options === 
 
-See below some other options you can configure in `setup_conf.yml`.
+
+=== Shibboleth === 
+
+Enable or disable the login via Shibboleth and configure it. See more about it [MconfWebDeployShibboleth in this page].
 
 {{{
-analytics_code: ""    # Google Analytics tracking code. Leave it empty to disable. Use the format: "UA-12345678-9".
+site_shibboleth: "false"                                       # Change to "true" to enable
+site_shibboleth_email_field: "Shib-inetOrgPerson-mail"         # Field used to obtain the user's email
+site_shibboleth_name_field: "Shib-inetOrgPerson-sn"            # Field used to obtain the user's name
 }}}
 
 
-= Configuring the database (`database.yml`) =
+
+
+= Configuring the database (database.yml) =
 
 The database is configured in the file `config/database.yml`. This is a standard configuration file used by Rails applications, so you can find plenty of resources about it on the Internet (for example, [http://guides.rubyonrails.org/getting_started.html#configuring-a-database this page]).
 
