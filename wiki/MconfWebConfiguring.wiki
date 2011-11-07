@@ -49,5 +49,7 @@ https://lh4.googleusercontent.com/-3Q5-VZCunew/TrQfATp-VCI/AAAAAAAAAmE/BkEp8VbR7
 
 If you have the script `mconf-web-conf` you can use it to restart the application. See:
 
-  * [http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript#Maintenance_tasks Restart with `mconf-web-conf`]
-  * [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#Restart Manual restart]
+  * [http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript#Maintenance_tasks Restart with `mconf-web-conf`]; or
+  * [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#Restart Restart manually]
+
+Note: When the application is restarted the first access will take a while to complete, since all the Rails environment must be loaded. Also, other processes (currently only delayed_job) required by Mconf-Web will be restarted and it might take the same amount of time for them to be started again.
