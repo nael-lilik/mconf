@@ -76,6 +76,6 @@ Proceed to [MconfWebDevelopmentTips this page].
 
 == Configuring the website ==
 
-The basic configurations are in <tt>config/setup_conf.yml</tt>. See [MconfWebSetupConf this page] for more details on how to configure this file.
+Mconf-Web stores all its configurations in a database and provides a *management interface* in the website where the admin user can edit most of these configurations. See [MconfWebConfiguring this page] for more details.
 
-Also, if you login as administrator, you can access the management area (`/manage`) where you can edit most of the available configurations for the website.
+Also, the configurations that can be edited in the management interface can also be configured using the file <tt>config/setup_conf.yml</tt>. See [MconfWebSetupConf this page] for more details on how it works.
