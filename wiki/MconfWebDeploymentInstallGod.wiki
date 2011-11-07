@@ -37,6 +37,8 @@ sudo sed -i "s:^RAILS_ROOT =.*:RAILS_ROOT = \"%PATH%\":g" /etc/god/conf.d/delaye
 sudo sed -i "s:^RAILS_ROOT =.*:RAILS_ROOT = \"/home/mconf/mconf-web/current\":g" /etc/god/conf.d/delayed_job.god
 }}}
 
+== Managing God: start, stop, status ==
+
 To start and stop God, we'll install an init script in `/etc/init.d/`:
 
 {{{
@@ -50,7 +52,7 @@ This script is already configured to load the configuration file `/etc/god/confi
 Then you can start/stop god with:
 
 {{{
-sudo /etc/init.d/god {start|stop|restart|status}
+sudo /etc/init.d/god {start|stop|terminate|restart|status}
 }}}
 
 Start it, check if it's running. If not, check the messages in the log file:
@@ -66,3 +68,5 @@ The "ps" command above should show a process similar to:
 /usr/local/rvm/rubies/ruby-1.9.2-p290/bin/ruby /usr/local/rvm/gems/ruby-1.9.2-p290@mconf/bin/god
    -c /etc/god/config -l /var/log/god.log --no-syslog --log-level warn
 }}}
+
+It's also important to mention that God has two stop commands: "stop" and "terminate". Using "stop" will finish only God's process, but all monitored processes will not be finished, they will just become unmonitored. The command "terminate" however will stop God and all the monitored processes. "terminate" is usually more useful since it will force processes like delayed_job to be finished and then restarted when God is restarted, and this is usually what the user expects when he stops God.
