@@ -1,16 +1,15 @@
 = Mconf Installation =
 
-Mconf has three main modules: Mconf-Web, Mconf-Mobile, and !BigBlueButton (with customizations). We are currently using !BigBlueButton 0.71a.
+Mconf has three main modules: Mconf-Web (web portal), Mconf-Mobile (Android application), and !BigBlueButton with our customizations (we are currently using BigBlueButton 0.71a. In BigBlueButton 0.8 most of our customizations will be already integrated).
 
 See below the options you have to get the complete solution:
 
-  * *Using the Mconf VM*: This is the simplest solution. The current version of this VM comes with Mconf-Web, !BigBlueButton (0.71a) and its customizations already installed. All you'll need is to configure them (we provide scripts for that). The server is already "Mconf-Mobile"-enabled, so you can just [http://code.google.com/p/mconf/downloads/list install Mconf-Mobile] in your mobile device and use it in this VM.
+  * *Installing the Mconf in a VM*: This is the simplest solution, however, it is suggested to be used only for tests (or development), as a VM is not as fast and stable as a dedicated server. The current version of this VM comes with Mconf-Web and !BigBlueButton (0.71a with customizations). All you'll need is to configure them (we provide scripts for that). The server is already "Mconf-Mobile"-enabled, so you can just [http://code.google.com/p/mconf/downloads/list install Mconf-Mobile] in your mobile device and use it in this VM.
     * More details in the [MconfVM Mconf VM page]
 
-  * *If you already have a !BigBlueButton server*: Here you have more options. You can install Mconf-Web in the !BigBlueButton server machine or in a another machine. You can also decide if you will use the Mconf customizations for !BigBlueButton or not (it includes enabling Mconf-Mobile).
-    * Install Mconf-Web *in a standalone server*: This is the recommended setup. See [MconfWebDeployment this page] to learn how to deploy Mconf-Web.
+  * *Installing Mconf in a dedicated server*: Here you have two options. You can install Mconf-Web and !BigBlueButton in the same machine or in two different machines. You can also decide if you will use Mconf with our customizations in !BigBlueButton or not (it includes enabling Mconf-Mobile).
+    * Install !BigBlueButton: Install !BigBlueButton [http://code.google.com/p/bigbluebutton/wiki/InstallationUbuntu as described in their wiki]. Then, we provide a script called `mconf-bbb-conf` that you can use to customize your !BigBlueButton server with our modifications. See [MconfBBB this page] for more details about it.
+    * Install Mconf-Web *in a standalone server*: This is the recommended setup. See [MconfWebDeployment this page] to learn how to deploy Mconf-Web. *Or...*
     * Install Mconf-Web *in the same machine that serves !BigBlueButton*: It works fine, but there's a small "gotcha" with the web server. Proceed to [MconfWebDeployInBBBMachine this page] for more information.
-
-  * *Customizing !BigBlueButton*: We provide a script called `mconf-bbb-conf` that you can use to customize your !BigBlueButton server with our modifications. See [MconfBBB this page] for more details about it.
 
   * *Mconf-Mobile*: The first step is to [http://code.google.com/p/mconf/downloads/list download Mconf-Mobile] and install it in your device. For !BigBlueButton 0.71a, you will need some customizations in the server. If you're using the Mconf VM you already have this enabled. Otherwise, you can either do that manually (see [MconfMobile this page]) or customizing !BigBlueButton using the `mconf-bbb-conf` script (see the previous item).
