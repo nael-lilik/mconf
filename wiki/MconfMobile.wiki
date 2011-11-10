@@ -34,7 +34,10 @@ Mconf-Mobile is an mobile client for Mconf. It interacts with the web portal (ht
 There are two ways of running the application:
 
  # If you want to run the application with your integrated environment (like Moodle), you need to provide custom URLs for the !BigBlueButton calls, replacing the protocol *`http://`* with *`bigbluebutton://`*
- # If you want to run the application standalone, the server you are going to connect must provide the demo *`mobile.jsp`*. To do that, copy [https://raw.github.com/mconf/mconf-mobile/v0.3beta/mobile.jsp this file] to *`/var/lib/tomcat6/webapps/bigbluebutton/demo/`*. It's only valid for !BigBlueButton 0.71a or below - the !BigBlueButton 0.8 and above supports mobile access natively.
+ # If you want to run the application standalone, the server you are going to connect must provide the demo *`mobile.jsp`*. To do that, copy [https://raw.github.com/mconf/mconf-mobile/master/mobile.jsp this file] to *`/var/lib/tomcat6/webapps/bigbluebutton/demo/`*. It's only valid for !BigBlueButton 0.71a or below - the !BigBlueButton 0.8 and above supports mobile access natively. You can download the file with the following command:
+   {{{
+sudo curl https://raw.github.com/mconf/mconf-mobile/master/mobile.jsp -o /var/lib/tomcat6/webapps/bigbluebutton/demo/mobile.js
+   }}}
 
 The [http://demo.bigbluebutton.org BigBlueButton demo server] provides mobile access, and it's pre-configured in BBB-Android.
 
