@@ -31,15 +31,28 @@ Mconf-Mobile is an mobile client for Mconf. It interacts with the web portal (ht
 
 = Running BBB-Android =
 
-There are two ways of running the application:
+If you want to test the application, the [http://demo.bigbluebutton.org BigBlueButton demo server] provides mobile access, and it's pre-configured in BBB-Android. You can also run BBB-Android with your own server. 
 
- # If you want to run the application with your integrated environment (like Moodle), you need to provide custom URLs for the !BigBlueButton calls, replacing the protocol *`http://`* with *`bigbluebutton://`*
- # If you want to run the application standalone, the server you are going to connect must provide the demo *`mobile.jsp`*. To do that, copy [https://raw.github.com/mconf/mconf-mobile/master/mobile.jsp this file] to *`/var/lib/tomcat6/webapps/bigbluebutton/demo/`*. It's only valid for !BigBlueButton 0.71a or below - the !BigBlueButton 0.8 and above supports mobile access natively. You can download the file with the following command:
+== On !BigBlueButton 0.71a ==
+
+To run the application with your !BigBlueButton 0.71a server, it must provide access to the demo *`mobile.jsp`*. You can download and deploy the file with the following command:
+
    {{{
 sudo curl https://raw.github.com/mconf/mconf-mobile/master/mobile.jsp -o /var/lib/tomcat6/webapps/bigbluebutton/demo/mobile.js
    }}}
 
-The [http://demo.bigbluebutton.org BigBlueButton demo server] provides mobile access, and it's pre-configured in BBB-Android.
+The mobile.jsp demo wrap the default API to remove the need of the security salt. On !BigBlueButton 0.8 there's a special security key for mobile access.
+When BBB-Android asks for the server password, just leave it blank.
+
+== On !BigBlueButton 0.8 (still on beta) ==
+
+The !BigBlueButton 0.8 and above supports mobile access natively. To configure/change the mobile security key, you will need to edit the following configuration file:
+
+`/var/lib/tomcat6/webapps/demo/mobile_conf.jsp`
+
+== Custom URLs ==
+
+In your integrated environment, if you provide the !BigBlueButton join calls replacing the prefix *`http://`* with *`bigbluebutton://`*, the BBB-Android application will start automatically, and will handle the session in your mobile device. The [https://mconf.org mconf.org] uses this feature - to understand how it works, I would like to invite you to join Mconf and try it yourself. :)
 
 = Building the app from the repository =
 
