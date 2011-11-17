@@ -81,6 +81,10 @@ If you are a developer and want to be part of this project, you can pick an issu
 
 = Changelog =
 
+v0.4.3 (November 17th 2011)
+ * Improvements on stability of the video capture module
+ * Removed the hardware requirements to run the app (more devices are supported now)
+
 [http://code.google.com/p/mconf/issues/list?can=1&q=label%3AMilestone-bbb-android-0.4.2 v0.4.2] (October 31th 2011)
  * Improvements on stability
  * First version released on Android Market
