@@ -59,6 +59,8 @@ In your integrated environment, if you provide the !BigBlueButton join calls rep
  # Install Android SDK ([http://developer.android.com/sdk/index.html link])
  # Install Android NDK ([http://developer.android.com/sdk/ndk/index.html link])
  # Install Apache Ant ([http://ant.apache.org/ link])
+ # Install Findbugs ([http://findbugs.sourceforge.net/ link])
+ # Copy *`findbugs/libs/findbugs_ant.jar`* to *`~/.ant/lib`*
  # Clone the repository
  # Copy *`./local.properties.template`* to *`./local.properties`* and edit this file to reproduce your environment
  # Run *`ant build-all`*
