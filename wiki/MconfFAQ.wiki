@@ -97,3 +97,7 @@ You should see messages like the ones below when delayed_job is started:
 === I can connect to the audio conference but I can't hear anything. What's wrong? ===
 
 By default the application doesn't enable the loudspeaker (it enables the earphone speaker) - you need to press "Menu" and then "Loudspeaker" if you want to hear anything without put the phone next to your ear. The icon will turn enabled.
+
+=== I can't join the voice conference ===
+
+Mconf-Mobile communicates with other participants by voice using SIP over UDP through the port 5060. It means that the server must be able to receive connections on such port.
