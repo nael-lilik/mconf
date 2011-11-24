@@ -4,9 +4,9 @@
 
 Mconf-Mobile is an Android implementation of the [http://www.bigbluebutton.org BigBlueButton] client. If you would like more information about the project, please visit http://www.inf.ufrgs.br/prav/gtmconf (Portuguese and English).
 
-*Video demo 1:* http://www.youtube.com/watch?v=v4Du20LsWGs
+*Video demo 1 (February 9th 2011):* http://www.youtube.com/watch?v=v4Du20LsWGs
 
-*Download*: Check our [http://code.google.com/p/mconf/downloads/list downloads section].
+*Download*: on Android Market ([https://market.android.com/developer?pub=Laborat%C3%B3rio+de+Projetos+em+%C3%81udio+e+V%C3%ADdeo+-+UFRGS link]).
 
 = About the subprojects =
 == Flazr - a Java implementation of multimedia streaming protocols ==
