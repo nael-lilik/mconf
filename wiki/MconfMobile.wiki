@@ -63,9 +63,6 @@ In your integrated environment, if you provide the !BigBlueButton join calls rep
  # Copy *`findbugs/libs/findbugs_ant.jar`* to *`~/.ant/lib`*
  # Clone the repository
  # Copy *`./local.properties.template`* to *`./local.properties`* and edit this file to reproduce your environment
-<wiki:comment>
- # Run *`sudo aptitude install libc6-dev-i386 libc6-dev g++ gcc lib32z1-dev g++-multilib`* to install all the dependencies
-</wiki:comment>
  # Run *`ant build-all`*
 
 If you want to work with Eclipse:
