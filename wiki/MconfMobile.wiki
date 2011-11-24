@@ -56,7 +56,7 @@ In your integrated environment, if you provide the !BigBlueButton join calls rep
 
 = Building the app from the repository =
 
- # Install Android SDK ([http://developer.android.com/sdk/index.html link])
+ # Install Android SDK ([http://developer.android.com/sdk/index.html link] / [http://developer.android.com/sdk/installing.html#troubleshooting troubleshooting])
  # Install Android NDK ([http://developer.android.com/sdk/ndk/index.html link])
  # Install Apache Ant ([http://ant.apache.org/ link])
  # Install Findbugs ([http://findbugs.sourceforge.net/ link])
@@ -67,8 +67,6 @@ In your integrated environment, if you provide the !BigBlueButton join calls rep
  # Run *`sudo aptitude install libc6-dev-i386 libc6-dev g++ gcc lib32z1-dev g++-multilib`* to install all the dependencies
 </wiki:comment>
  # Run *`ant build-all`*
-
-If you run into any trouble, see http://developer.android.com/sdk/installing.html#troubleshooting.
 
 If you want to work with Eclipse:
 
