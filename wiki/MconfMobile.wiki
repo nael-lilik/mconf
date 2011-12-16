@@ -59,7 +59,7 @@ In your integrated environment, if you provide the !BigBlueButton join calls rep
 *Important:* we use and recommend Ubuntu to build Mconf-Mobile. We know that the root build.xml script doesn't work well on Windows - if you are interested in working on the build scripts to make it compilable on Windows, we will be glad to integrate such enhancement.
 
  # Install Android SDK ([http://developer.android.com/sdk/index.html link] / [http://developer.android.com/sdk/installing.html#troubleshooting troubleshooting])
- # Install Android NDK ([http://developer.android.com/sdk/ndk/index.html link])
+ # Install Android NDK ([http://developer.android.com/sdk/ndk/index.html link]) - we use and recommend version r6b ([http://dl.google.com/android/ndk/android-ndk-r6b-linux-x86.tar.bz2 link])
  # Install Apache Ant ([http://ant.apache.org/ link])
  # Install Findbugs ([http://findbugs.sourceforge.net/ link])
  # Copy *`findbugs/libs/findbugs_ant.jar`* to *`~/.ant/lib`*
