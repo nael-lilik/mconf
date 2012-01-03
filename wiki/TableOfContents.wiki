@@ -1,5 +1,5 @@
   * [Home Home]
-  * [MconfInstallation Installing Mconf]
+  * [MconfInstallation Install Mconf]
     * [MconfVM Mconf VM]
   * [MconfBBB Mconf-BBB]
   * [MconfMobile Mconf-Mobile]
