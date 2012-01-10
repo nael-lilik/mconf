@@ -7,7 +7,7 @@ We use myGengo (http://mygengo.com/) to translate Mconf-Web to other languages. 
     * Your email address used in myGengo;
     * The language you wish to translate Mconf-Web to (it can be either a new language or an already existent one).
 
-We will then authorize your user to translate Mconf-Web to this language. It is that simple. Periodically we will download the files from myGengo and update Mconf-Web with them.
+We will then authorize your user to translate Mconf-Web to this language. Periodically we will download the files from myGengo and update Mconf-Web with them.
 
 The languages maintained by the Mconf team are:
   * English
@@ -28,15 +28,14 @@ See more at: https://github.com/mconf/translate/wiki
 
 === Development process ===
 
-  * Add or remove keys or change values in the language 'en';
+  * Add or remove keys or change values in the language 'en' only;
   * Upload these files to myGengo;
-  * Translate to other languages using myGengo;
-  * Download all language files from myGengo;
-  * Run translate to cleanup and standardize *all* files.
+  * Translate to other languages using myGengo always;
+  * Download all language files from myGengo and update the repository using the script 'mygengo'.
 
-Currently 'translate' can only cleanup the files, but not find untranslated keys or remove unused keys (soon it will be able to). Here are some examples for the cleanup command:
+There is a script in `script/mygengo` that downloads all locale files from myGengo and runs some rake tasks on them to cleanup and adapt to Mconf. This script should be used everytime there's a need to update the locales.
 
 {{{
-LOCALE=en FILE=config/locales/en/mconf.yml FILTER=1 bundle exec rake translate:cleanup
-LOCALE=pt-br FILE=config/locales/pt-br/mconf.yml FILTER=1 bundle exec rake translate:cleanup
+cd mconf-web
+ruby script/mygengo
 }}}
