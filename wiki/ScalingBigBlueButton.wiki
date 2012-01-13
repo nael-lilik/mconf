@@ -4,13 +4,11 @@
 
 In this document we will describe step-by-step how to scale !BigBlueButton in order to support a larger number of participants. Currently the default installation of !BigBlueButton is designed to support up to 25 simultaneous users [[http://code.google.com/p/bigbluebutton/wiki/FAQ#How_many_simultaneous_users_can_BigBlueButton_support link]], but this guide is intended to increase this number to hundreds (or even thousands) of users.
 
-= Installing BigBlueButton 0.8 beta 3 =
+= Installing !BigBlueButton 0.8 beta 3 =
 
 Follow the instructions detailed [http://code.google.com/p/bigbluebutton/wiki/08InstallationUbuntu here].
 
-= Installing the FreeSWITCH server =
-
-Installing !BigBlueButton and FreeSWITCH on different servers, we intend to distribute the balance between different hardwares.
+= Installing FreeSWITCH =
 
 {{{
 # Add the BigBlueButton key
@@ -23,27 +21,35 @@ echo "deb http://us.archive.ubuntu.com/ubuntu/ lucid multiverse" | sudo tee -a /
 sudo apt-get install bbb-freeswitch bbb-freeswitch-config
 }}}
 
-= Configuring the BigBlueButton server =
+= Configuring the !BigBlueButton server =
 
+Set *`sip.server.host`* to the FreeSWITCH server address:
 {{{
 sudo vim /usr/share/red5/webapps/sip/WEB-INF/bigbluebutton-sip.properties
 }}}
-Set *`sip.server.host`* to the FreeSWITCH server address.
 
+Set *`esl.host`* to the FreeSWITCH server address:
 {{{
 sudo vim /usr/share/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties
 }}}
-Set *`esl.host`* to the FreeSWITCH server address.
 
 = Configuring the FreeSWITCH server =
+
+Set *`listen-ip`* to the FreeSWITCH server address:
 {{{
 sudo vim /opt/freeswitch/conf/autoload_configs/event_socket.conf.xml
 }}}
 
+Restart the FreeSWITCH server:
+{{{
+sudo service bbb-freeswitch restart
+}}}
 
-= Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= Installing OpenSIPS =
+
+Follow the instructions detailed [http://wiki.freeswitch.org/wiki/Enterprise_deployment_OpenSIPS here].
+
+= Links =
+
+  * Extracting freeswitch, freeswitch "cloud" [[http://groups.google.com/group/bigbluebutton-setup/browse_thread/thread/69c108175d5cdc4a link]]
