@@ -50,6 +50,39 @@ sudo service bbb-freeswitch restart
 
 Follow the instructions detailed [http://wiki.freeswitch.org/wiki/Enterprise_deployment_OpenSIPS here].
 
+*TEMPORARY CONTENT*
+
+{{{
+sudo aptitude install build-essential bison lynx subversion flex libmysqld-dev mysql-server
+wget http://opensips.org/pub/opensips/latest/src/opensips-1.7.1_src.tar.gz
+tar zxvf opensips-1.7.1_src.tar.gz
+cd opensips-1.7.1-tls
+make all include_modules="db_mysql"
+sudo make include_modules="db_mysql" prefix="/usr/local" install
+sudo vim /usr/local/etc/opensips/opensipsctlrc
+# Uncomment DBENGINE=MYSQL
+sudo opensipsdbctl create
+mysql -p -u root
+
+grant all privileges on opensips.* to opensips@localhost identified by 'opensips';
+use opensips;
+insert into load_balancer (group_id, dst_uri, resources, description) values (1,'sip:143.54.12.121', 'pstn=32', 'FS1');
+insert into load_balancer (group_id, dst_uri, resources, description) values (1,'sip:143.54.12.182', 'pstn=32', 'FS2');
+quit;
+
+sudo su
+cp packaging/rpm/opensips.init /etc/init.d/opensips
+sed -i "s/\/usr\/sbin\/opensips/\/usr\/local\/sbin\/opensips/g" /etc/init.d/opensips
+sed -i "s/\/etc\/opensips/\/usr\/local\/etc\/opensips/g" /etc/init.d/opensips
+sed -i "s/\/etc\/default\/opensips/\/usr\/local\/etc\/opensips/g" /etc/init.d/opensips
+sed -i "s/RUN_OPENSIPS=no/RUN_OPENSIPS=yes/g" /etc/init.d/opensips
+chmod +x /etc/init.d/opensips
+exit
+
+sudo useradd -d /usr/local/etc/opensips -s /sbin/nologin opensips
+sudo cp /usr/local/etc/opensips/opensips.cfg /usr/local/etc/opensips/opensips.cfg.backup
+# Copy the .cfg and replace the "listen" to the OpenSIPS address
+}}}
 = Links =
 
   * Extracting freeswitch, freeswitch "cloud" [[http://groups.google.com/group/bigbluebutton-setup/browse_thread/thread/69c108175d5cdc4a link]]
