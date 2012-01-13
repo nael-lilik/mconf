@@ -1,0 +1,13 @@
+
+<font color="red">This document is under development.</font> The content described here is being used internally by Mconf.
+
+= Introduction =
+
+In this document we will describe step-by-step how to scale !BigBlueButton in order to support a larger number of participants. Currently the default installation of !BigBlueButton is designed to support up to 25 simultaneous users [[http://code.google.com/p/bigbluebutton/wiki/FAQ#How_many_simultaneous_users_can_BigBlueButton_support link]], but this guide is intended to increase this number to hundreds (or even thousands) of users.
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
