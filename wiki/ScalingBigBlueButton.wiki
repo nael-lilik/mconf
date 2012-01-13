@@ -86,3 +86,5 @@ sudo cp /usr/local/etc/opensips/opensips.cfg /usr/local/etc/opensips/opensips.cf
 = Links =
 
   * Extracting freeswitch, freeswitch "cloud" [[http://groups.google.com/group/bigbluebutton-setup/browse_thread/thread/69c108175d5cdc4a link]]
+
+  * Install OpenSIPS on Debian or Ubuntu [[http://vidodz.wordpress.com/2009/07/28/install-opensips-on-debian-or-ubuntu/ link]]
