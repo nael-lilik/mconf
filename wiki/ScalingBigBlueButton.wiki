@@ -1,9 +1,45 @@
-
 <font color="red">This document is under development.</font> The content described here is being used internally by Mconf.
 
 = Introduction =
 
 In this document we will describe step-by-step how to scale !BigBlueButton in order to support a larger number of participants. Currently the default installation of !BigBlueButton is designed to support up to 25 simultaneous users [[http://code.google.com/p/bigbluebutton/wiki/FAQ#How_many_simultaneous_users_can_BigBlueButton_support link]], but this guide is intended to increase this number to hundreds (or even thousands) of users.
+
+= Installing BigBlueButton 0.8 beta 3 =
+
+Follow the instructions detailed [http://code.google.com/p/bigbluebutton/wiki/08InstallationUbuntu here].
+
+= Installing the FreeSWITCH server =
+
+Installing !BigBlueButton and FreeSWITCH on different servers, we intend to distribute the balance between different hardwares.
+
+{{{
+# Add the BigBlueButton key
+wget http://ubuntu.bigbluebutton.org/bigbluebutton.asc -O- | sudo apt-key add -
+
+# Add the BigBlueButton repository URL and ensure the multiverse is enabled
+echo "deb http://ubuntu.bigbluebutton.org/lucid_dev_08/ bigbluebutton-lucid main" | sudo tee /etc/apt/sources.list.d/bigbluebutton.list
+echo "deb http://us.archive.ubuntu.com/ubuntu/ lucid multiverse" | sudo tee -a /etc/apt/sources.list
+
+sudo apt-get install bbb-freeswitch bbb-freeswitch-config
+}}}
+
+= Configuring the BigBlueButton server =
+
+{{{
+sudo vim /usr/share/red5/webapps/sip/WEB-INF/bigbluebutton-sip.properties
+}}}
+Set *`sip.server.host`* to the FreeSWITCH server address.
+
+{{{
+sudo vim /usr/share/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties
+}}}
+Set *`esl.host`* to the FreeSWITCH server address.
+
+= Configuring the FreeSWITCH server =
+{{{
+sudo vim /opt/freeswitch/conf/autoload_configs/event_socket.conf.xml
+}}}
+
 
 = Details =
 
