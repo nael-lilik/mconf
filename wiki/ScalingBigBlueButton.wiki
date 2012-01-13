@@ -26,23 +26,22 @@ sudo apt-get install bbb-freeswitch bbb-freeswitch-config
 {{{
 FS_HOST=<YOUR_FREESWITCH_SERVER>
 
-sed -i "s:sip\.server\.host=.*:sip.server.host=$FS_HOST:g" /usr/share/red5/webapps/sip/WEB-INF/bigbluebutton-sip.properties
-sed -i "s:esl\.host=.*:esl\.host=$FS_HOST:g" /usr/share/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties
+sudo sed -i "s:sip\.server\.host=.*:sip.server.host=$FS_HOST:g" /usr/share/red5/webapps/sip/WEB-INF/bigbluebutton-sip.properties
+sudo sed -i "s:esl\.host=.*:esl\.host=$FS_HOST:g" /usr/share/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties
+
+# Restart the BigBlueButton server
+sudo bbb-conf --restart
 }}}
 
 = Configuring the FreeSWITCH server =
 
-Set *`listen-ip`* to the FreeSWITCH server address:
 {{{
 HOST=`ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'`;
-sed -i "s:name=\"listen-ip\" value=\".*\":name=\"listen-ip\" value=\"$HOST\":g" /opt/freeswitch/conf/autoload_configs/event_socket.conf.xml
-}}}
+sudo sed -i "s:name=\"listen-ip\" value=\".*\":name=\"listen-ip\" value=\"$HOST\":g" /opt/freeswitch/conf/autoload_configs/event_socket.conf.xml
 
-Restart the FreeSWITCH server:
-{{{
+# Restart the FreeSWITCH server
 sudo service bbb-freeswitch restart
 }}}
-
 
 = Installing OpenSIPS =
 
