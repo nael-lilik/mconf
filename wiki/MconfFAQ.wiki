@@ -101,3 +101,11 @@ By default the application doesn't enable the loudspeaker (it enables the earpho
 === I can't join the voice conference ===
 
 Mconf-Mobile communicates with other participants by voice using SIP over UDP through the port 5060. It means that the server must be able to receive connections on such port.
+
+=== I downloaded the source code but the dependencies are not there ===
+
+The instructions to build the Mconf-Mobile project is detailed [MconfMobile#Building_the_app_from_the_repository here]. All the dependencies are downloaded automatically when you run
+
+{{{
+ant build-all
+}}}
