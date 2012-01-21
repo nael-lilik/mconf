@@ -10,23 +10,44 @@ Our goal with this page is to have a central place where people can easily find 
 
 == Mconf-Web ==
 
-=== Problems running the rake tasks or using mconf-web-conf to setup a development or production environment ===
+=== Emails are not being sent ===
 
-==== Error: "Username and Password not accepted. Learn more at" ====
+Briefly, this is how emails are sent in Mconf-Web:
 
-If you're running the rake task `db:seed` (or any other task that triggers this task, like `setup:db`) and you're facing this error:
+The "`site`" table has the columns "`email`" and "`email_password`" that store a Gmail email address and the password for this email. You can configure them in the [MconfWebConfiguring management page]. This email will be used to send all emails from within Mconf-Web. Currently only Gmail accounts are supported (unless you're willing to do some coding).
+
+When an email needs to be sent, a "job" is stored in the database and an external process (a gem called "`delayed_job`") will read the job and deliver the email. This process is monitored by another gem called "`god`", that is also responsible for starting it. So you don't ever need to deal with `delayed_job`, only with `god`.
+
+
+To know how to use `god`, see [MconfWebDeploymentInstallGod this page]. Once you have it installed, you can try to stop it, restart and check the log in case of errors:
 
 {{{
-* Create the administrator account
-...
-rake aborted!
-535-5.7.1 Username and Password not accepted. Learn more at
-(See full trace by running task with --trace)
+sudo /etc/init.d/god terminate
+sudo /etc/init.d/god start
+
+# This is the default log file. Check the script /etc/init.d/god in case it doesn't exists.
+tail -100 /var/log/god.log
 }}}
 
-It means that the parameters `sendmail_username` and/or `sendmail_password` in your configuration file (`config/setup_conf.yml`) are not correct. See more about this file [MconfWebSetupConf at this page].
 
-==== Wrong username and/or password for MySQL ====
+
+
+If you're in a development environment, you don't need `god`. Just run `delayed_job` with:
+
+{{{
+bundle exec script/delayed_job -n 2 start
+}}}
+
+
+If you're using Capistrano, whenever you update the code in your deployment server, `delayed_job` will be restarted to reload the modified code. You can also use some rake tasks to check whether `delayed_job` is working or not:
+
+{{{
+cap production rake:invoke TASK=jobs:queued # prints the queued jobs
+}}}
+
+
+
+=== Wrong username and/or password for MySQL ===
 
 The following box shows an example of an error that occurs when your Mysql2 user and/or password are wrong and you're trying to setup Mconf-Web. The following error has happened trying to setup a production environment using the wrong database password for the user "root".
 
@@ -51,6 +72,7 @@ Or, in case you want to change the password:
 mysqladmin -u root -p password "NEW-PASSWORD"
 }}}
 
+=== Problems related to Capistrano ===
 
 ==== `Net::SSH::AuthenticationFailed` ====
 
@@ -70,26 +92,19 @@ It's also possible that you're typing the wrong password or that the ssh keys ar
 See more details at: http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#(2)_Deploy
 
 
-=== Emails are not being sent ===
 
-The emails are sent using a background job run by the gem delayed_job. If you're in a development environment, you can run it with:
 
-{{{
-bundle exec script/delayed_job -n 2 start
-}}}
 
-If you're using Capistrano, you can run the task "jobs:start" to start delayed_job in the production server. For example:
 
-{{{
-cap production jobs:restart
-}}}
 
-You should see messages like the ones below when delayed_job is started:
 
-{{{
- ** [out :: mconf.inf.ufrgs.br] delayed_job.0: process with pid 4752 started.
- ** [out :: mconf.inf.ufrgs.br] delayed_job.1: process with pid 4758 started.
-}}}
+
+
+
+
+
+
+
 
 
 == Mconf-Mobile / BBB-Android ==
