@@ -31,7 +31,7 @@ sudo sed -i "s:sip\.server\.host=.*:sip.server.host=$FS_HOST:g" /usr/share/red5/
 sudo sed -i "s:esl\.host=.*:esl\.host=$FS_HOST:g" /usr/share/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties
 
 # Restart the BigBlueButton server
-sudo bbb-conf --restart
+sudo bbb-conf --clean
 }}}
 
 = Configuring the FreeSWITCH server =
