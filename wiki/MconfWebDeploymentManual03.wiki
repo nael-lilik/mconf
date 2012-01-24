@@ -1,6 +1,6 @@
 #summary Step-by-step guide on how to deploy Mconf-Web in Mconf-Web 0.3 (script version 0.2)
 
-_This page is a continuation of [MconfWebDeployment this page]._
+_*<font color=red>This is an old guide, used in Mconf-Web 0.3. It shouldn't be used anymore. It's here only for possible references in the future.</font>*_
 
 = Mconf-Web Manual Deployment =
 
