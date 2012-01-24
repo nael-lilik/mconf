@@ -136,16 +136,26 @@ You also might want to know how to [MconfWebConfiguring configure the applicatio
 
 == Maintenance tasks ==
 
-The script also provides commands to update your application and restart it. They are:
+The script also provides commands to update your application and restart it.
+
+=== Restart ===
+
+{{{
+mconf-web-conf --restart
+}}}
+
+The restart task will restart the web server and other processes that use Mconf-Web. When the application is restarted the first access will take a while to complete, since all the Rails environment must be loaded. Also, other processes (currently only delayed_job) required by Mconf-Web will be restarted and it might take the same amount of time for them to be started again.
+
+=== Update ===
+
+<font color=red>*Important: *</font>Before updating we recommend that you backup your application and your database to be able to restore it in case of errors. See MconfWebDeploymentManual#Backup.
 
 {{{
 mconf-web-conf --update
-mconf-web-conf --restart
 }}}
 
 The update task will download the latest version available, just like the task `--deploy-setup` does. Notice that the application is simply a git repository with the application's source code. So if you know how to use git, you can just update your repository whenever you want to (or even point it to another branches, if needed).
 
-The restart task will restart the web server and other processes that use Mconf-Web. When the application is restarted the first access will take a while to complete, since all the Rails environment must be loaded. Also, other processes (currently only delayed_job) required by Mconf-Web will be restarted and it might take the same amount of time for them to be started again.
 
 ------------------------------------------------------------------
 
