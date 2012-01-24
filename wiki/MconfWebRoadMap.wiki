@@ -10,8 +10,18 @@
 
 *Planned for*: ?, 2011.
 
-  * [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.6 Issues for Mconf-Web-Release0.6].
+Update notes:
 
+  * Mconf-Web now uses "`whenever`" to generate/update the crontab.
+    * The guides were updated to include the command to generate your crontab. See more in [MconfWebDeploymentGuideWhenever this page].
+    * Using `whenever` with RVM requires your to add the following line to your `~/.rvmrc` (if the file doesn't exist, create it):
+      * `rvm_trust_rvmrcs_flag=1`
+    * For more information check `whenever`'s [https://github.com/javan/whenever/blob/master/README.md readme file].    
+  * The `delayed_job` configuration file for `God` was updated. New file [https://github.com/mconf/mconf-web/blob/v0.6/config/god/delayed_job.god here]. In a deployment server this file is at `/etc/god/conf.d/delayed_job.god`
+
+See also:
+
+  * [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.6 Issues for Mconf-Web-Release0.6].
 
 == Release 0.5 ==
 
