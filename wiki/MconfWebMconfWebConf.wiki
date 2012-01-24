@@ -2,8 +2,6 @@
 
 = The script `mconf-web-conf` =
 
-Note: From Mconf-Web 0.4, this script has changed quite a bit. The documentation for the old version [MconfWebMconfWebConf03 can be found here].
-
 <wiki:toc max_depth="3" />
 
 == Overview ==
