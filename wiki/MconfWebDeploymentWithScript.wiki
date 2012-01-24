@@ -11,7 +11,10 @@ Note: From Mconf-Web version 0.4 (when the script version changed to 0.3), the s
 
 == Overview ==
 
-This guide is destined to those who search an easy way to install Mconf-Web or those that have no experience with Ruby/Rails applications. If you're searching for a more flexible installation (possibly with using more advanced tools), see the [MconfWebDeploymentManual manual installation guide].
+This guide is destined to those who search an easy way to install Mconf-Web or those that have no experience with Ruby/Rails applications.
+
+If you want to setup a real production server (it will be used for real purposes, not for tests), *we strongly recommend* that you follow the [MconfWebDeploymentManual manual installation guide], so you will know what you are doing in your server. You can also see the code of `mconf-web-conf` [https://github.com/mconf/mconf-web/blob/latest/script/mconf-web-conf here] and either use it after you know what each of its steps do, or use it as a guide.
+
 
 == Installing Mconf-Web ==
 
