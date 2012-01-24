@@ -21,16 +21,16 @@ All the necessary steps to setup a production server are documented in our deplo
 The steps necessary are:
 
   # Install system packages:
-    * Using a script: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript#1._System_Packages link] (recommended)
     * Manually: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#1._System_Packages link]
-  # Install ruby;
-    * Using a script: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript#2._Ruby link] (recommended)
+    * Using a script: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript#1._System_Packages link]
+  # Install ruby:
     * Manually: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#2._Ruby link]
+    * Using a script: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript#2._Ruby link]
   # Use Capistrano to deploy the application;
     * See below how to do it.
   # Install a web server and some other system-wide applications.
+    * Manually: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#5._Install_a_web_server,_configure_the_application_and_deploy link] (see the sections "Web server" and "System-wide configurations")
     * You shouldn't use the script here.
-    * Manually: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#5._Install_a_web_server,_configure_the_application_and_deploy link] (sections "Web server" and "System-wide configurations")
 
 
 As you can see above, steps 1, 2, and 4 are documented in the deployment guides and you have the links above. We recommend that you use the script for steps 1 and 2 and perform step 4 manually.
