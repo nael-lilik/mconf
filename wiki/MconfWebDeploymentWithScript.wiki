@@ -150,11 +150,13 @@ The restart task will restart the web server and other processes that use Mconf-
 
 <font color=red>*Important: *</font>Before updating we recommend that you backup your application and your database to be able to restore it in case of errors. See MconfWebDeploymentManual#Backup.
 
+Before updating the application, you might want to update the script `mconf-web-conf`. Download it again following the instructions in the top of this page and then use it to update the application:
+
 {{{
 mconf-web-conf --update
 }}}
 
-The update task will download the latest version available, just like the task `--deploy-setup` does. Notice that the application is simply a git repository with the application's source code. So if you know how to use git, you can just update your repository whenever you want to (or even point it to another branches, if needed).
+The update task will download the latest version available, just like the task `--checkout` does. Notice that the application is simply a git repository with the application's source code. So if you know how to use git, you can just update your repository whenever you want to (or even point it to another branches, if needed).
 
 
 ------------------------------------------------------------------
