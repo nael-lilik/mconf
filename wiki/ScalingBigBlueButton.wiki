@@ -46,6 +46,13 @@ sudo sed -i "s:name=\"listen-ip\" value=\".*\":name=\"listen-ip\" value=\"$HOST\
 sudo service bbb-freeswitch restart
 }}}
 
+
+Uncomment the following line on `/opt/freeswitch/conf/sip_profiles/external.xml`. <font color="red">Check if it's really necessary!</font>
+
+{{{
+<!--<param name="force-register-domain" value="$${domain}"/>-->
+}}}
+
 = Installing OpenSIPS =
 
 Follow the instructions detailed [http://wiki.freeswitch.org/wiki/Enterprise_deployment_OpenSIPS here].
