@@ -1,0 +1,19 @@
+= Using Whenever in Mconf-Web =
+
+[https://github.com/javan/whenever Whenever] is a gem that helps you configure the crontab. The tasks are specified in the file [https://github.com/mconf/mconf-web/blob/latest/config/schedule.rb config/schedule.rb] and then Whenever is used to generate the crontab.
+
+The gem Whenever will already be installed with the other gems when you run `bundle install`, so you just need to use it.
+
+To update the crontab, go to your Mconf-Web directory and run the comman below. It will not override your crontab, only update it with Mconf-Web's entries.
+
+{{{
+bundle exec whenever --update-crontab RAILS_ENV=production
+}}}
+
+When using Whenever with RVM, you should add the following line to your `~/.rvmrc`. If the file doesn't exist, create it.
+
+{{{
+rvm_trust_rvmrcs_flag=1
+}}}
+
+This prevents cron tasks from failing when trying to read the .rvmrc files more information check Whenever's [https://github.com/javan/whenever/blob/master/README.md readme file]. 
