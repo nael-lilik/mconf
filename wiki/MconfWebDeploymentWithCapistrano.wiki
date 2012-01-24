@@ -1,8 +1,8 @@
 #summary Deploy Mconf-Web using Capistrano
 
-<wiki:toc max_depth="3" />
+= Mconf-Web deployment with Capistrano =
 
-= Capistrano =
+<wiki:toc max_depth="3" />
 
 [https://github.com/capistrano/capistrano Capistrano] is a ruby gem that helps you deploy applications. You run commands from your development environment and they affect your production server. It is great if you're a developer and/or if you have multiple servers to update.
 
