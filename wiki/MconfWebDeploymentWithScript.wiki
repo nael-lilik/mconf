@@ -2,9 +2,6 @@
 
 _This page is a continuation of [MconfWebDeployment this page]._
 
-Note: From Mconf-Web version 0.4 (when the script version changed to 0.3), the script has changed quite a bit. The documentation for the old version [MconfWebDeploymentWithScript03 can be found here].
-
-
 = Mconf-Web Deployment With mconf-web-conf =
 
 <wiki:toc max_depth="3" />
