@@ -8,7 +8,15 @@
 
 == Current Development: Release 0.6 ==
 
-*Planned for*: ?, 2011.
+*Planned for*: Jan 27th, 2012.
+
+  * New directory structure for the language files. There's now a folder with the language name and several files for each language. Example: `config/locales/en/mconf.yml`.
+  * Mconf-Web is now using myGengo for translations. You can see the project page [http://mygengo.com/string/p/mconf-web-1 here].
+  * New rake tasks "mconf:analytics:init" and "mconf:analytics:update" that fetch information from Google Analytics to show the number of pageviews for the spaces in Mconf-Web.
+  * The gem "Whenever" is being used to setup the crontab. See more in the update notes.
+  * Updated "bigbluebutton_rails" to a version with support to BigBlueButton 0.8.
+  * Emails are now sent in the receiver's language (Issue 275).
+  * Added digest emails (with recent activity in the spaces) to be sent daily or weekly if requested by the user (Issue 287).
 
 Update notes:
 
@@ -49,11 +57,13 @@ See also:
   * Layout changes in the homepage: focusing the spaces, now in the center.
   * Layout fixes for Internet Explorer.
   * Admin users can set other users as admins (Issue 165).
-  * `mconf-web-conf` version 0.3 with several changes: RVM is installed as multi-user and capistrano is not required anymore.<font color=red>^1^ </font>
-  * Using [http://god.rubyforge.org/ god] to monitor processes (only delayed_job currently).<font color=red>^2^ </font>
+  * `mconf-web-conf` version 0.3 with several changes: RVM is installed as multi-user and capistrano is not required anymore. <font color=red>(1) </font>
+  * Using [http://god.rubyforge.org/ god] to monitor processes (only delayed_job currently). <font color=red>(2) </font>
   * Several other bug fixes.
 
-<font color=red>^1, 2^ </font>Due to these changes, you'll need to do some additional configuration in your server to migrate to this version. You can see all the necessary steps in [MconfWebDeploymentManual this wiki page] (search for RVM and god). If you have additional questions contact us in our mailing list.
+Update notes:
+
+  * Due to the changes in <font color=red>(1) </font> and <font color=red>(2) </font>, you'll need to do some additional configuration in your server to migrate to this version. You can see all the necessary steps in [MconfWebDeploymentManual this wiki page] (search for RVM and god). If you have additional questions contact us in our mailing list.
 
 *Release 0.4.1* (Oct 18th, 2011):
 
