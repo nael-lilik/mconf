@@ -126,7 +126,7 @@ Steps:
 mconf-web-conf --update
 }}}
 
-Updates the application to the latest version available. All versions are marked as tags in the repository. To see all available versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page.
+Updates the application to the latest version available. All versions are marked as tags in the repository. To see all available versions, go to [https://github.com/mconf/mconf-web our repository] or check the [https://github.com/mconf/mconf-web/archives/master download page].
 
 Requires:
 
