@@ -159,7 +159,9 @@ Before updating the application, you might want to update the script `mconf-web-
 mconf-web-conf --update
 }}}
 
-The update task will download the latest version available, just like the task `--checkout` does. Notice that the application is simply a git repository with the application's source code. So if you know how to use git, you can just update your repository whenever you want to (or even point it to another branches, if needed).
+The update task will download the latest version available, just like the task `--checkout` does. Notice that the application is simply a git repository with the application's source code. So if you know how to use git, you can just update your repository whenever you want to (or even point it to another branches, if needed). See the [MconfWebDeploymentManual#Update manual guide] for more information.
+
+There are also other files that might need to be updated, usually global configuration files such as the configuration files for God, that will not be configured by the script. To check if you need to do any extra work, check the update notes in the [MconfWebRoadMap changelog page].
 
 
 ------------------------------------------------------------------
