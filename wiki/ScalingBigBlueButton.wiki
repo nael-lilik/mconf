@@ -51,9 +51,25 @@ Uncomment the following line on `/opt/freeswitch/conf/sip_profiles/external.xml`
 
 {{{
 <!--<param name="force-register-domain" value="$${domain}"/>-->
-}}}
+}}}http://www.youtube.com/watch?feature=player_embedded&v=jrKjNwejhfg#!
 
 = Installing OpenSIPS =
+
+{{{
+apt-get update && apt-get upgrade
+apt-get install build-essential openssl bison flex
+apt-get install mysql-server 
+#insert MySQL root password
+apt-get install libmysqlclient16 libmysqlclient-dev
+
+wget http://opensips.org/pub/opensips/1.7.1/packages/debian/6.0-squeeze/opensips_1.7.1-1_i386.deb
+wget http://opensips.org/pub/opensips/1.7.1/packages/debian/6.0-squeeze/opensips-mysql-module_1.7.1-1_i386.deb
+
+#installing opensips package
+dpkg -i opensips_1.7.1-1_i386.deb
+
+}}}
+
 
 Follow the instructions detailed [http://wiki.freeswitch.org/wiki/Enterprise_deployment_OpenSIPS here].
 
