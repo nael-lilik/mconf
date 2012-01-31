@@ -4,12 +4,14 @@ _This page is part of the Mconf-Web deployment described in [MconfWebDeploymentM
 
 == Installing God for Mconf-Web ==
 
+<wiki:toc max_depth="3" />
+
 [http://god.rubyforge.org/ God] is a process monitoring framework that Mconf-Web uses to monitor other processes. It is installed as a system-wide application and configured as such. God should be always running, just like your web server will always be running.
 
 Install God and, if you're using RVM, create a wrapper for it, so that it runs with the correct environment setup:
 
 {{{
-gem install god -v 0.11.0                # this version is also defined in the Gemfile
+gem install god -v 0.12.1                # this version is also defined in the Gemfile
 rvm wrapper 1.9.2-p290@mconf bootup god
 }}}
 
@@ -68,3 +70,26 @@ The "ps" command above should show a process similar to:
 }}}
 
 It's also important to mention that God has two stop commands: "stop" and "terminate". Using "stop" will finish only God's process, but all monitored processes will not be finished, they will just become unmonitored. The command "terminate" however will stop God and all the monitored processes. "terminate" is usually more useful since it will force processes like delayed_job to be finished and then restarted when God is restarted, and this is usually what the user expects when he stops God.
+
+== Updating God to another version ==
+
+First stop it and uninstall the old version:
+
+{{{
+sudo /etc/init.d/god terminate
+gem uninstall god
+}}}
+
+Then run the commands listed in the top of this section to install the new version of god and to create the rvm wrapper.
+
+Make sure the new God is installed, checking the version with:
+
+{{{
+bootup_god -v
+}}}
+
+Start it again
+
+{{{
+sudo /etc/init.d/god start
+}}}
