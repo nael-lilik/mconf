@@ -126,10 +126,9 @@ mysqladmin -u root -p password "NEW-PASSWORD"
 
 You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache if you're installing Mconf-Web in the same machine that has !BigBlueButton. If Mconf-Web will be installed in a standalone machine, you can pick your favorite server.
 
-The guides to install the web server are in separate wiki pages:
+Mconf-Web uses Passenger to server the application together with Apache or Nginx. So you'll have to install Passenger and use it in the configurations of the web server. See the guide below for a how to:
 
-  * [MconfWebDeploymentInstallApache Guide to install Apache]
-  * [MconfWebDeploymentInstallNginx Guide to install Nginx]
+  * [MconfWebDeploymentInstallPassenger Guide to install Passenger]
 
 
 ==== 5.2. System-wide configurations ====
