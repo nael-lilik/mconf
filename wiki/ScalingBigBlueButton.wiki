@@ -69,7 +69,6 @@ wget http://opensips.org/pub/opensips/1.7.1/packages/debian/6.0-squeeze/opensips
 
 #installing opensips package
 dpkg -i opensips_1.7.1-1_i386.deb
-
 }}}
 
 
