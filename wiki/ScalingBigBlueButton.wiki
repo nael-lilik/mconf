@@ -55,6 +55,8 @@ Uncomment the following line on `/opt/freeswitch/conf/sip_profiles/external.xml`
 
 = Installing OpenSIPS =
 
+Installing the opensips system on a 32bit Debian virtual machine.
+
 {{{
 apt-get update && apt-get upgrade
 apt-get install build-essential openssl bison flex
