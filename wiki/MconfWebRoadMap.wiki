@@ -26,6 +26,7 @@ Update notes:
       * `rvm_trust_rvmrcs_flag=1`
     * For more information check `whenever`'s [https://github.com/javan/whenever/blob/master/README.md readme file].    
   * The `delayed_job` configuration file for `God` was updated. New file [https://github.com/mconf/mconf-web/blob/v0.6/config/god/delayed_job.god here]. In a deployment server this file is at `/etc/god/conf.d/delayed_job.god`
+  * God updated to version 0.12.1 and Passenger to version 3.0.11. To update see [MconfWebDeploymentInstallPassenger] and [MconfWebDeploymentInstallGod].
 
 See also:
 
