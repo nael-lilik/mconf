@@ -80,8 +80,10 @@ vim /etc/default/opensips
 RUN_OPENSIPS=yes
 #adjust the remaining parameters according to your needs.
 
-#init opensips files
-touch /var/run/opensips/opensips.pid
+#init opensips files and folders
+mkdir /var/run/opensips
+touch /var/run/opensips/opensips.pidR
+chmod +x /etc/init.d/opensips
 
 #define mysql parameters
 vim /etc/opensips/opensipsctlrc
@@ -97,22 +99,38 @@ DBROPW=opensipsro
 DBROOTUSER="root"
 PID_FILE=/var/run/opensips/opensips.pid
 
-
+<wiki:comment>
 USERCOL="username"
 INSTALL_EXTRA_TABLES=ask
 INSTALL_PRESENCE_TABLES=ask
 INSTALL_SERWEB_TABLES=ask
 CTLENGINE="FIFO"
 OSIPS_FIFO="/tmp/opensips_fifo"
-
+</wiki:comment>
 
 #create mysql tables
 opensipsdbctl create
 
-chmod +x /etc/init.d/opensips
-vim /etc/init.d/opensips
-#
+#configuring opensips parameters
+vim /etc/opensips/opensips.cfg
+#TODO: .cfg definition
 
+
+#add a opensips user
+useradd -d /usr/local/etc/opensips -s /sbin/nologin opensips
+
+#create mysql user and password
+mysql -p
+mysql> grant all privileges on opensips.* to opensips@localhost identified by 'opensips';
+
+#finally, running opensips service
+service opensips restart
+}}}
+
+Opensips commands:
+{{{
+#command used to restart opensips
+#opensipsctl restart
 }}}
 
 *TEMPORARY CONTENT*
