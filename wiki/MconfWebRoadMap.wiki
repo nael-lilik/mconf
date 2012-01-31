@@ -14,7 +14,7 @@
   * Mconf-Web is now using myGengo for translations. You can see the project page [http://mygengo.com/string/p/mconf-web-1 here].
   * New rake tasks "mconf:analytics:init" and "mconf:analytics:update" that fetch information from Google Analytics to show the number of pageviews for the spaces in Mconf-Web.
   * The gem "Whenever" is being used to setup the crontab. See more in the update notes.
-  * Updated "bigbluebutton_rails" to a version with support to BigBlueButton 0.8.
+  * Updated "bigbluebutton_rails" to a version with support to !BigBlueButton 0.8.
   * Emails are now sent in the receiver's language (Issue 275).
   * Added digest emails (with recent activity in the spaces) to be sent daily or weekly if requested by the user (Issue 287).
 
