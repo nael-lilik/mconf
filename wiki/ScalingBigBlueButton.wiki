@@ -51,7 +51,7 @@ Uncomment the following line on `/opt/freeswitch/conf/sip_profiles/external.xml`
 
 {{{
 <!--<param name="force-register-domain" value="$${domain}"/>-->
-}}}http://www.youtube.com/watch?feature=player_embedded&v=jrKjNwejhfg#!
+}}}
 
 = Installing OpenSIPS =
 
