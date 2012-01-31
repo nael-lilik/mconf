@@ -8,7 +8,7 @@
 
 == Current Development: Release 0.6 ==
 
-*Planned for*: Jan 27th, 2012.
+*Planned for*: Feb 3rd, 2012.
 
   * New directory structure for the language files. There's now a folder with the language name and several files for each language. Example: `config/locales/en/mconf.yml`.
   * Mconf-Web is now using myGengo for translations. You can see the project page [http://mygengo.com/string/p/mconf-web-1 here].
