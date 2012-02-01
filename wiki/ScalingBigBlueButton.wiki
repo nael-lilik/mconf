@@ -77,18 +77,18 @@ Configuring opensips.
 
 {{{
 vim /etc/default/opensips
-#change RUN_OPENSIPS parameter to "yes":
+# change RUN_OPENSIPS parameter to "yes":
 RUN_OPENSIPS=yes
-#adjust the remaining parameters according to your needs.
+# adjust the remaining parameters according to your needs.
 
-#init opensips files and folders
+# init opensips files and folders
 mkdir /var/run/opensips
 touch /var/run/opensips/opensips.pid
 chmod +x /etc/init.d/opensips
 
-#define mysql parameters
+# define mysql parameters
 vim /etc/opensips/opensipsctlrc
-#new parameters:
+# new parameters:
 SIP_DOMAIN=localhost
 DBENGINE=MYSQL
 DBHOST=localhost
@@ -100,22 +100,22 @@ DBROPW=opensipsro
 DBROOTUSER="root"
 PID_FILE=/var/run/opensips/opensips.pid
 
-#create mysql tables
+# create mysql tables
 opensipsdbctl create
 
-#configuring opensips parameters
+# configuring opensips parameters
 vim /etc/opensips/opensips.cfg
-#TODO: .cfg definition
+# TODO: .cfg definition
 
 
-#add a opensips user
+# add a opensips user
 useradd -d /usr/local/etc/opensips -s /sbin/nologin opensips
 
-#create mysql user and password
+# create mysql user and password
 mysql -p
 mysql> grant all privileges on opensips.* to opensips@localhost identified by 'opensips';
 
-#finally, running opensips service
+# finally, running opensips service
 service opensips restart
 }}}
 
