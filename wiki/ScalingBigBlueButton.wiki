@@ -121,8 +121,15 @@ service opensips restart
 
 Opensips commands:
 {{{
-#command used to restart opensips
-#opensipsctl restart
+# command used to restart opensips
+opensipsctl restart
+
+# check opensips error messages
+cat /var/log/messages
+
+# check opensips system log
+cat /var/log/syslog
+
 }}}
 
 Reference links:
