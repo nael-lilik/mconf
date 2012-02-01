@@ -83,7 +83,7 @@ RUN_OPENSIPS=yes
 
 #init opensips files and folders
 mkdir /var/run/opensips
-touch /var/run/opensips/opensips.pidR
+touch /var/run/opensips/opensips.pid
 chmod +x /etc/init.d/opensips
 
 #define mysql parameters
