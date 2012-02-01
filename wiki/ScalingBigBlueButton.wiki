@@ -100,15 +100,6 @@ DBROPW=opensipsro
 DBROOTUSER="root"
 PID_FILE=/var/run/opensips/opensips.pid
 
-<wiki:comment>
-USERCOL="username"
-INSTALL_EXTRA_TABLES=ask
-INSTALL_PRESENCE_TABLES=ask
-INSTALL_SERWEB_TABLES=ask
-CTLENGINE="FIFO"
-OSIPS_FIFO="/tmp/opensips_fifo"
-</wiki:comment>
-
 #create mysql tables
 opensipsdbctl create
 
