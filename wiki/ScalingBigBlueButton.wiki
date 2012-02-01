@@ -136,10 +136,10 @@ Opensips commands:
 
 Reference links:
 
-[http://opensips.svn.sourceforge.net/viewvc/opensips/trunk/INSTALL Opensips Manual]
-[http://wiki.freeswitch.org/wiki/Enterprise_deployment_OpenSIPS Enterprise deployment OpenSIPS ]
-[http://www.voip-info.org/wiki/view/Opensips+Installation,+How+to. Voip_info Opensips Installation]
-[http://lists.opensips.org/pipermail/users/2010-September/014614.html Opensips Mailing List PID problem]
-[http://www.opensips.org/Resources/DocsTsStart How to Read Opensips error output]
-[http://www.opensips.org/Resources/Install Opensips Installation]
-[http://opensips.org/pub/opensips/1.7.1/packages/debian/6.0-squeeze/ Opensips Debian Package repository]
+* [http://opensips.svn.sourceforge.net/viewvc/opensips/trunk/INSTALL Opensips Manual]
+* [http://wiki.freeswitch.org/wiki/Enterprise_deployment_OpenSIPS Enterprise deployment OpenSIPS ]
+* [http://www.voip-info.org/wiki/view/Opensips+Installation,+How+to. Voip_info Opensips Installation]
+* [http://lists.opensips.org/pipermail/users/2010-September/014614.html Opensips Mailing List PID problem]
+* [http://www.opensips.org/Resources/DocsTsStart How to Read Opensips error output]
+* [http://www.opensips.org/Resources/Install Opensips Installation]
+* [http://opensips.org/pub/opensips/1.7.1/packages/debian/6.0-squeeze/ Opensips Debian Package repository]
