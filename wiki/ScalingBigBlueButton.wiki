@@ -34,6 +34,20 @@ sudo sed -i "s:esl\.host=.*:esl\.host=$FS_HOST:g" /usr/share/red5/webapps/bigblu
 sudo bbb-conf --clean
 }}}
 
+To reset your config:
+
+{{{
+# Get the current IP address from ifconfig
+FS_HOST=`ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'`
+
+sudo sed -i "s:sip\.server\.host=.*:sip.server.host=$FS_HOST:g" /usr/share/red5/webapps/sip/WEB-INF/bigbluebutton-sip.properties
+sudo sed -i "s:esl\.host=.*:esl\.host=127\.0\.0\.1:g" /usr/share/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties
+sudo sed -i "s:name=\"listen-ip\" value=\".*\":name=\"listen-ip\" value=\"127\.0\.0\.1\":g" /opt/freeswitch/conf/autoload_configs/event_socket.conf.xml
+
+# Restart the BigBlueButton server
+sudo bbb-conf --clean
+}}}
+
 = Configuring the FreeSWITCH server =
 
 {{{
