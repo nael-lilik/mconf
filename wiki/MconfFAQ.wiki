@@ -124,3 +124,13 @@ The instructions to build the Mconf-Mobile project is detailed [MconfMobile#Buil
 {{{
 ant build-all
 }}}
+
+=== On BigBlueButton 0.71a, how do I know if I installed mobile.jsp correctly? ===
+
+Try to access the follow address:
+
+{{{
+http://<YOUR_SERVER>/bigbluebutton/demo/mobile.jsp
+}}}
+
+You should see a blank screen (no errors, no text, nothing else). If you don't, make sure you have followed correctly [MconfMobile#On_BigBlueButton_0.71a the instructions].
