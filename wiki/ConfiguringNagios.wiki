@@ -1,0 +1,97 @@
+#summary One-sentence summary of this page.
+
+<font color="red">This document is under development.</font> The content described here is being used internally by Mconf.
+
+= Introduction =
+
+Nagios is being used by Mconf to monitor the cloud infrastructure and provide performance data to the Mconf Load Balancer. This wiki page will explain the configurations used for the Nagios server and also the configurations used in each monitored client.
+
+= Configuring a Nagios Monitoring Central =
+
+{{{
+
+# Installing Nagios on Ubuntu Server 10.04.3 64 bits
+# http://nagios.sourceforge.net/docs/3_0/quickstart-ubuntu.html
+# http://www.vivaolinux.com.br/artigo/Monitorando-redes-e-servidores-com-Nagios/
+
+sudo -s
+aptitude update
+aptitude install -y apache2 libapache2-mod-php5 build-essential libgd2-xpm-dev subversion git-core xinetd
+
+mkdir ~/downloads
+cd ~/downloads
+wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.3.1.tar.gz
+wget http://prdownloads.sourceforge.net/sourceforge/nagios/nsca-2.7.2.tar.gz
+wget http://prdownloads.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.15.tar.gz
+tar xzf nagios-3.3.1.tar.gz 
+tar xzf nsca-2.7.2.tar.gz
+tar xzf nagios-plugins-1.4.15.tar.gz 
+
+/usr/sbin/useradd -m -s /bin/bash nagios
+passwd nagios
+/usr/sbin/groupadd nagcmd
+/usr/sbin/usermod -a -G nagcmd nagios
+/usr/sbin/usermod -a -G nagcmd www-data
+
+cd ~/downloads/nagios
+./configure --with-command-group=nagcmd
+make all
+make install
+make install-init
+make install-config
+make install-commandmode
+
+make install-webconf
+htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+service apache2 reload
+
+cd ~/downloads/nagios-plugins-1.4.15
+./configure --with-nagios-user=nagios --with-nagios-group=nagios
+make
+make install
+
+cd ~/downloads/nsca-2.7.2
+./configure
+make
+make install
+cp src/nsca /usr/local/nagios/bin/
+cp sample-config/nsca.cfg /usr/local/nagios/etc/
+chmod a+r /usr/local/nagios/etc/nsca.cfg
+# install as XINETD service
+cp ~/downloads/nsca-2.7.2/sample-config/nsca.xinetd /etc/xinetd.d/nsca
+sed -i "s:\tonly_from.*:#\0:g" /etc/xinetd.d/nsca
+chmod a+r /etc/xinetd.d/nsca
+service xinetd restart
+
+# configuring the central server
+sed -i "s:nagios@localhost:mconf.prav@gmail.com:g" /usr/local/nagios/etc/objects/contacts.cfg
+sed -i "s:enable_notifications=.*:enable_notifications=1:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:execute_service_checks=.*:execute_service_checks=0:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:check_external_commands=.*:check_external_commands=1:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:accept_passive_service_checks=.*:accept_passive_service_checks=1:g" /usr/local/nagios/etc/nagios.cfg
+
+# install PyNag
+cd ~
+svn checkout http://pynag.googlecode.com/svn/ pynag-read-only
+cd pynag-read-only/trunk/
+python setup.py install
+
+# install Mconf stuff
+cd ~
+git clone git://github.com/mconf/nagios-etc.git
+cp -r ~/nagios-etc/libexec/nagios-hosts/ /usr/local/nagios/libexec/
+cp -r ~/nagios-etc/etc/objects/mconf/ /usr/local/nagios/etc/objects/
+cp /usr/local/nagios/etc/nagios.cfg /usr/local/nagios/etc/nagios.cfg.backup
+cp /usr/local/nagios/etc/nsca.cfg /usr/local/nagios/etc/nsca.cfg.backup
+cp ~/nagios-etc/etc/nagios.cfg ~/nagios-etc/etc/nsca.cfg /usr/local/nagios/etc/
+
+ln -s /etc/init.d/nagios /etc/rcS.d/S99nagios
+mkdir -p /usr/local/nagios/var/spool/checkresults
+mkdir -p /usr/local/nagios/var/archives
+chown -R nagios:nagios /usr/local/nagios
+/usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+service nagios start
+
+crontab ~/nagios-etc/crontab-server
+
+}}}
