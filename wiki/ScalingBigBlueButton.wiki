@@ -161,3 +161,7 @@ Reference links:
 [http://www.opensips.org/Resources/Install Opensips Installation]
 
 [http://opensips.org/pub/opensips/1.7.1/packages/debian/6.0-squeeze/ Opensips Debian Package repository]
+
+= Installing and configuring Nagios =
+
+Documentation [ConfiguringNagios here].
