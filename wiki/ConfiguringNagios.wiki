@@ -1,4 +1,3 @@
-#summary One-sentence summary of this page.
 
 <font color="red">This document is under development.</font> The content described here is being used internally by Mconf.
 
