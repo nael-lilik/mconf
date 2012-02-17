@@ -64,7 +64,7 @@ service xinetd restart
 # configuring the central server
 sed -i "s:nagios@localhost:mconf.prav@gmail.com:g" /usr/local/nagios/etc/objects/contacts.cfg
 sed -i "s:enable_notifications=.*:enable_notifications=1:g" /usr/local/nagios/etc/nagios.cfg
-sed -i "s:execute_service_checks=.*:execute_service_checks=0:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:execute_service_checks=.*:execute_service_checks=1:g" /usr/local/nagios/etc/nagios.cfg
 sed -i "s:check_external_commands=.*:check_external_commands=1:g" /usr/local/nagios/etc/nagios.cfg
 sed -i "s:accept_passive_service_checks=.*:accept_passive_service_checks=1:g" /usr/local/nagios/etc/nagios.cfg
 
