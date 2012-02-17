@@ -39,7 +39,7 @@ To run the application with your !BigBlueButton 0.71a server, it must provide ac
 
    {{{
 sudo curl https://raw.github.com/mconf/mconf-mobile/master/mobile.jsp -o \
-   /var/lib/tomcat6/webapps/bigbluebutton/demo/mobile.js
+   /var/lib/tomcat6/webapps/bigbluebutton/demo/mobile.jsp
    }}}
 
 The mobile.jsp demo wrap the default API to remove the need of the security salt. On !BigBlueButton 0.8 there's a special security key for mobile access.
