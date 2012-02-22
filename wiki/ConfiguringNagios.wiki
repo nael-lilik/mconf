@@ -153,5 +153,9 @@ When it prompts, enter a CPAN mirror (such as `http://linorg.usp.br/CPAN/`). CPA
 = Installing Nagiosgraph =
 
 {{{
+cd ~/downloads
 wget http://sourceforge.net/projects/nagiosgraph/files/nagiosgraph/1.4.4/nagiosgraph-1.4.4.tar.gz
+tar xzf nagiosgraph-1.4.4.tar.gz
+cd nagiosgraph-1.4.4
+./install.pl --layout debian
 }}}
