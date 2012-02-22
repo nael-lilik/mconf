@@ -9,14 +9,12 @@ Nagios is being used by Mconf to monitor the cloud infrastructure and provide pe
 Copy this script and paste it to `install-nagios` in your home on Nagios server.
 
 {{{
-
 #!/bin/bash
 
 # Installing Nagios on Ubuntu Server 10.04.3 64 bits
 # http://nagios.sourceforge.net/docs/3_0/quickstart-ubuntu.html
 # http://www.vivaolinux.com.br/artigo/Monitorando-redes-e-servidores-com-Nagios/
 
-sudo -s
 aptitude update
 aptitude install -y apache2 libapache2-mod-php5 build-essential libgd2-xpm-dev subversion git-core xinetd
 
@@ -109,7 +107,7 @@ sudo ~/install-nagios
 To check if there's no errors in the Nagios configuration files:
 
 {{{
-/usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
 }}}
 
 To restart the Nagios service:
