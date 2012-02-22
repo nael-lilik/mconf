@@ -26,6 +26,7 @@ tar xzf nsca-2.7.2.tar.gz
 tar xzf nagios-plugins-1.4.15.tar.gz 
 
 /usr/sbin/useradd -m -s /bin/bash nagios
+echo 'Enter the password for the new user nagios'
 passwd nagios
 /usr/sbin/groupadd nagcmd
 /usr/sbin/usermod -a -G nagcmd nagios
@@ -40,6 +41,7 @@ make install-config
 make install-commandmode
 
 make install-webconf
+echo 'Enter the password for the user nagiosadmin'
 htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 service apache2 reload
 
@@ -84,6 +86,7 @@ cp -r ~/nagios-etc/etc/objects/mconf/ /usr/local/nagios/etc/objects/
 cp /usr/local/nagios/etc/nagios.cfg /usr/local/nagios/etc/nagios.cfg.backup
 cp /usr/local/nagios/etc/nsca.cfg /usr/local/nagios/etc/nsca.cfg.backup
 cp ~/nagios-etc/etc/nagios.cfg ~/nagios-etc/etc/nsca.cfg /usr/local/nagios/etc/
+crontab ~/nagios-etc/crontab-server
 
 ln -s /etc/init.d/nagios /etc/rcS.d/S99nagios
 mkdir -p /usr/local/nagios/var/spool/checkresults
@@ -92,6 +95,5 @@ chown -R nagios:nagios /usr/local/nagios
 /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
 service nagios start
 
-crontab ~/nagios-etc/crontab-server
 
 }}}
