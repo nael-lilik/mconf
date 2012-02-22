@@ -115,3 +115,15 @@ To restart the Nagios service:
 {{{
 sudo service nagios start
 }}}
+
+= Installing RRD =
+
+#!/bin/bash
+aptitude install rrdtool librrds-perl
+cd ~/downloads
+svn co http://n2rrd.diglinks.com/repos/n2rrd/tags/1.4.5 n2rrd-1.4.5
+cd n2rrd-1.4.5
+
+sed -i "s:NAGIOS_CONF_DIR=.*:NAGIOS_CONF_DIR=/usr/local/nagios/etc:g" install.sh
+
+./install.sh
