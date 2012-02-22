@@ -118,12 +118,23 @@ sudo service nagios start
 
 = Installing RRD =
 
+{{{
 #!/bin/bash
+
+# http://n2rrd-wiki.diglinks.com/display/n2rrd/RRDTOOL
 aptitude install rrdtool librrds-perl
+
+# http://n2rrd-wiki.diglinks.com/display/n2rrd/Install+from+Source
 cd ~/downloads
 svn co http://n2rrd.diglinks.com/repos/n2rrd/tags/1.4.5 n2rrd-1.4.5
 cd n2rrd-1.4.5
 
 sed -i "s:NAGIOS_CONF_DIR=.*:NAGIOS_CONF_DIR=/usr/local/nagios/etc:g" install.sh
-
+mkdir -p /srv/www
 ./install.sh
+
+cp /etc/n2rrd/dist-n2rrd.conf /etc/n2rrd/n2rrd.conf
+cp /etc/n2rrd/templates/maps/dist-rra_plugin_maps /etc/n2rrd/templates/maps/rra_plugin_maps
+cp /etc/n2rrd/templates/maps/dist-rgb.txt /etc/n2rrd/templates/maps/rgb.txt
+
+}}}
