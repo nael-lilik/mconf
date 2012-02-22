@@ -65,13 +65,6 @@ sed -i "s:\tonly_from.*:#\0:g" /etc/xinetd.d/nsca
 chmod a+r /etc/xinetd.d/nsca
 service xinetd restart
 
-# configuring the central server
-sed -i "s:nagios@localhost:mconf.prav@gmail.com:g" /usr/local/nagios/etc/objects/contacts.cfg
-sed -i "s:enable_notifications=.*:enable_notifications=1:g" /usr/local/nagios/etc/nagios.cfg
-sed -i "s:execute_service_checks=.*:execute_service_checks=1:g" /usr/local/nagios/etc/nagios.cfg
-sed -i "s:check_external_commands=.*:check_external_commands=1:g" /usr/local/nagios/etc/nagios.cfg
-sed -i "s:accept_passive_service_checks=.*:accept_passive_service_checks=1:g" /usr/local/nagios/etc/nagios.cfg
-
 # install PyNag
 cd ~
 svn checkout http://pynag.googlecode.com/svn/ pynag-read-only
@@ -89,6 +82,13 @@ cp /usr/local/nagios/etc/nagios.cfg /usr/local/nagios/etc/nagios.cfg.backup
 cp /usr/local/nagios/etc/nsca.cfg /usr/local/nagios/etc/nsca.cfg.backup
 cp ~/nagios-etc/etc/nagios.cfg ~/nagios-etc/etc/nsca.cfg /usr/local/nagios/etc/
 crontab ~/nagios-etc/crontab-server
+
+# configuring the central server
+sed -i "s:nagios@localhost:mconf.prav@gmail.com:g" /usr/local/nagios/etc/objects/contacts.cfg
+sed -i "s:enable_notifications=.*:enable_notifications=1:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:execute_service_checks=.*:execute_service_checks=1:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:check_external_commands=.*:check_external_commands=1:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:accept_passive_service_checks=.*:accept_passive_service_checks=1:g" /usr/local/nagios/etc/nagios.cfg
 
 ln -s /etc/init.d/nagios /etc/rcS.d/S99nagios
 mkdir -p /usr/local/nagios/var/spool/checkresults
@@ -116,7 +116,7 @@ To restart the Nagios service:
 sudo service nagios start
 }}}
 
-= Installing RRD =
+= Installing n2rrd =
 
 {{{
 #!/bin/bash
@@ -141,4 +141,17 @@ sed -i "s:process_performance_data=.*:process_performance_data=1:g" /usr/local/n
 sed -i "s:host_perfdata_command=.*:host_perfdata_command=rrd-process-host-perfdata:g" /usr/local/nagios/etc/nagios.cfg
 sed -i "s:service_perfdata_command=.*:service_perfdata_command=rrd-process-service-perfdata:g" /usr/local/nagios/etc/nagios.cfg
 
+}}}
+
+Configure CPAN (Comprehensive Perl Archive Network):
+{{{
+cpan
+}}}
+
+When it prompts, enter a CPAN mirror (such as `http://linorg.usp.br/CPAN/`). CPAN is necessary to install RRD:Simple, a dependency of *n2rrd*.
+
+= Installing Nagiosgraph =
+
+{{{
+wget http://sourceforge.net/projects/nagiosgraph/files/nagiosgraph/1.4.4/nagiosgraph-1.4.4.tar.gz
 }}}
