@@ -6,7 +6,11 @@ Nagios is being used by Mconf to monitor the cloud infrastructure and provide pe
 
 = Configuring a Nagios Monitoring Central =
 
+Copy this script and paste it to `install-nagios` in your home on Nagios server.
+
 {{{
+
+#!/bin/bash
 
 # Installing Nagios on Ubuntu Server 10.04.3 64 bits
 # http://nagios.sourceforge.net/docs/3_0/quickstart-ubuntu.html
@@ -92,8 +96,24 @@ ln -s /etc/init.d/nagios /etc/rcS.d/S99nagios
 mkdir -p /usr/local/nagios/var/spool/checkresults
 mkdir -p /usr/local/nagios/var/archives
 chown -R nagios:nagios /usr/local/nagios
+
+}}}
+
+Then execute:
+
+{{{
+chmod +x ~/install-nagios
+sudo ~/install-nagios
+}}}
+
+To check if there's no errors in the Nagios configuration files:
+
+{{{
 /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
-service nagios start
+}}}
 
+To restart the Nagios service:
 
+{{{
+sudo service nagios start
 }}}
