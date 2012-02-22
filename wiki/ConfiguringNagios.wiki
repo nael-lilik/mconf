@@ -134,7 +134,11 @@ mkdir -p /srv/www
 ./install.sh
 
 cp /etc/n2rrd/dist-n2rrd.conf /etc/n2rrd/n2rrd.conf
-cp /etc/n2rrd/templates/maps/dist-rra_plugin_maps /etc/n2rrd/templates/maps/rra_plugin_maps
-cp /etc/n2rrd/templates/maps/dist-rgb.txt /etc/n2rrd/templates/maps/rgb.txt
+cd /etc/n2rrd/templates
+for fdist in `find -not -iwholename '*.svn-base' -name 'dist-*'`; do fnew=`echo $fdist | sed 's:dist-::'`; mv $fdist $fnew; done
+
+sed -i "s:process_performance_data=.*:process_performance_data=1:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:host_perfdata_command=.*:host_perfdata_command=rrd-process-host-perfdata:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:service_perfdata_command=.*:service_perfdata_command=rrd-process-service-perfdata:g" /usr/local/nagios/etc/nagios.cfg
 
 }}}
