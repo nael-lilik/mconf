@@ -188,4 +188,4 @@ sed -i "s:service_perfdata_file_processing_interval=.*:#\0:g" /usr/local/nagios/
 sed -i "s:service_perfdata_file_processing_command=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
 }}}
 
-Follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_frames this instructions] to enable the !NagiosGraph on the standard Nagios web application.
+Follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_frames this instructions] to enable the !NagiosGraph on the standard Nagios web application. Also, to enable the Mouse Over effect on the web application, to visualize graphs for services/hosts, follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_mouseovers this instructions].
