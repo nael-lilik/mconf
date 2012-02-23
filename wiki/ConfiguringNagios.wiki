@@ -85,10 +85,10 @@ crontab ~/nagios-etc/crontab-server
 
 # configuring the central server
 sed -i "s:nagios@localhost:mconf.prav@gmail.com:g" /usr/local/nagios/etc/objects/contacts.cfg
-sed -i "s:enable_notifications=.*:enable_notifications=1:g" /usr/local/nagios/etc/nagios.cfg
-sed -i "s:execute_service_checks=.*:execute_service_checks=1:g" /usr/local/nagios/etc/nagios.cfg
-sed -i "s:check_external_commands=.*:check_external_commands=1:g" /usr/local/nagios/etc/nagios.cfg
-sed -i "s:accept_passive_service_checks=.*:accept_passive_service_checks=1:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:.*enable_notifications=.*:enable_notifications=1:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:.*execute_service_checks=.*:execute_service_checks=1:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:.*check_external_commands=.*:check_external_commands=1:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:.*accept_passive_service_checks=.*:accept_passive_service_checks=1:g" /usr/local/nagios/etc/nagios.cfg
 
 ln -s /etc/init.d/nagios /etc/rcS.d/S99nagios
 mkdir -p /usr/local/nagios/var/spool/checkresults
@@ -116,6 +116,11 @@ To restart the Nagios service:
 sudo service nagios start
 }}}
 
+= Configuring the client to send passive checks =
+
+The instructions here.
+
+<wiki:comment>
 = Installing n2rrd =
 
 {{{
@@ -149,6 +154,7 @@ cpan
 }}}
 
 When it prompts, enter a CPAN mirror (such as `http://linorg.usp.br/CPAN/`). CPAN is necessary to install RRD:Simple, a dependency of *n2rrd*.
+</wiki:comment>
 
 = Installing Nagiosgraph =
 
@@ -172,7 +178,7 @@ sed -i "s:.*service_perfdata_file_mode=.*:service_perfdata_file_mode=a:g" /usr/l
 sed -i "s:.*service_perfdata_file_processing_interval=.*:service_perfdata_file_processing_interval=30:g" /usr/local/nagios/etc/nagios.cfg
 sed -i "s:.*service_perfdata_file_processing_command=.*:service_perfdata_file_processing_command=ng-process-service-perfdata-batch:g" /usr/local/nagios/etc/nagios.cfg
 
-sed -i "s:service_perfdata_command=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:^service_perfdata_command=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
 }}}
 
 Immediate processing:
@@ -180,12 +186,10 @@ Immediate processing:
 {{{
 sed -i "s:.*process_performance_data=.*:process_performance_data=1:g" /usr/local/nagios/etc/nagios.cfg
 sed -i "s:.*service_perfdata_command=.*:service_perfdata_command=ng-process-service-perfdata-immediate:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:.*host_perfdata_command=.*:host_perfdata_command=ng-process-host-perfdata-immediate:g" /usr/local/nagios/etc/nagios.cfg
 
-sed -i "s:service_perfdata_file=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
-sed -i "s:service_perfdata_file_template=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
-sed -i "s:service_perfdata_file_mode=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
-sed -i "s:service_perfdata_file_processing_interval=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
-sed -i "s:service_perfdata_file_processing_command=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:^service_perfdata_file.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:^host_perfdata_file.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
 }}}
 
 Follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_frames this instructions] to enable the !NagiosGraph on the standard Nagios web application. Also, to enable the Mouse Over effect on the web application, to visualize graphs for services/hosts, follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_mouseovers this instructions].
