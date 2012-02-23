@@ -159,14 +159,33 @@ tar xzf nagiosgraph-1.4.4.tar.gz
 cd nagiosgraph-1.4.4
 ./install.pl --layout debian
 
+echo 'include /etc/nagiosgraph/nagiosgraph-apache.conf' >> /etc/apache2/httpd.conf
+}}}
+
+Batch processing:
+
+{{{
 sed -i "s:.*process_performance_data=.*:process_performance_data=1:g" /usr/local/nagios/etc/nagios.cfg
 sed -i "s:.*service_perfdata_file=.*:service_perfdata_file=/tmp/perfdata.log:g" /usr/local/nagios/etc/nagios.cfg
 sed -i "s:.*service_perfdata_file_template=.*:service_perfdata_file_template=\$LASTSERVICECHECK\$||\$HOSTNAME\$||\$SERVICEDESC\$||\$SERVICEOUTPUT\$||\$SERVICEPERFDATA\$:g" /usr/local/nagios/etc/nagios.cfg
 sed -i "s:.*service_perfdata_file_mode=.*:service_perfdata_file_mode=a:g" /usr/local/nagios/etc/nagios.cfg
 sed -i "s:.*service_perfdata_file_processing_interval=.*:service_perfdata_file_processing_interval=30:g" /usr/local/nagios/etc/nagios.cfg
-sed -i "s:.*service_perfdata_file_processing_command=.*:service_perfdata_file_processing_command=process-service-perfdata-for-nagiosgraph:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:.*service_perfdata_file_processing_command=.*:service_perfdata_file_processing_command=ng-process-service-perfdata-batch:g" /usr/local/nagios/etc/nagios.cfg
 
-echo 'include /etc/nagiosgraph/nagiosgraph-apache.conf' >> /etc/apache2/httpd.conf
+sed -i "s:service_perfdata_command=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
 }}}
 
-Follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_frames this instructions] to enable the NagiosGraph on the standard Nagios web application.
+Immediate processing:
+
+{{{
+sed -i "s:.*process_performance_data=.*:process_performance_data=1:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:.*service_perfdata_command=.*:service_perfdata_command=ng-process-service-perfdata-immediate:g" /usr/local/nagios/etc/nagios.cfg
+
+sed -i "s:service_perfdata_file=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:service_perfdata_file_template=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:service_perfdata_file_mode=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:service_perfdata_file_processing_interval=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:service_perfdata_file_processing_command=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
+}}}
+
+Follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_frames this instructions] to enable the !NagiosGraph on the standard Nagios web application.
