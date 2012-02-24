@@ -66,7 +66,7 @@ chmod a+r /etc/xinetd.d/nsca
 service xinetd restart
 
 # install PyNag
-cd ~
+cd ~/downloads
 svn checkout http://pynag.googlecode.com/svn/ pynag-read-only
 cd pynag-read-only/trunk/
 python setup.py install
@@ -237,3 +237,61 @@ sed -i "s:^host_perfdata_file.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
 }}}
 
 Follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_frames this instructions] to enable the !NagiosGraph on the standard Nagios web application. Also, to enable the Mouse Over effect on the web application, to visualize graphs for services/hosts, follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_mouseovers this instructions].
+
+= Installing nagios-api =
+
+{{{
+aptitude install python-setuptools python-dev libssl-dev
+
+cd ~/downloads
+wget http://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.6.tar.gz#md5=1c49a8825c993bfdcf55bb36897d28a2
+tar xzf Jinja2-2.6.tar.gz
+cd Jinja2-2.6/
+python setup.py install
+
+cd ~/downloads
+wget http://pypi.python.org/packages/source/W/Werkzeug/Werkzeug-0.8.3.tar.gz#md5=12aa03e302ce49da98703938f257347a
+tar xzf Werkzeug-0.8.3.tar.gz
+cd Werkzeug-0.8.3/
+python setup.py install
+
+cd ~/downloads
+git clone https://github.com/jamwt/diesel.git
+cd diesel/
+python setup.py install
+
+cd ~
+git clone https://github.com/xb95/nagios-api.git
+}}}
+
+Copy this diff to a text file (patch.txt):
+
+{{{
+diff --git nagios/core.py nagios/core.py
+index 3f12ff5..eaa6450 100644
+--- nagios/core.py
++++ nagios/core.py
+@@ -125,7 +125,7 @@ class HostOrService(NagiosObject):
+         self.essential_keys = ['current_state', 'plugin_output',
+             'notifications_enabled', 'last_check', 'last_notification',
+             'active_checks_enabled', 'problem_has_been_acknowledged',
+-            'last_hard_state', 'scheduled_downtime_depth']
++            'last_hard_state', 'scheduled_downtime_depth', 'performance_data']
+ 
+     def attach_downtime(self, dt):
+         '''Given a Downtime object, store a record to it for lookup later.'''
+}}}
+
+Then apply this patch with the command:
+
+{{{
+cd nagios-api/
+patch -p1 < ../patch.txt
+}}}
+
+To run the server-side api:
+
+{{{
+cd ~/nagios-api
+./nagios-api -p 8080 -s /usr/local/nagios/var/status.dat
+}}}
