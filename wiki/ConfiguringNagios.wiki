@@ -170,17 +170,59 @@ cd nagiosgraph-1.4.4
 echo 'include /etc/nagiosgraph/nagiosgraph-apache.conf' >> /etc/apache2/httpd.conf
 }}}
 
+This is the default configuration for Nagiosgraph:
+
+{{{
+configuration:
+  ng_layout            debian
+  ng_prefix            /
+  ng_etc_dir           /etc/nagiosgraph
+  ng_bin_dir           /usr/lib/nagiosgraph
+  ng_cgi_dir           /usr/lib/cgi-bin/nagiosgraph
+  ng_doc_dir           /usr/share/nagiosgraph/doc
+  ng_examples_dir      /usr/share/nagiosgraph/examples
+  ng_www_dir           /usr/share/nagiosgraph/htdocs
+  ng_util_dir          /usr/share/nagiosgraph/util
+  ng_var_dir           /var/spool/nagiosgraph
+  ng_rrd_dir           /var/spool/nagiosgraph/rrd
+  ng_log_dir           /var/log/nagiosgraph
+  ng_log_file          /var/log/nagiosgraph/nagiosgraph.log
+  ng_cgilog_file       /var/log/nagiosgraph/nagiosgraph-cgi.log
+  ng_url               /nagiosgraph
+  ng_cgi_url           /nagiosgraph/cgi-bin
+  ng_css_url           /nagiosgraph/nagiosgraph.css
+  ng_js_url            /nagiosgraph/nagiosgraph.js
+  nagios_cgi_url       /nagios3/cgi-url
+  nagios_perfdata_file /tmp/perfdata.log
+  nagios_user          nagios
+  www_user             www-data
+  modify_nagios_config n
+  nagios_config_file   /etc/nagios3/nagios.cfg
+  nagios_commands_file /etc/nagios3/commands.cfg
+  modify_apache_config n
+  apache_config_dir    /etc/apache2/conf.d
+  apache_config_file   
+}}}
+
 Batch processing:
 
 {{{
 sed -i "s:.*process_performance_data=.*:process_performance_data=1:g" /usr/local/nagios/etc/nagios.cfg
+
 sed -i "s:.*service_perfdata_file=.*:service_perfdata_file=/tmp/perfdata.log:g" /usr/local/nagios/etc/nagios.cfg
 sed -i "s:.*service_perfdata_file_template=.*:service_perfdata_file_template=\$LASTSERVICECHECK\$||\$HOSTNAME\$||\$SERVICEDESC\$||\$SERVICEOUTPUT\$||\$SERVICEPERFDATA\$:g" /usr/local/nagios/etc/nagios.cfg
 sed -i "s:.*service_perfdata_file_mode=.*:service_perfdata_file_mode=a:g" /usr/local/nagios/etc/nagios.cfg
 sed -i "s:.*service_perfdata_file_processing_interval=.*:service_perfdata_file_processing_interval=30:g" /usr/local/nagios/etc/nagios.cfg
-sed -i "s:.*service_perfdata_file_processing_command=.*:service_perfdata_file_processing_command=ng-process-service-perfdata-batch:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:.*service_perfdata_file_processing_command=.*:service_perfdata_file_processing_command=ng-process-perfdata-batch:g" /usr/local/nagios/etc/nagios.cfg
+
+sed -i "s:.*host_perfdata_file=.*:host_perfdata_file=/tmp/perfdata.log:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:.*host_perfdata_file_template=.*:host_perfdata_file_template=\$LASTHOSTCHECK\$||\$HOSTNAME\$||PING||\$HOSTOUTPUT\$||\$HOSTPERFDATA\$:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:.*host_perfdata_file_mode=.*:host_perfdata_file_mode=a:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:.*host_perfdata_file_processing_interval=.*:host_perfdata_file_processing_interval=30:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:.*host_perfdata_file_processing_command=.*:host_perfdata_file_processing_command=ng-process-perfdata-batch:g" /usr/local/nagios/etc/nagios.cfg
 
 sed -i "s:^service_perfdata_command=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
+sed -i "s:^host_perfdata_command=.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
 }}}
 
 Immediate processing:
