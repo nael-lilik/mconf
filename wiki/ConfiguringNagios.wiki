@@ -159,6 +159,8 @@ When it prompts, enter a CPAN mirror (such as `http://linorg.usp.br/CPAN/`). CPA
 = Installing Nagiosgraph =
 
 {{{
+aptitude update
+aptitude install -y rrdtool librrds-perl
 cd ~/downloads
 wget http://sourceforge.net/projects/nagiosgraph/files/nagiosgraph/1.4.4/nagiosgraph-1.4.4.tar.gz
 tar xzf nagiosgraph-1.4.4.tar.gz
