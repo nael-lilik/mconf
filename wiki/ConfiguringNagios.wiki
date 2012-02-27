@@ -295,3 +295,9 @@ To run the server-side api:
 cd ~/nagios-api
 ./nagios-api -p 8080 -s /usr/local/nagios/var/status.dat
 }}}
+
+To access the json data, use the URL:
+
+{{{
+http://<NAGIOS_IP>:8080/state
+}}}
