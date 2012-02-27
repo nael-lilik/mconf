@@ -264,7 +264,7 @@ cd ~
 git clone https://github.com/xb95/nagios-api.git
 }}}
 
-Copy this diff to a text file (patch.txt):
+Copy this diff into a text file (patch.txt):
 
 {{{
 diff --git nagios/core.py nagios/core.py
