@@ -118,7 +118,23 @@ sudo service nagios start
 
 = Configuring the client to send passive checks =
 
-The instructions here.
+<font color="red">TEMPORARY CONTENT</font>
+
+{{{
+sudo aptitude update
+sudo aptitude -y install python-dev python-argparse subversion
+
+
+# we are using the svn trunk instead of the lastest stable tag because of this:
+# http://code.google.com/p/psutil/issues/detail?id=248
+svn checkout http://psutil.googlecode.com/svn/trunk psutil-read-only
+cd psutil-read-only/
+sudo python setup.py install
+cd ..
+sudo rm -r psutil-read-only
+
+sudo chmod a+r /usr/local/nagios/etc/send_nsca.cfg
+}}}
 
 <wiki:comment>
 = Installing n2rrd =
