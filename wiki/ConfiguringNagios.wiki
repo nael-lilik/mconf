@@ -116,6 +116,53 @@ To restart the Nagios service:
 sudo service nagios start
 }}}
 
+== Enabling the json interface for Nagios ==
+
+Copy the following content to ~/downloads/nagios/cgi/Makefile.patch:
+
+{{{
+42c42
+< CGIS=avail.cgi cmd.cgi config.cgi extinfo.cgi history.cgi notifications.cgi outages.cgi showlog.cgi status.cgi status-json.cgi statuswml.cgi summary.cgi tac.cgi $(CGIEXTRAS)
+---
+> CGIS=avail.cgi cmd.cgi config.cgi extinfo.cgi history.cgi notifications.cgi outages.cgi showlog.cgi status.cgi statuswml.cgi summary.cgi tac.cgi $(CGIEXTRAS)
+162,164d161
+< status-json.cgi: status-json.c $(CGIDEPS) $(CDATADEPS)
+< 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ status-json.c $(CGILIBS) $(CDATALIBS) $(LIBS)
+< 
+}}}
+
+Copy the following content to ~/downloads/nagios/cgi/status-json.c.patch:
+
+{{{
+736d735
+< 	char *host_notes="";
+977,980d975
+< 				if(temp_host->notes!=NULL){
+< 					process_macros(temp_host->notes,&processed_string,0);
+< 					host_notes=processed_string;
+< 			}
+1003d997
+< printf("\t\t\t\t \"host_notes\":\"%s\", \n", host_notes);
+}}}
+
+Then run:
+
+{{{
+cd ~/downloads/nagios/cgi
+# http://exchange.nagios.org/directory/Addons/APIs/JSON/status-2Djson/details
+wget -O status-json.c "http://exchange.nagios.org/components/com_mtree/attachment.php?link_id=2498&cf_id=24"
+
+patch -R Makefile < Makefile.patch
+patch -R status-json.c < status-json.c.patch
+make all install
+}}}
+
+To access the json data, use the URL:
+
+{{{
+http://<NAGIOS_IP>/nagios/cgi-bin/status-json.cgi
+}}}
+
 = Configuring the client to send passive checks =
 
 <font color="red">TEMPORARY CONTENT</font>
@@ -254,6 +301,7 @@ sed -i "s:^host_perfdata_file.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
 
 Follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_frames this instructions] to enable the !NagiosGraph on the standard Nagios web application. Also, to enable the Mouse Over effect on the web application, to visualize graphs for services/hosts, follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_mouseovers this instructions].
 
+<wiki:comment>
 = Installing nagios-api =
 
 {{{
@@ -317,3 +365,4 @@ To access the json data, use the URL:
 {{{
 http://<NAGIOS_IP>:8080/state
 }}}
+</wiki:comment>
