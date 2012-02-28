@@ -281,6 +281,15 @@ sed -i "s:^host_perfdata_file.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
 
 Follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_frames this instructions] to enable the !NagiosGraph on the standard Nagios web application. Also, to enable the Mouse Over effect on the web application, to visualize graphs for services/hosts, follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_mouseovers this instructions].
 
+Run this command to aggregate the "BigBlueButton Info" service values on RRD using the maximum value instead of the average:
+
+{{{
+if [ `cat /etc/nagiosgraph/nagiosgraph.conf | grep '^maximums.*BigBlueButton Info.*' | wc -l` -eq 0 ]
+then
+	sed -i 's:^maximums.*:\0;BigBlueButton Info,\.*:g' /etc/nagiosgraph/nagiosgraph.conf
+fi
+}}}
+
 <wiki:comment>
 = Installing nagios-api =
 
