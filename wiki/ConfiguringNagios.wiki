@@ -208,6 +208,28 @@ cd ~/downloads
 wget http://sourceforge.net/projects/nagiosgraph/files/nagiosgraph/1.4.4/nagiosgraph-1.4.4.tar.gz
 tar xzf nagiosgraph-1.4.4.tar.gz
 cd nagiosgraph-1.4.4
+}}}
+
+Copy the following content into etc/ngshared.pm.patch ([http://sourceforge.net/projects/nagiosgraph/forums/forum/394747/topic/5039306 link]):
+
+{{{
+805c805
+<             chomp $key;
+---
+>             chop $key;
+}}}
+
+And run the command:
+
+{{{
+
+patch -R etc/ngshared.pm < etc/ngshared.pm.patch
+
+}}}
+
+Then install Nagiosgraph:
+
+{{{
 ./install.pl --layout debian
 
 echo 'include /etc/nagiosgraph/nagiosgraph-apache.conf' >> /etc/apache2/httpd.conf
