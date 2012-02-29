@@ -303,6 +303,46 @@ sed -i "s:^host_perfdata_file.*:#\0:g" /usr/local/nagios/etc/nagios.cfg
 
 Follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_frames this instructions] to enable the !NagiosGraph on the standard Nagios web application. Also, to enable the Mouse Over effect on the web application, to visualize graphs for services/hosts, follow [http://nagiosgraph.svn.sourceforge.net/viewvc/nagiosgraph/trunk/nagiosgraph/README.html#graphs_in_nagios_mouseovers this instructions].
 
+Copy the following content to ~/downloads/nagiosgraph.conf.patch:
+
+{{{
+286,287d285
+< heartbeats = .*,BigBlueButton Info,.*=300
+< 
+294,296d291
+< # For BigBlueButton Info, the step interval is 1 second
+< stepsizes = .*,BigBlueButton Info,.*=1
+< 
+318,325c313
+< 
+< # For BigBlueButton Info, it will record:
+< # day -> 1 record per second
+< # week -> 1 record each 30 minutes
+< # month -> 1 record each 4 hours
+< # year -> 1 record each day
+< resolutions = .*,BigBlueButton Info,.*=86400 336 182 365
+< 
+---
+> #
+331,333c319
+< 
+< steps = .*,BigBlueButton Info,.*=1 1800 14400 86400
+< 
+---
+> #
+350c336
+< maximums = Current Load,.*;Current Users,.*;Total Processes,.*;PLW,.*;BigBlueButton Info,.*
+---
+> maximums = Current Load,.*;Current Users,.*;Total Processes,.*;PLW,.*
+}}}
+
+Then patch the nagiosgraph configuration file:
+
+{{{
+patch -R /etc/nagiosgraph/nagiosgraph.conf < ~/downloads/nagiosgraph.conf.patch
+}}}
+
+<wiki:comment>
 Run this command to aggregate the "BigBlueButton Info" service values on RRD using the maximum value instead of the average:
 
 {{{
@@ -311,6 +351,7 @@ then
 	sed -i 's:^maximums.*:\0;BigBlueButton Info,\.*:g' /etc/nagiosgraph/nagiosgraph.conf
 fi
 }}}
+</wiki:comment>
 
 <wiki:comment>
 = Installing nagios-api =
