@@ -431,11 +431,14 @@ http://<NAGIOS_IP>:8080/state
 
 = Configuring the client to send passive checks =
 
+Copy the following script to `monitor.sh`:
+
 {{{
+#!/bin/bash
+
 NAGIOS_ADDRESS=
 #INSTANCE_TYPE=bigbluebutton
 #INSTANCE_TYPE=freeswitch
-INSTANCE_TYPE=
 
 sudo aptitude update
 sudo aptitude -y install git-core python-dev python-argparse subversion
@@ -458,7 +461,7 @@ make install
 sudo mkdir -p /usr/local/nagios/bin/ /usr/local/nagios/etc/
 USER=`whoami`
 sudo chown $USER:$USER -R /usr/local/nagios
-cp src/nsca /usr/local/nagios/bin/
+cp src/send_nsca /usr/local/nagios/bin/
 cp sample-config/send_nsca.cfg /usr/local/nagios/etc/
 cd ..
 rm -rf nsca-2.7.2.tar.gz nsca-2.7.2
@@ -470,4 +473,11 @@ cat nagios-etc/crontab-client >> crontab.dump
 crontab crontab.dump
 rm crontab.dump
 sudo shutdown -r now
+}}}
+
+Set the variables `NAGIOS_SERVER` and `INSTANCE_TYPE`, then execute:
+
+{{{
+chmod +x monitor.sh
+./monitor.sh
 }}}
