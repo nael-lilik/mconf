@@ -233,7 +233,7 @@ And run the command:
 
 {{{
 
-patch -R etc/ngshared.pm < etc/ngshared.pm.patch
+patch etc/ngshared.pm < etc/ngshared.pm.patch
 
 }}}
 
