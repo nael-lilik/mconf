@@ -30,16 +30,27 @@ tail -100 /var/log/god.log
 }}}
 
 
+Also, sometimes god might start but delayed_job won't. You can see the delayed_job log files at:
 
+{{{
+<your-mconf-directory>/log/god_delayed_job.0.log
+<your-mconf-directory>/log/god_delayed_job.1.log
+}}}
 
-If you're in a development environment, you don't need `god`. Just run `delayed_job` with:
+These directories are defined in the delayed_job config file. You can see this file [https://github.com/mconf/mconf-web/blob/master/config/god/delayed_job.god clicking here] and in your machine it should be at:
+
+{{{
+/etc/god/conf.d/delayed_job.god
+}}}
+
+If you're in a *development* environment, you don't need `god`. Just run `delayed_job` with:
 
 {{{
 bundle exec script/delayed_job -n 2 start
 }}}
 
 
-If you're using Capistrano, whenever you update the code in your deployment server, `delayed_job` will be restarted to reload the modified code. You can also use some rake tasks to check whether `delayed_job` is working or not:
+If you're using *Capistrano*, whenever you update the code in your deployment server, `delayed_job` will be restarted to reload the modified code. You can also use some rake tasks to check whether `delayed_job` is working or not:
 
 {{{
 cap production rake:invoke TASK=jobs:queued # prints the queued jobs
