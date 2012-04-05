@@ -103,7 +103,10 @@ If you are a developer and want to be part of this project, you can pick an issu
 = Changelog =
 [http://code.google.com/p/mconf/issues/list?can=1&q=label:Milestone-bbb-android-0.4.5&sort=-status&colspec=ID%20Type%20Milestone%20Status%20Priority%20Reporter%20Owner%20Component%20Summary v0.4.5] (April 5th 2012)
 
- * Nada
+ * User can type a server URL without the prefix "http://" now
+ * Now the app warns about incorrect passwords or connection problems
+ * Improvements on stability
+ * User can now close the fullscreen video with a touch on the screen
 
 
 v0.4.4 (December 16th 2011)
