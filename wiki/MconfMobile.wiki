@@ -101,6 +101,12 @@ http://mygengo.com/string/p/mconf-mobile-1/
 If you are a developer and want to be part of this project, you can pick an issue and try to solve it. Of course we are totally open to help you in what you need.
 
 = Changelog =
+[http://code.google.com/p/mconf/issues/list?can=1&q=label:Milestone-bbb-android-0.4.5&sort=-status&colspec=ID%20Type%20Milestone%20Status%20Priority%20Reporter%20Owner%20Component%20Summary v0.4.5] (April 5th 2012)
+* User can type a server URL without the prefix "http://" now 
+* Now the app warns about incorrect passwords or connection problems 
+* Improvements on stability 
+* User can now close the fullscreen video with a touch on the screen 
+
 
 v0.4.4 (December 16th 2011)
  * Implemented the new chat module compatible with !BigBlueButton 0.8beta3
