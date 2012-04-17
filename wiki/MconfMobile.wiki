@@ -68,7 +68,7 @@ In your integrated environment, if you provide the !BigBlueButton join calls rep
  # Copy *`./local.properties.template`* to *`./local.properties`* and edit this file to reproduce your environment
  # Run *`ant build-all`*
 
-If you want to work with Eclipse:
+If you want to work with Eclipse (after followed the steps above):
 
  # Install Eclipse ([http://www.eclipse.org/downloads/ link])
  # Configure the environment (Eclipse + Android SDK integration) ([http://developer.android.com/sdk/eclipse-adt.html link])
