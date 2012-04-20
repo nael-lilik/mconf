@@ -1,0 +1,10 @@
+<font color="red">This is currently a draft.</font>
+
+= Scaling Mconf =
+
+This document contains an overview of the infrastructure used for scaling Mconf.
+
+
+https://lh4.googleusercontent.com/-4LufK6FY8Vw/T5GnyhTEsTI/AAAAAAAAArA/DDBTlZHw5Fo/s576/Mconf-Scalability-wiki-detailed.png
+
+([https://picasaweb.google.com/lh/photo/4BDHCVPsh2mIns--oYkwOdMTjNZETYmyPJy0liipFm0?feat=directlink full size])
