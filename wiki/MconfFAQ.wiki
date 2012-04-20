@@ -145,3 +145,11 @@ http://<YOUR_SERVER>/bigbluebutton/demo/mobile.jsp
 }}}
 
 You should see a blank screen (no errors, no text, nothing else). If you don't, make sure you have followed correctly [MconfMobile#On_BigBlueButton_0.71a the instructions].
+
+=== "Voice connection timeout" ===
+
+Recently the default FreeSWITCH configuration on !BigBlueButton has changed in order to deny any attempt of connection from an external IP to FreeSWITCH directly. Unfortunetly it generated a side-effect for the Mconf-Mobile apps, since they connect to the voice conference directly through FreeSWITCH. It doesn't affect the web client because it joins the voice conference through a Red5 application.
+
+So, basically you will not be able to connect to the voice conference on http://demo.bigbluebutton.org, but we have this default configuration ignored on https://mconf.org, so you will still be able to do it on the Mconf server.
+
+Soon we will implement the voice handling on Mconf-Mobile to work under RTMP, so it will remove this inconvenient.
