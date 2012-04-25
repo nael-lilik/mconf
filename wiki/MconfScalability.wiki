@@ -22,7 +22,7 @@ The image below shows an overview of the infrastructure being implemented to ach
 
 https://lh4.googleusercontent.com/-4LufK6FY8Vw/T5GnyhTEsTI/AAAAAAAAArA/DDBTlZHw5Fo/s576/Mconf-Scalability-wiki-detailed.png
 
-=== 1 *Front-end* ===
+=== 1. *Front-end* ===
 
 The front-end is no different than the current front-ends. Users (with web and mobile devices) will join the conferences through any application that's integrated with !BigBlueButton. Examples are the Mconf web portal at http://mconf.org and any of the applications listed at http://www.bigbluebutton.org/open-source-integrations/.
 
@@ -31,7 +31,42 @@ Instead of communicating directly with a !BigBlueButton server, these front-end 
 The Load Balancer API currently has some very small differences from !BigBlueButton's API and more could be added in the future, but it is extremely important that, even with these small differences, the existent front-end applications should not need to be adapted to use the Mconf infrastructure. Moreover, nothing should be removed from the API, we expect only to add a few tags when needed and everything shall be documented.
 
 
+=== 2. *Web conference back-end* ===
 
-=== 2 *Web conference back-end* ===
+This is where the most of our work is directed to currently. The back-end consists of a "cloud" of !BigBlueButton servers, and two new components: the Mconf Monitoring Server (Nagios) and the Mconf Load Balancer. These components are being developed in Mconf and are explained below.
 
-=== 3 *Voice conference back-end* ===
+==== Mconf Monitoring Server (Nagios) ====
+
+The Mconf Monitoring Server uses [http://www.nagios.org/ Nagios], an open source monitoring system that's very flexible and has a large number of users. This server will monitor the cloud of web conference servers and provide access to all the data, either for a user (i.e. using a graphical interface) or to an application (i.e. through an HTTP call that returns a JSON).
+
+===== Checks/reports =====
+
+The Monitoring Server has passive and active checks. The passive checks are sent from a !BigBlueButton server to the Monitoring Server, while the active checks are sent from the Monitoring Server to a !BigBlueButton server. Nagios provides plugins for several things that should be checked ("checks" or "reports"): HTTP, PING, FTP, etc. For Mconf the following checks were implemented:
+
+  * Memory Report: Informs the available and the total RAM in a web conference server;
+  * Processor Report: Informs the CPU in use;
+  * Network Report: Informs the network use, for input and output;
+  * !BigBlueButton Report: Informs the number of users, meetings, users with audio and users with video in a web conference server.
+
+The intervals in which the Monitoring Server receives these information is configurable. We're currently using 10 seconds for memory, processor and network reports, and 30 seconds for !BigBlueButton reports. Also, the first three reports are passive: there's a very simple application installed in the !BigBlueButton servers that periodically sends information to the configured Monitoring Server. The !BigBlueButton report is active: the Monitoring Server periodically consults each !BigBlueButton server to get the data.
+
+There is also another plugin that was implemented to enable a !BigBlueButton server to automatically register itself in the infrastructure.
+
+===== Database and graphics =====
+
+The Monitoring Server was integrated with a [http://oss.oetiker.ch/rrdtool/ RRDtool database], that stores all the information received from the monitored servers and also display these information graphically with charts such as the example in the image below.
+
+<font color="red">IMAGE...</font>
+
+==== Mconf Load Balancer ====
+
+
+
+
+=== 3. *Voice conference back-end* ===
+
+- optional
+
+===== TODO =====
+
+  * Bot
