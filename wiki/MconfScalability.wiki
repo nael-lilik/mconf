@@ -41,16 +41,18 @@ The Mconf Monitoring Server uses [http://www.nagios.org/ Nagios], an open source
 
 ===== Checks/reports =====
 
-The Monitoring Server has passive and active checks. The passive checks are sent from a !BigBlueButton server to the Monitoring Server, while the active checks are sent from the Monitoring Server to a !BigBlueButton server. Nagios provides plugins for several things that should be checked ("checks" or "reports"): HTTP, PING, FTP, etc. For Mconf the following checks were implemented:
+Nagios provides plugins for several things that should be checked ("checks" or "reports") in a server: HTTP, PING, FTP, etc. These checks can be passive or active: passive checks are sent from a !BigBlueButton server to the Monitoring Server, while active checks are sent from the Monitoring Server to a !BigBlueButton server. For Mconf the following checks were implemented:
 
   * Memory Report: Informs the available and the total RAM in a web conference server;
   * Processor Report: Informs the CPU in use;
   * Network Report: Informs the network use, for input and output;
   * !BigBlueButton Report: Informs the number of users, meetings, users with audio and users with video in a web conference server.
 
+There is also another plugin that was implemented to enable a !BigBlueButton server to automatically register itself in the infrastructure.
+
 The intervals in which the Monitoring Server receives these information is configurable. We're currently using 10 seconds for memory, processor and network reports, and 30 seconds for !BigBlueButton reports. Also, the first three reports are passive: there's a very simple application installed in the !BigBlueButton servers that periodically sends information to the configured Monitoring Server. The !BigBlueButton report is active: the Monitoring Server periodically consults each !BigBlueButton server to get the data.
 
-There is also another plugin that was implemented to enable a !BigBlueButton server to automatically register itself in the infrastructure.
+The interactions between the !BigBlueButton servers and the Monitoring Server are shown in the item *(2.a)* in the architecture image.
 
 ===== Database and graphics =====
 
@@ -58,15 +60,41 @@ The Monitoring Server was integrated with a [http://oss.oetiker.ch/rrdtool/ RRDt
 
 <font color="red">IMAGE...</font>
 
+===== Source Code =====
+
+The plugins developed and other configuration files used in the Monitoring Server are here: https://github.com/mconf/nagios-etc
+
 ==== Mconf Load Balancer ====
 
+The Mconf Load Balancer is an application developed for Mconf (using [http://nodejs.org/ Node.js]) and its main function is to balance the users and meetings in the cloud of web conferences servers. It fetches information about the servers from Nagios (*(2.b)* in the architecture image) and uses it to decide where to forward the requests received from the front-end applications (*(2.c)* in the architecture image).
 
+The load balancer implements the [http://code.google.com/p/bigbluebutton/wiki/API BigBlueButton API] and, for a front-end application, it acts just like a !BigBlueButton server. Internally, it uses the information fetched from Nagios to decide where to *create a new meeting*. There are some algorithms implemented to decide the server that should be used, see them below. After selecting a server, the load balancer will make sure that all following requests to that meeting will be forwarded to the correct server.
+
+Besides the load balancing logic, the load balancer has also a web interface with: (1) a dashboard, that shows an overview of the  current status of the servers; (2) an [http://www.omarshammas.com/bbbapibuddy API Buddy]-like page that can be used to manage the !BigBlueButton servers in the cloud.
+
+===== Algorithms =====
+
+The load balancing logic can be based on any information available in the load balancer, such as current processing, memory available, number of users, number of users with video, and others. Different algorithms can easily be developed an added to the load balancer. Currently, the ones implemented are:
+
+  * `cpu`: Picks the server with the lowers current CPU percentage;
+  * `user_count`: Picks the server with the lowest number of _users_;
+  * `meeting_count`: Picks the server with the lowest number of _meetings_;
+  * `cpu_disable_warning`: Just like `cpu`, but will not select any server in which the Processor Report has a warning or critical status (these statuses are controlled by Nagios).
+
+===== Dashboard =====
+
+...
 
 
 === 3. *Voice conference back-end* ===
 
-- optional
+...
+
 
 ===== TODO =====
 
   * Bot
+  * lb: multiple clients
+  * lb: mobile api
+  * lb: nagios dependent
+  * voice: optional
