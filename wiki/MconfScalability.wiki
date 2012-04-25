@@ -4,7 +4,34 @@
 
 This document contains an overview of the infrastructure used for scaling Mconf.
 
+== Methodology ==
+
+The scaling of Mconf has been divided in two phases with two distinct objectives:
+
+  * *Objective 1*: increase the limit of simultaneous users in a web conference infrastructure.
+  In other words: use several web conference servers in a single infrastructure to increase the limit of a single server. The difference between this infrastructure and a single web conference server shouldn't be noticeable neither for the users nor for the applications that use the system (e.g. !BigBlueButton's integration for Moodle). The infrastructure should be as dynamic as possible (e.g. servers can be added and removed) and as automatic as possible (e.g. new servers can register themselves in the "cloud" of servers).
+  * *Objective 2*: increase the limit of users in a single web conference.
+  This will imply in increasing the limit of users that a single !BigBlueButton server supports and/or enable a single meeting to be held using more that one server.
+
+
+The objective 1 has been started with start of the second phase of Mconf (Oct. 2011), and the objective 2 should start when the first one is completed.
+
+== Architecture ==
+
+The image below shows an overview of the infrastructure being implemented to achieve the objective 1 ([https://picasaweb.google.com/lh/photo/4BDHCVPsh2mIns--oYkwOdMTjNZETYmyPJy0liipFm0?feat=directlink view full size]):
 
 https://lh4.googleusercontent.com/-4LufK6FY8Vw/T5GnyhTEsTI/AAAAAAAAArA/DDBTlZHw5Fo/s576/Mconf-Scalability-wiki-detailed.png
 
-([https://picasaweb.google.com/lh/photo/4BDHCVPsh2mIns--oYkwOdMTjNZETYmyPJy0liipFm0?feat=directlink full size])
+=== 1 *Front-end* ===
+
+The front-end is no different than the current front-ends. Users (with web and mobile devices) will join the conferences through any application that's integrated with !BigBlueButton. Examples are the Mconf web portal at http://mconf.org and any of the applications listed at http://www.bigbluebutton.org/open-source-integrations/.
+
+Instead of communicating directly with a !BigBlueButton server, these front-end applications will use the Mconf Load Balancer, that implements the [http://code.google.com/p/bigbluebutton/wiki/API BigBlueButton API]. This means that the front-end applications *will not have to be modified* to use the Mconf infrastructure.
+
+The Load Balancer API currently has some very small differences from !BigBlueButton's API and more could be added in the future, but it is extremely important that, even with these small differences, the existent front-end applications should not need to be adapted to use the Mconf infrastructure. Moreover, nothing should be removed from the API, we expect only to add a few tags when needed and everything shall be documented.
+
+
+
+=== 2 *Web conference back-end* ===
+
+=== 3 *Voice conference back-end* ===
