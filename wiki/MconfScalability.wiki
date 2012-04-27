@@ -83,6 +83,9 @@ The load balancing logic can be based on any information available in the load b
 
 ===== Dashboard =====
 
+===== Multiple clients (salts) =====
+
+===== Mobile API =====
 ...
 
 
@@ -94,7 +97,5 @@ The load balancing logic can be based on any information available in the load b
 ===== TODO =====
 
   * Bot
-  * lb: multiple clients
-  * lb: mobile api
   * lb: nagios dependent
   * voice: optional
