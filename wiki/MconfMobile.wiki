@@ -102,6 +102,11 @@ If you are a developer and want to be part of this project, you can pick an issu
 
 = Changelog =
 
+v0.4.7 (May 15th 2012)
+ * Included Spanish and Persian translation
+ * Fixed an important issue introduced when we started to use the Mconf Load Balancer with the web portal mconf.org
+ * Minor bug fixes
+
 v0.4.6 (April 29th 2012)
 
  * Implemented the video rotation for both the transmitted video and the video preview
