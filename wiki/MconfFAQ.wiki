@@ -148,6 +148,8 @@ You should see a blank screen (no errors, no text, nothing else). If you don't, 
 
 === Voice connection timeout ===
 
+Related to [http://code.google.com/p/bigbluebutton/issues/detail?id=1133 this issue].
+
 Recently the default FreeSWITCH configuration on !BigBlueButton has changed in order to deny any attempt of connection from an external IP to FreeSWITCH directly. Unfortunetly it generated a side-effect for the Mconf-Mobile apps, since they connect to the voice conference directly through FreeSWITCH. It doesn't affect the web client because it joins the voice conference through a Red5 application.
 
 So, basically you will not be able to connect to the voice conference on http://demo.bigbluebutton.org, but we have this default configuration ignored on https://mconf.org, so you will still be able to do it on the Mconf server.
