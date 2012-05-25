@@ -6,4 +6,35 @@ All the current API changes are in the branch "audio-video-on-api-2" in Mconf's 
   * Branch: https://github.com/mconf/bigbluebutton/tree/audio-video-on-api-2
   * Compare: https://github.com/mconf/bigbluebutton/compare/881dd7a4f22f51898278004f880898d6848c5e9e...audio-video-on-api-2
 
-These changes are described below:
+These changes are described below.
+
+== Get Meetings ==
+
+*Response:*
+
+|| Param Name || When Returned || Type || Description ||
+|| `participantCount` (within `meeting`)|| Always || Number || Number of *participants* in a meeting. It's the same `participantCount` returned in `getMeetingInfo`. ||
+|| `listenerCount` (within `meeting`)|| Always || Number || Number of participants *in the audio conference* of a meeting. It's the same `listenerCount` returned in `getMeetingInfo`. ||
+|| `videoCount` (within `meeting`)|| Always || Number || Number of participants *sharing video* in a meeting. ||
+
+*Example Response:*
+
+{{{
+<response>
+   <returncode>SUCCESS</returncode>
+   <meetings>
+      <meeting>
+         <meetingID>test01</meetingID>
+         <meetingName>Test</meetingName>
+         <createTime>1315254777880</createTime>
+         <attendeePW>ap</attendeePW>
+         <moderatorPW>mp</moderatorPW>
+         <hasBeenForciblyEnded>false</hasBeenForciblyEnded>
+         <running>true</running>
+         <participantCount>3</participantCount> <!-- Added -->
+         <listenerCount>3</listenerCount> <!-- Added -->
+         <videoCount>2</videoCount> <!-- Added -->
+      </meeting>
+   </meetings>
+</response>
+}}}
