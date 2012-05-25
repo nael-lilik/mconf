@@ -20,21 +20,33 @@ We have written a shell script to automatically install and configure a !BigBlue
 
 You can find the latest version of this file in [https://github.com/mconf/installation-scripts this repository].
 
-<font color="red">IMPORTANT:</font> this script should be executed by a non-root user in a fresh Ubuntu 10.04 Server installation. It shouldn't work on different versions of Ubuntu and other distributions.
+<font color="red">IMPORTANT:</font> this script should be executed by a non-root user in a fresh dedicated Ubuntu 10.04 Server installation. It shouldn't work on different versions of Ubuntu or other distributions.
 
-To install it, SSH your server and execute:
+Before install the Mconf Node, be sure that you have opened for external access the ports 80 (HTTP), 22 (SSH), 9123 (Desktop Sharing) and 1935 (RTMP). Also, if you intend to use a domain name (like *mconf.org*), set up that before continue.
+
+To setup the Mconf Node, run in your server:
 
 {{{
 wget https://github.com/mconf/installation-scripts/raw/master/install-mconf-node.sh
 chmod +x install-mconf-node.sh
-./install-mconf-node.sh
+./install-mconf-node.sh <DOMAIN_NAME>
 }}}
 
 The script does:
- * download the source code from Mconf repository
- * install some dependencies (like Apache Ant)
- * add an environment variable to `~/.profile`
- * setup the development environment for the client, web and apps
- * compile and deploy all the components
- * download the application to enable mobile support
- * restart the server
+ * upgrade the Ubuntu packages to the lastest 10.04 version
+ * install BigBlueButton as described [http://code.google.com/p/bigbluebutton/wiki/08InstallationUbuntu#Installation_of_BigBlueButton_0.8 here]
+ * install the Live Notes Server
+ * install the Mconf Monitor
+ * deploy the Mconf modifications on BigBlueButton
+ * set the Mconf default presentation
+ * enable FreeSWITCH to accept external calls (details [MconfFAQ#Voice_connection_timeout here])
+
+The BigBlueButton Demos will be installed as well, but should be used only for testing purposes - after the validation test, you should remove them running:
+
+{{{
+sudo apt-get purge bbb-demo
+}}}
+
+
+== During the installation ==
+
