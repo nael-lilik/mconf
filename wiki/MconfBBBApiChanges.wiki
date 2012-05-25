@@ -45,8 +45,8 @@ These changes are described below.
 *Response:*
 
 || *Change* || *Param Name* || *When Returned* || *Type* || *Description* ||
-|| Added || `listenerCount` || Always || Number || Number of participants *in the audio conference* of a meeting. It's the same `listenerCount` returned in `getMeetings`. ||
 || Added || `internalMeetingID` || Always || String || The internal identifier of this meeting. Can be used to access a video stream directly from Red5, for example. ||
+|| Added || `listenerCount` || Always || Number || Number of participants *in the audio conference* of a meeting. It's the same `listenerCount` returned in `getMeetings`. ||
 || Added || `isPresenter` (within `<attendee>`) || Always || Boolean || True if the attendee is the current presenter. There can only be one presenter at a time in a meeting. ||
 || Added || `hasVideoStream` (within `<attendee>`) || Always || Boolean || True if the attendee is sharing his webcam. ||
 || Added || `videoStreamName` (within `<attendee>`) || Always || String || The string that identifies the video stream of this attendee. Can be used to access the video stream directly from Red5, for example. ||
