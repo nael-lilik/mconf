@@ -16,16 +16,18 @@ These customizations can be applied to a !BigBlueButton instance using [MconfBBB
 
 == Installation script ==
 
-We have written a shell script to automatically configure a !BigBlueButton 0.71a environment to use exactly the same system we are using on [https://mconf.org mconf.org]. *This script is for a development environment* - to setup the !BigBlueButton 0.71a development environment, please follow [http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVM this steps].
+We have written a shell script to automatically install and configure a !BigBlueButton 0.8 with the Mconf customizations in a fresh server, exactly the same system we are using on [https://mconf.org mconf.org]. This server will join automatically the Mconf collaborative cloud, which you will be able to monitor through the [http://lb.mconf.org/dashboard Mconf Dashboard].
 
 You can find the latest version of this file in [https://github.com/mconf/installation-scripts this repository].
 
-To apply the modifications, download the script and run it in your !BigBlueButton development server:
+<font color="red">IMPORTANT:</font> this script should be executed by a non-root user in a fresh Ubuntu 10.04 Server installation. It shouldn't work on different versions of Ubuntu and other distributions.
+
+To install it, SSH your server and execute:
 
 {{{
-wget https://raw.github.com/mconf/installation-scripts/master/mconf-bbb-conf
-chmod a+x mconf-bbb-conf
-./mconf-bbb-conf
+wget https://github.com/mconf/installation-scripts/raw/master/install-mconf-node.sh
+chmod +x install-mconf-node.sh
+./install-mconf-node.sh
 }}}
 
 The script does:
