@@ -34,14 +34,14 @@ chmod +x install-mconf-node.sh
 
 The script does:
  * upgrade the Ubuntu packages to the lastest 10.04 version
- * install BigBlueButton as described [http://code.google.com/p/bigbluebutton/wiki/08InstallationUbuntu#Installation_of_BigBlueButton_0.8 here]
+ * install !BigBlueButton as described [http://code.google.com/p/bigbluebutton/wiki/08InstallationUbuntu#Installation_of_BigBlueButton_0.8 here]
  * install the Live Notes Server
  * install the Mconf Monitor
- * deploy the Mconf modifications on BigBlueButton
+ * deploy the Mconf modifications on !BigBlueButton
  * set the Mconf default presentation
  * enable FreeSWITCH to accept external calls (details [MconfFAQ#Voice_connection_timeout here])
 
-The BigBlueButton Demos will be installed as well, but should be used only for testing purposes - after the validation test, you should remove them running:
+The !BigBlueButton Demos will be installed as well, but should be used only for testing purposes - after the validation test, you should remove them running:
 
 {{{
 sudo apt-get purge bbb-demo
@@ -49,4 +49,3 @@ sudo apt-get purge bbb-demo
 
 
 == During the installation ==
-
