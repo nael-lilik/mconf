@@ -52,4 +52,7 @@ sudo apt-get purge bbb-demo
 
  * You will be asked for the `sudo` password
  * You will be asked to accept the EULA for TrueType core fonts
- * 
+ * When you get the following message, press Ctrl+C only once:
+{{{
+     [exec] Finalized, press Ctrl + C to quit
+}}}
