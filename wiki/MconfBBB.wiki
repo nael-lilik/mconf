@@ -57,3 +57,5 @@ sudo apt-get purge bbb-demo
      [exec] Finalized, press Ctrl + C to quit
 }}}
  * When the whole script finishes, reboot the server
+
+During the first start up after the installation the Live Notes Server will take a couple of minutes to start properly.
