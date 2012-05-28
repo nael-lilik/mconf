@@ -7,10 +7,14 @@ These customizations can be applied to a !BigBlueButton instance using [MconfBBB
 
 == List of modifications ==
 
+<wiki:comment>
  * Possibility to specify in the configuration file which resolutions the user can use during the conference;
  * Improved the video windows resize;
  * A video dock to organize video windows;
  * The right configuration to enable Speex audio codec, which improves the audio quality.
+</wiki:comment>
+ * Shared notes module
+ * Predefined window layouts
 
 == Installation script ==
 
