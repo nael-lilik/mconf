@@ -2,8 +2,7 @@
 
 Mconf uses a customized version of !BigBlueButton. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration that must be made in each instance of !BigBlueButton.
 
-These customizations can be applied to a !BigBlueButton instance using [MconfBBB#Installation_script our script].
-
+*If you intend to join the Mconf Global Webconference Network, please send an e-mail to mconf AT mconf.org saying you are going to setup a Mconf Node, so we will know who is in charge of that server.*
 
 == List of modifications ==
 
