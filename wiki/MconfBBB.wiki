@@ -65,4 +65,4 @@ During the first start up after the installation the Live Notes Server will take
 
 == Troubleshooting ==
 
-For troubleshooting, please visit the [http://code.google.com/p/bigbluebutton/wiki/FAQ BigBlueButton support page] or send an e-mail to *mconf AT mconf.org*.
+For troubleshooting, please visit the [http://code.google.com/p/bigbluebutton/wiki/FAQ BigBlueButton support page] or send an e-mail to *support AT mconf.org*.
