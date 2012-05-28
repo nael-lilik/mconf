@@ -55,7 +55,7 @@ sudo apt-get purge bbb-demo
 == During the installation ==
 
  * You will be asked for the `sudo` password
- * You will be asked to accept the EULA for TrueType core fonts
+ * You will be asked to accept the EULA for !TrueType core fonts
  * When you get the following message, press Ctrl+C only once:
 {{{
      [exec] Finalized, press Ctrl + C to quit
@@ -63,3 +63,7 @@ sudo apt-get purge bbb-demo
  * When the whole script finishes, reboot the server
 
 During the first start up after the installation the Live Notes Server will take a couple of minutes to start properly.
+
+== Troubleshooting ==
+
+For troubleshooting, please visit the [http://code.google.com/p/bigbluebutton/wiki/FAQ BigBlueButton support page] or send an e-mail to *mconf AT mconf.org*.
