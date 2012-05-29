@@ -4,6 +4,12 @@ Mconf uses a customized version of !BigBlueButton. Some of these modifications a
 
 *If you intend to join the Mconf Global Webconference Network, please send an e-mail to mconf AT mconf.org saying you are going to setup a Mconf Node, so we will know who is in charge of that server.*
 
+As soon as you setup your server, it will start to be monitored by the Mconf Monitoring Tool, but you won't see yet your server on the [http://lb.mconf.org/dashboard Mconf Dashboard] because it starts disabled by default. This is just a security measure - your server will join the Mconf Global Webconference Network only after we receive an e-mail containing:
+
+ * The server domain name
+ * The institution
+ * The name and e-mail of the technician responsible for that server
+
 == List of modifications ==
 
 <wiki:comment>
