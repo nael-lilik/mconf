@@ -14,8 +14,8 @@ Create a new database for ejabberd. Access MySQL monitor (`mysql -u root -p`) an
 
 {{{
 CREATE USER 'mconf'@'localhost' IDENTIFIED BY 'password';
-CREATE DATABASE mconf_ejarbberd;
-GRANT ALL PRIVILEGES ON mconf_ejarbberd.* TO "mconf"@"localhost" IDENTIFIED BY "password";
+CREATE DATABASE mconf_ejabberd;
+GRANT ALL PRIVILEGES ON mconf_ejabberd.* TO "mconf"@"localhost" IDENTIFIED BY "password";
 FLUSH PRIVILEGES;
 }}}
 
