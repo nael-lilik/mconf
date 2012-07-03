@@ -1,0 +1,80 @@
+= XMMP server for Mconf-web =
+
+<wiki:toc max_depth="3" />
+
+We use the XMMP [http://www.ejabberd.im/ ejabberd].
+
+= Installation =
+
+{{{
+sudo apt-get install ejabberd python-mysqldb
+}}}
+
+Create a new database for ejabberd. Access MySQL monitor (`mysql -u root -p`) and:
+
+{{{
+CREATE USER 'mconf'@'localhost' IDENTIFIED BY 'password';
+CREATE DATABASE mconf_ejarbberd;
+GRANT ALL PRIVILEGES ON mconf_ejarbberd.* TO "mconf"@"localhost" IDENTIFIED BY "password";
+FLUSH PRIVILEGES;
+}}}
+
+To start/stop it use:
+
+{{{
+sudo /etc/init.d/ejabberd start
+sudo /etc/init.d/ejabberd stop
+}}}
+
+== Configurations ==
+ 
+Open `/etc/ejabberd/ejabberd.cfg`.
+
+Database:
+{{{
+##########################################################
+#DB Settings
+#Just put your settings here.
+##########################################################     
+db_name="DBNAME"
+db_user="MYSQL USER"
+db_pass="MYSQL PASSWORD USER"
+db_host="DB HOST"
+db_table="DB TABLE NAME"
+db_username_field="DB TABLE USERNAME FIELD"
+db_password_field="DB TABLE PASSWORD FIELD"
+db_salt_field="DB TABLE SALT FIELD"
+domain_suffix="DOMAIN SUFFIX"
+}}}
+
+...
+
+{{{
+%% Admin user
+{acl, admin, {user, "administrator", "host"}}.
+%% Hostname
+{hosts, ["localhost", "host"]}.
+
+%%
+%% Modules enabled in all ejabberd virtual hosts.
+%%
+{modules,
+ [
+  {mod_http_bind, []},
+  {mod_adhoc,    []}, 
+
+
+%% auth_method: Method used to authenticate the users.
+%% The default method is the internal.
+%% If you want to use a different method,
+%% comment this line and enable the correct ones.
+%%
+%%{auth_method, internal}.
+
+%%
+%% Authentication using external script
+%% Make sure the script is executable by ejabberd.
+%%
+{auth_method, external}.
+{extauth_program, "python /path/to/authentication/script"}.
+}}}
