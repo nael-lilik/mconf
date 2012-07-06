@@ -7,7 +7,8 @@ We use the XMMP server [http://www.ejabberd.im/ ejabberd].
 = Installation =
 
 {{{
-sudo apt-get install ejabberd python-mysqldb
+sudo apt-get install ejabberd python-mysqldb python-pip
+sudo pip install requests
 }}}
 
 Create a new database for ejabberd. Access MySQL monitor (`mysql -u root -p`) and:
@@ -15,9 +16,8 @@ Create a new database for ejabberd. Access MySQL monitor (`mysql -u root -p`) an
 ### CRIAR USUARIO E LIMITAR ACESSO à TABELA USERS
 
 {{{
-CREATE USER 'mconf'@'localhost' IDENTIFIED BY 'password';
-CREATE DATABASE mconf_ejabberd;
-GRANT ALL PRIVILEGES ON mconf_ejabberd.* TO "mconf"@"localhost" IDENTIFIED BY "password";
+CREATE USER 'mconf_xmpp'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON mconf_production.* TO "mconf_xmpp"@"localhost" IDENTIFIED BY "password";
 FLUSH PRIVILEGES;
 }}}
 
@@ -65,6 +65,10 @@ Open `/etc/ejabberd/ejabberd.cfg`.
   {mod_http_bind, []},       #### INSERIR
   {mod_adhoc,    []}, 
   ...
+
+
+  # JA EXISTEM
+
   {mod_admin_extra, [ {module_resource, "modadminextraf8x,31ad"} ]},
   {mod_vcard,       [ {access_set, vcard_set} ]},
 ]}.
