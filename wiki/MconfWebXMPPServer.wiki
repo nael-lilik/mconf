@@ -12,6 +12,8 @@ sudo apt-get install ejabberd python-mysqldb
 
 Create a new database for ejabberd. Access MySQL monitor (`mysql -u root -p`) and:
 
+### CRIAR USUARIO E LIMITAR ACESSO à TABELA USERS
+
 {{{
 CREATE USER 'mconf'@'localhost' IDENTIFIED BY 'password';
 CREATE DATABASE mconf_ejabberd;
@@ -26,16 +28,16 @@ sudo /etc/init.d/ejabberd start
 sudo /etc/init.d/ejabberd stop
 }}}
 
+
 == Configurations ==
  
-
-
 mod_admin_extra - Additional ejabberd commands
 Used for VCard module
+
 {{{
 sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/mod_admin_extra.beam -o /usr/lib/ejabberd/ebin/mod_admin_extra.beam
+sudo chown ejabberd:ejabberd /var/lib/ejabberd/JabberAuth.py
 }}}
-
 
 
 
@@ -90,6 +92,7 @@ Autenticação externa
 
 {{{
 sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/JabberAuth.py -o /var/lib/ejabberd/JabberAuth.py
+sudo chown ejabberd:ejabberd /var/lib/ejabberd/JabberAuth.py
 }}}
 
 
