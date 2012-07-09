@@ -24,7 +24,6 @@ FLUSH PRIVILEGES;
 To start/stop it use:
 
 {{{
-sudo /etc/init.d/ejabberd start
 sudo /etc/init.d/ejabberd stop
 }}}
 
@@ -120,3 +119,9 @@ auth_url="http://my-server.com/xmpp/me"
 }}}
 
 ...
+
+Open Ports
+
+{{{
+Open ports 5280 (Web administration) and 5222 (Main client)
+}}}
