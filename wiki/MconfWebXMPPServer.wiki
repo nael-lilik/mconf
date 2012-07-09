@@ -1,46 +1,48 @@
 = XMMP server for Mconf-web =
 
-<wiki:toc max_depth="3" />
+<wiki:toc max_depth="2" />
 
 We use the XMMP server [http://www.ejabberd.im/ ejabberd].
 
 = Installation =
+
+Install `ejabberd` and some other packages needed. Python and requests are used in the external authentication script.
 
 {{{
 sudo apt-get install ejabberd python-mysqldb python-pip
 sudo pip install requests
 }}}
 
-Create a new database for ejabberd. Access MySQL monitor (`mysql -u root -p`) and:
-
-### CRIAR USUARIO E LIMITAR ACESSO à TABELA USERS
+Install the module `mod_admin_extra` (additional ejabberd commands). Needed to use VCards.
 
 {{{
-CREATE USER 'mconf_xmpp'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON mconf_production.* TO "mconf_xmpp"@"localhost" IDENTIFIED BY "password";
-FLUSH PRIVILEGES;
+sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/mod_admin_extra.beam -o /usr/lib/ejabberd/ebin/mod_admin_extra.beam
 }}}
 
 To start/stop it use:
 
 {{{
+sudo /etc/init.d/ejabberd start
 sudo /etc/init.d/ejabberd stop
 }}}
+
+=== If using a firewall ===
+
+The ports 5280 (web administration) and 5222 (client communication) should be open.
+
+In `iptables`, add the following to `/etc/default/firewall`:
+
+{{{
+iptables -A INPUT -p tcp --dport 5280 -j ACCEPT
+iptables -A INPUT -p tcp --dport 5222 -j ACCEPT
+}}}
+
 
 
 == Configurations ==
  
-mod_admin_extra - Additional ejabberd commands
-Used for VCard module
 
-{{{
-sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/mod_admin_extra.beam -o /usr/lib/ejabberd/ebin/mod_admin_extra.beam
-sudo chown ejabberd:ejabberd /var/lib/ejabberd/JabberAuth.py
-}}}
-
-
-
-Open `/etc/ejabberd/ejabberd.cfg`.
+Edit `/etc/ejabberd/ejabberd.cfg` (replace `$DOMAIN$` by your domain, e.g. mconf.org):
 
 {{{
 %% Admin user
@@ -54,44 +56,58 @@ Open `/etc/ejabberd/ejabberd.cfg`.
 %% Hostname
 {hosts, ["$DOMAIN$"]}.
 
-##############
+...
 
 %%
 %% Modules enabled in all ejabberd virtual hosts.
 %%
 {modules,
  [
-  {mod_http_bind, []},       #### INSERIR
+  {mod_http_bind, []},       # Add this line
   {mod_adhoc,    []}, 
+
   ...
 
-
-  # JA EXISTEM
-
+  # The lines below already exist, replace them.
   {mod_admin_extra, [ {module_resource, "modadminextraf8x,31ad"} ]},
   {mod_vcard,       [ {access_set, vcard_set} ]},
 ]}.
 
-################
+...
 
 %% auth_method: Method used to authenticate the users.
 %% The default method is the internal.
 %% If you want to use a different method,
 %% comment this line and enable the correct ones.
 %%
-%%{auth_method, internal}. ## COMENTAR
+%% {auth_method, internal}. # Comment
 
 %%
 %% Authentication using external script
 %% Make sure the script is executable by ejabberd.
 %%
+# Uncomment and chage to:
 {auth_method, external}.
 {extauth_program, "python /var/lib/ejabberd/JabberAuth.py"}. 
 
 }}}
 
 
-Autenticação externa
+== External authentication ==
+
+We'll add a script to `ejabberd` to authenticate the users using Mconf-Web's database.
+
+Create a new user in the database for `ejabberd`. This user should have access to Mconf-Web's database.
+Access MySQL monitor (`mysql -u root -p`) and:
+
+{{{
+CREATE USER 'mconf_xmpp'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON mconf_production.users TO "mconf_xmpp"@"localhost" IDENTIFIED BY "password";
+FLUSH PRIVILEGES;
+}}}
+<font color=#a00000>TODO: We are currently using the same db user that mconf-web uses. The commands above should also be tested.</font>
+
+Then get the script:
 
 {{{
 sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/JabberAuth.py -o /var/lib/ejabberd/JabberAuth.py
@@ -99,8 +115,9 @@ sudo chown ejabberd:ejabberd /var/lib/ejabberd/JabberAuth.py
 }}}
 
 
-{{{
+And configure it:
 
+{{{
 ##########################################################
 #DB Settings
 #Just put your settings here.
@@ -115,17 +132,4 @@ db_password_field="crypted_password"
 db_salt_field="salt"
 domain_suffix="@my-server.com"
 auth_url="http://my-server.com/xmpp/me"
-
-}}}
-
-...
-
-Open Ports
-
-{{{
-Web administration:
-/sbin/iptables -A INPUT -j ACCEPT -p TCP --dport 5280
-
-Main client:
-/sbin/iptables -A INPUT -j ACCEPT -p TCP --dport 5222
 }}}
