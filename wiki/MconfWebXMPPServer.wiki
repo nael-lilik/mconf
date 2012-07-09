@@ -123,5 +123,9 @@ auth_url="http://my-server.com/xmpp/me"
 Open Ports
 
 {{{
-Open ports 5280 (Web administration) and 5222 (Main client)
+Web administration:
+/sbin/iptables -A INPUT -j ACCEPT -p TCP --dport 5280
+
+Main client:
+/sbin/iptables -A INPUT -j ACCEPT -p TCP --dport 5222
 }}}
