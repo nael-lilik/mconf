@@ -16,7 +16,7 @@ sudo pip install requests
 Install the module `mod_admin_extra` (additional ejabberd commands). Needed to use VCards.
 
 {{{
-sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/mod_admin_extra.beam -o /usr/lib/ejabberd/ebin/mod_admin_extra.beam
+sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/mod_admin_extra.beam -O /usr/lib/ejabberd/ebin/mod_admin_extra.beam
 }}}
 
 To start/stop it use:
@@ -110,7 +110,7 @@ FLUSH PRIVILEGES;
 Then get the script:
 
 {{{
-sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/JabberAuth.py -o /var/lib/ejabberd/JabberAuth.py
+sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/JabberAuth.py -O /var/lib/ejabberd/JabberAuth.py
 sudo chown ejabberd:ejabberd /var/lib/ejabberd/JabberAuth.py
 }}}
 
