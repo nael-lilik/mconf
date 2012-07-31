@@ -30,7 +30,7 @@ You can find the latest version of this file in [https://github.com/mconf/instal
 <font color="red">*IMPORTANT:*</font> 
  * This script should be executed by a non-root user in a fresh dedicated Ubuntu 10.04 Server installation. It won't work on different versions of Ubuntu or other distributions;
  * Check if your server meets the [http://code.google.com/p/bigbluebutton/wiki/FAQ#What_are_the_minimum_hardware_requirements_for_the_BigBlueButton BigBlueButton minimum hardware requirements];
- * Be sure that you have opened for external access the ports 80 (HTTP), 9123 (Desktop Sharing) and 1935 (RTMP);
+ * Be sure that you have opened for external access the ports TCP 80 (HTTP), TCP 9123 (Desktop Sharing), TCP 1935 (RTMP) and UDP 5060 (SIP);
  * If you intend to use a domain name (like *mconf.org*), set up that before continue.
 
 To setup the Mconf Node, run in your server:
