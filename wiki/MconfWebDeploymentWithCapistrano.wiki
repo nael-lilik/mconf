@@ -26,10 +26,7 @@ The steps necessary are:
     * See below how to do it.
   # Install a web server and some other system-wide applications: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#5._Install_a_web_server,_configure_the_application_and_deploy guide] (see the sections "Web server" and "System-wide configurations")
 
-
-As you can see above, steps 1, 2, and 4 are documented in the deployment guides and you have the links above. We recommend that you use the script for steps 1 and 2 and perform step 4 manually.
-
-Step 3 is where you'll use Capistrano.
+As you can see above, steps 1, 2, and 4 are documented in the deployment guides and you have the links above. Step 3 is where you'll use Capistrano.
 
 
 === Step 3: Capistrano ===
