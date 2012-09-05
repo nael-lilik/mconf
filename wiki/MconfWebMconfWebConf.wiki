@@ -1,5 +1,7 @@
 #summary Latest documentation for the script mconf-web-conf
 
+_<font color=red>DEPRECATED </font>_
+
 = The script `mconf-web-conf` =
 
 <wiki:toc max_depth="3" />
