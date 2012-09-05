@@ -1,6 +1,5 @@
   * [Home Home]
   * [MconfInstallation Install Mconf]
-    * [MconfVM Mconf VM]
   * [MconfBBB Mconf-BBB]
     * [MconfBBBApiChanges API Changes]
   * [MconfMobile Mconf-Mobile]
