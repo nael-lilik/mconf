@@ -1,4 +1,5 @@
 #summary Latest documentation for the script mconf-web-conf
+#labels Deprecated
 
 _<font color=red>DEPRECATED </font>_
 
