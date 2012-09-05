@@ -1,4 +1,5 @@
 #summary How to deploy Mconf-Web using mconf-web-conf
+#labels Deprecated
 
 _<font color=red>DEPRECATED </font>_
 
