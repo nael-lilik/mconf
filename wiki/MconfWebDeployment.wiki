@@ -23,8 +23,6 @@ Mconf-web should work on any operating system that has Ruby available (and most 
 
 Basically all you need to start is a machine with Ubuntu (10.04 is recommended) and a user (suggested name: "mconf").
 
-From now on, you can either install everything manually or use the script `mconf-web-conf` to help you with these tasks:
-
   * *[MconfWebDeploymentManual Manual installation]*: This is a detailed guide showing how to install Mconf-Web. It allows a more flexible installation and can also help you find errors in your setup. *If you a setting up a real production server (not a test), follow this guide, so you will know what you're doing in your server*.
 
   * *[MconfWebDeploymentWithCapistrano Using Capistrano]*: Capistrano is very useful for developers that want to deploy the application and be able to easily update it. It requires a development environment and at least some basic knowledge of Ruby and Rails. This is how we maintain https://mconf.org.
