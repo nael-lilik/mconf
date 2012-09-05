@@ -62,8 +62,6 @@ The Monitoring Server was integrated with a [http://oss.oetiker.ch/rrdtool/ RRDt
 
 ===== Source Code =====
 
-The plugins developed and other configuration files used in the Monitoring Server are here: https://github.com/mconf/nagios-etc
-
 ==== Mconf Load Balancer ====
 
 ...
