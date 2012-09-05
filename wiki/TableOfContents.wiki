@@ -19,8 +19,6 @@
       * [MconfWebTesting Testing]
     * [MconfWebDeployment Deployment]
       * [MconfWebDeploymentManual Manual deploy]
-      * [MconfWebDeploymentWithScript Using the installation script]
-        * [MconfWebMconfWebConf Installation script]
       * [MconfWebDeploymentWithCapistrano Using Capistrano]
     * [MconfWebConfiguring Configuring the website]
     * [MconfWebLocalization Translating]
