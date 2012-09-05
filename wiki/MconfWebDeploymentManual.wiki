@@ -10,8 +10,6 @@ _This page is a continuation of [MconfWebDeployment this page]._
 
 This is a step-by-step guide showing every detail needed to install Mconf-Web. If you have experience deploying a Rails application this guide should look very familiar to you. Otherwise, if you don't have experience with that or if you're searching for an easier way to install the application, [MconfWebDeploymentWithScript check this page]. 
 
-We tried to keep this page in the same format as the page that describes how to install Mconf-Web using the script `mconf-web-conf` ([http://code.google.com/p/mconf/wiki/MconfWebDeploymentWithScript here], so that you can easily relate both guides and solve any doubts you may have.
-
 
 == Installing Mconf-Web ==
 
