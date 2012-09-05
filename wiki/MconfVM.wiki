@@ -1,4 +1,7 @@
 #summary A virtual machine for development and testing
+#labels Deprecated
+
+_*<font color=red>DEPRECATED </font>*_
 
 _*Notice:* If you're already using the Mconf VM, please send us feedback! You can contact us at our mailing list: mconf-dev@googlegroups.com (or directly at mconf.prav@gmail.com if you don't want to join the mailing list)._
 
