@@ -61,12 +61,14 @@ In your integrated environment, if you provide the !BigBlueButton join calls rep
 
  # Install Android SDK ([http://developer.android.com/sdk/index.html link] / [http://developer.android.com/sdk/installing.html#troubleshooting troubleshooting])
  # Install Android NDK ([http://developer.android.com/sdk/ndk/index.html link]) - we use and recommend version r6b ([http://dl.google.com/android/ndk/android-ndk-r6b-linux-x86.tar.bz2 link])
- # Install Apache Ant ([http://ant.apache.org/ link])
+ # Install Apache Ant ([http://ant.apache.org/ link]) - `sudo apt-get install ant`
  # Install Findbugs ([http://findbugs.sourceforge.net/ link])
  # Copy *`findbugs/lib/findbugs-ant.jar`* to *`~/.ant/lib`*
  # Clone the repository
  # Copy *`./local.properties.template`* to *`./local.properties`* and edit this file to reproduce your environment
  # Run *`ant build-all`*
+
+If you run into a build problem like *`arm-linux-androideabi-gcc: Command not found`*, see [http://stackoverflow.com/questions/9437598/android-ndk-building-tesstwo-fork-of-tesseract-tools-for-android-ndk-build this link].
 
 If you want to work with Eclipse (after followed the steps above):
 
