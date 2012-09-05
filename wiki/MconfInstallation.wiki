@@ -1,4 +1,7 @@
+#labels Deprecated
 = Mconf Installation =
+
+_*<font color=red>DEPRECATED </font>*_
 
 Mconf has three main modules: Mconf-Web (web portal), Mconf-Mobile (Android application), and !BigBlueButton with our customizations. See below the options you have to get the complete solution:
 
