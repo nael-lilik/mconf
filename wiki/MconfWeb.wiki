@@ -33,7 +33,7 @@ VCC is developed in Ruby on Rails 2.3.4 and uses Isabel to perform webconfereces
 
 == Integration with !BigBlueButton ==
 
-Mconf-Web currently supports !BigBlueButton *0.7* only (including 0.71 and 0.71a). Support for !BigBlueButton 0.8 will come soon.
+Mconf-Web currently supports !BigBlueButton *0.7* and *0.8*.
 
 The integration with !BigBlueButton is based on two gems (that are also being developed in the Mconf project):
 
