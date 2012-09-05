@@ -49,7 +49,7 @@ Currently, all !BigBlueButton rooms created through Mconf-web will use this serv
 bbb_server_name: 'Default Server'                     # server name
 bbb_server_url: 'http://my-server/bigbluebutton/api'  # server url in the format http://<server>/bigbluebutton/api
 bbb_server_salt: 'my-secret-salt'                     # server salt
-bbb_server_version: '0.7'                             # bbb version
+bbb_server_version: '0.8'                             # bbb version
 }}}
 
 
