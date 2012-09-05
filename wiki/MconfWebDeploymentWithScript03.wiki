@@ -1,6 +1,7 @@
 #summary How to deploy Mconf-Web using mconf-web-conf in Mconf-Web 0.3 (script version 0.2)
+#labels Deprecated
 
-_<font color=red>DEPRECATED</font>_
+_<font color=red>DEPRECATED </font>_
 
 _This page is a continuation of [MconfWebDeployment this page]._
 
