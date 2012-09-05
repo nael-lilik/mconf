@@ -1,5 +1,7 @@
 #summary How to deploy Mconf-Web using mconf-web-conf
 
+_<font color=red>DEPRECATED</font>_
+
 _This page is a continuation of [MconfWebDeployment this page]._
 
 = Mconf-Web Deployment With mconf-web-conf =
