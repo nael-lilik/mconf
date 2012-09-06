@@ -1,6 +1,6 @@
 #summary What's new in the BigBlueButton API used in Mconf
 
-= Mconf-BBB API changes =
+= Mconf-!BigBlueButton API changes =
 
 All the current API changes are in the branch "audio-video-on-api-2" in Mconf's fork of !BigBlueButton. See:
   * Branch: https://github.com/mconf/bigbluebutton/tree/audio-video-on-api-2
