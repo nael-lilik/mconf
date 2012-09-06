@@ -2,7 +2,7 @@
 
 Mconf actively develops improvements and modifications for !BigBlueButton to generate the software we call Mconf-!BigBlueButton. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration that must be made in each instance of Mconf-!BigBlueButton.
 
-Mconf-!BigBlueButton is currently a customized version of !BigBlueButton 0.8, with improvements that may be available in !BigBlueButton 0.81.
+Mconf-!BigBlueButton is currently a customized version of the latest !BigBlueButton, with improvements that may be available in future versions of !BigBlueButton.
 
 If you intend to *join the [http://mconf.org/m/about/network Mconf Web Conference Network]*, please send an e-mail to mconf AT mconf.org saying you are going to setup a Mconf Node, so we will know who is in charge of that server. And then proceed to install the server as specified below.
 
