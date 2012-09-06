@@ -103,7 +103,7 @@ _^1^Because the gem exception_notification that does it is only installed for pr
 
 === Shibboleth === 
 
-Enable or disable the login via Shibboleth and configure it. See more about it [MconfWebDeployShibboleth in this page].
+Enable or disable the login via Shibboleth and configure it.
 
 {{{
 site_shibboleth: "false"                                       # Change to "true" to enable
