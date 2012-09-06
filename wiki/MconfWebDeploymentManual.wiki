@@ -68,7 +68,7 @@ Next, change your repository to the version you want to deploy. If you don't do 
 
 {{{
 cd ~/mconf-web/current
-git checkout v0.4       # go to version 0.4
+git checkout v0.5       # go to version 0.5
 git checkout latest     # branch that points to the latest version
 }}}
 
@@ -186,7 +186,7 @@ At first, update your repository and checkout the version you want:
 {{{
 cd ~/mconf-web/current
 git pull
-git checkout v0.4  # go to version 0.4
+git checkout v0.5  # go to version 0.5
 }}}
 
 You can use the branch "latest" that will always point to the latest version:
