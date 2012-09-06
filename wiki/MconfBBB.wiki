@@ -25,7 +25,7 @@ We have written a shell script to automatically install and configure a Mconf-!B
 
 You can read more about the Mconf Network at: http://mconf.org/m/about/network
 
-=== First steps ===
+=== Preparation ===
 
 As soon as you set up your server, it will start being monitored by the Mconf Monitoring Tool, but you won't see your server yet on the [http://lb.mconf.org/dashboard Mconf Dashboard] because it is disabled by default. This is just a security step - your server will join the Mconf Global Webconference Network only after we receive an e-mail containing:
 
@@ -33,16 +33,16 @@ As soon as you set up your server, it will start being monitored by the Mconf Mo
  * The institution name
  * The name and e-mail of the technician responsible for that server
 
-
-=== Using the script ===
-
-You can find the latest version of this file at: https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh
-
 <font color="red">*IMPORTANT:*</font> 
  * This script should be executed by a non-root user in a fresh dedicated *Ubuntu 10.04 Server* installation. It won't work on different versions of Ubuntu or other distributions;
  * Check if your server meets [http://code.google.com/p/bigbluebutton/wiki/FAQ#What_are_the_minimum_hardware_requirements_for_the_BigBlueButton BigBlueButton's minimum hardware requirements];
  * Be sure that you have opened for external access the ports TCP 80 (HTTP), TCP 9123 (Desktop Sharing), TCP 1935 (RTMP) and UDP 5060 (SIP);
  * If you intend to use a domain name (like "mconf.org"), set that up before continuing.
+
+
+=== Using the script ===
+
+You can find the latest version of this file at: https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh
 
 To setup the Mconf Node, run in your server:
 
@@ -54,7 +54,7 @@ chmod +x install-mconf-node.sh
 
 What the script does:
  * Upgrades the Ubuntu packages to the lastest 10.04 version;
- * Install BigBlueButton as described [http://code.google.com/p/bigbluebutton/wiki/08InstallationUbuntu#Installation_of_BigBlueButton_0.8 here]
+ * Install !BigBlueButton as described [http://code.google.com/p/bigbluebutton/wiki/08InstallationUbuntu#Installation_of_BigBlueButton_0.8 here]
  * Installs the Live Notes Server;
  * Install the Mconf Monitor;
  * Deploys the Mconf modifications on !BigBlueButton;
