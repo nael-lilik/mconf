@@ -155,3 +155,10 @@ Recently the default FreeSWITCH configuration on !BigBlueButton has changed in o
 So, basically you will not be able to connect to the voice conference on http://demo.bigbluebutton.org, but we have this default configuration ignored on https://mconf.org, so you will still be able to do it on the Mconf server.
 
 Soon we will implement the voice handling on Mconf-Mobile to work under RTMP, so it will remove this inconvenient.
+
+
+== General ==
+
+=== What is the Mconf Network? Where can I find more about it? ===
+
+See: http://mconf.org/m/about/network
