@@ -1,37 +1,48 @@
-= Mconf - !BigBlueButton Customizations =
+= Mconf-!BigBlueButton =
 
-Mconf uses a customized version of !BigBlueButton. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration that must be made in each instance of !BigBlueButton.
+Mconf actively develops improvements and modifications for !BigBlueButton to generate the software we call Mconf-!BigBlueButton. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration that must be made in each instance of Mconf-!BigBlueButton.
 
-*If you intend to join the Mconf Global Webconference Network, please send an e-mail to mconf AT mconf.org saying you are going to setup a Mconf Node, so we will know who is in charge of that server.*
+Mconf!-BigBlueButton is currently a customized version of !BigBlueButton 0.8, with improvements that may be available in !BigBlueButton 0.81.
 
-As soon as you setup your server, it will start to be monitored by the Mconf Monitoring Tool, but you won't see yet your server on the [http://lb.mconf.org/dashboard Mconf Dashboard] because it starts disabled by default. This is just a security step - your server will join the Mconf Global Webconference Network only after we receive an e-mail containing:
+If you intend to *join the [http://mconf.org/m/about/network Mconf Web Conference Network]*, please send an e-mail to mconf AT mconf.org saying you are going to setup a Mconf Node, so we will know who is in charge of that server. And then proceed to install the server as specified below.
+
+If you only want to install Mconf-!BigBlueButton but you *don't want to join the network*, you will need to look at the [https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh installation script] and install everything except the [https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh#L50 server monitor]. If you have any doubts contact us at our mailing list (you can see the address at http://mconf.org/m/about/contact).
+
+<wiki:comment>
+== List of modifications ==
+
+ * Possibility to specify in the configuration file which resolutions the user can use during the conference;
+ * Improved the video windows resize;
+ * A video dock to organize video windows;
+ * The right configuration to enable Speex audio codec, which improves the audio quality.
+ * Shared notes module
+ * Predefined window layouts
+</wiki:comment>
+
+== Install Mconf-!BigBlueButton and join the Mconf Network ==
+
+We have written a shell script to automatically install and configure a Mconf-!BigBlueButton instance, exactly the same system we are using on [https://mconf.org mconf.org]. The script will also install some tools so that your server will *automatically join* the Mconf Network, which you will be able to monitor through the [http://lb.mconf.org/dashboard Mconf Dashboard].
+
+You can read more about the Mconf Network at: http://mconf.org/m/about/network
+
+=== First steps ===
+
+As soon as you set up your server, it will start being monitored by the Mconf Monitoring Tool, but you won't see your server yet on the [http://lb.mconf.org/dashboard Mconf Dashboard] because it is disabled by default. This is just a security step - your server will join the Mconf Global Webconference Network only after we receive an e-mail containing:
 
  * The server domain name
  * The institution name
  * The name and e-mail of the technician responsible for that server
 
-== List of modifications ==
 
-<wiki:comment>
- * Possibility to specify in the configuration file which resolutions the user can use during the conference;
- * Improved the video windows resize;
- * A video dock to organize video windows;
- * The right configuration to enable Speex audio codec, which improves the audio quality.
-</wiki:comment>
- * Shared notes module
- * Predefined window layouts
+=== Using the script ===
 
-== Installation script ==
-
-We have written a shell script to automatically install and configure a !BigBlueButton 0.8 with the Mconf customizations in a fresh server, exactly the same system we are using on [https://mconf.org mconf.org]. This server will join automatically the Mconf collaborative cloud, which you will be able to monitor through the [http://lb.mconf.org/dashboard Mconf Dashboard].
-
-You can find the latest version of this file in [https://github.com/mconf/installation-scripts this repository].
+You can find the latest version of this file at: https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh
 
 <font color="red">*IMPORTANT:*</font> 
- * This script should be executed by a non-root user in a fresh dedicated Ubuntu 10.04 Server installation. It won't work on different versions of Ubuntu or other distributions;
- * Check if your server meets the [http://code.google.com/p/bigbluebutton/wiki/FAQ#What_are_the_minimum_hardware_requirements_for_the_BigBlueButton BigBlueButton minimum hardware requirements];
+ * This script should be executed by a non-root user in a fresh dedicated *Ubuntu 10.04 Server* installation. It won't work on different versions of Ubuntu or other distributions;
+ * Check if your server meets [http://code.google.com/p/bigbluebutton/wiki/FAQ#What_are_the_minimum_hardware_requirements_for_the_BigBlueButton BigBlueButton's minimum hardware requirements];
  * Be sure that you have opened for external access the ports TCP 80 (HTTP), TCP 9123 (Desktop Sharing), TCP 1935 (RTMP) and UDP 5060 (SIP);
- * If you intend to use a domain name (like *mconf.org*), set up that before continue.
+ * If you intend to use a domain name (like "mconf.org"), set that up before continuing.
 
 To setup the Mconf Node, run in your server:
 
@@ -41,23 +52,24 @@ chmod +x install-mconf-node.sh
 ./install-mconf-node.sh <DOMAIN_NAME>
 }}}
 
-The script does:
- * upgrade the Ubuntu packages to the lastest 10.04 version
- * install !BigBlueButton as described [http://code.google.com/p/bigbluebutton/wiki/08InstallationUbuntu#Installation_of_BigBlueButton_0.8 here]
- * install the Live Notes Server
- * install the Mconf Monitor
- * deploy the Mconf modifications on !BigBlueButton
- * set the Mconf default presentation
- * enable FreeSWITCH to accept external calls (details [MconfFAQ#Voice_connection_timeout here])
+What the script does:
+ * Upgrades the Ubuntu packages to the lastest 10.04 version;
+ * Install BigBlueButton as described [http://code.google.com/p/bigbluebutton/wiki/08InstallationUbuntu#Installation_of_BigBlueButton_0.8 here]
+ * Installs the Live Notes Server;
+ * Install the Mconf Monitor;
+ * Deploys the Mconf modifications on !BigBlueButton;
+ * Sets a default presentation;
+ * Enables FreeSWITCH to accept external calls (details [MconfFAQ#Voice_connection_timeout here]).
 
-The !BigBlueButton Demos will be installed as well, but should be used only for testing purposes - after the validation test, you should remove them running:
+The !BigBlueButton demos will also be installed, but should be used only for testing purposes - after the validation test, you should remove them running:
 
 {{{
 sudo apt-get purge bbb-demo
 }}}
 
+== Other tips ==
 
-== During the installation ==
+During the installation:
 
  * You will be asked for the `sudo` password
  * You will be asked to accept the EULA for !TrueType core fonts
@@ -71,4 +83,4 @@ During the first start up after the installation the Live Notes Server will take
 
 == Troubleshooting ==
 
-For troubleshooting, please visit the [http://code.google.com/p/bigbluebutton/wiki/FAQ BigBlueButton support page] or send an e-mail to *support AT mconf.org*.
+For troubleshooting, please visit the [http://code.google.com/p/bigbluebutton/wiki/FAQ BigBlueButton support page] or send an to our mailing list (see http://mconf.org/m/about/contact).
