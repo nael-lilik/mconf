@@ -1,23 +1,25 @@
 = Mconf-!BigBlueButton =
 
-Mconf actively develops improvements and modifications for !BigBlueButton to generate the software we call Mconf-!BigBlueButton. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration that must be made in each instance of Mconf-!BigBlueButton.
-
-Mconf-!BigBlueButton is currently a customized version of the latest !BigBlueButton, with improvements that may be available in future versions of !BigBlueButton.
+Mconf actively develops improvements and modifications for !BigBlueButton to generate the software we call Mconf-!BigBlueButton. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration that must be made in each instance of Mconf-!BigBlueButton. Mconf-!BigBlueButton is a customized version of !BigBlueButton, with improvements that may be available in future versions of !BigBlueButton. 
 
 If you intend to *join the [http://mconf.org/m/about/network Mconf Web Conference Network]*, please send an e-mail to mconf AT mconf.org saying you are going to setup a Mconf Node, so we will know who is in charge of that server. And then proceed to install the server as specified below.
 
 If you only want to install Mconf-!BigBlueButton but you *don't want to join the network*, you will need to look at the [https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh installation script] and install everything except the [https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh#L50 server monitor]. If you have any doubts contact us at our mailing list (you can see the address at http://mconf.org/m/about/contact).
 
-<wiki:comment>
-== List of modifications ==
+== About the current version ==
 
+Currently Mconf-!BigBlueButton is based on *!BigBlueButton 0.8*.
+
+Main differences between Mconf-!BigBlueButton and the version of !BigBlueButton it is based on:
+
+<wiki:comment>
  * Possibility to specify in the configuration file which resolutions the user can use during the conference;
  * Improved the video windows resize;
  * A video dock to organize video windows;
- * The right configuration to enable Speex audio codec, which improves the audio quality.
- * Shared notes module
- * Predefined window layouts
+ * The correct configuration to enable Speex audio codec, which improves the audio quality.
 </wiki:comment>
+ * Shared notes module
+ * Layouts module
 
 == Install Mconf-!BigBlueButton and join the Mconf Network ==
 
