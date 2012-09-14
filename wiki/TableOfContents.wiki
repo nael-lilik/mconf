@@ -16,7 +16,7 @@
       * [MconfWebDevelopmentTips Tips]
       * [MconfWebTesting Testing]
     * [MconfWebDeployment Deployment]
-      * [MconfWebDeploymentManual Manual deploy]
+      * [MconfWebDeploymentManual Deployment Guide]
       * [MconfWebDeploymentWithCapistrano Using Capistrano]
     * [MconfWebConfiguring Configuring the website]
     * [MconfWebLocalization Translating]
