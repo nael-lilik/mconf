@@ -24,7 +24,7 @@ This is a step-by-step guide showing how to install Mconf-Web. If you have exper
 == Installing Mconf-Web ==
 
 
-=== 1. System Packages ===
+=== 1. System packages ===
 
 You need to install some system packages before you can run Mconf-web in production. See below the list of recommended packages:
 
@@ -98,32 +98,7 @@ Then edit the files you just created. If you need help configuring them, see [Mc
 `database.yml` configures the database and you *have* to configure it now. By default, MySQL will be used. 
 
 
-
-=== 5. Install a web server, configure the application and deploy ===
-
-==== 5.1. Web server ====
-
-You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache (specially if you're installing Mconf-Web in the same machine that has !BigBlueButton).
-
-Mconf-Web uses Passenger to server the application together with Apache or Nginx. So you'll have to install Passenger and use it in the configurations of the web server. See the guide below for a how to:
-
-  * [MconfWebDeploymentInstallPassenger Guide to install Passenger]
-
-
-==== 5.2. System-wide configurations ====
-
-This contains the extra configurations you need to do on your server to run Mconf-Web. 
-
-The first thing is to install and configure God, a process monitoring tool:
-
-  * [MconfWebDeploymentInstallGod Guide to install God]
-
-Also, we use a gem called Whenever to setup the crontab with tasks for Mconf-Web:
-
-  * [MconfWebDeploymentGuideWhenever Guide to use Whenever]
-
-
-==== 5.3. Application configurations ====
+=== 5. Application configurations ===
 
 This step consists of everything that was not possible to be done before. because we needed the configuration files properly edited.
 
@@ -136,6 +111,28 @@ bundle exec rake secret RAILS_ENV=production
 }}}
 
 After that, you should restart your application. See the maintenance tasks below to know how.
+
+
+=== 6. Web server ===
+
+You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache (specially if you're installing Mconf-Web in the same machine that has !BigBlueButton).
+
+Mconf-Web uses Passenger to server the application together with Apache or Nginx. So you'll have to install Passenger and use it in the configurations of the web server. See the guide below for a how to:
+
+  * [MconfWebDeploymentInstallPassenger Guide to install Passenger]
+
+
+=== 7. System-wide configurations ===
+
+This contains the extra configurations you need to do on your server to run Mconf-Web. 
+
+The first thing is to install and configure God, a process monitoring tool:
+
+  * [MconfWebDeploymentInstallGod Guide to install God]
+
+Also, we use a gem called Whenever to setup the crontab with tasks for Mconf-Web:
+
+  * [MconfWebDeploymentGuideWhenever Guide to use Whenever]
 
 
 
@@ -157,37 +154,6 @@ The web server you have to restart every time you change anything in the applica
 
 You don't always need to restart god, only if you changed anything in its configuration files or in files that the monitored processes use (for example, if you change the Gmail account settings used to send emails). If you're not sure, restart it. Also, we use the action `terminate` so that god will also stop all monitored processes before stopping itself. It will, for instance, stop `delayed_job`  (a gem used to send emails) and then, when god is restarted, delayed_job will also be restarted (and so your new configurations will be applied).
 
-
-=== Update ===
-
-Before starting, check the [MconfWebRoadMap changelog page] to see if there's anything else you'll need to do to upgrade your application besides what's written in this guide. Also make sure you create a *backup* of everything before updating (see how to do it below).
-
-If you're already deploying the branch `latest`, you just need to pull the changes from git:
-
-{{{
-cd /var/www/mconf-web/current
-git pull origin latest
-}}}
-
-Update the dependencies:
-
-{{{
-bundle install --without=development test
-}}}
-
-Migrate the database:
-
-{{{
-bundle exec rake db:migrate RAILS_ENV=production
-}}}
-
-Update the crontab:
-
-{{{
-bundle exec whenever --update-crontab RAILS_ENV=production
-}}}
-
-Restart the web server as described in the previous section.
 
 === Backup ===
 
@@ -216,3 +182,35 @@ If you're not sure of what should be updated, you can backup the entire applicat
 {{{
 tar -jcvf mconf-web-backup.tar.bz2 /var/www/mconf-web/current/
 }}}
+
+
+=== Update ===
+
+Before starting, check the [MconfWebRoadMap changelog page] to see if there's anything else you'll need to do to upgrade your application besides what's written in this guide. Also make sure you create a *backup* of everything before updating.
+
+If you're already deploying the branch `latest`, you just need to pull the changes from git:
+
+{{{
+cd /var/www/mconf-web/current
+git pull origin latest
+}}}
+
+Update the dependencies:
+
+{{{
+bundle install --without=development test
+}}}
+
+Migrate the database:
+
+{{{
+bundle exec rake db:migrate RAILS_ENV=production
+}}}
+
+Update the crontab:
+
+{{{
+bundle exec whenever --update-crontab RAILS_ENV=production
+}}}
+
+Restart the web server as described in the previous section.
