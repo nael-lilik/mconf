@@ -1,6 +1,6 @@
 #summary Step-by-step guide on how to deploy Mconf-Web
 
-_This page is a continuation of [MconfWebDeployment this page]._
+*<font color=red>This is a draft, don't use it yet</font>*
 
 = Mconf-Web Deployment Guide (step-by-step guide) =
 
