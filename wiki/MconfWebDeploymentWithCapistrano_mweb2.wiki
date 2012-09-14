@@ -26,7 +26,7 @@ The steps necessary are:
 
   # Install system packages. See [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#1._System_Packages this guide];
   # Install RVM. You don't need to install Ruby, only RVM! Capistrano will install Ruby for you. But don't forget to add the `mconf` user to the group `rvm` (`sudo adduser mconf rvm`). See [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#2._Ruby this guide];
-  # Setup your configuration files, in your development machine. See [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#4._Edit_the_configuration_files this guide];
+  # Setup your configuration files. Edit them in your development machine and they will be uploaded to the server by Capistrano. See [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#4._Edit_the_configuration_files_(manual_configuration) this guide];
   # Use Capistrano to deploy the application: see below how to do it.
   # Install a web server and some other system-wide applications. See [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#6._Web_server sections 6 and 7].
 
