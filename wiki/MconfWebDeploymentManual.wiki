@@ -2,7 +2,7 @@
 
 _This page is a continuation of [MconfWebDeployment this page]._
 
-= Mconf-Web Manual Deployment (step-by-step guide) =
+= Mconf-Web Deployment Guide (step-by-step guide) =
 
 <wiki:toc max_depth="3" />
 
