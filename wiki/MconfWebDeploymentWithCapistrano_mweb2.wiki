@@ -10,6 +10,8 @@
 
 This guide will show you how to setup a production server using Capistrano to deploy the application.
 
+<font color=red>Before starting, you *should* read the comments in [MconfWebDeployment this page]!</font>
+
 == Requirements ==
 
 You need a *development* environment with the Mconf-Web repository checked out and with the configuration files properly edited. This is important because *your local configuration files will be uploaded to the server and be used to configure the deployed application*.
