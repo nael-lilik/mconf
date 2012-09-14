@@ -12,12 +12,12 @@ This is a step-by-step guide showing how to install Mconf-Web. If you have exper
 
 *Important:*
 
-  * This guide is targeted for *Ubuntu 10.04*, but the steps are very similar for other Linux distributions;
-  * We use the database *MySQL*;
+  * This guide is targeted for *Ubuntu 10.04* (even though steps are very similar for other Linux distributions);
+  * We use the database *MySQL*. We assume you have a user *`mconf`* that will be used to access the database;
   * We use the web server *Apache* or *Nginx*;
   * We recommend that you deploy your application in *`/var/www/mconf-web/current`*;
   * This guide assumes you have a user named *`mconf`* in your server and that you will use this user to deploy;
-  * We currently uses Ruby *1.9.3-p194*. Use this version when we reference `RUBY_VERSION` in the guide. You can also see the exact version in this file: https://github.com/mconf/mconf-web/blob/latest/.rvmrc
+  * We currently uses Ruby *1.9.3-p194*. Use this version when we reference *`RUBY_VERSION`* in the guide. You can also see the exact version in this file: https://github.com/mconf/mconf-web/blob/latest/.rvmrc
   * We currently use RVM *x.x.x*. Use this version to prevent any problems.
 
 
@@ -47,8 +47,7 @@ If you decided to use RVM, don't forget to actually install Ruby (and not only R
 
 {{{
 rvm install RUBY_VERSION
-rvm gemset create mconf
-rvm use --default RUBY_VERSION@mconf
+rvm --create --default use RUBY_VERSION@mconf;
 sudo adduser mconf rvm
 }}}
 
@@ -80,35 +79,23 @@ bundle install --without=development test
 }}}
 
 
-=== 4. Edit the configuration files (manual configuration) ===
+=== 4. Edit the configuration files ===
 
-<font color=blue>Note about Capistrano: </font>If you'll use Capistrano, you should never edit the configuration files in you server. Edit them in your development machine and they will be uploaded to the server. See [MconfWebDeploymentWithCapistrano this page].
-
-
-There are two files that need to be configured. At first, copy the example files:
+There are a few files that need to be configured. At first, copy the example files:
 
 {{{
 cp ~/mconf-web/config/setup_conf.yml.example ~/mconf-web/config/setup_conf.yml
 cp ~/mconf-web/config/database.yml.example ~/mconf-web/config/database.yml
+cp ~/mconf-web/config/analytics_conf.yml.example ~/mconf-web/config/analytics_conf.yml
 }}}
 
-Then edit the files `setup_conf.yml` and `database.yml`. To configure these files, see [MconfWebSetupConf this page].
+Then edit the files you just created. If you need help configuring them, see [MconfWebSetupConf this page].
 
-`setup_conf.yml` has general configurations for the web application and it's optional: if you don't edit it now you can edit its properties from Mconf-Web's interface (see [MconfWebConfiguring this page]).
+`setup_conf.yml` has general configurations for the application and it's optional: if you don't edit it now you can edit its properties from Mconf-Web's interface (see [MconfWebConfiguring this page]).
 
-`database.yml` configures the database and you *have* to configure it now. By default, MySQL will be used. If you haven't set up a password for MySQL yet, you can do it with:
+`analytics_conf.yml` has configurations for Google Analytics and is also optional. You can change it at any time and restart the application.
 
-{{{
-mysqladmin -u root password "NEW-PASSWORD" # Use the quotes, they are not part of the password
-}}}
-
-Or, in case you want to change the password:
-
-{{{
-mysqladmin -u root -p password "NEW-PASSWORD"
-}}}
-
-
+`database.yml` configures the database and you *have* to configure it now. By default, MySQL will be used. 
 
 
 
@@ -116,7 +103,7 @@ mysqladmin -u root -p password "NEW-PASSWORD"
 
 ==== 5.1. Web server ====
 
-You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache if you're installing Mconf-Web in the same machine that has !BigBlueButton. If Mconf-Web will be installed in a standalone machine, you can pick your favorite server.
+You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache (specially if you're installing Mconf-Web in the same machine that has !BigBlueButton).
 
 Mconf-Web uses Passenger to server the application together with Apache or Nginx. So you'll have to install Passenger and use it in the configurations of the web server. See the guide below for a how to:
 
@@ -138,19 +125,17 @@ Also, we use a gem called Whenever to setup the crontab with tasks for Mconf-Web
 
 ==== 5.3. Application configurations ====
 
-<font color=blue>Note about Capistrano: </font>If you'll use Capistrano this is not needed. See [MconfWebDeploymentWithCapistrano this page].
-
-
-This step consists of everything that was not possible to be done at 3. because we needed the configuration files properly edited.
+This step consists of everything that was not possible to be done before. because we needed the configuration files properly edited.
 
 We'll setup the database and generate a new [http://www.railsrocket.com/rake-secret secret key] for rails:
 
 {{{
+cd /var/www/mconf-web/current
 bundle exec rake setup:db RAILS_ENV=production
 bundle exec rake secret RAILS_ENV=production
 }}}
 
-After that, you should restart your application. See the maintenance tasks below.
+After that, you should restart your application. See the maintenance tasks below to know how.
 
 
 
@@ -164,36 +149,29 @@ To restart the application you need to restart the web server and god:
 
 {{{
 sudo /etc/init.d/apache2 restart  # if you're using apache
-sudo /etc/init.d/god terminate
+sudo /etc/init.d/god terminate    # to stop all child processes
 sudo /etc/init.d/god start
 }}}
 
-The web server you'll need to restart every time you change anything in the application (source code) or configuration files.
+The web server you have to restart every time you change anything in the application (source code) or in the configuration files.
 
-You don't always need to restart god, only if you changed anything in its configuration files or in files that the monitored processes use (for example, if you change the Gmail account settings used to send emails). If you're not sure, restart it. Also, we use the action "terminate" so that god will also stop all monitored processes before stopping itself. It will, for instance, stop delayed_job  (a gem used to send emails) and then, when god is restarted, delayed_job will also be restarted (and so your new configurations will be applied).
+You don't always need to restart god, only if you changed anything in its configuration files or in files that the monitored processes use (for example, if you change the Gmail account settings used to send emails). If you're not sure, restart it. Also, we use the action `terminate` so that god will also stop all monitored processes before stopping itself. It will, for instance, stop `delayed_job`  (a gem used to send emails) and then, when god is restarted, delayed_job will also be restarted (and so your new configurations will be applied).
 
 
 === Update ===
 
-At first, update your repository and checkout the version you want:
+Before starting, check the [MconfWebRoadMap changelog page] to see if there's anything else you'll need to do to upgrade your application besides what's written in this guide. Also make sure you create a *backup* of everything before updating (see how to do it below).
+
+If you're already deploying the branch `latest`, you just need to pull the changes from git:
 
 {{{
-cd ~/mconf-web/current
-git pull
-git checkout v0.6  # go to version 0.6
-}}}
-
-You can use the branch "latest" that will always point to the latest version:
-
-{{{
-git checkout latest
+cd /var/www/mconf-web/current
 git pull origin latest
 }}}
 
 Update the dependencies:
 
 {{{
-git submodule update
 bundle install --without=development test
 }}}
 
@@ -209,23 +187,18 @@ Update the crontab:
 bundle exec whenever --update-crontab RAILS_ENV=production
 }}}
 
-
-There are also other files that might need to be updated, such as the configuration files for God, that will not be configured with the commands above. To check if you need to do any extra work, check the update notes in the [MconfWebRoadMap changelog page].
-
 Restart the web server as described in the previous section.
-
-
 
 === Backup ===
 
-The most important backup you need is your database. If you're using MySQL, you can use the following commands to backup (and restore) the database used by Mconf-Web:
+The most important backup you need is your database. In MySQL, you can use the following commands to backup (and restore) the database used by Mconf-Web:
 
 {{{
 # backup
-mysqldump -u root -p mconf_production > mconf_production-`date +%F`.sql
+mysqldump -u mconf -p mconf_production > mconf_production-`date +%F`.sql
 
 # restore
-mysql -u root -p mconf_production < mconf_production-2011-06-21.sql
+mysql -u mconf -p mconf_production < mconf_production-2011-06-21.sql
 }}}
 
 There are also files that are not stored in the database, such as user images and attachments. And you also might want to backup your log files.
@@ -233,7 +206,13 @@ There are also files that are not stored in the database, such as user images an
 So make sure you backup the files in the following folders:
 
 {{{
-(...)/mconf-web/attachments/
-(...)/mconf-web/public/logos/
-(...)/mconf-web/log/
+/var/www/mconf-web/current/attachments/
+/var/www/mconf-web/current/public/logos/
+/var/www/mconf-web/current/log/
+}}}
+
+If you're not sure of what should be updated, you can backup the entire application folder:
+
+{{{
+tar -jcvf mconf-web-backup.tar.bz2 /var/www/mconf-web/current/
 }}}
