@@ -23,8 +23,10 @@ You need to install some system packages before you can run Mconf-web in product
 <font color=red>TODO: review this list</font>
 
     mysql-server mysql-client
-    awstats logrotate nfs-common libcurl4-openssl-dev
-    libxml2-dev libxslt1-dev libmagickcore-dev libmagickwand-dev imagemagick libmysqlclient-dev zlib1g-dev libreadline-dev
+    awstats logrotate
+    libcurl4-openssl-dev zlib1g-dev
+    wget curl
+    nfs-common libxml2-dev libxslt1-dev libmagickcore-dev libmagickwand-dev imagemagick libmysqlclient-dev libreadline-dev
 
 
 === 2. Ruby ===
@@ -39,7 +41,7 @@ If you decided to use RVM, don't forget to actually install Ruby (and not only R
 
 {{{
 rvm install RUBY_VERSION
-rvm --create --default use RUBY_VERSION@mconf;
+rvm --create --default use RUBY_VERSION@mconf
 sudo adduser mconf rvm
 }}}
 
