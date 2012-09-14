@@ -1,0 +1,30 @@
+#summary How to deploy Mconf-Web
+
+= Deployment =
+
+Before starting, there's a few *very important* things you should consider. The server setup we have right now, and thus the recommended setup, uses the following:
+
+  * This guide is targeted for *[http://www.ubuntu.com/ Ubuntu] 10.04* (even though steps are very similar for other Linux distributions);
+  * We use the database *MySQL*. We assume you have a user *`mconf`* that will be used to access the database;
+  * We use the web server *Apache* or *Nginx*;
+  * We use *[http://www.modrails.com/ Phusion Passenger]*;
+  * We currently uses Ruby *1.9.3-p194*. Use this version when we reference *`RUBY_VERSION`* in the guide. You can also see the exact version in this file: https://github.com/mconf/mconf-web/blob/latest/.rvmrc
+  * We currently use [https://rvm.beginrescueend.com/ RVM] *1.15.8*. Use this version to prevent any problems.
+  * We recommend that you deploy your application in *`/var/www/mconf-web/current`*;
+  * This guide assumes you have a user named *`mconf`* in your server and that you will use this user to deploy;
+
+
+But you can of course adapt it to your needs. Mconf-web is a Rails application, so the deployment process is very similar to the deployment of any other Rails application.
+
+Mconf-web should work on any operating system that has Ruby available (and most of them do have Ruby). But be aware that changing any of the items above will probably require modifications in the configuration files and scripts (and maybe even some code changes).
+
+The following guides will instruct you on how to setup this environment.
+
+
+== Deployment guides ==
+
+Start up your server and then proceed to one of the guides below: 
+
+  * *[MconfWebDeploymentManual Manual installation]*: This is a detailed guide showing how to install Mconf-Web. It's the standard option if you don't want to use Capistrano and/or if you're not a developer.
+
+  * *[MconfWebDeploymentWithCapistrano Using Capistrano]*: Capistrano is very useful for developers that want to deploy the application and be able to easily update it. It requires a development environment and at least some basic knowledge of Ruby and Rails. We use it to maintain https://mconf.org.
