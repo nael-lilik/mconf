@@ -22,11 +22,17 @@ You need to install some system packages before you can run Mconf-web in product
 
 <font color=red>TODO: review this list</font>
 
-    mysql-server mysql-client
-    awstats logrotate
-    libcurl4-openssl-dev zlib1g-dev
-    wget curl
-    nfs-common libxml2-dev libxslt1-dev libmagickcore-dev libmagickwand-dev imagemagick libmysqlclient-dev libreadline-dev
+{{{
+# really needed
+libcurl4-openssl-dev zlib1g-dev mysql-server mysql-client
+
+# recommended
+wget curl logrotate
+awstats # maybe?
+
+# others, to check
+nfs-common libxml2-dev libxslt1-dev libmagickcore-dev libmagickwand-dev imagemagick libmysqlclient-dev libreadline-dev
+}}}
 
 
 === 2. Ruby ===
