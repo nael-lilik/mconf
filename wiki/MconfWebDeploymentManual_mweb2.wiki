@@ -87,7 +87,7 @@ Then edit the files you just created. If you need help configuring them, see [Mc
 
 `analytics_conf.yml` has configurations for Google Analytics and is also optional. You can change it at any time and restart the application.
 
-`database.yml` configures the database and you *have* to configure it now. By default, MySQL will be used. 
+`database.yml` configures the database and you *have* to configure it now. By default, MySQL will be used. If you need with MySQL help take a look at [MconfWebDeploymentMySQL this page].
 
 
 === 5. Application configurations ===
