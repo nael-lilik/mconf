@@ -1,6 +1,6 @@
 #summary Step-by-step guide on how to deploy Mconf-Web
 
-*<font color=red>This is a draft, don't use it yet</font>*
+*<font color=red>This is a draft, don't use it</font>*
 
 = Mconf-Web Deployment Guide (step-by-step guide) =
 
@@ -10,7 +10,7 @@
 
 This is a step-by-step guide showing how to install Mconf-Web. If you have experience deploying a Rails application this guide should look very familiar to you. 
 
-<font color=red>Before starting, you *should* read the comments in [MconfWebDeployment this page]!</font>
+<font color=red>Before starting, you *should* read the comments in the [MconfWebDeployment deployment page clicking here].</font>
 
 
 == Installing Mconf-Web ==
@@ -91,7 +91,7 @@ bundle install --without=development test
 }}}
 
 
-=== 4. Edit the configuration files ===
+=== 4. Configuration files ===
 
 There are a few files that need to be configured. At first, copy the example files:
 
@@ -107,7 +107,9 @@ Then edit the files you just created. If you need help configuring them, see [Mc
 
 `analytics_conf.yml` has configurations for Google Analytics and is also optional. You can change it at any time and restart the application.
 
-`database.yml` configures the database and you *have* to configure it now. By default, MySQL will be used. If you need with MySQL help take a look at [MconfWebDeploymentMySQL this page].
+`database.yml` configures the database and you *have* to configure it now. By default, MySQL will be used. page].
+
+  * [MconfWebDeploymentMySQL Click here to see how to configure MySQL]
 
 
 === 5. Application configurations ===
