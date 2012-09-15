@@ -24,14 +24,19 @@ You need to install some system packages before you can run Mconf-web in product
 
 {{{
 # really needed
-libcurl4-openssl-dev zlib1g-dev mysql-server mysql-client
+build-essential g++ libcurl4-openssl-dev zlib1g-dev mysql-server mysql-client libmysqlclient-dev libxml2-dev libxslt1-dev libmagickcore-dev libmagickwand-dev
+
+# build-essential g++ for therubyracer and probably others
+# mysql-server mysql-client libmysqlclient-dev for MySQL
+# libxml2-dev libxslt1-dev for nokogiri
+# libmagickcore-dev libmagickwand-dev for rmagick
 
 # recommended
 wget curl logrotate
 awstats # maybe?
 
 # others, to check
-nfs-common libxml2-dev libxslt1-dev libmagickcore-dev libmagickwand-dev imagemagick libmysqlclient-dev libreadline-dev
+nfs-common imagemagick libreadline-dev
 }}}
 
 
@@ -70,7 +75,7 @@ cd /var/www/mconf-web/current
 git checkout latest     # branch that points to the latest version
 }}}
 
-The versions available are the tags available. To see all versions, see: https://github.com/mconf/mconf-web/tags. We recommend the use of the branch "latest", as it will always point to the latest version available.
+The versions available are the tags available. For a list of all versions see: https://github.com/mconf/mconf-web/tags. We recommend the use of the branch "latest", as it will always point to the latest version available.
 
 With the repository you can now install the dependencies:
 
