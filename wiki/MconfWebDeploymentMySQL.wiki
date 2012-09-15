@@ -7,24 +7,25 @@
 To set up a new password for a user in MySQL you can use:
 
 {{{
-mysqladmin -u mconf password "NEW-PASSWORD" # Use the quotes, they are not part of the password
+mysqladmin -u root password "NEW-PASSWORD" # Use the quotes, they are not part of the password
 }}}
 
 Or, in case you want to change the password:
 
 {{{
-mysqladmin -u mconf -p password "NEW-PASSWORD"
+mysqladmin -u root -p password "NEW-PASSWORD"
 }}}
 
-== Create databases and users ==
+== Create a database and a user ==
 
 This is an example of how to create a user `mconf` and a database `mconf_production` in MySQL.
 
 {{{
 mysql -u mconf -p # first open mysql
 
-# then, inside mysql:
-CREATE USER 'mconf'@'localhost' IDENTIFIED BY 'password';
+# in the commands below insert in "password" the actual password
+# inside mysql, run:
+CREATE USER "mconf"@"localhost" IDENTIFIED BY "password";
 CREATE DATABASE mconf_production;
 GRANT ALL PRIVILEGES ON mconf_production.* TO "mconf"@"localhost" IDENTIFIED BY "password";
 FLUSH PRIVILEGES;
@@ -32,10 +33,14 @@ FLUSH PRIVILEGES;
 
 == Backup ==
 
-{{{
-# backup
-mysqldump -u mconf -p mconf_production > mconf_production-`date +%F`.sql
+Backup the current db:
 
-# restore
-mysql -u mconf -p mconf_production < mconf_production-2011-06-21.sql
+{{{
+mysqldump -u mconf -p mconf_production > mconf_production-`date +%F`.sql
+}}}
+
+Restore a backup:
+
+{{{
+mysql -u mconf -p mconf_production < mconf_production-xxxx-xx-xx.sql
 }}}
