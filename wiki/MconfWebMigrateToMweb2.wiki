@@ -1,0 +1,29 @@
+*<font color=red>This is a draft, don't use it</font>*
+
+= Migration to Mconf-Web 2 =
+
+{{{
+bundle exec cap staging deploy:setup
+}}}
+
+On the server, move everything to `/var/www/mconf-web`:
+
+{{{
+cd ~/mconf-web
+cp -r releases/* /var/www/mconf-web/releases/
+cp -r shared/* /var/www/mconf-web/shared/
+cd ~
+rm -r mconf-web
+}}}
+
+Fix permissions:
+
+{{{
+sudo chown -R mconf:www-data /var/www/mconf-web/
+}}}
+
+Update the code:
+
+{{{
+bundle exec cap staging deploy:migrations
+}}}
