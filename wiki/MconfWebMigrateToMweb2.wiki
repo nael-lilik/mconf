@@ -1,6 +1,6 @@
 *<font color=red>This is a draft, don't use it</font>*
 
-= Migration to Mconf-Web 2 =
+= Migration to Mconf-Web 2 (using Capistrano) =
 
 Update RVM (currently using 1.15.9):
 
@@ -11,11 +11,7 @@ curl -L https://get.rvm.io | sudo bash -s stable
 Create the new folders:
 
 {{{
-# With capistrano
 bundle exec cap staging deploy:setup
-
-# Without capistrano
-sudo mkdir -p /var/www/mconf-web/current
 }}}
 
 On the server, move everything to `/var/www/mconf-web`:
@@ -26,11 +22,18 @@ cp -r ~/mconf-web/shared/* /var/www/mconf-web/shared/
 rm -r ~/mconf-web
 }}}
 
+Fix permissions:
+
+{{{
+sudo chown -R mconf:www-data /var/www/mconf-web/
+}}}
+
 Update Mconf-Web's directory in Apache: `/etc/apache2/sites-enabled/mconf-web-ssl`
 
 Update Passenger:
 
 {{{
+rvm use 1.9.3-p194@mconf
 gem install passenger -v 3.0.17
 rvmsudo passenger-install-apache2-module
 rvmsudo passenger-install-apache2-module --snippet | sudo tee /etc/apache2/conf.d/mconf-passenger
@@ -39,17 +42,7 @@ rvmsudo passenger-install-apache2-module --snippet | sudo tee /etc/apache2/conf.
 Update the code:
 
 {{{
-# With capistrano
 bundle exec cap staging deploy:migrations
-
-# Without capistrano
-...
-}}}
-
-Fix permissions:
-
-{{{
-sudo chown -R mconf:www-data /var/www/mconf-web/
 }}}
 
 Restart:
