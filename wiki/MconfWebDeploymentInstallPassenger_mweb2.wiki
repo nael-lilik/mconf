@@ -2,6 +2,8 @@
 
 _This page is part of the Mconf-Web deployment described in [MconfWebDeploymentManual this page]._
 
+*<font color=red>This is a draft, don't use it yet</font>*
+
 == Installing Passenger for Mconf-Web ==
 
 <wiki:toc max_depth="3" />
