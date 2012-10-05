@@ -83,6 +83,28 @@ Or, in case you want to change the password:
 mysqladmin -u root -p password "NEW-PASSWORD"
 }}}
 
+=== OpenSSL::SSL::SSLError ===
+
+If you see an error similar to the one below in your application's log file, you are probably accessing the application using HTTP but SSL is enabled in your Site model (or the opposite).
+
+{{{
+OpenSSL::SSL::SSLError (SSL_connect returned=1 errno=0 state=SSLv2/v3 read server hello A: unknown protocol)
+}}}
+
+To fix it, go to your application's directory and open the rails console:
+
+{{{
+cd /var/www/mconf-web/current
+RAILS_ENV=production bundle exec rails c
+}}}
+
+And then run:
+
+{{{
+Site.current.update_attributes(:ssl=> false) # of 'true' to enable it
+}}}
+
+
 === Problems related to Capistrano ===
 
 ==== `Net::SSH::AuthenticationFailed` ====
