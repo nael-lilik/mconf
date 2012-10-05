@@ -42,7 +42,7 @@ To install Ruby, we suggest the use of RVM (that's how we install ruby in develo
 
   * Using RVM (recommended): See [http://beginrescueend.com/rvm/install/ this page]. RVM can be installed as single-user or multi-user. For a production environment you should use the *multi-user* installation.
   * Using apt packages
-  * From source: You can also download and install ruby manually, similarly to what's done in the script used by !BigBlueButton but skipping the packaging. Make sure you use the version `RUBY_VERSION`. 
+  * From source: You can also download and install ruby manually, similarly to what's done in the script used by !BigBlueButton but skipping the packaging. Make sure you use the version `RUBY_VERSION` (see the version in [MconfWebDeployment this page]). 
 
 ==== RVM ====
 
@@ -56,10 +56,12 @@ rvm requirements
 Then you need to install Ruby, some packages and create a gemset for Mconf-web. Also, add your user to the "rvm" group.
 
 {{{
-rvm pkg install openssl
-rvm pkg install iconv
-rvm install RUBY_VERSION
-rvm --create --default use RUBY_VERSION@mconf
+rvmsudo rvm pkg install openssl
+rvmsudo rvm --skip-autoreconf pkg install iconv
+rvmsudo rvm install RUBY_VERSION
+rvm use RUBY_VERSION
+rvmsudo rvm gemset create mconf
+rvmsudo rvm alias create default RUBY_VERSION@mconf
 sudo adduser mconf rvm
 }}}
 
