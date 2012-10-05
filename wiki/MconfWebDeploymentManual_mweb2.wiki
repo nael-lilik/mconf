@@ -58,7 +58,8 @@ Then you need to install Ruby, some packages and create a gemset for Mconf-web. 
 {{{
 rvmsudo rvm pkg install openssl
 rvmsudo rvm --skip-autoreconf pkg install iconv
-rvmsudo rvm install RUBY_VERSION
+rvmsudo rvm pkg uninstall readline
+rvmsudo rvm install RUBY_VERSION --with-openssl-dir=/usr/local/rvm/usr
 rvm use RUBY_VERSION
 rvmsudo rvm gemset create mconf
 rvmsudo rvm alias create default RUBY_VERSION@mconf
