@@ -21,7 +21,7 @@ mysqladmin -u root -p password "NEW-PASSWORD"
 This is an example of how to create a user `mconf` and a database `mconf_production` in MySQL.
 
 {{{
-mysql -u mconf -p # first open mysql
+mysql -u root -p # first open mysql
 
 # in the commands below insert in "password" the actual password
 # inside mysql, run:
