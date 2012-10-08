@@ -175,7 +175,15 @@ FLUSH PRIVILEGES;
 
 Edit /etc/ejabberd/ejabberd.cfg:
 
-{{{
+{{{%%                                                                                                                                                                                                                                
+%% MySQL server:                                                                                                                                                                                                                  
+%%                           
+# Uncomment and chage to:                                                                                                                                                                                                     
+{odbc_server, {mysql, "localhost", "ejabberd", "ejabberd_log", "password"}}.
+%%
+
+...
+
 {mod_vcard,       [ {access_set, vcard_set} ]},
 {mod_version,  []},     # Put a comma on the end of this line
 {mod_archive_odbc, [{database_type, "mysql"},
