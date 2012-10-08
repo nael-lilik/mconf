@@ -176,18 +176,17 @@ FLUSH PRIVILEGES;
 Edit /etc/ejabberd/ejabberd.cfg:
 
 {{{
-  {mod_vcard,       [ {access_set, vcard_set} ]},
-  {mod_version,  []},     # Put a comma on the end of this line
-  {mod_archive_odbc, [{database_type, "mysql"},
-                      {default_auto_save, true },
-                      {enforce_default_auto_save, false },
-                      {default_expire, infinity },
-                      {enforce_min_expire, 0 },
-                      {enforce_max_expire, infinity },
-                      {replication_expire, 31536000 },
-                      {session_duration, 1800 },
-                      {wipeout_interval, 86400}]}
- ]}.
+{mod_vcard,       [ {access_set, vcard_set} ]},
+{mod_version,  []},     # Put a comma on the end of this line
+{mod_archive_odbc, [{database_type, "mysql"},
+                    {default_auto_save, true },
+                    {enforce_default_auto_save, false },
+                    {default_expire, infinity },
+                    {enforce_min_expire, 0 },
+                    {enforce_max_expire, infinity },
+                    {replication_expire, 31536000 },
+                    {session_duration, 1800 },
+                    {wipeout_interval, 86400}]}
 }}}
 
 Start ejabberd:
