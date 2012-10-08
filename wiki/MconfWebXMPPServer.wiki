@@ -175,10 +175,11 @@ FLUSH PRIVILEGES;
 
 Edit /etc/ejabberd/ejabberd.cfg:
 
-{{{%%                                                                                                                                                                                                                                
+{{{
+%%                                                                                                                                                                                                                                
 %% MySQL server:                                                                                                                                                                                                                  
 %%                           
-# Uncomment and chage to:                                                                                                                                                                                                     
+# Uncomment and change to:                                                                                                                                                                                                     
 {odbc_server, {mysql, "localhost", "ejabberd", "ejabberd_log", "password"}}.
 %%
 
