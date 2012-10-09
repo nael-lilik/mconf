@@ -10,20 +10,23 @@ _This page is part of the Mconf-Web deployment described in [MconfWebDeploymentM
 
 
 
-
-
 === Passenger with Apache ===
 
 To use Apache with Passenger, you first need to install Apache and some other dependencies required by Passenger:
 
 {{{
-sudo apt-get install apache2-mpm-prefork apache2-prefork-dev libapr1-dev libaprutil1-dev libcurl4-openssl-dev libssl-dev zlib1g-dev
+sudo apt-get install apache2-mpm-prefork apache2-prefork-dev libapr1-dev libaprutil1-dev \
+                     libcurl4-openssl-dev libssl-dev zlib1g-dev
 }}}
 
-Next, install Passenger (it's a ruby gem) and it's module for Apache. Passenger has a nice installer that will compile the Apache module and install it for you. If some dependency is missing it will warn you and help you install it. Run the following commands:
+Next, install Passenger (it's a ruby gem) and it's module for Apache. 
+
+In the commands below, replace `PASSENGER_VERSION` by the version of passenger specified [https://github.com/mconf/mconf-web/blob/latest/Gemfile in the Gemfile].
+
+Passenger has a nice installer that will compile the Apache module and install it for you. If some dependency is missing it will warn you and help you install it.Run the following commands:
 
 {{{
-rvmsudo gem install passenger -v PASSENGER_VERSION            # this version is also defined in the Gemfile
+rvmsudo gem install passenger -v PASSENGER_VERSION   # See the correct version in the Gemfile
 rvmsudo passenger-install-apache2-module
 }}}
 
