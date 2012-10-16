@@ -63,6 +63,8 @@ What the script does:
  * Sets a default presentation;
  * Enables FreeSWITCH to accept external calls (details [MconfFAQ#Voice_connection_timeout here]).
 
+<font color="red">*IMPORTANT:*</font> If you don't want to join the Mconf Network, please comment [https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh#L51 this line] of the Mconf-Node installation script.
+
 The !BigBlueButton demos will also be installed, but should be used only for testing purposes - after the validation test, you should remove them running:
 
 {{{
