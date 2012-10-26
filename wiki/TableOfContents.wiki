@@ -1,5 +1,5 @@
   * [Home Home]
-  * [MconfBBB Mconf-BigBlueButton]
+  * [MconfBBB Mconf-Live]
     * [MconfBBBApiChanges API Changes]
   * [MconfMobile Mconf-Mobile]
     * [MconfMobileCrashReport Crash report]
