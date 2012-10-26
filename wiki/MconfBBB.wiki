@@ -23,7 +23,7 @@ Main improvements in Mconf-Live in relation to !BigBlueButton 0.8:
 
 We have written a shell script to automatically install and configure a Mconf-Live instance, exactly the same system we are using on [https://mconf.org mconf.org]. The script will also install some tools so that your server will *automatically join* the Mconf Network, which you will be able to monitor through the [http://lb.mconf.org/dashboard Mconf Dashboard].
 
-You can read more about the Mconf Network at: http://mconf.org/m/about/network
+You can read more about the Mconf Network at: http://mconf.org/m/about/network.
 
 === Preparation ===
 
