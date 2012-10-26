@@ -8,9 +8,7 @@ If you only want to install Mconf-Live but you *don't want to join the network*,
 
 == About the current version ==
 
-Currently Mconf-Live is based on *!BigBlueButton 0.8*.
-
-Main differences between Mconf-Live and the version of !BigBlueButton it is based on:
+Main improvements in Mconf-Live in relation to !BigBlueButton 0.8:
 
 <wiki:comment>
  * Possibility to specify in the configuration file which resolutions the user can use during the conference;
