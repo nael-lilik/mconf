@@ -1,0 +1,88 @@
+= Mconf-Live =
+
+Mconf actively develops improvements and modifications for !BigBlueButton to generate the software we call Mconf-Live. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration that must be made in each instance of Mconf-Live. Mconf-Live is a customized version of !BigBlueButton, with improvements that may be available in future versions of !BigBlueButton. 
+
+If you intend to *join the [http://mconf.org/m/about/network Mconf Webconference Global Network]*, please send an e-mail to mconf AT mconf.org saying you are going to setup a Mconf Node, so we will know who is in charge of that server. And then proceed to install the server as specified below.
+
+If you only want to install Mconf-Live but you *don't want to join the network*, you will need to look at the [https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh installation script] and install everything except the [https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh#L50 server monitor]. If you have any doubts contact us at our mailing list (you can see the address at http://mconf.org/m/about/contact).
+
+== About the current version ==
+
+Main improvements in Mconf-Live in relation to !BigBlueButton 0.8:
+
+<wiki:comment>
+ * Possibility to specify in the configuration file which resolutions the user can use during the conference;
+ * Improved the video windows resize;
+ * A video dock to organize video windows;
+ * The correct configuration to enable Speex audio codec, which improves the audio quality.
+</wiki:comment>
+ * Shared notes module
+ * Layouts module
+
+== Install Mconf-Live and join the Mconf Network ==
+
+We have written a shell script to automatically install and configure a Mconf-Live instance, exactly the same system we are using on [https://mconf.org mconf.org]. The script will also install some tools so that your server will *automatically join* the Mconf Network, which you will be able to monitor through the [http://lb.mconf.org/dashboard Mconf Dashboard].
+
+You can read more about the Mconf Network at: http://mconf.org/m/about/network.
+
+=== Preparation ===
+
+As soon as you set up your server, it will start being monitored by the Mconf Monitoring Tool, but you won't see your server yet on the [http://lb.mconf.org/dashboard Mconf Dashboard] because it is disabled by default. This is just a security step - your server will join the Mconf Global Webconference Network only after we receive an e-mail containing:
+
+ * The server domain name
+ * The institution name
+ * The name and e-mail of the technician responsible for that server
+
+<font color="red">*IMPORTANT:*</font> 
+ * This script should be executed by a non-root user in a fresh dedicated *Ubuntu 10.04 Server* installation. It won't work on different versions of Ubuntu or other distributions;
+ * Check if your server meets [http://code.google.com/p/bigbluebutton/wiki/FAQ#What_are_the_minimum_hardware_requirements_for_the_BigBlueButton BigBlueButton's minimum hardware requirements];
+ * Be sure that you have opened for external access the ports TCP 80 (HTTP), TCP 9123 (Desktop Sharing), TCP 1935 (RTMP) and UDP 5060 (SIP);
+ * If you intend to use a domain name (like "mconf.org"), set that up before continuing.
+
+
+=== Using the script ===
+
+You can find the latest version of this file at: https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh
+
+To setup the Mconf Node, run in your server:
+
+{{{
+wget https://github.com/mconf/installation-scripts/raw/master/install-mconf-node.sh
+chmod +x install-mconf-node.sh
+./install-mconf-node.sh <DOMAIN_NAME>
+}}}
+
+What the script does:
+ * Upgrades the Ubuntu packages to the lastest 10.04 version;
+ * Install !BigBlueButton as described [http://code.google.com/p/bigbluebutton/wiki/08InstallationUbuntu#Installation_of_BigBlueButton_0.8 here]
+ * Installs the Live Notes Server;
+ * Install the Mconf Monitor;
+ * Deploys the Mconf modifications on !BigBlueButton;
+ * Sets a default presentation;
+ * Enables FreeSWITCH to accept external calls (details [MconfFAQ#Voice_connection_timeout here]).
+
+<font color="red">*IMPORTANT:*</font> If you don't want to join the Mconf Network, please comment [https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh#L51 this line] of the Mconf-Node installation script.
+
+The !BigBlueButton demos will also be installed, but should be used only for testing purposes - after the validation test, you should remove them running:
+
+{{{
+sudo apt-get purge bbb-demo
+}}}
+
+== Other tips ==
+
+During the installation:
+
+ * You will be asked for the `sudo` password
+ * You will be asked to accept the EULA for !TrueType core fonts
+ * When you get the following message, press Ctrl+C only once:
+{{{
+     [exec] Finalized, press Ctrl + C to quit
+}}}
+ * When the whole script finishes, reboot the server
+
+During the first start up after the installation the Live Notes Server will take a couple of minutes to start properly.
+
+== Troubleshooting ==
+
+For troubleshooting, please visit the [http://code.google.com/p/bigbluebutton/wiki/FAQ BigBlueButton support page] or send an to our mailing list (see http://mconf.org/m/about/contact).
