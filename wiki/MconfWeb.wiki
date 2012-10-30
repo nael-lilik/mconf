@@ -17,7 +17,7 @@ Mconf-web is a web application that connects to a Mconf-Live/!BigBlueButton (wor
 The instance of Mconf-Web used by Mconf is at: http://mconf.org/. This server is free for everyone to register and use to explore Mconf.
 
 
-== Differences between Mconf-web and VCC ==
+== Main differences between Mconf-Web and VCC ==
 
 The project supporting VCC has ended in the end of 2010, so it's development has been stopped since then. You can see the new directions VCC's team has taken at their [https://github.com/ging github page].
 
