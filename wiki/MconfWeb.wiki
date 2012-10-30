@@ -31,7 +31,7 @@ The integration with !BigBlueButton is based on two gems (that are also being de
 
   * *[https://github.com/mconf/bigbluebutton-api-ruby bigbluebutton-api-ruby]*: A library to access the !BigBlueButton API in Ruby applications. Developed on top of a gem called [http://code.google.com/p/bigbluebuttongem/ bigbluebuttongem] to be used in Mconf-Web.
 
-  * *[https://github.com/mconf/bigbluebutton_rails bigbluebutton_rails]*: An integration of BBB and Rails. It uses bigbluebutton-api-ruby to access the BBB API.
+  * *[https://github.com/mconf/bigbluebutton_rails bigbluebutton_rails]*: An integration of BigBlueButton and Rails. It uses bigbluebutton-api-ruby to access BigBlueButton's API.
 
 == How to Start ==
 
