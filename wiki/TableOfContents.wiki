@@ -1,6 +1,6 @@
   * [Home Home]
-  * [MconfBBB Mconf-Live]
-    * [MconfBBBApiChanges API Changes]
+  * [MconfLive Mconf-Live]
+    * [MconfLiveApiChanges API Changes]
   * [MconfMobile Mconf-Mobile]
     * [MconfMobileCrashReport Crash report]
     * [MconfMobileVideoIntegration Video-Integration]
