@@ -1,57 +1,31 @@
 = Mconf =
 
-|| [https://github.com/mconf/ Source code] || [Home#Subprojects Subprojects] || [Home#Demo_Server Demo Server] ||
-
 Mconf is a project that aims to create a complete and easy to use webconference system, with focus on the interaction with mobile devices and social networks.
-The project is currently built on top of the open source systems [http://www.bigbluebutton.org BigBlueButton] and [http://globalplaza.org/ Global Plaza].
+
+This wiki contains the technical documentation of Mconf. To learn more about the project, we recommend that you first read the content in our page: http://mconf.org
 
 The source code for all projects that compose Mconf can be found at https://github.com/mconf/
-
-You can find more information about the project at http://www.inf.ufrgs.br/prav/gtmconf (Portuguese and English)
 
   * For *feedbacks, suggestions and troubleshooting* (or anything else you need), [MconfFAQ see our FAQ] or contact us at our mailing list: `mconf-dev@googlegroups.com`
   * Found a *bug*? Please [http://code.google.com/p/mconf/issues/list create an issue].
   * Want to *collaborate*? Fork [https://github.com/mconf some of our repositories at github] and send a pull request!
 
-== Demo Server ==
 
-A demo server for Mconf-web can be found at: http://mconf.org/
-
-== Installing Mconf ==
-
-See [MconfInstallation this page] to find out how to install and use Mconf.
-
-== Subprojects ==
-
-  * [MconfMobile Mconf-Mobile]: Mconf-Mobile is an Android implementation of the !BigBlueButton client.
-  * [MconfWeb Mconf-Web]: Mconf-Web is the social network built on top of Global Plaza to enable access to !BigBlueButton and the interaction with other social networks and instant messaging clients.
-  * [MconfBBB Mconf-Live]: Here you can learn more about Mconf-Live, Mconf's customized version of !BigBlueButton.
-
-== Mconf overview diagrams ==
-
-=== Overview of the Mconf components ===
-
-https://lh5.googleusercontent.com/-YVDN_WUMU0w/TsavWIFWb2I/AAAAAAAAAoc/U6JU9_BLiOI/s758/Mconf---diagram---actual-3_ps.png
+The project is currently built on top of the open source system [http://www.bigbluebutton.org BigBlueButton].
 
 == Contributors ==
 
 Mconf is being developed at the Federal University of Rio Grande do Sul (UFRGS), in Porto Alegre, Brazil. Currently everyone involved in the project is a member of the [http://www.inf.ufrgs.br/prav/ PRAV] research group. The project is funded by [http://www.rnp.br/ RNP].
 
-Check [https://github.com/mconf our github] to see who's currently working on the project (or [http://code.google.com/p/mconf/people/list see it here at gcode]).
+Check our team to see who's currently working on the project: http://mconf.org/m/about/team (or you can also see it in [https://github.com/mconf our github page] or [http://code.google.com/p/mconf/people/list here at gcode]).
 
-== Mconf base systems ==
 
-Open source systems that form the base of Mconf.
+== Mconf Webconference Network ==
 
-=== !BigBlueButton ===
+Interested in the global webconference network? See this page for more information about it: http://mconf.org/m/about/network
 
-!BigBlueButton (BBB) is the webconferencing system used by Mconf-Web. BBB is developed in Java and Flash, and is one of the best open source webconferencing softwares (if not the best) today.
+== Documentation of our subprojects ==
 
-  * [http://www.bigbluebutton.org/ BigBlueButton.org]
-  * [http://code.google.com/p/bigbluebutton/ BigBlueButton at Google Code]
-
-=== Global Plaza ===
-
-Global Plaza (also know as VCC - Virtual Conference Centre) is a project developed in Ruby on Rails to provide a virtual event service for the Internet. It uses the Isabel system to provide webconferencing.
-
-You can find the Global Plaza project running at: http://www.globalplaza.org/
+  * [MconfMobile Mconf-Mobile]: Mconf-Mobile is an Android implementation of a webconference client.
+  * [MconfWeb Mconf-Web]: Mconf-Web is the social network that provides access to webconferences..
+  * [MconfLive Mconf-Live]: Here you can learn more about Mconf-Live, Mconf's webconference application.
