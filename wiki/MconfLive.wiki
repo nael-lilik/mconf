@@ -1,6 +1,6 @@
 = Mconf-Live =
 
-Mconf actively develops improvements and modifications for !BigBlueButton to generate the software we call Mconf-Live. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration that must be made in each instance of Mconf-Live. Mconf-Live is a customized version of !BigBlueButton, with improvements that may be available in future versions of !BigBlueButton. 
+Mconf actively develops improvements and modifications for [http://bigbluebutton.org BigBlueButton] (read more about it in the end of this page) to generate the software we call Mconf-Live. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration that must be made in each instance of Mconf-Live. Mconf-Live is a customized version of !BigBlueButton, with improvements that may be available in future versions of !BigBlueButton. 
 
 If you intend to *join the [http://mconf.org/m/about/network Mconf Webconference Global Network]*, please send an e-mail to mconf AT mconf.org saying you are going to setup a Mconf Node, so we will know who is in charge of that server. And then proceed to install the server as specified below.
 
@@ -86,3 +86,11 @@ During the first start up after the installation the Live Notes Server will take
 == Troubleshooting ==
 
 For troubleshooting, please visit the [http://code.google.com/p/bigbluebutton/wiki/FAQ BigBlueButton support page] or send an to our mailing list (see http://mconf.org/m/about/contact).
+
+
+== !BigBlueButton ==
+
+!BigBlueButton (BBB) is the base webconferencing system used by Mconf. It is developed in Java and Flash, and is one of the best open source webconferencing softwares (if not the best) today.
+
+  * [http://www.bigbluebutton.org/ BigBlueButton.org]
+  * [http://code.google.com/p/bigbluebutton/ BigBlueButton at Google Code]
