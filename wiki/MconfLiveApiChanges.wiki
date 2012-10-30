@@ -1,8 +1,8 @@
-#summary What's new in the BigBlueButton API used in Mconf
+#summary What's different between Mconf-Live's API and BigBlueButton's API
 
 The current version of Mconf-Live implements changes in [http://code.google.com/p/bigbluebutton/wiki/API BigBlueButton's standard API]. You can see these changes below.
 
-= Mconf-BigBlueButton API changes =
+= Mconf-Live API changes =
 
 All the current API changes are in the branch "audio-video-on-api-2" in Mconf's fork of !BigBlueButton. See:
   * Branch: https://github.com/mconf/bigbluebutton/tree/audio-video-on-api-2
