@@ -16,7 +16,7 @@ sudo pip install requests
 Install the module `mod_admin_extra` (additional ejabberd commands). Needed to use VCards.
 
 {{{
-sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/mod_admin_extra.beam -O /usr/lib/ejabberd/ebin/mod_admin_extra.beam
+sudo wget https://github.com/mconf/mconf-web/raw/latest/config/xmpp/mod_admin_extra.beam -O /usr/lib/ejabberd/ebin/mod_admin_extra.beam
 }}}
 
 To start/stop it use:
@@ -110,7 +110,7 @@ FLUSH PRIVILEGES;
 Then get the script:
 
 {{{
-sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/JabberAuth.py -O /var/lib/ejabberd/JabberAuth.py
+sudo wget https://github.com/mconf/mconf-web/raw/latest/config/xmpp/JabberAuth.py -O /var/lib/ejabberd/JabberAuth.py
 sudo chown ejabberd:ejabberd /var/lib/ejabberd/JabberAuth.py
 }}}
 
@@ -146,21 +146,21 @@ sudo /etc/init.d/ejabberd stop
 Install the modules `mod_archive_odbc', 'mysql', 'mysql_auth', 'mysql_conn' and 'mysql_recv'.
 
 {{{
-sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/mod_archive_odbc.beam -O /usr/lib/ejabberd/ebin/mod_archive_odbc.beam
+sudo wget https://github.com/mconf/mconf-web/raw/latest/config/xmpp/mod_archive_odbc.beam -O /usr/lib/ejabberd/ebin/mod_archive_odbc.beam
 
-sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/mysql.beam -O /usr/lib/ejabberd/ebin/mysql.beam
+sudo wget https://github.com/mconf/mconf-web/raw/latest/config/xmpp/mysql.beam -O /usr/lib/ejabberd/ebin/mysql.beam
 
-sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/mysql_auth.beam -O /usr/lib/ejabberd/ebin/mysql_auth.beam
+sudo wget https://github.com/mconf/mconf-web/raw/latest/config/xmpp/mysql_auth.beam -O /usr/lib/ejabberd/ebin/mysql_auth.beam
 
-sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/mysql_conn.beam -O /usr/lib/ejabberd/ebin/mysql_conn.beam
+sudo wget https://github.com/mconf/mconf-web/raw/latest/config/xmpp/mysql_conn.beam -O /usr/lib/ejabberd/ebin/mysql_conn.beam
 
-sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/mysql_recv.beam -O /usr/lib/ejabberd/ebin/mysql_recv.beam
+sudo wget https://github.com/mconf/mconf-web/raw/latest/config/xmpp/mysql_recv.beam -O /usr/lib/ejabberd/ebin/mysql_recv.beam
 }}}
 
 Then get the script and execute it (replace $USER$ by your MYSQL user). 
 
 {{{
-sudo wget https://raw.github.com/mconf/mconf-web/master/config/xmpp/mod_archive_odbc_mysql.sql -O /tmp/mod_archive_odbc_mysql.sql
+sudo wget https://github.com/mconf/mconf-web/raw/latest/config/xmpp/mod_archive_odbc_mysql.sql -O /tmp/mod_archive_odbc_mysql.sql
 
 mysql -u $USER$ -p < /tmp/mod_archive_odbc_mysql.sql
 }}}
