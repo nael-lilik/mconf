@@ -24,7 +24,7 @@ This wiki aims to provide information on how to install Mconf-Live integrated to
 
 == Joining the Mconf Network ==
 
-You can read more about the Mconf Network at: http://mconf.org/m/about/network.
+You can read about the Mconf Network at http://mconf.org/m/about/network.
 
 === Requisites ===
 
