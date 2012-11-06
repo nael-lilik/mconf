@@ -63,7 +63,7 @@ The first step is to fill the metadata presented below and send it to mconf AT m
  * `responsible_name`: the technician responsible for the server
  * `responsible_email`: e-mail contact of the responsible
 
-*It's is responsibility of all partners to keep the metadata updated.*
+*It is responsibility of all partners to keep the metadata updated.*
 
 The second step is to install the Chef Client. For that we will send by e-mail a validation key, that will be used to register your server on the Mconf Chef Server. The validation key must be placed on 
 
