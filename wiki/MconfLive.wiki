@@ -1,92 +1,103 @@
 = Mconf-Live =
 
-Mconf actively develops improvements and modifications for [http://bigbluebutton.org BigBlueButton] (read more about it in the end of this page) to generate the software we call Mconf-Live. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration that must be made in each instance of Mconf-Live. Mconf-Live is a customized version of !BigBlueButton, with improvements that may be available in future versions of !BigBlueButton. 
+Mconf-Live is an open source webconference system based on [http://bigbluebutton.org BigBlueButton]. It is part of the Mconf project, which includes a web portal in a social network format, a mobile client and a Global Webconference Network with load balancing, real-time monitor and usage reports.
 
-If you intend to *join the [http://mconf.org/m/about/network Mconf Webconference Global Network]*, please send an e-mail to mconf AT mconf.org saying you are going to setup a Mconf Node, so we will know who is in charge of that server. And then proceed to install the server as specified below.
+This wiki aims to provide information on how to install Mconf-Live integrated to the Mconf Network, the documentation about all versions and the roadmap.
 
-If you only want to install Mconf-Live but you *don't want to join the network*, you will need to look at the [https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh installation script] and install everything except the [https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh#L50 server monitor]. If you have any doubts contact us at our mailing list (you can see the address at http://mconf.org/m/about/contact).
+== Changelog ==
 
-== About the current version ==
+=== mconf-live0.2 (9th November 2012) ===
+ * Source code: https://github.com/mconf/bigbluebutton/tree/mconf-live0.2
+ * Based on !BigBlueButton 0.8
+ * Notes window, an area for text collaboration
+ * Layout manager - users can set pre-defined window layouts independently, and moderators can lock the layout of everyone in the session
+ * Guest role - moderators must allow or deny the presence of a given user that tries to join a session as guest
+ * Fully automation of the installation and updates of the software and configurations using Chef (http://www.opscode.com/chef/)
 
-Main improvements in Mconf-Live in relation to !BigBlueButton 0.8:
+=== bbb0.8-mconf0.1 (May 2012) ===
+ * Source code: https://github.com/mconf/bigbluebutton/tree/mconf-bbb0.8
+ * Based on !BigBlueButton 0.8 Beta 2
+ * Notes window, an area for text collaboration
+ * Preliminary version of the layout manager - users can set pre-defined window layouts independently
 
-<wiki:comment>
- * Possibility to specify in the configuration file which resolutions the user can use during the conference;
- * Improved the video windows resize;
- * A video dock to organize video windows;
- * The correct configuration to enable Speex audio codec, which improves the audio quality.
-</wiki:comment>
- * Shared notes module
- * Layouts module
+== Roadmap ==
 
-== Install Mconf-Live and join the Mconf Network ==
-
-We have written a shell script to automatically install and configure a Mconf-Live instance, exactly the same system we are using on [https://mconf.org mconf.org]. The script will also install some tools so that your server will *automatically join* the Mconf Network, which you will be able to monitor through the [http://lb.mconf.org/dashboard Mconf Dashboard].
+== Joining the Mconf Network ==
 
 You can read more about the Mconf Network at: http://mconf.org/m/about/network.
 
-=== Preparation ===
+=== Requisites ===
 
-As soon as you set up your server, it will start being monitored by the Mconf Monitoring Tool, but you won't see your server yet on the [http://lb.mconf.org/dashboard Mconf Dashboard] because it is disabled by default. This is just a security step - your server will join the Mconf Global Webconference Network only after we receive an e-mail containing:
+ * You must install it in a fresh Ubuntu Server 10.04 LTS installation. It won't work on any other linux distributions or Ubuntu versions;
+ * The server must be dedicated to host the Mconf Node (it can be a VPS);
+ * The server must fit the [http://code.google.com/p/bigbluebutton/wiki/FAQ#What_are_the_minimum_hardware_requirements_for_the_BigBlueButton BigBlueButton minimum hardware requirements];
+ * Be sure that you have opened for external access the ports TCP 80 (HTTP), TCP 9123 (Desktop Sharing), TCP 1935 (RTMP), UDP 5060 (SIP) and UDP 16384-32768 (RTP).
 
- * The server domain name
- * The institution name
- * The name and e-mail of the technician responsible for that server
+=== Deployment ===
 
-<font color="red">*IMPORTANT:*</font> 
- * This script should be executed by a non-root user in a fresh dedicated *Ubuntu 10.04 Server* installation. It won't work on different versions of Ubuntu or other distributions;
- * Check if your server meets [http://code.google.com/p/bigbluebutton/wiki/FAQ#What_are_the_minimum_hardware_requirements_for_the_BigBlueButton BigBlueButton's minimum hardware requirements];
- * Be sure that you have opened for external access the ports TCP 80 (HTTP), TCP 9123 (Desktop Sharing), TCP 1935 (RTMP) and UDP 5060 (SIP);
- * If you intend to use a domain name (like "mconf.org"), set that up before continuing.
+Mconf-Live is installed using the Chef framework, and all the recipes used to deploy a Mconf Node are open source and available on !GitHub (https://github.com/mconf/chef-recipes). We do not provide any other way to install Mconf-Live without Chef, and this service is currently only available for the Mconf Network partners.
 
-
-=== Using the script ===
-
-You can find the latest version of this file at: https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh
-
-To setup the Mconf Node, run in your server:
+The first step is to fill the metadata presented below and send it to mconf AT mconf.org:
 
 {{{
-wget https://github.com/mconf/installation-scripts/raw/master/install-mconf-node.sh
-chmod +x install-mconf-node.sh
-./install-mconf-node.sh <DOMAIN_NAME>
+{
+  "metadata": {
+    "server_alias":"PRAV-UFRGS 1",
+    "server_url":"http://mconf.org:8888",
+    "server_location":"Porto Alegre-RS, Brazil",
+    "institution_name":"GT-Mconf",
+    "institution_website":"http://mconf.org/m",
+    "institution_portal":"https://mconf.org",
+    "responsible_name":"Felipe Cecagno",
+    "responsible_email":"felipe AT mconf.org"
+  }
+}
 }}}
 
-What the script does:
- * Upgrades the Ubuntu packages to the lastest 10.04 version;
- * Install !BigBlueButton as described [http://code.google.com/p/bigbluebutton/wiki/08InstallationUbuntu#Installation_of_BigBlueButton_0.8 here]
- * Installs the Live Notes Server;
- * Install the Mconf Monitor;
- * Deploys the Mconf modifications on !BigBlueButton;
- * Sets a default presentation;
- * Enables FreeSWITCH to accept external calls (details [MconfFAQ#Voice_connection_timeout here]).
+ * `server_alias`: the alias for the server that will be presented on the [http://lb.mconf.org Mconf Load Balancer]
+ * `server_url`: the URL for your server, including domain (or IP address, if it doesn't have a name) and port (when different than 80)
+ * `server_location`: the high level location of the server (granularity of "city" is fine)
+ * `institution_name`: name of the institution that is maintaining the server
+ * `institution_website`: website of the institution
+ * `institution_portal`: web portal used to access the webconference rooms - if your institution is using only the web portal mconf.org to access the conference rooms, leave it blank
+ * `responsible_name`: the technician responsible for the server
+ * `responsible_email`: e-mail contact of the responsible
 
-<font color="red">*IMPORTANT:*</font> If you don't want to join the Mconf Network, please comment [https://github.com/mconf/installation-scripts/blob/master/install-mconf-node.sh#L51 this line] of the Mconf-Node installation script.
+*It's is responsibility of all partners to keep the metadata updated.*
 
-The !BigBlueButton demos will also be installed, but should be used only for testing purposes - after the validation test, you should remove them running:
+The second step is to install the Chef Client. For that we will send by e-mail a validation key, that will be used to register your server on the Mconf Chef Server. The validation key must be placed on 
+
+`/etc/chef/validation.pem`
+
+If the given directory doesn't exist, create it.
+
+Then copy the script above and paste it in a file named `install-mconf-chef.sh`:
 
 {{{
-sudo apt-get purge bbb-demo
+# install chef client v -.10 on ubuntu server 10.04
+echo "deb http://apt.opscode.com/ `lsb_release -cs`-0.10 main" | sudo tee /etc/apt/sources.list.d/opscode.list
+
+sudo mkdir -p /etc/apt/trusted.gpg.d
+gpg --keyserver keys.gnupg.net --recv-keys 83EF826A
+gpg --export packages@opscode.com | sudo tee /etc/apt/trusted.gpg.d/opscode-keyring.gpg > /dev/null
+
+sudo apt-get update
+sudo apt-get install opscode-keyring -y --force-yes
+
+# if a ruby version was previously installed, it's removed before install the chef-client
+# this is because ruby 1.8.0 is a dependency of the package chef
+sudo update-alternatives --remove ruby /usr/bin/ruby1.9.2
+sudo dpkg -r ruby1.9.2
+
+# install chef client via package passing the server url
+echo "chef chef/chef_server_url string http://chef.mconf.org:4000" | sudo debconf-set-selections && sudo apt-get install chef -y
 }}}
 
-== Other tips ==
-
-During the installation:
-
- * You will be asked for the `sudo` password
- * You will be asked to accept the EULA for !TrueType core fonts
- * When you get the following message, press Ctrl+C only once:
-{{{
-     [exec] Finalized, press Ctrl + C to quit
-}}}
- * When the whole script finishes, reboot the server
-
-During the first start up after the installation the Live Notes Server will take a couple of minutes to start properly.
+After that, your server will be registered on the Mconf Chef Server. Then we will assign the role "[https://github.com/mconf/chef-recipes/blob/master/roles/mconf-node.json mconf-node]" to your server, and both software and configuration will get installed and updated.
 
 == Troubleshooting ==
 
-For troubleshooting, please visit the [http://code.google.com/p/bigbluebutton/wiki/FAQ BigBlueButton support page] or send an to our mailing list (see http://mconf.org/m/about/contact).
-
+For troubleshooting, please visit the mailing list (see [http://mconf.org/m/about/contact http://mconf.org/m/about/contact]) or send a message to support AT mconf.org.
 
 == !BigBlueButton ==
 
