@@ -9,7 +9,6 @@ This wiki aims to provide information on how to install Mconf-Live integrated to
 === mconf-live0.2 (9th November 2012) ===
  * Source code: https://github.com/mconf/bigbluebutton/tree/mconf-live0.2
  * Based on !BigBlueButton 0.8
- * Notes window, an area for text collaboration
  * Layout manager - users can set pre-defined window layouts independently, and moderators can lock the layout of everyone in the session
  * Guest role - moderators must allow or deny the presence of a given user that tries to join a session as guest
  * Fully automation of the installation and updates of the software and configurations using Chef (http://www.opscode.com/chef/)
@@ -35,9 +34,9 @@ You can read about the Mconf Network at http://mconf.org/m/about/network.
 
 === Deployment ===
 
-Mconf-Live is installed using the Chef framework, and all the recipes used to deploy a Mconf Node are open source and available on !GitHub (https://github.com/mconf/chef-recipes). We do not provide any other way to install Mconf-Live without Chef, and this service is currently only available for the Mconf Network partners.
+Mconf-Live is installed using the [http://www.opscode.com/chef/ Chef framework], and all the recipes used to deploy a Mconf Node are open source and available on !GitHub (https://github.com/mconf/chef-recipes). We do not provide any other way to install Mconf-Live without Chef, and this service is currently only available for the Mconf Network partners.
 
-The first step is to fill the metadata presented below and send it to mconf AT mconf.org:
+The first step is to fill the metadata presented below and send it to support AT mconf.org:
 
 {{{
 {
@@ -46,7 +45,7 @@ The first step is to fill the metadata presented below and send it to mconf AT m
     "server_url":"http://mconf.org:8888",
     "server_location":"Porto Alegre-RS, Brazil",
     "institution_name":"GT-Mconf",
-    "institution_website":"http://mconf.org/m",
+    "institution_website":"http://inf.ufrgs.br/prav/gtmconf",
     "institution_portal":"https://mconf.org",
     "responsible_name":"Felipe Cecagno",
     "responsible_email":"felipe AT mconf.org"
@@ -63,18 +62,20 @@ The first step is to fill the metadata presented below and send it to mconf AT m
  * `responsible_name`: the technician responsible for the server
  * `responsible_email`: e-mail contact of the responsible
 
-*It is responsibility of all partners to keep the metadata updated.*
+*It is responsibility of all partners to keep the metadata of their servers updated.*
 
-The second step is to install the Chef Client. For that we will send by e-mail a validation key, that will be used to register your server on the Mconf Chef Server. The validation key must be placed on 
+The second step is to install the Chef Client. For that we will send by e-mail a validation key, that will be used to register your server on the Mconf Chef Server. The validation key must be placed on:
 
-`/etc/chef/validation.pem`
+{{{
+/etc/chef/validation.pem
+}}}
 
 If the given directory doesn't exist, create it.
 
-Then copy the script above and paste it in a file named `install-mconf-chef.sh`:
+Then copy the script below and paste it in a file named `install-mconf-chef.sh`:
 
 {{{
-# install chef client v -.10 on ubuntu server 10.04
+# install chef client v0.10.x on ubuntu server 10.04
 echo "deb http://apt.opscode.com/ `lsb_release -cs`-0.10 main" | sudo tee /etc/apt/sources.list.d/opscode.list
 
 sudo mkdir -p /etc/apt/trusted.gpg.d
