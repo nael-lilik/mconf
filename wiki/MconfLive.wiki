@@ -82,6 +82,8 @@ If the given directory doesn't exist, create it. *Do not continue before receivi
 Then copy the script below and paste it in a file named `install-mconf-chef.sh`:
 
 {{{
+#!/bin/bash
+
 # install chef client v0.10.x on ubuntu server 10.04
 echo "deb http://apt.opscode.com/ `lsb_release -cs`-0.10 main" | sudo tee /etc/apt/sources.list.d/opscode.list
 
