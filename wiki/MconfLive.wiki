@@ -77,7 +77,7 @@ The second step is to install the Chef Client. For that we will send by e-mail a
 /etc/chef/validation.pem
 }}}
 
-If the given directory doesn't exist, create it.
+If the given directory doesn't exist, create it. *Do not continue before receiving the validation key.*
 
 Then copy the script below and paste it in a file named `install-mconf-chef.sh`:
 
