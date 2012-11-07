@@ -25,12 +25,13 @@ This wiki aims to provide information on how to install Mconf-Live integrated to
 
 You can read about the Mconf Network at http://mconf.org/m/about/network.
 
-=== Requisites ===
+=== Requirements ===
 
  * You must install it in a fresh Ubuntu Server 10.04 LTS installation. It won't work on any other linux distributions or Ubuntu versions;
  * The server must be dedicated to host the Mconf Node (it can be a VPS);
  * The server must fit the [http://code.google.com/p/bigbluebutton/wiki/FAQ#What_are_the_minimum_hardware_requirements_for_the_BigBlueButton BigBlueButton minimum hardware requirements];
  * Be sure that you have opened for external access the ports TCP 80 (HTTP), TCP 9123 (Desktop Sharing), TCP 1935 (RTMP), UDP 5060 (SIP) and UDP 16384-32768 (RTP);
+ * Your server must answer ICMP (Ping), which is used to check if your server is UP or DOWN;
  * If you intend to use a domain name (like "mconf.org"), set that up before continuing;
  * Set the server hostname properly, since the hostname + domain will identify the server on Chef Server. Prefer a hostname like `mconf1-<institution-name>` or some other relevant name, and set it on both `/etc/hostname` and `/etc/hosts`. Reboot the server before continuing;
  * Set up the NTP service properly ([http://articles.slicehost.com/2010/11/8/using-ntp-to-sync-time-on-ubuntu see this link]).
