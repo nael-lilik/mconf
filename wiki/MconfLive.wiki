@@ -32,7 +32,9 @@ You can read about the Mconf Network at http://mconf.org/m/about/network.
  * The server must fit the [http://code.google.com/p/bigbluebutton/wiki/FAQ#What_are_the_minimum_hardware_requirements_for_the_BigBlueButton BigBlueButton minimum hardware requirements];
  * Be sure that you have opened for external access the ports TCP 80 (HTTP), TCP 9123 (Desktop Sharing), TCP 1935 (RTMP), UDP 5060 (SIP) and UDP 16384-32768 (RTP);
  * If you intend to use a domain name (like "mconf.org"), set that up before continuing;
- * Set the server hostname properly, since the hostname + domain will identify the server on Chef Server. Prefer a hostname like `mconf1-<institution-name>` or some other relevant name, and set it on both `/etc/hostname` and `/etc/hosts`. Reboot the server before continuing.
+ * Set the server hostname properly, since the hostname + domain will identify the server on Chef Server. Prefer a hostname like `mconf1-<institution-name>` or some other relevant name, and set it on both `/etc/hostname` and `/etc/hosts`. Reboot the server before continuing;
+ * Set up the NTP service properly ([http://articles.slicehost.com/2010/11/8/using-ntp-to-sync-time-on-ubuntu see this link]).
+.
 
 === Deployment ===
 
@@ -45,6 +47,7 @@ The first step is to fill the metadata presented below and send it to support AT
   "metadata": {
     "server_alias":"PRAV-UFRGS 1",
     "server_url":"http://mconf.org:8888",
+    "server_hostname":"mconf-prav1",
     "server_location":"Porto Alegre-RS, Brazil",
     "institution_name":"GT-Mconf",
     "institution_website":"http://inf.ufrgs.br/prav/gtmconf",
@@ -57,6 +60,7 @@ The first step is to fill the metadata presented below and send it to support AT
 
  * `server_alias`: the alias for the server that will be presented on the [http://lb.mconf.org Mconf Load Balancer]
  * `server_url`: the URL for your server, including domain (or IP address, if it doesn't have a name) and port (when different than 80)
+ * `server_hostname`: the hostname of the server, that can be checked on `/etc/hostname` - it identifies the server on Chef Server, as explained above
  * `server_location`: the high level location of the server (granularity of "city" is fine)
  * `institution_name`: name of the institution that is maintaining the server
  * `institution_website`: website of the institution
