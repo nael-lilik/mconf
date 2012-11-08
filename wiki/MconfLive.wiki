@@ -35,7 +35,6 @@ You can read about the Mconf Network at http://mconf.org/m/about/network.
  * If you intend to use a domain name (like "mconf.org"), set that up before continuing;
  * Set the server hostname properly, since the hostname + domain will identify the server on Chef Server. Prefer a hostname like `mconf1-<institution-name>` or some other relevant name, and set it on both `/etc/hostname` and `/etc/hosts`. Reboot the server before continuing;
  * Set up the NTP service properly ([http://articles.slicehost.com/2010/11/8/using-ntp-to-sync-time-on-ubuntu see this link]).
-.
 
 === Deployment ===
 
