@@ -104,6 +104,12 @@ If you are a developer and want to be part of this project, you can pick an issu
 
 = Changelog =
 
+v0.4.8 (November 10th 2012)
+ * Compatibility with the Mconf-Live 0.2
+ * The app now parses the BigBlueButton config.xml and uses that information to auto join the voice conference, for instance
+ * Improvements on stability
+ * Minor bug fixes
+
 v0.4.7 (May 15th 2012)
  * Included Spanish and Persian translation
  * Fixed an important issue introduced when we started to use the Mconf Load Balancer with the web portal mconf.org
