@@ -45,12 +45,12 @@ The first step is to fill the metadata presented below and send it to support AT
 {{{
 {
   "metadata": {
-    "server_alias":"PRAV-UFRGS 1",
-    "server_url":"http://mconf.org:8888",
-    "server_hostname":"mconf-prav1",
+    "server_alias":"UFRGS 1",
+    "server_url":"http://mconf1.ufrgs.br",
+    "server_hostname":"mconf1",
     "server_location":"Porto Alegre-RS, Brazil",
-    "institution_name":"GT-Mconf",
-    "institution_website":"http://inf.ufrgs.br/prav/gtmconf",
+    "institution_name":"Universidade Federal do Rio Grande do Sul",
+    "institution_website":"http://ufrgs.br",
     "institution_portal":"https://mconf.org",
     "responsible_name":"Felipe Cecagno",
     "responsible_email":"felipe AT mconf.org"
