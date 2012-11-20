@@ -135,9 +135,30 @@ The Load Balancer has also a Dashboard, a web page that shows in real-time the s
 The main idea of the dashboard is to provide an easy way to the administrators to see the state of the network and easily detect possible problems. The dashboard won't show all the information available in the monitoring server, but a reduced set of information including only what's really important and show it in a compact and easy-to-use interface.
 
 
-= Software updates =
+= Chef: software updates =
 
-... Chef ...
+Before the distributed network, the steps we took to update the version a web conference server were all manual: ssh to the server machine and run a bunch of commands that will update the server. If anything went wrong we had to figure it out and fix it while updating. This approach would be terrible in a distributed network where we have several web conference servers and not a single one. And even worse in the Mconf Network, because since we don't have ssh access to all servers (each institution is responsible for their own servers) it would demand more from the administrators of each institution.
+
+To simplify and automate the process, we started using a software called [http://www.opscode.com/chef/ Chef]. With Chef, a set of ruby scripts (called recipes) are written to automate the installation of *everything* that runs in a web conference server. So from a computer with a basic O.S. installed, we can install the Chef client, run the recipes and it will become a web conference server.
+
+You can see below an image showing how the process of developing new recipes and updating the web conference servers work:
+
+https://lh4.googleusercontent.com/-aES7rhx2LJM/UKvCsi1eJ8I/AAAAAAAAAws/6G1WpQje984/s642/Mconf%2520Network%2520-%2520Chef.png
+
+
+It starts in a development environment, where new recipes are written to install the new features developed in the web conference software. These recipes are sent to a git repository where they will be available for the Chef server.
+The Chef server is then updated: this can be done in more than one way, currently a developer logs into it and downloads the recipes from the git repository.
+
+Meanwhile, the nodes (the web conference servers) are periodically consulting the Chef server to see if there's anything new for them. They will always fetch the recipes and execute them, so if there's anything new it will be installed. If nothing changed in the recipes, they should detect it and shouldn't run anything in the node.
+
+This was just a brief description of how it currently works in the Mconf Network, but Chef is very flexible and can be configured in different ways. In short, the main advantage of using Chef is that the updates can be triggered remotely to *all* nodes in the network, and doesn't require manual configuration in the nodes. Also, the scripts are written in ruby, a dynamic, easy-to-use programming language.
+
+For the Mconf Network, this reduces the work needed from the administrators of each institution, since the updates will be automatic and less error-prone (since all recipes are tested before an update).
+
+
+== Resources ==
+
+All recipes written for Mconf are open source and available at: https://github.com/mconf/chef-recipes
 
 
 = Testing =
@@ -149,5 +170,11 @@ This application can also be used by anyone that wants to test Mconf-Live/!BigBl
 BBBot is open source and is available at: https://github.com/mconf/bbbot
 
 
+
+
+
+<font color="red">
 = TODO =
   * x-forwarded-for in the apps
+  * web servers in the network are managed by each institution (maybe add in the page at mconf.org)
+</font>
