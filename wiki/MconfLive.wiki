@@ -34,7 +34,8 @@ You can read about the Mconf Network at http://mconf.org/m/about/network.
  * Your server must answer ICMP (Ping), which is used to check if your server is UP or DOWN;
  * If you intend to use a domain name (like "mconf.org"), set that up before continuing;
  * Set the server hostname properly (as described on next section);
- * Set up the NTP service properly ([http://articles.slicehost.com/2010/11/8/using-ntp-to-sync-time-on-ubuntu see this link]).
+ * Set up the NTP service properly ([http://articles.slicehost.com/2010/11/8/using-ntp-to-sync-time-on-ubuntu see this link]);
+ * Subscribe to the Mconf Network members group ([https://groups.google.com/d/forum/mconf-network https://groups.google.com/d/forum/mconf-network]).
 
 === Setting up the hostname properly ===
 
