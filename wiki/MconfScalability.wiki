@@ -177,6 +177,6 @@ A list of technical tips for people using or about to use Mconf's solution for s
 
   * Learn how the API works by reading:
     * !BigBlueButton's API: http://code.google.com/p/bigbluebutton/wiki/API
-    * Mconf-Live's changes: MconfLiveApiChanges
-    * The Load Balancer's API: MconfLBAPI
+    * Mconf-Live's changes: [MconfLiveApiChanges here]
+    * The Load Balancer's API: [MconfLBAPI here]
   * Set the HTTP header *`x-forwarded-for`* in your requests to the load balancer. The value of it should be the client's IP, so that the load balancer can properly select an adequate server for him. The load balancer needs this IP to define the location of the client, otherwise it will only know the location of the server that sent the request (your Moodle server, for instance). If you're using Mconf-Web you don't need to do anything, since it already sets this header by default.
