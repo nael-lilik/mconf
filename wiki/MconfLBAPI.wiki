@@ -1,0 +1,42 @@
+#summary The API of our load balancer
+
+<font color="red">This is currently a draft.</font>
+
+= Mconf Load Balancer's API =
+
+
+The load balancer implements [http://code.google.com/p/bigbluebutton/wiki/API BigBlueButton's standard API], so that any application that integrates with Mconf-Live/!BigBlueButton, can also be used with the load balancer. This includes [MconfWeb Mconf-Web] and the integrations listed in [http://www.bigbluebutton.org/open-source-integrations/ BigBlueButton's website].
+
+
+However, the Load Balancer's API currently has some very small differences from BigBlueButton's API and more could be added in the future. But it is extremely important that, even with these small differences, the existent front-end applications should not need to be adapted to use the Mconf infrastructure.
+
+The differences from the API of Mconf-Live/!BigBlueButton are described below.
+
+
+== Root path ==
+
+Accessing the root path of the API will return information about the server. In the load balancer some information was added to the response to include details about itself.
+
+*Response:*
+
+|| *Change* || *Param Name* || *When Returned* || *Type* || *Description* ||
+|| Added || `custom` || Always || Block || Only a tag to group other tags. ||
+|| Added || `name` || Always || String || Name of the application. ||
+|| Added || `version` || Always || String || Current version of the application. ||
+|| Added || `deploy` || Always || Number || Current deploy number (incremental since the first deploy). ||
+|| Added || `revision` || Always || String || Current git revision. ||
+
+*Example Response:*
+
+{{{
+<response>
+   <returncode>SUCCESS</returncode>
+   <version>0.8</version>
+   <custom> <!-- Added -->
+      <name>mconf-lb</name> <!-- Added -->
+      <version>0.3.0</version> <!-- Added -->
+      <deploy>16</deploy> <!-- Added -->
+      <revision>66c201586e9eecf233108cfb69ff771de3b21d6a</revision> <!-- Added -->
+   </custom>
+</response>
+}}}
