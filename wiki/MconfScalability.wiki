@@ -1,5 +1,7 @@
 <font color="red">This is currently a draft.</font>
 
+<wiki:toc max_depth="4" />
+
 = Scaling Mconf =
 
 This document contains a documentation of the infrastructure used for scaling Mconf. It is also a documentation of how the Mconf Network (see more about it at http://mconf.org/m/about/network) works today.
@@ -62,7 +64,7 @@ There is also another plugin that was implemented to enable a !BigBlueButton ser
 
 The intervals in which the Monitoring Server receives these information is configurable. For example, we could use 10 seconds for memory, processor and network reports, and 30 seconds for web conference reports. Also, some of the reports listed above are passive: there's a very simple application installed in the web conference servers that periodically sends information to the configured Monitoring Server. Other reports, such as "`BigBlueButton report`" are active: the Monitoring Server periodically consults each web conference server to get the data.
 
-The interactions between the web conference servers and the Monitoring Server are shown in the item *(2.a)* in the architecture image.
+The interactions between the web conference servers and the Monitoring Server are shown in the item *2.a* in the architecture image.
 
 ===== Database and graphics =====
 
@@ -82,15 +84,43 @@ Also, all the plugins and tools used with Nagios that were implemented by Mconf 
 
 ==== Mconf Load Balancer ====
 
-...
+Another important element in the infrastructure is the Mconf Load Balancer. It is responsible for deciding in which server a meeting should be created in order to balance the load among all servers in the cloud. It uses the metrics collected by the monitoring system (item *2.b* in the architecture image above) to constantly avail the servers in the infrastructure, so when a user requests a new webconference room, the load balancer uses all the monitoring information to select the most appropriate server to run the conference (item *2.c* in the architecture image above).
 
-===== Algorithms =====
+See below more details about how the load balancer works.
 
-===== Dashboard =====
+
+===== API =====
+
+The API is the entry point for other applications to communicate with the load balancer and the web conference back-end. It can be used to create meetings, see the meetings that are running and get more information about these meetings.
+
+The load balancer implements *the same API* available in the web conference servers, but with a few changes. Mconf-Live has the same API implemented by !BigBlueButton and includes a few changes to it. You can find the documentation about the API of !BigBlueButton at [http://code.google.com/p/bigbluebutton/wiki/API this page], and the changes made on it by Mconf-Live at [MconfLiveApiChanges this page].
+
+Since the load balancer implements the same API, all applications that are already integrated with !BigBlueButton or Mconf-Live *don't need to be changed* to work with the load balancer. This is one of the most important things in the load balancer, since it enables all the integrations that !BigBlueButton already has (see [http://www.bigbluebutton.org/open-source-integrations/ this page]) to be used in this infrastructure.
+
+Moreover, the load balancer implements the mobile API, so [MconfMobile Mconf-Mobile and BBB-Android] can also connect to the load balancer. See more about this API in the [MconfMobile Mconf-Mobile page] or in the [https://github.com/bigbluebutton/bigbluebutton/blob/master/bbb-api-demo/src/main/webapp/mobile.jsp source code at GitHub].
+
+
 
 ===== Multiple clients (salts) =====
 
-===== Mobile API =====
+To access the API, the client applications need to known the salt of the load balancer, just as they would need to access Mconf-Live/!BigBlueButton (see more at http://code.google.com/p/bigbluebutton/wiki/API#API_Security_Model).
+
+To allow multiple applications (also called "clients") to access the same infrastructure, the load balancer is able to create multiple salts. Each application/client/institution has its own salt, and with this the load balancer is able to distinguish the client that is accessing it.
+
+The mobile applications, however, use a different salt to access a web conference server (see more at [http://code.google.com/p/mconf/wiki/MconfMobile#On_BigBlueButton_0.8_(still_on_beta) this page]). This salt has only 5 characters to make it easier to type in a mobile device. In the load balancer, the first 5 characters of the standard salt are used as the kye to mobile applications. So if the standard API salt is "`abcdefghijklmnopqrstuvwxyz123456`", the mobile salt will be "`abcde`".
+
+
+===== Algorithms =====
+
+It also uses the geographic location of the servers and client to decide for a server that’s closer to the client.
+
+
+===== Dashboard =====
+
+
+The Load Balancer has also a Dashboard, a web page that shows in real-time the state of all servers in the network. You can see the dashboard at: http://lb.mconf.org.
+
+
 ...
 
 
