@@ -100,6 +100,8 @@ The load balancer implements *the same API* available in the web conference serv
 
 Since the load balancer implements the same API, all applications that are already integrated with !BigBlueButton or Mconf-Live *don't need to be changed* to work with the load balancer. This is one of the most important things in the load balancer, since it enables all the integrations that !BigBlueButton already has (see [http://www.bigbluebutton.org/open-source-integrations/ this page]) to be used in this infrastructure.
 
+The few changes that were made in the Load Balancer's API should not break any integration that already works with Mconf-Live/!BigBlueButton. These changes are documented [MconfLBAPI in this page].
+
 Moreover, the load balancer implements the mobile API, so [MconfMobile Mconf-Mobile and BBB-Android] can also connect to the load balancer. See more about this API in the [MconfMobile Mconf-Mobile page] or in the [https://github.com/bigbluebutton/bigbluebutton/blob/master/bbb-api-demo/src/main/webapp/mobile.jsp source code at GitHub].
 
 
@@ -115,17 +117,22 @@ The mobile applications, however, use a different salt to access a web conferenc
 
 ==== Algorithms ====
 
-It also uses the geographic location of the servers and client to decide for a server that’s closer to the client.
+The algorithms are the logic behind the load balancing. There are several algorithms implemented in the load balancer, but only one in use. Some of these algorithms are:
+
+  * Select the server with less CPU load;
+  * Select the server with less users;
+  * Select the server that is geographically nearest to the client.
+
+The algorithm current in use is:
+
+  * *Order the servers by proximity to the client. If there is more than one server in a ~300km radius, select the one that has less CPU load in the moment. Won't consider servers that are not UP, that are not responding properly to the monitoring server, or that have a CPU load higher than ~70%. *
 
 
 ==== Dashboard ====
 
+The Load Balancer has also a Dashboard, a web page that shows in real-time the state of all servers in the network. You can see the dashboard of the Mconf Network at: http://lb.mconf.org.
 
-The Load Balancer has also a Dashboard, a web page that shows in real-time the state of all servers in the network. You can see the dashboard at: http://lb.mconf.org.
-
-
-...
-
+The main idea of the dashboard is to provide an easy way to the administrators to see the state of the network and easily detect possible problems. The dashboard won't show all the information available in the monitoring server, but a reduced set of information including only what's really important and show it in a compact and easy-to-use interface.
 
 
 = Software updates =
@@ -135,4 +142,12 @@ The Load Balancer has also a Dashboard, a web page that shows in real-time the s
 
 = Testing =
 
-... Bot ...
+To test the distributed infrastructure, at Mconf we developed a command line web conference client called BBBot. This application was built in Java, using the libraries also used in Mconf-Mobile and BBB-Android. The bot is able to create and join web conferences, just like a standard browser client, and also to send and receive audio and video.
+
+This application can also be used by anyone that wants to test Mconf-Live/!BigBlueButton servers, be it in a distributed environment or in a single server.
+
+BBBot is open source and is available at: https://github.com/mconf/bbbot
+
+
+= TODO =
+  * x-forwarded-for in the apps
