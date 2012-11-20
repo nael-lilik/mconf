@@ -33,8 +33,34 @@ You can read about the Mconf Network at http://mconf.org/m/about/network.
  * Be sure that you have opened for external access the ports TCP 80 (HTTP), TCP 9123 (Desktop Sharing), TCP 1935 (RTMP), UDP 5060 (SIP) and UDP 16384-32768 (RTP);
  * Your server must answer ICMP (Ping), which is used to check if your server is UP or DOWN;
  * If you intend to use a domain name (like "mconf.org"), set that up before continuing;
- * Set the server hostname properly, since the hostname + domain will identify the server on Chef Server. Prefer a hostname like `mconf1-<institution-name>` or some other relevant name, and set it on both `/etc/hostname` and `/etc/hosts`. Reboot the server before continuing;
+ * Set the server hostname properly (as described on next section);
  * Set up the NTP service properly ([http://articles.slicehost.com/2010/11/8/using-ntp-to-sync-time-on-ubuntu see this link]).
+
+=== Setting up the hostname properly ===
+
+Since the hostname + domain will identify the server on the Mconf Chef Server, it needs to be set up properly. *Suppose that your server URL is _mconf1.ufrgs.br_*, your hostname must be set on `/etc/hostname` as follows:
+
+{{{
+$ cat /etc/hostname 
+mconf1
+}}}
+
+And your `/etc/hosts` must be set as follows:
+
+{{{
+$ cat /etc/hosts
+127.0.0.1       localhost
+143.54.31.81     mconf1.ufrgs.br        mconf1
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+}}}
+
+Please pay attention at the second line, first comes the IP address of the server, then the hostname followed by the domain name, and then just the hostname. This way, when the server gets registered on Chef Server, it will be identified correctly as `mconf1.ufrgs.br`. *These configurations must be done before install the Chef Client - if you want to modify these configurations later, please contact support AT mconf.org.*
 
 === Deployment ===
 
