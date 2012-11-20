@@ -45,7 +45,7 @@ sudo curl https://raw.github.com/mconf/mconf-mobile/master/mobile.jsp -o \
 The mobile.jsp demo wrap the default API to remove the need of the security salt. On !BigBlueButton 0.8 there's a special security key for mobile access.
 When BBB-Android asks for the server password, just leave it blank.
 
-== On !BigBlueButton 0.8 (still on beta) ==
+== On !BigBlueButton 0.8 ==
 
 The !BigBlueButton 0.8 and above supports mobile access natively. To configure/change the mobile security key, you will need to edit the following configuration file:
 
