@@ -1,14 +1,12 @@
 #summary The API of our load balancer
 
-<font color="red">This is currently a draft.</font>
-
 = Mconf Load Balancer's API =
 
 
 The load balancer implements [http://code.google.com/p/bigbluebutton/wiki/API BigBlueButton's standard API], so that any application that integrates with Mconf-Live/!BigBlueButton, can also be used with the load balancer. This includes [MconfWeb Mconf-Web] and the integrations listed in [http://www.bigbluebutton.org/open-source-integrations/ BigBlueButton's website].
 
 
-However, the Load Balancer's API currently has some very small differences from BigBlueButton's API and more could be added in the future. But it is extremely important that, even with these small differences, the existent front-end applications should not need to be adapted to use the Mconf infrastructure.
+However, the Load Balancer's API currently has some very small differences from !BigBlueButton's API and more could be added in the future. But it is extremely important that, even with these small differences, the existent front-end applications should not need to be adapted to use the Mconf infrastructure.
 
 The differences from the API of Mconf-Live/!BigBlueButton are described below.
 
