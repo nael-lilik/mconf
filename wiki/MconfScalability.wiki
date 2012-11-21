@@ -23,7 +23,7 @@ The objective 1 has been started with start of the second phase of Mconf (Oct. 2
 
 The image below shows an overview of the current infrastructure. This architecture solves the problem of our objective 1: use several web conference servers in a single infrastructure.
 
-https://lh4.googleusercontent.com/-vVqH4ZORaGI/UJz8WfrulCI/AAAAAAAAAvY/rJCwvjdDcDg/s1055/Mconf%2520Network%2520-%2520Current%2520Architecture%2520%2528full%2529.png
+https://lh3.googleusercontent.com/-c8GjMrTMtlc/UK0BxK-px1I/AAAAAAAAAyM/8jVGGzvGxVI/s1055/Mconf%2520Network%2520-%2520Current%2520Architecture%2520%2528full%2529.png
 
 
 == <font color="red">1.</font> Front-end ==
@@ -141,7 +141,7 @@ To simplify and automate the process, we started using a software called [http:/
 
 You can see below an image showing how the process of developing new recipes and updating the web conference servers work:
 
-https://lh4.googleusercontent.com/-aES7rhx2LJM/UKvCsi1eJ8I/AAAAAAAAAws/6G1WpQje984/s642/Mconf%2520Network%2520-%2520Chef.png
+https://lh5.googleusercontent.com/-8zLmFkXXFvk/UK0BxcHySGI/AAAAAAAAAyM/ggwPn1-KVZI/s642/Mconf%2520Network%2520-%2520Chef.png
 
 
 It starts in a development environment, where new recipes are written to install the new features developed in the web conference software. These recipes are sent to a git repository where they will be available for the Chef server.
