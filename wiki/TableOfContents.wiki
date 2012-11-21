@@ -20,4 +20,6 @@
       * [MconfWebDeploymentWithCapistrano Using Capistrano]
     * [MconfWebConfiguring Configuring the website]
     * [MconfWebLocalization Translating]
+  * [MconfScalability Scalable Infrastructure]
+    * [MconfLBAPI Load Balancer API]
   * [MconfFAQ FAQ]
