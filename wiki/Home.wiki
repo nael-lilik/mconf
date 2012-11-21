@@ -29,3 +29,4 @@ Interested in the global webconference network? See this page for more informati
   * [MconfMobile Mconf-Mobile]: Mconf-Mobile is an Android implementation of a webconference client.
   * [MconfWeb Mconf-Web]: Mconf-Web is the social network that provides access to webconferences..
   * [MconfLive Mconf-Live]: Here you can learn more about Mconf-Live, Mconf's webconference application.
+  * [MconfScalability Scalable Infrastructure]: Documentation about the solution created to scale Mconf (includes the monitoring server and the load balancer). Is also the documentation of how the [http://mconf.org/m/about/network Mconf Network] works today.
