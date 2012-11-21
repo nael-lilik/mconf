@@ -180,3 +180,4 @@ A list of technical tips for people using or about to use Mconf's solution for s
     * Mconf-Live's changes: [MconfLiveApiChanges here]
     * The Load Balancer's API: [MconfLBAPI here]
   * Set the HTTP header *`x-forwarded-for`* in your requests to the load balancer. The value of it should be the client's IP, so that the load balancer can properly select an adequate server for him. The load balancer needs this IP to define the location of the client, otherwise it will only know the location of the server that sent the request (your Moodle server, for instance). If you're using Mconf-Web you don't need to do anything, since it already sets this header by default.
+  * When creating a meeting, use *`meetingID`* as an internal *random* identifier, and `name` as the proper human readable name of the meeting. Consider that the create can fail if a `meetingID` is duplicated, so check for the response and try again with another `meetingID` if needed.
