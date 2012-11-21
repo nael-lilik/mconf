@@ -31,7 +31,7 @@ The integration with Mconf-Live/!BigBlueButton is based on two gems (that are al
 
   * *[https://github.com/mconf/bigbluebutton-api-ruby bigbluebutton-api-ruby]*: A library to access Mconf-Live/!BigBlueButton's API in Ruby applications. Developed on top of a gem called [http://code.google.com/p/bigbluebuttongem/ bigbluebuttongem] to be used in Mconf-Web.
 
-  * *[https://github.com/mconf/bigbluebutton_rails bigbluebutton_rails]*: An integration of BigBlueButton and Rails. It uses bigbluebutton-api-ruby to access !BigBlueButton's API.
+  * *[https://github.com/mconf/bigbluebutton_rails bigbluebutton_rails]*: An integration of !BigBlueButton and Rails. It uses bigbluebutton-api-ruby to access !BigBlueButton's API.
 
 == How to Start ==
 
