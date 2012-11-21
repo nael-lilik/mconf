@@ -11,7 +11,7 @@ This document contains a documentation of the infrastructure used for scaling Mc
 The scaling of Mconf has been divided in two phases with two distinct objectives:
 
   * *Objective 1*: increase the limit of simultaneous users in a web conference infrastructure.
-  In other words: use several web conference servers in a single infrastructure to increase the limit of users imposed when using a single server. The difference between this infrastructure and a single web conference server shouldn't be noticeable neither for the users nor for the applications that use the system (e.g. !BigBlueButton's integration for Moodle). The infrastructure should be as dynamic as possible (e.g. servers can be added and removed) and as automatic as possible (e.g. new servers can register themselves in the "cloud" of servers).
+  In other words: use several web conference servers in a single infrastructure to increase the limit of users imposed when using a single server. The difference between this infrastructure and a single web conference server shouldn't be noticeable neither for the users nor for the applications that use the system (e.g. Mconf-Web and !BigBlueButton's integration for Moodle). The infrastructure should be as dynamic as possible (e.g. servers can be added and removed) and as automatic as possible (e.g. new servers can register themselves in the "cloud" of servers).
   * *Objective 2*: increase the limit of users in a single web conference.
   This will imply in increasing the limit of users that a single Mconf-Live server supports and/or enable a single meeting to be held using more that one server.
 
@@ -110,7 +110,7 @@ To access the API, the client applications need to known the salt of the load ba
 
 To allow multiple applications (also called "clients") to access the same infrastructure, the load balancer is able to create multiple salts. Each application/client/institution has its own salt, and with this the load balancer is able to distinguish the client that is accessing it.
 
-The mobile applications, however, use a different salt to access a web conference server (see more at [http://code.google.com/p/mconf/wiki/MconfMobile#On_BigBlueButton_0.8_(still_on_beta) this page]). This salt has only 5 characters to make it easier to type in a mobile device. In the load balancer, the first 5 characters of the standard salt are used as the kye to mobile applications. So if the standard API salt is "`abcdefghijklmnopqrstuvwxyz123456`", the mobile salt will be "`abcde`".
+The mobile applications, however, use a different salt to access a web conference server (see more at [MconfMobile#On_BigBlueButton_0.8 this page]). This salt has only 5 characters to make it easier to type in a mobile device. In the load balancer, the first 5 characters of the standard salt are used as the kye to mobile applications. So if the standard API salt is "`abcdefghijklmnopqrstuvwxyz123456`", the mobile salt will be "`abcde`".
 
 
 ==== Algorithms ====
