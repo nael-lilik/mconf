@@ -1,8 +1,10 @@
 = Mconf-Live =
 
-Mconf-Live is an open source webconference system based on [http://bigbluebutton.org BigBlueButton]. It is part of the Mconf project, which includes a web portal in a social network format, a mobile client and a Global Webconference Network with load balancing, real-time monitor and usage reports.
+Mconf-Live is an open source webconference system based on [http://bigbluebutton.org BigBlueButton]. It is part of the Mconf project, which includes a web portal with social network characteristcs, a mobile client and a Global Webconference Network with load balancing, real-time monitoring and usage reports.
 
-This wiki aims to provide information on how to install Mconf-Live integrated to the Mconf Network, the documentation about all versions and the roadmap.
+This wiki provides information on how to install Mconf-Live, as well as the documentation about all versions released and the roadmap.
+
+Since the Mconf Network is our current focus, the instructions provided here are for installations of Mconf-Live *that will be integrated in the network*. We currently don't provide scripts and instructions for standalone installations, even though it is possible.
 
 == Changelog ==
 
@@ -21,9 +23,12 @@ This wiki aims to provide information on how to install Mconf-Live integrated to
 
 == Roadmap ==
 
+=== mconf-live0.3 (?) ===
+ * _To be defined..._
+
 == Joining the Mconf Network ==
 
-You can read about the Mconf Network at http://mconf.org/m/about/network.
+First of all, take some time to read about the Mconf Network at http://mconf.org/m/about/network.
 
 === Requirements ===
 
