@@ -1,5 +1,7 @@
 #summary Deploy Mconf-Web in the same machine that has BigBlueButton installed
 
+<font color=red>*Note:* This is kept here for internal documentation only, but it is not recommended to be used!</font>
+
 <wiki:toc max_depth="3" />
 
 = Mconf-Web Deployment with !BigBlueButton = 
