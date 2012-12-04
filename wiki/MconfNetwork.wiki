@@ -2,7 +2,7 @@
 
 <wiki:toc max_depth="3" />
 
-= Introduction =
+= Mconf Global Webconference Network =
 
 This page contains the technical documentation about the Mconf Global Network.
 
