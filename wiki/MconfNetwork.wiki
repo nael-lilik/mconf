@@ -6,9 +6,13 @@
 
 This page contains the technical documentation about the Mconf Global Network.
 
+= Basics =
+
 You can read the basic description of the network at our page at: http://mconf.org/m/about/network
 
-After that, you can get some more details about how the network works in [MconfScalability our wiki page that describes the scalable architecture of Mconf].
+= Architecture =
+
+You can get details about how the network works in [MconfScalability our wiki page that describes the scalable architecture of Mconf].
 
 
 = How to join the network =
