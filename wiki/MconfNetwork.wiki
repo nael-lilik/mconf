@@ -1,0 +1,124 @@
+#summary Technical documentation about the Mconf Global Network
+
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+This page contains the technical documentation about the Mconf Global Network.
+
+You can read the basic description of the network at our page at: http://mconf.org/m/about/network
+
+After that, you can get some more details about how the network works in [MconfScalability our wiki page that describes the scalable architecture of Mconf].
+
+
+= How to join the network =
+
+First of all, take some time to read about the Mconf Network at http://mconf.org/m/about/network.
+
+== Requirements ==
+
+ * You must install it in a fresh Ubuntu Server 10.04 LTS installation. It won't work on any other linux distributions or Ubuntu versions;
+ * The server must be dedicated to host the Mconf Node (it can be a VPS);
+ * The server must fit the [http://code.google.com/p/bigbluebutton/wiki/FAQ#What_are_the_minimum_hardware_requirements_for_the_BigBlueButton BigBlueButton minimum hardware requirements];
+ * Be sure that you have opened for external access the ports TCP 80 (HTTP), TCP 9123 (Desktop Sharing), TCP 1935 (RTMP), UDP 5060 (SIP) and UDP 16384-32768 (RTP);
+ * Your server must answer ICMP (Ping), which is used to check if your server is UP or DOWN;
+ * If you intend to use a domain name (like "mconf.org"), set that up before continuing;
+ * Set the server hostname properly (as described on next section);
+ * Set up the NTP service properly ([http://articles.slicehost.com/2010/11/8/using-ntp-to-sync-time-on-ubuntu see this link]);
+ * Subscribe to the Mconf Network members group ([https://groups.google.com/d/forum/mconf-network https://groups.google.com/d/forum/mconf-network]).
+
+== Setting up the hostname properly ==
+
+Since the hostname + domain will identify the server on the Mconf Chef Server, it needs to be set up properly. *Suppose that your server URL is _mconf1.ufrgs.br_*, your hostname must be set on `/etc/hostname` as follows:
+
+{{{
+$ cat /etc/hostname 
+mconf1
+}}}
+
+And your `/etc/hosts` must be set as follows:
+
+{{{
+$ cat /etc/hosts
+127.0.0.1       localhost
+143.54.31.81     mconf1.ufrgs.br        mconf1
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+}}}
+
+Please pay attention at the second line, first comes the IP address of the server, then the hostname followed by the domain name, and then just the hostname. This way, when the server gets registered on Chef Server, it will be identified correctly as `mconf1.ufrgs.br`. *These configurations must be done before install the Chef Client - if you want to modify these configurations later, please contact support AT mconf.org.*
+
+== Deployment ==
+
+Mconf-Live is installed using the [http://www.opscode.com/chef/ Chef framework], and all the recipes used to deploy a Mconf Node are open source and available on !GitHub (https://github.com/mconf/chef-recipes). We do not provide any other way to install Mconf-Live without Chef, and this service is currently only available for the Mconf Network partners.
+
+The first step is to fill the metadata presented below and send it to support AT mconf.org:
+
+{{{
+{
+  "metadata": {
+    "server_alias":"UFRGS 1",
+    "server_url":"http://mconf1.ufrgs.br",
+    "server_hostname":"mconf1",
+    "server_location":"Porto Alegre-RS, Brazil",
+    "institution_name":"Universidade Federal do Rio Grande do Sul",
+    "institution_website":"http://ufrgs.br",
+    "institution_portal":"https://mconf.org",
+    "responsible_name":"Felipe Cecagno",
+    "responsible_email":"felipe AT mconf.org"
+  }
+}
+}}}
+
+ * `server_alias`: the alias for the server that will be presented on the [http://lb.mconf.org Mconf Load Balancer]
+ * `server_url`: the URL for your server, including domain (or IP address, if it doesn't have a name) and port (when different than 80)
+ * `server_hostname`: the hostname of the server, that can be checked on `/etc/hostname` - it identifies the server on Chef Server, as explained above
+ * `server_location`: the high level location of the server (granularity of "city" is fine)
+ * `institution_name`: name of the institution that is maintaining the server
+ * `institution_website`: website of the institution
+ * `institution_portal`: web portal used to access the webconference rooms - if your institution is using only the web portal mconf.org to access the conference rooms, leave it blank
+ * `responsible_name`: the technician responsible for the server
+ * `responsible_email`: e-mail contact of the responsible
+
+*It is responsibility of all partners to keep the metadata of their servers updated.*
+
+The second step is to install the Chef Client. For that we will send by e-mail a validation key, that will be used to register your server on the Mconf Chef Server. The validation key must be placed on *`/etc/chef/validation.pem`*.
+
+If the given directory doesn't exist, create it. *Do not continue before receiving the validation key.*
+
+Then copy the script below and paste it in a file named `install-mconf-chef.sh`:
+
+{{{
+#!/bin/bash
+
+# install chef client v0.10.x on ubuntu server 10.04
+echo "deb http://apt.opscode.com/ `lsb_release -cs`-0.10 main" | sudo tee /etc/apt/sources.list.d/opscode.list
+
+sudo mkdir -p /etc/apt/trusted.gpg.d
+gpg --keyserver keys.gnupg.net --recv-keys 83EF826A
+gpg --export packages@opscode.com | sudo tee /etc/apt/trusted.gpg.d/opscode-keyring.gpg > /dev/null
+
+sudo apt-get update
+sudo apt-get install opscode-keyring -y --force-yes
+
+# if a ruby version was previously installed, it's removed before install the chef-client
+# this is because ruby 1.8.0 is a dependency of the package chef
+sudo update-alternatives --remove ruby /usr/bin/ruby1.9.2
+sudo dpkg -r ruby1.9.2
+
+# install chef client via package passing the server url
+echo "chef chef/chef_server_url string http://chef.mconf.org:4000" | sudo debconf-set-selections && sudo apt-get install chef -y
+}}}
+
+After that, your server will be registered on the Mconf Chef Server. Then we will assign the role "[https://github.com/mconf/chef-recipes/blob/master/roles/mconf-node.json mconf-node]" to your server, and both software and configuration will get installed and updated.
+
+== Troubleshooting ==
+
+The log generated by the Chef Client is placed on *`/var/log/chef/client.log`*.
+
+For troubleshooting, please visit the mailing list (see [http://mconf.org/m/about/contact http://mconf.org/m/about/contact]) or send a message to support AT mconf.org.
