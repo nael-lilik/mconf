@@ -1,3 +1,4 @@
+#labels Deprecated
 = Mconf-Live =
 
 Mconf actively develops improvements and modifications for !BigBlueButton to generate the software we call Mconf-Live. Some of these modifications are in our [https://github.com/mconf/bigbluebutton fork of BigBlueButton] and some are just configuration that must be made in each instance of Mconf-Live. Mconf-Live is a customized version of !BigBlueButton, with improvements that may be available in future versions of !BigBlueButton. 
