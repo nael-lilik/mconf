@@ -21,19 +21,18 @@ rvm use --default 1.9.2-p290@mconf
 git clone git://github.com/mconf/mconf-web.git
     }}}
 
-  * To proceed, you need to install some system packages used by Mconf-web. The packages are listed in a file that you can find at [https://github.com/mconf/mconf-web/blob/master/config/packages.ubuntu config/packages.ubuntu]. You can download this file and install the packages with:
+  * To proceed, you need to install some system packages used by Mconf-web (you can also see this list of packages [https://github.com/mconf/mconf-web/blob/latest/config/packages.ubuntu in this file] in our repository):
     {{{
-curl https://raw.github.com/mconf/mconf-web/master/config/packages.ubuntu -o packages.ubuntu
-source packages.ubuntu
-sudo apt-get install ${PACKAGES_DEVELOPMENT[@]}
-rm packages.ubuntu
+sudo apt-get install wget make curl git-core libruby aspell-es aspell-en libxml2-dev \
+                          libxslt1-dev libmagickcore-dev libmagickwand-dev imagemagick \
+                          libmysqlclient-dev mysql-server zlib1g-dev build-essential \
+                          libreadline-dev libsqlite3-dev
     }}}
 
    * Install gems and git submodules with:
     {{{
 git submodule init
 git submodule update
-# if you're not using rvm, you might have to install bundler: "gem install bundler"
 bundle install
     }}}
 
