@@ -24,6 +24,8 @@ sudo apt-get install make git-core libruby aspell-es aspell-en libxml2-dev libxs
                      mysql-server zlib1g-dev build-essential libreadline-dev nfs-common libcurl4-openssl-dev
 }}}
 
+(You can also see this list of packages [https://github.com/mconf/mconf-web/blob/latest/config/packages.ubuntu in this file] in our repository.)
+
 You will be prompted to type a password for MySQL in case you don't have it installed yet.
 
 
