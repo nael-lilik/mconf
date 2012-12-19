@@ -16,13 +16,12 @@ This is a step-by-step guide showing every detail needed to install Mconf-Web. I
 
 === 1. System Packages ===
 
-You need to install some system packages before you can run Mconf-web in production. The packages are listed in a file that you can find at [https://github.com/mconf/mconf-web/blob/latest/config/packages.ubuntu config/packages.ubuntu]. You can download this file and install the packages with:
+You need to install some system packages before you can run Mconf-web in production:
 
 {{{
-curl https://raw.github.com/mconf/mconf-web/latest/config/packages.ubuntu -o packages.ubuntu
-source packages.ubuntu
-sudo apt-get install ${PACKAGES_PRODUCTION[@]}
-rm packages.ubuntu
+sudo apt-get install make git-core libruby aspell-es aspell-en libxml2-dev libxslt1-dev \
+                     libmagickcore-dev libmagickwand-dev imagemagick libmysqlclient-dev \
+                     mysql-server zlib1g-dev build-essential libreadline-dev nfs-common libcurl4-openssl-dev
 }}}
 
 You will be prompted to type a password for MySQL in case you don't have it installed yet.
@@ -39,13 +38,30 @@ Mconf-web uses Ruby *1.9.2* (p290). To install Ruby, we suggest the use of RVM (
   * From source: You can also download and install ruby manually, similarly to what's done in the script used by !BigBlueButton but skipping the packaging. Make sure you use version 1.9.2-p290. 
 
 
-If you decided to use RVM, don't forget to actually install Ruby (and not only RVM) and create a gemset for Mconf-web. Also, add your user to the "rvm" group.
+From now on, we will assume you will install ruby with RVM, so if you decide for another method you might have to adapt some commands.
+
+To install RVM run:
+
+{{{
+curl -L https://get.rvm.io | sudo bash -s stable --without-gems="bundler"
+}}}
+
+This will install the latest version of RVM skipping the gem `bundler`. We skip it because we need to install an specific version later on. In case you have any problems refer to RVM's documentation at https://rvm.io/rvm/install/.
+
+After RVM, install ruby and create a gemset for Mconf-web. Also, add your user to the "rvm" group.
 
 {{{
 rvm install 1.9.2-p290
 rvm gemset create mconf
 rvm use --default 1.9.2-p290@mconf
 sudo adduser mconf rvm # change "mconf" to your username
+}}}
+
+Then install `bundler` in the gemset `global` to be available to all other gemsets:
+
+{{{
+rvm use ruby-1.9.2-p290@global
+gem install bundler -v 1.0.18
 }}}
 
 
@@ -74,12 +90,11 @@ git checkout latest     # branch that points to the latest version
 
 The versions available are the tags available. To see all versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page]. You can also deploy the branch "latest", it will always point to the latest version available.
 
-With the repository you can now install the dependencies. All dependencies are either gems (and are listed in the Gemfile) or submodules. However, to install the gems first we need to manually install bundler, that will be used to install all the other dependencies. See the commands below:
+With the repository you can now install the dependencies. All dependencies are either gems (and are listed in the Gemfile) or submodules. See the commands below:
 
 {{{
 git submodule init
 git submodule update
-gem install bundler -v 1.0.18
 bundle install --without=development test
 }}}
 
