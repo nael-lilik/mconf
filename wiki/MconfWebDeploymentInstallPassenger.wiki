@@ -18,7 +18,7 @@ sudo apt-get install apache2-mpm-prefork apache2-prefork-dev libapr1-dev \
                      libaprutil1-dev libcurl4-openssl-dev libssl-dev zlib1g-dev
 }}}
 
-You can also see the list of packages [https://github.com/mconf/mconf-web/blob/latest/config/packages.ubuntu in this file] in our repository
+(You can also see this list of packages [https://github.com/mconf/mconf-web/blob/latest/config/packages.ubuntu in this file] in our repository.)
 
 Next, install Passenger (it's a ruby gem) and it's module for Apache. Passenger has a nice installer that will compile the Apache module and install it for you. If some dependency is missing it will warn you and help you install it. Run the following commands:
 
