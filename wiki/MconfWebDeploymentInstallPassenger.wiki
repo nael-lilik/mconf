@@ -9,16 +9,13 @@ _This page is part of the Mconf-Web deployment described in [MconfWebDeploymentM
 
 
 
-
 === Passenger with Apache ===
 
-To use Apache with Passenger, you first need to install Apache and some other dependencies required by Passenger. There are several packages needed. You can download the list and install the packages with:
+To use Apache with Passenger, you first need to install Apache and some other dependencies required by Passenger:
 
 {{{
-curl https://raw.github.com/mconf/mconf-web/latest/config/packages.ubuntu -o packages.ubuntu
-source packages.ubuntu
-sudo apt-get install ${PACKAGES_APACHE[@]}
-rm packages.ubuntu
+sudo apt-get install apache2-mpm-prefork apache2-prefork-dev libapr1-dev \
+                     libaprutil1-dev libcurl4-openssl-dev libssl-dev zlib1g-dev
 }}}
 
 You can also see the list of packages [https://github.com/mconf/mconf-web/blob/latest/config/packages.ubuntu in this file] in our repository
