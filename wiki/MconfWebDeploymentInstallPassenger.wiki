@@ -51,6 +51,8 @@ At first, enable the Passenger module in Apache:
 rvmsudo passenger-install-apache2-module --snippet | sudo tee /etc/apache2/conf.d/mconf-passenger
 }}}
 
+(In case `passenger-install-apache2-module` is not found, look for it at `/usr/local/rvm/gems/ruby-1.9.2-p290@mconf/bin/` and use its full path in the command above.)
+
 This will create a new configuration file with the Passenger module snippet, the same block Passenger showed you in the item 3. in the previous section. If you already added these lines to you config file, ignore this step.
 
 Next, we enable the rewrite module in Apache and remove any default site existent:
