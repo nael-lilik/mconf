@@ -2,14 +2,14 @@
 
 _This page is part of the Mconf-Web deployment described in [MconfWebDeploymentManual this page]._
 
-== Installing Passenger for Mconf-Web ==
+= Installing Passenger for Mconf-Web =
 
 <wiki:toc max_depth="3" />
 
 
 
 
-=== Passenger with Apache ===
+== Passenger with Apache ==
 
 To use Apache with Passenger, you first need to install Apache and some other dependencies required by Passenger:
 
@@ -111,7 +111,7 @@ Open your browser and try to access your localhost. You might see a page with th
 
 
 
-=== Passenger with Nginx ===
+== Passenger with Nginx ==
 
 _*Note:* If you're installing Mconf-Web in the same machine where you already have !BigBlueButton, you should use Apache for Mconf-Web. If you decide to use Nginx, you'll have to configure it manually (see more about this issue [MconfWebDeployInBBBMachine in this page])._
 
