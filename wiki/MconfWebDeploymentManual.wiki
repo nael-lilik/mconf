@@ -100,13 +100,16 @@ Next, change your repository to the version you want to deploy. If you don't do 
 
 {{{
 cd ~/mconf-web/current
+
+# RVM will ask you if you: "Do you wish to trust this .rvmrc file?". Answer "yes".
+
 git checkout v0.6       # go to version 0.6
 git checkout latest     # branch that points to the latest version
 }}}
 
-The versions available are the tags available. To see all versions, go to [https://github.com/mconf/mconf-web our repository] and see the "Switch tags" button or check the [https://github.com/mconf/mconf-web/archives/master download page]. You can also deploy the branch "latest", it will always point to the latest version available.
+The versions available are the tags available. To see all versions, go to [https://github.com/mconf/mconf-web/tags this page]. You can also deploy the branch "latest", it will always point to the latest version available.
 
-With the repository you can now install the dependencies. All dependencies are either gems (and are listed in the Gemfile) or submodules. See the commands below:
+With the repository you can now install the dependencies. All dependencies are either gems (and are listed in the Gemfile) or submodules. Run the commands below:
 
 {{{
 git submodule init
@@ -129,24 +132,14 @@ cp ~/mconf-web/config/setup_conf.yml.example ~/mconf-web/config/setup_conf.yml
 cp ~/mconf-web/config/database.yml.example ~/mconf-web/config/database.yml
 }}}
 
-Then edit the files `setup_conf.yml` and `database.yml`. To configure these files, see [MconfWebSetupConf this page].
+Then edit `setup_conf.yml` and `database.yml`.
 
 `setup_conf.yml` has general configurations for the web application and it's optional: if you don't edit it now you can edit its properties from Mconf-Web's interface (see [MconfWebConfiguring this page]).
 
-`database.yml` configures the database and you *have* to configure it now. By default, MySQL will be used. If you haven't set up a password for MySQL yet, you can do it with:
-
-{{{
-mysqladmin -u root password "NEW-PASSWORD" # Use the quotes, they are not part of the password
-}}}
-
-Or, in case you want to change the password:
-
-{{{
-mysqladmin -u root -p password "NEW-PASSWORD"
-}}}
+`database.yml` configures the database and you *have* to configure it now. By default, MySQL will be used. If you're having trouble with the passwords in MySQL, see [http://code.google.com/p/mconf/wiki/MconfFAQ#Wrong_username_and/or_password_for_MySQL this FAQ entry].
 
 
-
+To learn more about the other options in these files, see [MconfWebSetupConf this page].
 
 
 === 5. Install a web server, configure the application and deploy ===
