@@ -210,7 +210,7 @@ At this point you finished installing Mconf-Web. The first thing you might want 
 To restart the application you need to restart the web server and god:
 
 {{{
-sudo /etc/init.d/apache2 restart  # if you're using apache
+sudo service apache2 restart
 sudo /etc/init.d/god terminate
 sudo /etc/init.d/god start
 }}}
