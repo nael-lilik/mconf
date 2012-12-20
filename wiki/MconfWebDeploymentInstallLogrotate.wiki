@@ -1,0 +1,33 @@
+#summary How to install and activate logrotate for Mconf-Web
+
+_This page is part of the Mconf-Web deployment described in [MconfWebDeploymentManual this page]._
+
+= Installing and configuring logrotate for Mconf-Web =
+
+<wiki:toc max_depth="3" />
+
+[http://linuxcommand.org/man_pages/logrotate8.html Logrotate] is a utility that prevents logs from getting to big creating new files and compacting the old ones.
+
+You server should already have it installed, but if it doesn't, install it with:
+
+{{{
+sudo apt-get install logrotate
+}}}
+
+The configuration file for logrotate can be copied from Mconf-Web's repository with:
+
+{{{
+sudo curl https://raw.github.com/mconf/mconf-web/latest/config/logrotate/mconf-web -o /etc/logrotate.d/mconf-web
+}}}
+
+If you have Mconf-Web installed in a path other than `/home/mconf/mconf-web/current`, you will have to edit the  application path in the configuration file above.
+
+Then set the permissions and activate logrotate:
+
+{{{
+sudo chown root:root /etc/logrotate.d/mconf-web
+sudo chmod 644 /etc/logrotate.d/mconf-web
+sudo logrotate -s /var/lib/logrotate/status /etc/logrotate.d/mconf-web
+}}}
+
+If the last command doesn't print any errors, it should be working. Check the `log` folder inside your Mconf-Web to see if the log files have been changed.
