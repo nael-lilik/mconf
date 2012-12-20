@@ -23,4 +23,4 @@ When using Whenever with RVM, you should add the following line to your `~/.rvmr
 rvm_trust_rvmrcs_flag=1
 }}}
 
-This prevents cron tasks from failing when trying to read the .rvmrc files more information check Whenever's [https://github.com/javan/whenever/blob/master/README.md readme file]. 
+This prevents cron tasks from failing when trying to read the .rvmrc files. For more information check Whenever's [https://github.com/javan/whenever/blob/master/README.md readme file]. 
