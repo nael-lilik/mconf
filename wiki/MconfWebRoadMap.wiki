@@ -24,9 +24,6 @@ See also:
   * [https://github.com/mconf/mconf-web/compare/v0.6...v0.7 Source code changes].
 
 
-https://github.com/mconf/mconf-web/compare/v0.6...master
-
-
 == Release 0.6 ==
 
 *Released*: Feb 7th, 2012.
