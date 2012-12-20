@@ -6,12 +6,28 @@
 
 = Releases =
 
-== Current Development: Release ?? ==
+== Current Development: Release 0.7 ==
 
 *Planned for*: ?
 
+  * Added SMTP configurations in the management area so that any SMTP account can be used (not only a Gmail account as before).
+  * Improved some pages to join web conferences from mobile clients.
+  * Users can now specify their ID during registration.
+  * When logging in via shibboleth, users can now associate their shibboleth account with an account that already exists in Mconf-Web.
+  * Users cannot modify their email address after registering.
+  * Added a configuration file to use logrotate (see [https://github.com/mconf/mconf-web/commit/89af50503c22a8f353d856b2e03d60241ced710b this commit]).
+  * Added support for guest users in web conferences. Guest users is a feature currently only available in Mconf-Live. 
+  * Several small layout and bug fixes.
 
-== Current Development: Release 0.6 ==
+See also:
+
+  * [https://github.com/mconf/mconf-web/compare/v0.6...v0.7 Source code changes].
+
+
+https://github.com/mconf/mconf-web/compare/v0.6...master
+
+
+== Release 0.6 ==
 
 *Released*: Feb 7th, 2012.
 
@@ -36,6 +52,7 @@ Update notes:
 See also:
 
   * [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.6 Issues for Mconf-Web-Release0.6].
+  * [https://github.com/mconf/mconf-web/compare/v0.5...v0.6 Source code changes].
 
 == Release 0.5 ==
 
