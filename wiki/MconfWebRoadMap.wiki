@@ -6,9 +6,15 @@
 
 = Releases =
 
-== Current Development: Release 0.7 ==
+== Current Development: Release ? ==
 
 *Planned for*: ?
+
+
+
+== Release 0.7 ==
+
+*Released*: Dec 20th, 2012.
 
   * Added SMTP configurations in the management area so that any SMTP account can be used (not only a Gmail account as before).
   * Improved some pages to join web conferences from mobile clients.
@@ -18,6 +24,13 @@
   * Added a configuration file to use logrotate (see [https://github.com/mconf/mconf-web/commit/89af50503c22a8f353d856b2e03d60241ced710b this commit]).
   * Added support for guest users in web conferences. Guest users is a feature currently only available in Mconf-Live. 
   * Several small layout and bug fixes.
+
+
+Update notes:
+
+  * The instructions to install Mconf-Web were updated to:
+    * Use Ubuntu 12.04. 
+    * Use a user different than `root` to access MySQL. We recommend a user named `mconf`, and the instructions to create this user are [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#4._Edit_the_configuration_files_(manual_configuration) in this part of the installation guide].
 
 See also:
 
