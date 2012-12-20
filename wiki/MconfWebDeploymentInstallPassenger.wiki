@@ -93,6 +93,12 @@ sudo service apache2 restart
 }}}
 
 
+== Passenger with Nginx ==
+
+<font color=red>Note: Mconf-Web with Nginx is not being tested/maintained anymore.</font>
+
+The instructions are still available [MconfWebDeploymentInstallPassengerNginx in this page] to help whoever needs to use Mconf-Web with Nginx, but the instructions might be outdated.
+
 
 
 == Updating Passenger ==
