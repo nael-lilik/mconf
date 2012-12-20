@@ -227,7 +227,7 @@ At first, update your repository and checkout the version you want:
 {{{
 cd ~/mconf-web/current
 git pull
-git checkout v0.6  # go to version 0.6
+git checkout v0.7  # go to version 0.7
 }}}
 
 You can use the branch "latest" that will always point to the latest version:
