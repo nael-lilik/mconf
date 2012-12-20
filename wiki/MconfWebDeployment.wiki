@@ -8,12 +8,12 @@ But you can of course adapt it to your needs. Mconf-web is a Rails application, 
 
 The server setup we have right now, and thus the recommended setup, uses the following:
 
-  # [http://www.ubuntu.com/ Ubuntu] 10.04 operating system.
+  # [http://www.ubuntu.com/ Ubuntu] 10.04 operating system with a user named `mconf`.
   # Ruby is installed with [https://rvm.beginrescueend.com/ RVM].
   # [http://www.modrails.com/ Phusion Passenger] (ruby app server).
   # [http://httpd.apache.org/ Apache] (but you can also use [http://nginx.net/ Nginx]).
   # [http://www.mysql.com/ MySQL] database.
-  # Optionally, [https://github.com/capistrano/capistrano Capistrano]. It helps you run commands on the server from your development environment.
+  # Optionally, [https://github.com/capistrano/capistrano Capistrano]. Recommended only if you are a developer.
 
 The following guides will instruct you on how to setup this environment.
 
