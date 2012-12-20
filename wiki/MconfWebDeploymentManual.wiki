@@ -8,7 +8,7 @@ _This page is a continuation of [MconfWebDeployment this page]._
 
 == Overview ==
 
-This is a step-by-step guide showing every detail needed to install Mconf-Web. If you have experience deploying a Rails application this guide should look very familiar to you.. 
+This is a step-by-step guide showing every detail needed to install Mconf-Web. If you have experience deploying a Rails application this guide should look very familiar to you.
 
 Before starting, please read the recommended setup in [MconfWebDeployment this page].
 
@@ -134,17 +134,37 @@ cp ~/mconf-web/current/config/database.yml.example ~/mconf-web/current/config/da
 
 See below what you have to edit in `setup_conf.yml` and `database.yml`:
 
+  * `database.yml` configures the database and *it must be configured now*. By default, MySQL will be used. You only need to set the variables "username" and "password" (for all environments) with the user that will be used to access MySQL and his password. We recommend a user other than `root` (usually `mconf`). See the section 4.1. below how to create this user.
+
   * `setup_conf.yml` has general configurations for the web application and *it's optional right now*: if you don't edit it now you can edit its properties from Mconf-Web's interface (see [MconfWebConfiguring this page]).
-
-  * `database.yml` configures the database and *it must be configured now*. By default, MySQL will be used. You only need to set the variables "username" and "password" (for all environments) with the user that will be used to access MySQL and his password. If you're having trouble with the passwords in MySQL, see [http://code.google.com/p/mconf/wiki/MconfFAQ#Wrong_username_and/or_password_for_MySQL this FAQ entry].
-
 
 To learn more about the other options in these files, see [MconfWebSetupConf this page].
 
 
-=== 5. Install a web server, configure the application and deploy ===
+=== 4.1 Database user ===
 
-==== 5.1. Web server ====
+This section explains how to create a database user named `mconf` and give him access to the databases used by Mconf-Web.
+
+First open MySQL's console (you will have to enter the password for the `root` user):
+
+{{{
+mysql -u root -p
+}}}
+
+(If you're having trouble with the root password in MySQL, see [http://code.google.com/p/mconf/wiki/MconfFAQ#Wrong_username_and/or_password_for_MySQL this FAQ entry].)
+
+Then create the user (*change all occurrences of `password` by the actual password that should be used*):
+
+{{{
+CREATE USER "mconf"@"localhost" IDENTIFIED BY "password";
+CREATE DATABASE mconf_production;
+GRANT ALL PRIVILEGES ON mconf_production.* TO "mconf"@"localhost" IDENTIFIED BY "password";
+FLUSH PRIVILEGES;
+}}}
+
+
+
+=== 5 Web server ===
 
 You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache if you're installing Mconf-Web in the same machine that has !BigBlueButton. If Mconf-Web will be installed in a standalone machine, you can pick your favorite server.
 
@@ -153,7 +173,7 @@ Mconf-Web uses Passenger to server the application together with Apache or Nginx
   * [MconfWebDeploymentInstallPassenger Guide to install Passenger]
 
 
-==== 5.2. System-wide configurations ====
+=== 6. System-wide configurations ===
 
 This contains the extra configurations you need to do on your server to run Mconf-Web. 
 
@@ -166,7 +186,7 @@ Also, we use a gem called Whenever to setup the crontab with tasks for Mconf-Web
   * [MconfWebDeploymentGuideWhenever Guide to use Whenever]
 
 
-==== 5.3. Application configurations ====
+=== 7. Application configurations ===
 
 <font color=blue>Note about Capistrano: </font>If you'll use Capistrano this is not needed. See [MconfWebDeploymentWithCapistrano this page].
 
