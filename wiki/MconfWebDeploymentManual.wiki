@@ -141,7 +141,7 @@ See below what you have to edit in `setup_conf.yml` and `database.yml`:
 To learn more about the other options in these files, see [MconfWebSetupConf this page].
 
 
-=== 4.1 Database user ===
+==== 4.1. Database user ====
 
 This section explains how to create a database user named `mconf` and give him access to the databases used by Mconf-Web.
 
@@ -185,6 +185,8 @@ You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of *Ap
 Mconf-Web uses [http://www.modrails.com/ Passenger] to server the application together with Apache or Nginx. So you'll have to install Passenger and use it in the configurations of the web server. See the guide below for a how to:
 
   * [MconfWebDeploymentInstallPassenger Guide to install Passenger]
+
+At this point you should already be able to access your application in your browser!
 
 
 === 7. System-wide configurations ===
