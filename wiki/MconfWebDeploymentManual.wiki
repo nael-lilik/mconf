@@ -54,7 +54,7 @@ This will install the latest version of RVM skipping the gem `bundler`. We skip 
 
 After installing RVM, *restart your terminal!* If you don't do that, RVM won't be found.
 
-Before installing ruby, run the command below to see the dependencies RVM requires you to install before ruby. It will show you a "apt-get" command right below the header "For Ruby / Ruby HEAD (MRI, Rubinius, & REE). Install the packages listed there before proceeding.
+Before installing ruby, run the command below to see the dependencies RVM requires you to install before ruby. It will show you a "apt-get" command right below the header "For Ruby / Ruby HEAD (MRI, Rubinius, & REE)". Install the packages listed there before proceeding.
 
 {{{
 rvm requirements
