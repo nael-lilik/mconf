@@ -1,0 +1,41 @@
+= Mconf-Web UFRGS =
+
+Documentação para instalação do portal web da UFRGS.
+
+O código da aplicação está em `https://github.com/mconf-ufrgs/mconf-web`, que é uma versão customizada do original em `https://github.com/mconf/mconf-web`.
+
+== Instalação ==
+
+Seguir o guia padrão de instalação do Mconf-Web que está [MconfWebDeploymentManual nesta página], observando o seguinte:
+
+  * Na [MconfWebDeploymentManual#3._Download_the_application seção 3], baixar a aplicação do endereço `git://github.com/mconf-ufrgs/mconf-web.git`.
+  * Ainda na seção 3, no lugar de `git checkout v0.7`, utilizar o branch master: `git checkout master`.
+
+== Configuração inicial ==
+
+Após instalar a aplicação, acessar o endereço `/admin` da mesma (e.g. `http://mconf-teste.ufrgs.br/admin`) e logar com o usuário admin padrão:
+
+  * Username: "admin"
+  * Senha: "admin"
+
+Acessar a página de configuração da aplicação (mais detalhes [MconfWebConfiguring aqui]) para configurar os campos abaixo.
+
+Configurações básicas:
+
+  * Application Domain: colocar o domínio atribuído ao site.
+  * Language: "`pt-br`"
+
+Para a autenticação Shibboleth:
+
+  * Enable Shibboleth: habilitar
+  * Shibboleth environment variables: "`cn mail ufrgsVinculo uid shib-.*`"
+  * Shibboleth field for email: "`mail`"
+  * Shibboleth field for name: "`cn`"
+  * Shibboleth field for login: "`uid`"
+
+Se for utilizada a conta do Gmail para envio de emails:
+
+  * SMTP Login: "`ufrgs@mconf.org`"
+  * SMTP Password: ...
+
+<font color=red>TODO: como mudar a senha do admin</font>
