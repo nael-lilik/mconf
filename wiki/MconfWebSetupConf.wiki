@@ -9,9 +9,8 @@ The database is configured in the file `config/database.yml`. This is a standard
 You can also take a look at the examples in our repository:
 
 
-  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.example Default example]: Uses SQLite3 for development and testing and MySQL for production;
-  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.mysql.example MySQL example]: Example on how to use MySQL;
-  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.example Default example]: Example on how to use SQLite3.
+  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.example Default example]: Uses MySQL for all environments;
+  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.sqlite.example SQLite3 example]: Example on how to use SQLite3.
 
 = Configuring the application (setup_conf.yml) =
 
