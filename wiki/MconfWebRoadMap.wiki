@@ -31,7 +31,7 @@ Update notes:
   * The instructions to install Mconf-Web were updated to:
     * Use Ubuntu 12.04. 
     * Use a user different than `root` to access MySQL. We recommend a user named `mconf`, and the instructions to create this user are [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#4._Edit_the_configuration_files_(manual_configuration) in this part of the installation guide].
-    * Set up logrotate, see [http://code.google.com/p/mconf/wiki/MconfWebDeploymentInstallLogrotate this page].
+    * Set up logrotate, see [MconfWebDeploymentInstallLogrotate this page].
 
 See also:
 
