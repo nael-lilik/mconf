@@ -6,7 +6,7 @@ Mconf is developed in and targeted to Ubuntu systems. We recommend the use of an
 
 The recommended setup for the latest version of Mconf-Web is:
 
-  # [http://www.ubuntu.com/ Ubuntu] 10.04 operating system with a user named `mconf`.
+  # [http://www.ubuntu.com/ Ubuntu] 12.04 operating system with a user named `mconf`.
   # Ruby is installed with [https://rvm.beginrescueend.com/ RVM].
   # [http://www.modrails.com/ Phusion Passenger] (ruby app server).
   # [http://httpd.apache.org/ Apache] (but you can also use [http://nginx.net/ Nginx]).
