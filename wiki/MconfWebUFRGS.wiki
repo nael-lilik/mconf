@@ -18,6 +18,8 @@ Após instalar a aplicação, acessar o endereço `/admin` da mesma (e.g. `http:
   * Username: "admin"
   * Senha: "admin"
 
+<font color=red>TODO: como mudar a senha do admin</font>
+
 Acessar a página de configuração da aplicação (mais detalhes [MconfWebConfiguring aqui]) para configurar os campos abaixo.
 
 Configurações básicas:
@@ -38,4 +40,6 @@ Se for utilizada a conta do Gmail para envio de emails:
   * SMTP Login: "`ufrgs@mconf.org`"
   * SMTP Password: ...
 
-<font color=red>TODO: como mudar a senha do admin</font>
+Na aba "BigBlueButton", modifcar as configurações para web conferência:
+
+<font color=red>TODO: instruções</font>
