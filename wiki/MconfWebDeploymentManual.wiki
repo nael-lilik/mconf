@@ -52,7 +52,15 @@ curl -L https://get.rvm.io | sudo bash -s stable --without-gems="bundler"
 
 This will install the latest version of RVM skipping the gem `bundler`. We skip it because we need to install an specific version later on. In case you have any problems refer to RVM's documentation at https://rvm.io/rvm/install/.
 
-After RVM, install ruby and create a gemset for Mconf-web. Also, add your user to the "rvm" group.
+After installing RVM, *restart your terminal!* If you don't do that, RVM won't be found.
+
+Before installing ruby, run the command below to see the dependencies RVM requires you to install before ruby. It will show you a "apt-get" command right below the header "For Ruby / Ruby HEAD (MRI, Rubinius, & REE). Install the packages listed there before proceeding.
+
+{{{
+rvm requirements
+}}}
+
+Install ruby and create a gemset for Mconf-web. Also, add your user to the "rvm" group.
 
 {{{
 rvm install 1.9.2-p290
