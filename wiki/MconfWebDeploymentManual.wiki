@@ -128,15 +128,15 @@ bundle install --without=development test
 There are two files that need to be configured. At first, copy the example files:
 
 {{{
-cp ~/mconf-web/config/setup_conf.yml.example ~/mconf-web/config/setup_conf.yml
-cp ~/mconf-web/config/database.yml.example ~/mconf-web/config/database.yml
+cp ~/mconf-web/current/config/setup_conf.yml.example ~/mconf-web/current/config/setup_conf.yml
+cp ~/mconf-web/current/config/database.yml.example ~/mconf-web/current/config/database.yml
 }}}
 
-Then edit `setup_conf.yml` and `database.yml`.
+See below what you have to edit in `setup_conf.yml` and `database.yml`:
 
-`setup_conf.yml` has general configurations for the web application and it's optional: if you don't edit it now you can edit its properties from Mconf-Web's interface (see [MconfWebConfiguring this page]).
+  * `setup_conf.yml` has general configurations for the web application and *it's optional right now*: if you don't edit it now you can edit its properties from Mconf-Web's interface (see [MconfWebConfiguring this page]).
 
-`database.yml` configures the database and you *have* to configure it now. By default, MySQL will be used. If you're having trouble with the passwords in MySQL, see [http://code.google.com/p/mconf/wiki/MconfFAQ#Wrong_username_and/or_password_for_MySQL this FAQ entry].
+  * `database.yml` configures the database and *it must be configured now*. By default, MySQL will be used. You only need to set the variables "username" and "password" (for all environments) with the user that will be used to access MySQL and his password. If you're having trouble with the passwords in MySQL, see [http://code.google.com/p/mconf/wiki/MconfFAQ#Wrong_username_and/or_password_for_MySQL this FAQ entry].
 
 
 To learn more about the other options in these files, see [MconfWebSetupConf this page].
