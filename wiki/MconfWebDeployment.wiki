@@ -2,11 +2,9 @@
 
 = Deployment =
 
-Mconf is developed in and targeted to Ubuntu systems. We recommend the use of Ubuntu 10.04 (the latest LTS version, the same used by !BigBlueButton), but it has been tested in newer versions and should work as well.
+Mconf is developed in and targeted to Ubuntu systems. We recommend the use of an specific version of Ubuntu (see below), but it has been tested in newer versions and should work as well (however you might have to adapt some of the instructions).
 
-But you can of course adapt it to your needs. Mconf-web is a Rails application, so the deployment process is very similar to the deployment of any other Rails application.
-
-The server setup we have right now, and thus the recommended setup, uses the following:
+The recommended setup for the latest version of Mconf-Web is:
 
   # [http://www.ubuntu.com/ Ubuntu] 10.04 operating system with a user named `mconf`.
   # Ruby is installed with [https://rvm.beginrescueend.com/ RVM].
@@ -17,11 +15,12 @@ The server setup we have right now, and thus the recommended setup, uses the fol
 
 The following guides will instruct you on how to setup this environment.
 
-Mconf-web should work on any operating system that has Ruby available (and most of them do have Ruby). Changing any of these items will probably require modifications in the configuration files and scripts (and maybe even some code changes).
+You can of course adapt it to your needs. Mconf-web is a Rails application, so the deployment process is very similar to the deployment of any other Rails application. It should work on any operating system that has Ruby available (and most of them do have Ruby). Changing any of these items will probably require modifications in the configuration files and scripts (and maybe even some code changes).
+
 
 == Deployment guides ==
 
-Basically all you need to start is a machine with Ubuntu (10.04 is recommended) and a user (suggested name: `mconf`).
+Basically all you need to start is a machine with Ubuntu and a user (suggested name: `mconf`).
 
   * *[MconfWebDeploymentManual Manual installation]*: This is a detailed guide showing how to install Mconf-Web. It allows a more flexible installation and can also help you find errors in your setup. *If you a setting up a real production server (not a test), follow this guide, so you will know what you're doing in your server*.
 
