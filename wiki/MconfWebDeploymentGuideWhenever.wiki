@@ -14,6 +14,12 @@ To update the crontab, go to your Mconf-Web directory and run the comman below. 
 bundle exec whenever --update-crontab RAILS_ENV=production
 }}}
 
+Then look at your crontab with the command below to check if was actually updated:
+
+{{{
+crontab -l
+}}}
+
 
 == Whenever with RVM ==
 
