@@ -103,7 +103,7 @@ cd ~/mconf-web/current
 
 # RVM will ask you if you: "Do you wish to trust this .rvmrc file?". Answer "yes".
 
-git checkout v0.6       # go to version 0.6
+git checkout v0.7       # go to version 0.7
 git checkout latest     # branch that points to the latest version
 }}}
 
