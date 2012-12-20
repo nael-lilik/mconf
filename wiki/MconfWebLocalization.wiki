@@ -1,13 +1,13 @@
 = Translating Mconf-Web =
 
-We use myGengo (http://mygengo.com/) to translate Mconf-Web to other languages. If you want to collaborate:
+We use Gengo (http://gengo.com/) to translate Mconf-Web to other languages. If you want to collaborate:
 
-  * Create an account in http://mygengo.com/
+  * Create an account in http://gengo.com/
   * Send us an email (mconf-dev@googlegroups.com) with:
-    * Your email address used in myGengo;
-    * The language you wish to translate Mconf-Web to (it can be either a new language or an already existent one).
+    * Your email address used in Gengo;
+    * The language you wish to translate Mconf-Web to (it can also be a language Mconf-Web is not translated into yet).
 
-We will then authorize your user to translate Mconf-Web to this language. Periodically we will download the files from myGengo and update Mconf-Web with them.
+We will then authorize your user to translate Mconf-Web to this language. Periodically we will download the files from Gengo and update Mconf-Web with them.
 
 The languages maintained by the Mconf team are:
   * English
@@ -29,13 +29,13 @@ See more at: https://github.com/mconf/translate/wiki
 === Development process ===
 
   * Add or remove keys or change values in the language 'en' only;
-  * Upload these files to myGengo;
-  * Translate to other languages using myGengo always;
-  * Download all language files from myGengo and update the repository using the script 'mygengo'.
+  * Upload these files to Gengo;
+  * Translate to other languages using Gengo always;
+  * Download all language files from Gengo and update the repository using the script 'gengo'.
 
-There is a script in `script/mygengo` that downloads all locale files from myGengo and runs some rake tasks on them to cleanup and adapt to Mconf. This script should be used everytime there's a need to update the locales.
+There is a script in `script/gengo` that downloads all locale files from Gengo and runs some rake tasks on them to cleanup and adapt to Mconf. This script should be used everytime there's a need to update the locales.
 
 {{{
 cd mconf-web
-ruby script/mygengo
+ruby script/gengo
 }}}
