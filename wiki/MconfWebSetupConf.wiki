@@ -2,6 +2,17 @@
 
 <wiki:toc max_depth="3" />
 
+= Configuring the database (database.yml) =
+
+The database is configured in the file `config/database.yml`. This is a standard configuration file used by Rails applications, so you can find plenty of resources about it on the Internet (for example, [http://guides.rubyonrails.org/getting_started.html#configuring-a-database this page]).
+
+You can also take a look at the examples in our repository:
+
+
+  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.example Default example]: Uses SQLite3 for development and testing and MySQL for production;
+  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.mysql.example MySQL example]: Example on how to use MySQL;
+  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.example Default example]: Example on how to use SQLite3.
+
 = Configuring the application (setup_conf.yml) =
 
 This file contains configurations that are used to populate the database the first time you setup your application. It is *optional*: if you don't configure it default values will be used and you will be able to edit them using [MconfWebConfiguring Mconf-Web's management page].
@@ -110,17 +121,3 @@ site_shibboleth: "false"                                       # Change to "true
 site_shibboleth_email_field: "Shib-inetOrgPerson-mail"         # Field used to obtain the user's email
 site_shibboleth_name_field: "Shib-inetOrgPerson-sn"            # Field used to obtain the user's name
 }}}
-
-
-
-
-= Configuring the database (database.yml) =
-
-The database is configured in the file `config/database.yml`. This is a standard configuration file used by Rails applications, so you can find plenty of resources about it on the Internet (for example, [http://guides.rubyonrails.org/getting_started.html#configuring-a-database this page]).
-
-You can also take a look at the examples in our repository:
-
-
-  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.example Default example]: Uses SQLite3 for development and testing and MySQL for production;
-  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.mysql.example MySQL example]: Example on how to use MySQL;
-  * [https://github.com/mconf/mconf-web/blob/master/config/database.yml.example Default example]: Example on how to use SQLite3.
