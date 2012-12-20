@@ -6,8 +6,8 @@ All important site-wide configurations *should* be available in this management 
 
 There are basically 3 ways to configure the website:
 
-  * Using the website, in the management area: *this is what you should do*, see more about it below;
-  * Pre-populate the database before creating it, using the `setup_conf.yml` file: useful for development or to setup more than one website (see [MconfWebSetupConf this page]);
+  * Using the management area in the website: *this is what you should do*, see more about it below;
+  * Pre-populate the database before creating it, using `setup_conf.yml` file: useful for development or to setup more than one website (see [MconfWebSetupConf this page]);
   * Hacking the source code and directly editing the database: you'll only need to do it if you need to change something that is not yet configurable using the management page. You'll also need knowledge in Rails if you need this.
 
 It is also important to point out that the majority of the things you might change in the configurations of Mconf-Web will require a restart in the application. We will explain how to restart it in the following of this page.
