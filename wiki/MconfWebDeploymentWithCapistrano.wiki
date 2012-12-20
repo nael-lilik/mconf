@@ -120,7 +120,7 @@ staging:
   user: "mconf"                                       # User (in the server) used to deploy
   repository: "git://github.com/mconf/mconf-web.git"  # Repository to get the app from
   scm: "git"                                          # Repository scm
-  branch: "v0.6"                                      # Branch or tag to be deployed
+  branch: "v0.7"                                      # Branch or tag to be deployed
 }}}
 
 The parameters are very simple and you can see their meaning reading the comments besides them. The ones you'll most likely change are "server" and "branch". "server" should be the IP or the domain of your server, and "branch" should be any branch or tag in the repository pointed by "repository". This branch will be used to deploy the application.
