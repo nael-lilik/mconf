@@ -157,23 +157,37 @@ Then create the user (*change all occurrences of `password` by the actual passwo
 
 {{{
 CREATE USER "mconf"@"localhost" IDENTIFIED BY "password";
-CREATE DATABASE mconf_production;
 GRANT ALL PRIVILEGES ON mconf_production.* TO "mconf"@"localhost" IDENTIFIED BY "password";
 FLUSH PRIVILEGES;
 }}}
 
 
+=== 5. Application configurations ===
 
-=== 5 Web server ===
+<font color=blue>Note about Capistrano: </font>If you'll use Capistrano this is not needed. See [MconfWebDeploymentWithCapistrano this page].
 
-You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of Apache if you're installing Mconf-Web in the same machine that has !BigBlueButton. If Mconf-Web will be installed in a standalone machine, you can pick your favorite server.
 
-Mconf-Web uses Passenger to server the application together with Apache or Nginx. So you'll have to install Passenger and use it in the configurations of the web server. See the guide below for a how to:
+This step consists of everything that was not possible to be done at 3 because we needed the configuration files properly edited.
+
+We'll setup the database and generate a new [http://www.railsrocket.com/rake-secret secret key] for rails:
+
+{{{
+cd ~/mconf-web/current
+bundle exec rake setup:db RAILS_ENV=production
+bundle exec rake secret RAILS_ENV=production
+}}}
+
+
+=== 6. Web server ===
+
+You can use both Apache or Nginx to serve Mconf-Web. We recommend the use of *Apache*.
+
+Mconf-Web uses [http://www.modrails.com/ Passenger] to server the application together with Apache or Nginx. So you'll have to install Passenger and use it in the configurations of the web server. See the guide below for a how to:
 
   * [MconfWebDeploymentInstallPassenger Guide to install Passenger]
 
 
-=== 6. System-wide configurations ===
+=== 7. System-wide configurations ===
 
 This contains the extra configurations you need to do on your server to run Mconf-Web. 
 
@@ -185,22 +199,6 @@ Also, we use a gem called Whenever to setup the crontab with tasks for Mconf-Web
 
   * [MconfWebDeploymentGuideWhenever Guide to use Whenever]
 
-
-=== 7. Application configurations ===
-
-<font color=blue>Note about Capistrano: </font>If you'll use Capistrano this is not needed. See [MconfWebDeploymentWithCapistrano this page].
-
-
-This step consists of everything that was not possible to be done at 3. because we needed the configuration files properly edited.
-
-We'll setup the database and generate a new [http://www.railsrocket.com/rake-secret secret key] for rails:
-
-{{{
-bundle exec rake setup:db RAILS_ENV=production
-bundle exec rake secret RAILS_ENV=production
-}}}
-
-After that, you should restart your application. See the maintenance tasks below.
 
 
 
