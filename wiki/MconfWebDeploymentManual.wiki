@@ -193,17 +193,12 @@ At this point you should already be able to access your application in your brow
 
 This contains the extra configurations you need to do on your server to run Mconf-Web. 
 
-The first thing is to install and configure God, a process monitoring tool:
-
-  * [MconfWebDeploymentInstallGod Guide to install God]
-
-Also, we use a gem called Whenever to setup the crontab with tasks for Mconf-Web:
-
-  * [MconfWebDeploymentGuideWhenever Guide to use Whenever]
+  * God: a process monitoring tool, see: [MconfWebDeploymentInstallGod Guide to install God]
+  * Whenever: a gem used to set up the crontab with tasks for Mconf-Web, see: [MconfWebDeploymentGuideWhenever Guide to use Whenever]
+  * Logrotate: a tool to reduce the size of logfiles, see: [MconfWebDeploymentInstallLogrotate Guide to use Logrotate]
 
 
 At this point you finished installing Mconf-Web. The first thing you might want to do is [MconfWebConfiguring configure the application].
-
 
 
 
