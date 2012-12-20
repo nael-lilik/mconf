@@ -202,6 +202,8 @@ Also, we use a gem called Whenever to setup the crontab with tasks for Mconf-Web
   * [MconfWebDeploymentGuideWhenever Guide to use Whenever]
 
 
+At this point you finished installing Mconf-Web. The first thing you might want to do is [MconfWebConfiguring configure the application].
+
 
 
 
