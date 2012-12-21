@@ -11,6 +11,12 @@ Seguir o guia padrão de instalação do Mconf-Web que está [MconfWebDeployment
   * Na [MconfWebDeploymentManual#3._Download_the_application seção 3], baixar a aplicação do endereço `git://github.com/mconf-ufrgs/mconf-web.git`.
   * Ainda na seção 3, no lugar de `git checkout v0.7`, utilizar o branch master: `git checkout master`.
 
+
+== Instalação e configuração shibboleth ==
+
+<font color=red>TODO: instruções</font>
+
+
 == Configuração inicial ==
 
 Após instalar a aplicação, acessar o endereço `/admin` da mesma (e.g. `http://mconf-teste.ufrgs.br/admin`) e logar com o usuário admin padrão:
@@ -18,9 +24,9 @@ Após instalar a aplicação, acessar o endereço `/admin` da mesma (e.g. `http:
   * Username: "admin"
   * Senha: "admin"
 
-<font color=red>TODO: como mudar a senha do admin</font>
+Após entrar com a conta "admin", a senha deste usuário pode ser modificada acessando a página "account".
 
-Acessar a página de configuração da aplicação (mais detalhes [MconfWebConfiguring aqui]) para configurar os campos abaixo.
+Acessar a página de configuração da aplicação (mais detalhes [MconfWebConfiguring aqui]) para configurar os campos abaixo. Alguns desses campos requerem que a aplicação seja reiniciada para serem aplicados. Para reiniciar a aplicação veja [MconfWebDeploymentManual#Restart esta página].
 
 Configurações básicas:
 
@@ -35,11 +41,18 @@ Para a autenticação Shibboleth:
   * Shibboleth field for name: "`cn`"
   * Shibboleth field for login: "`uid`"
 
+Com essas configurações o acesso através da federação já deve estar funcionando.
+
 Se for utilizada a conta do Gmail para envio de emails:
 
   * SMTP Login: "`ufrgs@mconf.org`"
-  * SMTP Password: ...
+  * SMTP Password: <font color=blue><consultar equipe></font>
 
-Na aba "BigBlueButton", modifcar as configurações para web conferência:
+Na aba "BigBlueButton", haverá um servidor de web conferência já pré-cadastrado. Modifcar as configurações deste servidor para:
 
-<font color=red>TODO: instruções</font>
+  * Name: "Default Server"
+  * URL: "http://lb.mconf.org/bigbluebutton/api
+  * Security Salt: <font color=blue><consultar equipe></font>
+  * Version: "0.8"
+  * String ID: "default-server"
+
