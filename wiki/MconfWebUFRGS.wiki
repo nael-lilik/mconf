@@ -48,11 +48,10 @@ Se for utilizada a conta do Gmail para envio de emails:
   * SMTP Login: "`ufrgs@mconf.org`"
   * SMTP Password: <font color=blue><consultar equipe></font>
 
-Na aba "BigBlueButton", haverá um servidor de web conferência já pré-cadastrado. Modifcar as configurações deste servidor para:
+Na aba "!BigBlueButton", haverá um servidor de web conferência já pré-cadastrado. Modifcar as configurações deste servidor para:
 
   * Name: "Default Server"
   * URL: "http://lb.mconf.org/bigbluebutton/api
   * Security Salt: <font color=blue><consultar equipe></font>
   * Version: "0.8"
   * String ID: "default-server"
-
