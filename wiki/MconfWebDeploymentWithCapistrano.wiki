@@ -24,7 +24,7 @@ The steps necessary are:
   # Install ruby: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#2._Ruby guide]
   # Use Capistrano to deploy the application;
     * See below how to do it.
-  # Install a web server and some other system-wide applications: [http://code.google.com/p/mconf/wiki/MconfWebDeploymentManual#5._Install_a_web_server,_configure_the_application_and_deploy guide] (see the sections "Web server" and "System-wide configurations")
+  # Install a web server and some other system-wide applications: see [MconfWebDeploymentManual#6._Web_server this] and [MconfWebDeploymentManual#7._System-wide_configurations this]. You might also have to configure the database, see [MconfWebDeploymentManual#4.1._Database_user this].
 
 As you can see above, steps 1, 2, and 4 are documented in the deployment guides and you have the links above. Step 3 is where you'll use Capistrano.
 
@@ -43,11 +43,6 @@ sudo apt-get install openssh-server
 
 You can also setup ssh keys to avoid the need to enter a password every time you run a command (which is quite annoying). See how to [MconfWebDeploymentWithCapistrano#Set_up_ssh_keys here].
 
-Then install bundler with:
-
-{{{
-gem install bundler -v 1.0.18
-}}}
 
 *In your development machine:*
 
