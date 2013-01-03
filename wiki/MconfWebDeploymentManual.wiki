@@ -58,7 +58,7 @@ The first thing after the installation is to add your user to the `rvm` group:
 sudo adduser mconf rvm # change "mconf" to your username
 }}}
 
-After that, *restart your terminal!* If you don't do that, RVM won't be found and your user's permissions won't be updated.
+After that, <font color=red>*restart your terminal!*</font> If you don't do that, RVM won't be found and your user's permissions won't be updated.
 
 Before installing ruby, run the command below to see the dependencies RVM requires you to install before ruby. It will show you a "apt-get" command right below the header "For Ruby / Ruby HEAD (MRI, Rubinius, & REE)". Install the packages listed there before proceeding.
 
