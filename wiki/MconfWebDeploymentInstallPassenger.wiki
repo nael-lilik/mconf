@@ -53,7 +53,7 @@ sudo rm /etc/apache2/sites-enabled/*
 Now you need to add a configuration file for Mconf-Web. You might just download our example and edit it:
 
 {{{
-sudo curl https://raw.github.com/mconf/mconf-web/latest/config/apache2_mconf.example -o /etc/apache2/sites-available/mconf-web
+sudo curl https://raw.github.com/mconf/mconf-web/latest/config/webserver/apache2.example -o /etc/apache2/sites-available/mconf-web
 }}}
 
 The file will be saved at `/etc/apache2/sites-available/mconf-web`. This is the content of this file:
@@ -69,16 +69,16 @@ The file will be saved at `/etc/apache2/sites-available/mconf-web`. This is the 
   RewriteCond %{SCRIPT_FILENAME} !maintenance.html
   RewriteRule ^.*$  -  [redirect=503,last]
 
-  ServerName www.yourhost.com
-  DocumentRoot /somewhere/public
-  <Directory /somewhere/public>
+  ServerName YOUR_HOST
+  DocumentRoot /YOUR_MCONF_WEB/public
+  <Directory /YOUR_MCONF_WEB/public>
     AllowOverride all
     Options -MultiViews
   </Directory>
 </VirtualHost>
 }}}
 
-You should change "`www.yourhost.com`" to your IP or domain and "`/somewhere/public`" (both occurrences) to the path to your Mconf-Web application, that should be "`/home/mconf/mconf-web/current/public`" (don't forget to point to the *public* directory!).
+You should change "`YOUR_HOST`" by your IP or domain and "`/YOUR_MCONF_WEB/public`" (both occurrences) to the path to your Mconf-Web application, that should be "`/home/mconf/mconf-web/current/public`" (don't forget to point to the *public* directory!).
 
 After editing the file, enable it in Apache with:
 
