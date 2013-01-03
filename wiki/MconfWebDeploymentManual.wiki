@@ -101,7 +101,7 @@ Next, change your repository to the version you want to deploy. If you don't do 
 {{{
 cd ~/mconf-web/current
 
-# RVM will ask you if you: "Do you wish to trust this .rvmrc file?". Answer "yes".
+# RVM will ask: "Do you wish to trust this .rvmrc file?". Answer "yes".
 
 git checkout v0.7       # go to version 0.7
 git checkout latest     # branch that points to the latest version
