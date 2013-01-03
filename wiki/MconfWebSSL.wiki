@@ -41,9 +41,9 @@ Replace all comments between "`<`" and "`>`" by the appropriate values.
 Generate the key with (replace "`$HOSTNAME`" by the name of your host, for instance "`mconf.org`"):
 
 {{{
-openssl genrsa -out /etc/ssl/private/$HOSTNAME.key 2048 -config /tmp/openssl.conf
-openssl req -new -key /etc/ssl/private/$HOSTNAME.key -out /etc/ssl/private/$HOSTNAME.csr -batch -config /tmp/openssl.conf
-openssl x509 -req -days 730 -in /etc/ssl/private/$HOSTNAME.csr -signkey /etc/ssl/private/$HOSTNAME.key -out /etc/ssl/certs/$HOSTNAME.crt
+sudo openssl genrsa -out /etc/ssl/private/$HOSTNAME.key 2048 -config /tmp/openssl.conf
+sudo openssl req -new -key /etc/ssl/private/$HOSTNAME.key -out /etc/ssl/private/$HOSTNAME.csr -batch -config /tmp/openssl.conf
+sudo openssl x509 -req -days 730 -in /etc/ssl/private/$HOSTNAME.csr -signkey /etc/ssl/private/$HOSTNAME.key -out /etc/ssl/certs/$HOSTNAME.crt
 }}}
 
 Your self-signed certificate will be at: `/etc/ssl/certs/$HOSTNAME.crt`.
