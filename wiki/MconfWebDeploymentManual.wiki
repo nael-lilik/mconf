@@ -154,7 +154,7 @@ mysql -u root -p
 
 (If you're having trouble with the root password in MySQL, see [http://code.google.com/p/mconf/wiki/MconfFAQ#Wrong_username_and/or_password_for_MySQL this FAQ entry].)
 
-Then create the user (*change all occurrences of `password` by the actual password that should be used*):
+Then create the user (*change all occurrences of "`password`" by the actual password that should be used*):
 
 {{{
 CREATE USER "mconf"@"localhost" IDENTIFIED BY "password";
