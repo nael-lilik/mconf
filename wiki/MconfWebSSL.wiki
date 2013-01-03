@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Enable SSL/HTTPS in Mconf-Web
 
 = Mconf-Web with SSL (HTTPS) =
 
@@ -50,4 +50,52 @@ And now you can remove the `/etc/openssl.conf` file:
 
 {{{
 rm `/etc/openssl.conf`
+}}}
+
+= Configuring Apache =
+
+At first, enable some modules that will be needed:
+
+{{{
+sudo a2enmod ssl
+sudo a2enmod rewrite
+}}}
+
+There will be a configuration file to rewrite all request from port 80 to port 443. If you already have Mconf-Web running, you will already have a configuration file that should be at `/etc/apache2/sites-enabled/mconf-web`. Edit this file to include the contents of: https://github.com/mconf/mconf-web/blob/latest/config/webserver/apache2_ssl_80.example (replace "`YOUR_HOST`" by your server's name or IP).
+
+You can also download the new file *and replace the old one* with:
+
+{{{
+sudo curl https://raw.github.com/mconf/mconf-web/latest/config/webserver/apache2_ssl_80.example -o /etc/apache2/sites-available/mconf-web
+}}}
+
+Then install the configuration file that will respond to request to port 443:
+
+{{{
+sudo curl https://raw.github.com/mconf/mconf-web/latest/config/webserver/apache2_ssl_443.example -o /etc/apache2/sites-available/mconf-web-ssl
+}}}
+
+In this file (`/etc/apache2/sites-available/mconf-web-ssl`) you will have to edit all occurrences of "`YOUR_IP`", "`YOUR_HOST`", "`YOUR_CERT`" and "`/somewhere/public`" by the appropriate values.
+
+
+Enable the new configuration file:
+
+{{{
+sudo a2ensite mconf-web-ssl
+}}}
+
+Restart Apache:
+
+{{{
+sudo service apache2 restart
+}}}
+
+
+= Configuring the application =
+
+After configuring the SSL in your server, you have to configure Mconf-Web to use it. You can either access the [MconfWebConfiguring management page] (that might not be accessible now) or do it from your terminal with:
+
+{{{
+cd /home/mconf/mconf-web/current
+./script/rails runner -e production "Site.current.update_attributes(:ssl => true)"
 }}}
