@@ -9,7 +9,7 @@ This page describes how to enable SLL/HTTPS in your Mconf-Web server.
 
 The first thing you need is a SSL certificate. There is plenty of information about it in the Internet (just search for "SSL certificate"), but the fastest way to get things going is to create a [http://en.wikipedia.org/wiki/Self-signed_certificate self-signed certificate]. See below how to do it (with instructions taken from http://wiki.rnp.br/pages/viewpage.action?pageId=41616278).
 
-Copy the following content to a file named `/etc/openssl.conf`.
+Copy the following content to a file named `/tmp/openssl.conf`.
 
 {{{
 [ req ]
@@ -46,10 +46,10 @@ openssl x509 -req -days 730 -in /etc/ssl/private/$HOSTNAME.csr -signkey /etc/ssl
 
 Your self-signed certificate will be at: `/etc/ssl/certs/$HOSTNAME.crt`.
 
-And now you can remove the `/etc/openssl.conf` file:
+And now you can remove the `/tmp/openssl.conf` file:
 
 {{{
-rm `/etc/openssl.conf`
+rm `/tmp/openssl.conf`
 }}}
 
 = Configuring Apache =
