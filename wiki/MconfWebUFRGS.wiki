@@ -14,7 +14,9 @@ Seguir o guia padrão de instalação do Mconf-Web que está [MconfWebDeployment
 
 == Instalação e configuração shibboleth ==
 
-<font color=red>TODO: instruções</font>
+Primeiro passo é habilitar SSL/HTTPS: [MconfWebSSL ver manual]
+
+<font color=red>TODO: instruções para shibboleth</font>
 
 
 == Configuração inicial ==
