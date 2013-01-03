@@ -27,7 +27,7 @@ emailAddress = <Email address>
 emailAddress_max = 40
 localityName = <City name>
 stateOrProvinceName = <State name>
-countryName = <Country name>
+countryName = <Country name (2 letters)>
 countryName_default = <Same as above>
 countryName_min = 2
 countryName_max = 2
@@ -35,6 +35,8 @@ commonName = <Host name including the domain>
 commonName_default = <Same as above>
 commonName_max = 64
 }}}
+
+Replace all comments between "`<`" and "`>`" by the appropriate values.
 
 Generate the key with (replace "`$HOSTNAME`" by the name of your host, for instance "`mconf.org`"):
 
