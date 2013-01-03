@@ -1,0 +1,53 @@
+#summary One-sentence summary of this page.
+
+= Mconf-Web with SSL (HTTPS) =
+
+This page describes how to enable SLL/HTTPS in your Mconf-Web server.
+
+
+= Certificate =
+
+The first thing you need is a SSL certificate. There is plenty of information about it in the Internet (just search for "SSL certificate"), but the fastest way to get things going is to create a [http://en.wikipedia.org/wiki/Self-signed_certificate self-signed certificate]. See below how to do it (with instructions taken from http://wiki.rnp.br/pages/viewpage.action?pageId=41616278 (sections 1 and 2.4)).
+
+Copy the following content to a file named `/etc/openssl.conf`.
+
+{{{
+[ req ]
+default_bits = 2048 # Size of keys
+string_mask = nombstr # permitted characters
+distinguished_name = req_distinguished_name
+ 
+[ req_distinguished_name ]
+# Variable name   Prompt string
+#----------------------   ----------------------------------
+0.organizationName = <Name of your organization>
+organizationalUnitName = <Department in your organization>
+organizationalUnitName_default = <Same as above>
+emailAddress = <Email address>
+emailAddress_max = 40
+localityName = <City name>
+stateOrProvinceName = <State name>
+countryName = <Country name>
+countryName_default = <Same as above>
+countryName_min = 2
+countryName_max = 2
+commonName = <Host name including the domain>
+commonName_default = <Same as above>
+commonName_max = 64
+}}}
+
+Generate the key with (replace "`$HOSTNAME`" by the name of your host, for instance "`mconf.org`"):
+
+{{{
+openssl genrsa -out /etc/ssl/private/$HOSTNAME.key 2048 -config /tmp/openssl.conf
+openssl req -new -key /etc/ssl/private/$HOSTNAME.key -out /etc/ssl/private/$HOSTNAME.csr -batch -config /tmp/openssl.conf
+openssl x509 -req -days 730 -in /etc/ssl/private/$HOSTNAME.csr -signkey /etc/ssl/private/$HOSTNAME.key -out /etc/ssl/certs/$HOSTNAME.crt
+}}}
+
+Your self-signed certificate will be at: `/etc/ssl/certs/$HOSTNAME.crt`.
+
+And now you can remove the `/etc/openssl.conf` file:
+
+{{{
+rm `/etc/openssl.conf`
+}}}
