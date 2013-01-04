@@ -30,7 +30,7 @@ This guide is strongly based on: http://wiki.rnp.br/pages/viewpage.action?pageId
 === Prerequisites ===
 
   * You need a server with Mconf-Web up and running (obviously). See [MconfWebDeploymentManual this guide].
-  * Your Mconf-Web server needs to be using HTTPS (SSL) already. See [MconfWebDeploySSL this guide].
+  * Your Mconf-Web server needs to be using HTTPS (SSL) already. See [MconfWebSSL this guide].
 
 === Installation ===
 
