@@ -1,8 +1,10 @@
 #summary How to enabled federated login with shibboleth
 
+= Using Shibboleth in Mconf-Web =
+
 <wiki:toc max_depth="3" />
 
-= Introduction =
+== Introduction ==
 
 Shibboleth is a solution that allows federated "single sign-in". In brief, this is how it works:
   * Users access services provided by "service providers" (e.g. a web application like Mconf-Web) through an entity called "identity provider".
@@ -11,7 +13,7 @@ Shibboleth is a solution that allows federated "single sign-in". In brief, this 
 
 You can read more about it [http://shibboleth.net/ here] and [http://en.wikipedia.org/wiki/Shibboleth_(Internet2) here].
 
-= How it works in Mconf-Web =
+== How it works in Mconf-Web ==
 
 Mconf-Web is ready to be used as a Shibboleth service provider using the shibboleth module for Apache.
 
@@ -19,18 +21,18 @@ Once the shibboleth module is installed and configured, when a user is redirecte
 
 Mconf-Web will have access only to the information the identity provider returns. With this information a new account will be created automatically in Mconf-Web for the user. This happens only in the first access: in subsequent accesses the user will just access his account that is already created.
 
-= Install and configure Apache's Shibboleth module =
+== Install and configure Apache's Shibboleth module ==
 
 The configuration of a Shibboleth service provider is usually different for different federations. Some steps are shared in all installations, but some others are unique and depend on how the federation (and the identity providers) is configured. In this page we will show a guide with all the steps we use to configure Mconf-Web for the federation mconf.org is integrated with: [http://portal.rnp.br/web/servicos/cafe CAFe]. You can use it as a guide, but we strongly recommend also getting help from the people responsible for the federation you want to integrate Mconf-Web with.
 
 This guide is strongly based on: http://wiki.rnp.br/pages/viewpage.action?pageId=41616305
 
-== Prerequisites ==
+=== Prerequisites ===
 
   * You need a server with Mconf-Web up and running (obviously). See [MconfWebDeploymentManual this guide].
   * Your Mconf-Web server needs to be using HTTPS (SSL) already. See [MconfWebDeploySSL this guide].
 
-== Installation ==
+=== Installation ===
 
 Install Apache's module for Shibboleth:
 
@@ -45,7 +47,7 @@ sudo a2enmod shib2
 }}}
 
 
-== Configuration ==
+=== Configuration ===
 
 We need to configure our site in Apache to use Shibboleth when a user accesses the path `/secure`. To do that, add the following lines to the bottom `/etc/apache2/sites-available/mconf-web-ssl` file, just before the closing `</VirtualHost>` tag:
 
@@ -69,4 +71,4 @@ We will create 3 files:
   * `/etc/shibboleth/attribute-policy.xml` with the contents from *step 10* in [http://wiki.rnp.br/pages/viewpage.action?pageId=41616305 this guide].
 
 
-= Enable and configure Shibboleth inside Mconf-Web =
+== Enable and configure Shibboleth inside Mconf-Web ==
