@@ -1,11 +1,13 @@
 #summary Enable SSL/HTTPS in Mconf-Web
 
+<wiki:toc max_depth="3" />
+
 = Mconf-Web with SSL (HTTPS) =
 
 This page describes how to enable SLL/HTTPS in your Mconf-Web server.
 
 
-= Certificate =
+== Certificate ==
 
 The first thing you need is a SSL certificate. There is plenty of information about it in the Internet (just search for "SSL certificate"), but the fastest way to get things going is to create a [http://en.wikipedia.org/wiki/Self-signed_certificate self-signed certificate]. See below how to do it (with instructions taken from http://wiki.rnp.br/pages/viewpage.action?pageId=41616278).
 
@@ -54,7 +56,7 @@ And now you can remove the `/tmp/openssl.conf` file:
 rm `/tmp/openssl.conf`
 }}}
 
-= Configuring Apache =
+== Configuring Apache ==
 
 At first, enable some modules that will be needed:
 
@@ -93,11 +95,23 @@ sudo service apache2 restart
 }}}
 
 
-= Configuring the application =
+== Configuring the application ==
 
 After configuring the SSL in your server, you have to configure Mconf-Web to use it. You can either access the [MconfWebConfiguring management page] (that might not be accessible now) or do it from your terminal with:
 
 {{{
 cd /home/mconf/mconf-web/current
 ./script/rails runner -e production "Site.current.update_attributes(:ssl => true)"
+}}}
+
+
+== Firewall ==
+
+HTTPS uses port 443, so make sure it is not blocked in your firewall.
+
+If you're using iptables, you can add the following lines to your `/etc/default/firewall` to allow HTTP and HTTPS:
+
+{{{
+iptables -A INPUT -p tcp -m tcp --dport   80 -j ACCEPT
+iptables -A INPUT -p tcp -m tcp --dport  443 -j ACCEPT
 }}}
