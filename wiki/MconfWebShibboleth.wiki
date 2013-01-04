@@ -62,13 +62,34 @@ We need to configure our site in Apache to use Shibboleth when a user accesses t
 }}}
 
 
-Then we configure how the Shibboleth module will communicate with the identity provider. *This step will probably be different for other federations!*
-
-We will create 3 files:
+Then we configure how the Shibboleth module will communicate with the identity provider. *This step will probably be different for other federations!* We will create 3 files (if they already exist, replace their contents):
 
   * `/etc/shibboleth/shibboleth2.xml` with the contents from *step 8* in [http://wiki.rnp.br/pages/viewpage.action?pageId=41616305 this guide].
   * `/etc/shibboleth/attribute-map.xml` with the contents from *step 9* in [http://wiki.rnp.br/pages/viewpage.action?pageId=41616305 this guide].
   * `/etc/shibboleth/attribute-policy.xml` with the contents from *step 10* in [http://wiki.rnp.br/pages/viewpage.action?pageId=41616305 this guide].
 
+The last step is to create a metadata with information about your server. This metadata has to be added to the identity provider for your application to be able to access it.
+
+  * See an example of the metadata in the *step 11* in [http://wiki.rnp.br/pages/viewpage.action?pageId=41616305 this guide].
+
+
 
 == Enable and configure Shibboleth inside Mconf-Web ==
+
+Having your server configured, you now have to enable and configure Shibboleth inside Mconf-Web.
+
+Go to the [MconfWebConfiguring#Management_area management area] and you will see some parameters to configure Shibboleth. They are:
+
+  * Enable Shibboleth: If checked it will enable the login via Shibboleth and add information in the interface for the user to select it.
+  * Shibboleth environment variables: When the identity provider returns the user's information to Mconf-Web, they will be stored in environment variables. You can define in this field the name of the variables that will be read and stored within the session. If left empty, all variables that start with "shib-" will be fetched.
+  * Shibboleth field for email: The name of the variable that will be used as the user's email.
+  * Shibboleth field for name: The name of the variable that will be used as the user's full name.
+  * Shibboleth field for login: The name of the variable that will be used as the user's login.
+
+You can see in the picture below an example of how this fields can be configured.
+
+https://lh6.googleusercontent.com/-yY5ZML_4PiA/UOct-3UPQ8I/AAAAAAAAAy8/h6NI44wKzyQ/s554/Mconf-Web-Shibboleth-Configs.png
+
+
+
+
