@@ -23,6 +23,8 @@
     * Index: quick links to several guides
       * [MconfWebConfiguring Configuring the website]
       * For deployment
+        * [MconfWebSSL Use SSL/HTTPS]
+        * [MconfWebShibboleth Integrate with Shibboleth]
         * [MconfWebDeploymentInstallPassenger Guide to install Passenger]
         * [MconfWebDeploymentInstallGod Guide to install God]
         * [MconfWebDeploymentGuideWhenever Guide to install Whenever]
