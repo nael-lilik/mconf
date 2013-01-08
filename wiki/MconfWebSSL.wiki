@@ -1,8 +1,8 @@
 #summary Enable SSL/HTTPS in Mconf-Web
 
-<wiki:toc max_depth="3" />
-
 = Mconf-Web with SSL (HTTPS) =
+
+<wiki:toc max_depth="3" />
 
 This page describes how to enable SLL/HTTPS in your Mconf-Web server.
 
