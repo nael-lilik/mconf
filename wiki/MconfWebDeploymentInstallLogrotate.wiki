@@ -1,6 +1,6 @@
 #summary How to install and activate logrotate for Mconf-Web
 
-_This page is part of the Mconf-Web deployment described in [MconfWebDeploymentManual this page]._
+_This page is part of the Mconf-Web deployment guide described in [MconfWebDeploymentManual this page]._
 
 = Installing and configuring logrotate for Mconf-Web =
 
