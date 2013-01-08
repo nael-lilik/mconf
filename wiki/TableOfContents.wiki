@@ -20,11 +20,12 @@
       * [MconfWebDeploymentWithCapistrano Using Capistrano]
     * Collaborate
       * [MconfWebLocalization Translating the application]
-    * Index (quick links to all guides)
+    * Index: quick links to several guides
       * [MconfWebConfiguring Configuring the website]
-      * [MconfWebDeploymentInstallPassenger Guide to install Passenger (for deployment)]
-      * [MconfWebDeploymentInstallGod Guide to install God (for deployment)]
-      * [MconfWebDeploymentGuideWhenever Guide to install Whenever (for deployment)]
+      * For deployment
+        * [MconfWebDeploymentInstallPassenger Guide to install Passenger]
+        * [MconfWebDeploymentInstallGod Guide to install God]
+        * [MconfWebDeploymentGuideWhenever Guide to install Whenever]
   * [MconfScalability Scalable Infrastructure]
     * [MconfLBAPI Load Balancer API]
   * [MconfNetwork Mconf Global Network]
