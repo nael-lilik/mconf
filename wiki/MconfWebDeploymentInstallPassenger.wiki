@@ -1,6 +1,6 @@
 #summary How to install Passenger in a Mconf-Web production server
 
-_This page is part of the Mconf-Web deployment described in [MconfWebDeploymentManual this page]._
+_This page is part of the Mconf-Web deployment guide described in [MconfWebDeploymentManual this page]._
 
 = Installing Passenger for Mconf-Web =
 
