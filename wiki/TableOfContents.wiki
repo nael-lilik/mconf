@@ -28,6 +28,7 @@
         * [MconfWebDeploymentInstallPassenger Guide to install Passenger]
         * [MconfWebDeploymentInstallGod Guide to install God]
         * [MconfWebDeploymentGuideWhenever Guide to install Whenever]
+        * [MconfWebDeploymentInstallLogrotate Guide to configure logrotate]
   * [MconfScalability Scalable Infrastructure]
     * [MconfLBAPI Load Balancer API]
   * [MconfNetwork Mconf Global Network]
