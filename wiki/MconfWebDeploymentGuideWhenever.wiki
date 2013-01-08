@@ -1,3 +1,5 @@
+#summary How to install Whenever in a Mconf-Web production server
+
 = Using Whenever in Mconf-Web =
 
 [https://github.com/javan/whenever Whenever] is a gem that helps you configure the crontab. The tasks are specified in the file [https://github.com/mconf/mconf-web/blob/latest/config/schedule.rb config/schedule.rb] and then Whenever is used to generate the crontab.
