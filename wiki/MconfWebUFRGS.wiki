@@ -14,9 +14,9 @@ Seguir o guia padrão de instalação do Mconf-Web que está [MconfWebDeployment
 
 == Instalação e configuração shibboleth ==
 
-Primeiro passo é habilitar SSL/HTTPS: [MconfWebSSL ver manual]
-
-<font color=red>TODO: instruções para shibboleth</font>
+  # Habilitar SSL/HTTPS: [MconfWebSSL ver manual]
+  # Habilitar o Shibboleth no servidor: [MconfWebShibboleth ver manual]
+    * Algumas configurações do Shibboleth devem ser adaptadas pra federação da UFRGS. <font color=red>TODO: instruções do que deve ser adaptado</font>
 
 
 == Configuração inicial ==
