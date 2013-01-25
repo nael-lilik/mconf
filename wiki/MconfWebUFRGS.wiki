@@ -30,6 +30,8 @@ Após entrar com a conta "admin", a senha deste usuário pode ser modificada ace
 
 Acessar a página de configuração da aplicação (mais detalhes [MconfWebConfiguring aqui]) para configurar os campos abaixo. Alguns desses campos requerem que a aplicação seja reiniciada para serem aplicados. Para reiniciar a aplicação veja [MconfWebDeploymentManual#Restart esta página].
 
+(Nas configurações abaixo, *não* utilizar as aspas, usar apenas o conteúdo dentro delas.)
+
 Configurações básicas:
 
   * Application Domain: colocar o domínio atribuído ao site.
