@@ -104,8 +104,10 @@ cd ~/mconf-web/current
 
 # RVM will ask: "Do you wish to trust this .rvmrc file?". Answer "yes".
 
-git checkout v0.7       # go to version 0.7
-git checkout latest     # branch that points to the latest version
+git checkout latest     # go to the branch that points to the latest version
+
+# You can also pick a specific version if you need to. For example:
+# git checkout v0.7     # go to version 0.7
 }}}
 
 The versions available are the tags available. To see all versions, go to [https://github.com/mconf/mconf-web/tags this page]. You can also deploy the branch "latest", it will always point to the latest version available.
