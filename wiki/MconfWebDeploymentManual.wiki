@@ -97,7 +97,7 @@ git clone git://github.com/mconf/mconf-web.git ~/mconf-web/current/
 
 Your application will be deployed at `~/mconf-web/current/`, but you can change it if you need to. It is the default path, so it should require less configurations if you don't change it.
 
-The first thing is to mark the .rvmrc as trusted (you can read more about [https://rvm.io/workflow/rvmrc/ rvmrc here]). This is specially useful later on when other processes are executed (god and delayed_job) and *need* this to be done:
+The first thing is to mark the .rvmrc as trusted (you can read more about [https://rvm.io/workflow/rvmrc/ rvmrc here]). This is specially useful later on when other processes are executed (god and delayed_job) and *needs* this to be done:
 
 {{{
 rvm rvmrc trust ~/mconf-web/current/.rvmrc
