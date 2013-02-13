@@ -2,10 +2,6 @@
 
 <wiki:toc max_depth="2" />
 
-=== Shortcuts ===
-  * [http://code.google.com/p/mconf/issues/list?can=2&q=component:Mconf-Web%20OR%20component:BigBlueButtonRails%20OR%20component:BigBlueButtonAPIRuby&sort=component+milestone&colspec=ID%20Type%20Milestone%20Status%20Priority%20Reporter%20Owner%20Component%20Summary All open issues]
-
-
 = Current Development: Release 0.8 =
 
 *Planned for*: ?
