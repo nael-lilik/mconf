@@ -1,16 +1,19 @@
 #summary Development Road Map for Mconf-Web
 
+<wiki:toc max_depth="2" />
+
 === Shortcuts ===
   * [http://code.google.com/p/mconf/issues/list?can=2&q=component:Mconf-Web%20OR%20component:BigBlueButtonRails%20OR%20component:BigBlueButtonAPIRuby&sort=component+milestone&colspec=ID%20Type%20Milestone%20Status%20Priority%20Reporter%20Owner%20Component%20Summary All open issues]
 
 
-= Releases =
-
-== Current Development: Release ? ==
+= Current Development: Release 0.8 =
 
 *Planned for*: ?
 
+*Planned features*:
+  * Support for recordings: the application will show the list of recordings for a webconf room (in the user's home and in the webconference section in a space), the user will be able to select if the meeting will be recorded or not (as well as the duration and title of it), and also the inclusion of administration pages to see all recordings, edit, delete, etc.
 
+= Stable Versions =
 
 == Release 0.7 ==
 
@@ -160,3 +163,15 @@ See also:
 
   * [http://code.google.com/p/mconf/issues/list?can=1&q=Milestone%3DMconf-Web-Release0.1 Issues for Mconf-Web-Release0.1].
   * [https://github.com/mconf/mconf-web/compare/ging:master...mconf:v0.1 Source code changes].
+
+
+
+
+= Other: Mconf-Web 2 =
+
+This is a new version of Mconf-Web with *a lot* of refactoring in the code base and in the layout of the application. Also several features that were not really necessary (but were inherited from Global Plaza) are being removed, making the application easier to use and to maintain. There is no plan yet for when this new version will be available.
+
+*Planned for*: ?
+
+*Planned features*:
+  * An internal chat system (similar to how Gtalk works inside Gmail). This will allow users to chat inside Mconf-Web and easily invite people to conferences. In the future possibly a desktop client might also be implemented to interact with the chat inside Mconf-Web.
