@@ -94,3 +94,10 @@ The current version of Mconf-Live implements changes in [http://code.google.com/
    <message/>
 </response>
 }}}
+
+== Join Meeting ==
+
+*Parameters:*
+
+|| *Change* || *Param Name* || *Required/Optional* || *Type* || *Description* ||
+|| Added || `guest` || Optional || Boolean || \TODO ||
