@@ -100,4 +100,8 @@ The current version of Mconf-Live implements changes in [http://code.google.com/
 *Parameters:*
 
 || *Change* || *Param Name* || *Required/Optional* || *Type* || *Description* ||
-|| Added || `guest` || Optional || Boolean || \TODO ||
+|| Added || `guest` || Optional || Boolean || If `guest` is TRUE, the user will have to wait until the moderator (any moderator of the meeting) approves or rejects her participation. If omitted, the user won't be a guest (default behavior). The roles defined by password are not affected: a guest could be a moderator or a viewer - the role will take place after the meeting moderator approves her participation. ||
+
+*Example Requests:*
+
+http://yourserver.com/bigbluebutton/api/join?meetingID=test01&password=mp&fullName=John&guest=true&checksum=1234
