@@ -9,7 +9,7 @@ To read how to install Mconf-Live and join the Global Network, see the [MconfNet
 == Changelog ==
 
 === mconf-live0.3 (currently under beta) ===
- * Source code: https://github.com/mconf/bigbluebutton/tree/mconf-live0.2
+ * Source code: https://github.com/mconf/bigbluebutton/tree/mconf-live0.3
  * Based on !BigBlueButton 0.8
  * New kind of participant that only receives audio and video but doesn't transmit anything until he wants to (details in [http://mconf.org/m/posts/2013/01/11/mconf-live-0-3/ this blog post])
  * Preliminary version of the network monitor, that indicates to the user how much bandwidth the webconference is consuming and the latency between the user and the server
