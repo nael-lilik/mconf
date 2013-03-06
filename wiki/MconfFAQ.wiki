@@ -12,11 +12,11 @@ Our goal with this page is to have a central place where people can easily find 
 
 === Emails are not being sent ===
 
-Briefly, this is how emails are sent in Mconf-Web:
+At first you should try to understand how emails are sent in Mconf-Web:
 
-The "`site`" table has several columns that store the information about your SMTP account. You can configure them in the [MconfWebConfiguring management page]. This email will be used to send all emails from within Mconf-Web. Currently only you can use any SMTP account, including Gmail accounts.
+The "`site`" table has several columns that store the information about your SMTP account. You can configure them in the [MconfWebConfiguring management page]. This email will be used to send all emails from within Mconf-Web. Currently only you can use an SMTP account, including Gmail accounts.
 
-When an email needs to be sent, a "job" is stored in the database and an external process (a gem called "`delayed_job`") will read the job and deliver the email. This process is monitored by another gem called "`god`", that is also for starting/stoping it. So you don't ever need to deal with `delayed_job`, only with `god`.
+When an email needs to be sent, a "job" is stored in the database and an external process (a gem called "`delayed_job`") will read the job and deliver the email. This process is monitored by another gem called "`god`", that is also responsible for starting/stoping it. So you don't ever need to deal with `delayed_job` directly, only with `god`.
 
 
 To know how to use `god`, see [MconfWebDeploymentInstallGod this page]. Once you have it installed, you can try to stop it, restart and check the log in case of errors:
@@ -24,24 +24,47 @@ To know how to use `god`, see [MconfWebDeploymentInstallGod this page]. Once you
 {{{
 sudo /etc/init.d/god terminate
 sudo /etc/init.d/god start
+}}}
 
-# This is the default log file. Check the script /etc/init.d/god in case it doesn't exists.
+This is the default log file for `god`. It is created when `god` is executed by the script /etc/init.d/god:
+
+{{{
 tail -100 /var/log/god.log
 }}}
 
-
-Also, sometimes god might start but delayed_job won't. You can see the delayed_job log files at:
+Also, sometimes `god` might start but `delayed_job` won't. You can see the `delayed_job` log files at:
 
 {{{
 ~/mconf-web/current/log/god_delayed_job.0.log
 ~/mconf-web/current/log/god_delayed_job.1.log
 }}}
 
-The directories where these files are located are defined in the delayed_job config file. You can see this file [https://github.com/mconf/mconf-web/blob/master/config/god/delayed_job.god clicking here] and in your machine it should be at:
+The directories where these files are located are defined in `delayed_job`'s config file. You can see this file [https://github.com/mconf/mconf-web/blob/master/config/god/delayed_job.god in our GitHub page] and in your machine it should be at:
 
 {{{
 /etc/god/conf.d/delayed_job.god
 }}}
+
+Check if the file it is correct.
+
+The way this script starts `delayed_job` is with a command like this:
+
+{{{
+cd /home/mconf/mconf-web/current; /usr/bin/env RAILS_ENV=production bundle exec script/delayed_job --pid-dir=/home/mconf/mconf-web/current/tmp/pids -i 0 start
+}}}
+
+You can try to run this command to see what happens, it should otuput the error (if any) in the console. This is executed with the user `mconf`.
+
+If it doesn't work, there is an even simpler version of it:
+
+{{{
+cd /home/mconf/mconf-web/current
+/usr/bin/env RAILS_ENV=production bundle exec script/delayed_job start
+}}}
+
+
+
+
 
 Also, make sure that your application's .rvmrc file is trusted ([https://rvm.io/workflow/rvmrc/ more details here]), otherwise delayed_job might not start:
 
