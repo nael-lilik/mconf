@@ -40,7 +40,14 @@ Configurações básicas:
 Para a autenticação Shibboleth:
 
   * Enable Shibboleth: habilitar
-  * Shibboleth environment variables: "`cn mail ufrgsVinculo uid shib-.*`"
+  * Shibboleth environment variables (nota: separar itens com uma nova linha):
+    {{{
+cn
+mail
+ufrgsVinculo
+uid
+shib-.*
+    }}}
   * Shibboleth field for email: "`mail`"
   * Shibboleth field for name: "`cn`"
   * Shibboleth field for login: "`uid`"
