@@ -54,10 +54,29 @@ shib-.*
 
 Com essas configurações o acesso através da federação já deve estar funcionando.
 
-Se for utilizada a conta do Gmail para envio de emails:
+Configurações do SMTP para utilizar uma *conta do Gmail* (normalmente a maneira mais fácil de testar o envio de emails inicialmente):
 
-  * SMTP Login: "`ufrgs@mconf.org`"
-  * SMTP Password: <font color=blue><consultar equipe></font>
+  * SMTP login: "`ufrgs@mconf.org`"
+  * SMTP password: <font color=blue><consultar equipe></font>
+  * SMTP server: "`smtp.gmail.com`"
+  * SMTP domain: "`gmail.com`"
+  * SMTP port: "`587`"
+  * Use TLS in SMTP: `<marcar>`
+  * Auto start TLS in SMTP: `<marcar>`
+  * SMTP authentication type: "plain"
+  * SMTP sender: "ufrgs@mconf.org" (ou outro)
+
+Configurações do SMTP para utilizar um *servidor de emails no localhost*:
+
+  * SMTP login: "" (deixar vazio)
+  * SMTP password: "" (deixar vazio)
+  * SMTP server: "`localhost`"
+  * SMTP domain: "`localhost`"
+  * SMTP port: "`25`"
+  * Use TLS in SMTP: `<não marcar>`
+  * Auto start TLS in SMTP: `<não marcar>`
+  * SMTP authentication type: "" (deixar vazio)
+  * SMTP sender: "ufrgs@mconf.org" (ou outro)
 
 Na aba "!BigBlueButton", haverá um servidor de web conferência já pré-cadastrado. Modifcar as configurações deste servidor para:
 
