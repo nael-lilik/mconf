@@ -68,14 +68,14 @@ Configurações do SMTP para utilizar uma *conta do Gmail* (normalmente a maneir
 
 Configurações do SMTP para utilizar um *servidor de emails no localhost*:
 
-  * SMTP login: <deixar vazio>
-  * SMTP password: <deixar vazio>
+  * SMTP login: <deixar em branco>
+  * SMTP password: <deixar em branco>
   * SMTP server: "`localhost`"
   * SMTP domain: "`localhost`"
   * SMTP port: "`25`"
   * Use TLS in SMTP: <não marcar>
   * Auto start TLS in SMTP: <não marcar>
-  * SMTP authentication type: <deixar vazio>
+  * SMTP authentication type: <deixar em branco>
   * SMTP sender: "ufrgs@mconf.org" (ou outro)
 
 Na aba "!BigBlueButton", haverá um servidor de web conferência já pré-cadastrado. Modifcar as configurações deste servidor para:
