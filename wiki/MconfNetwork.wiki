@@ -146,6 +146,13 @@ sudo mv client.rb /etc/chef/
 sudo chef-client
 }}}
 
+Then run:
+
+{{{
+$ chmod +x install-mconf-chef.sh
+$ ./install-mconf-chef.sh
+}}}
+
 After that, your server will be registered on the Mconf Chef Server. Then we will assign the role "[https://github.com/mconf/chef-recipes/blob/master/roles/mconf-node.json mconf-node]" to your server, and both software and configuration will get installed and updated.
 
 == Troubleshooting ==
