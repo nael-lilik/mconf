@@ -78,6 +78,8 @@ If you want to work with Eclipse (after followed the steps above):
  # Just wait while Eclipse build the code
  # Run *`bbb-android`* or *`mconf-mobile`* as an Android application
 
+Since *`ant build-all`* will download all the submodules and dependencies, you will need to remove the files `bbb-java-git.jar` and `flazr-git.jar` from `bbb-android-core/libs`. It's needed because Eclipse will use the libraries BBB-Java and Flazr from the imported projects instead of the already compiled libraries - if you keep the .jar files, Eclipse will try to include the resources twice (one from the Eclipse projects and one from the .jar files) and it won't run.
+
 A full documentation for Android developers is available [http://developer.android.com/index.html here].
 
 = How could I contribute? =
