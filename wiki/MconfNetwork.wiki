@@ -150,7 +150,6 @@ cat > first_run.json << EOF
 EOF
 
 sudo chef-client -j first_run.json
-rm first_run.json
 }}}
 
 Then run:
