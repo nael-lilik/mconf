@@ -8,7 +8,13 @@ To read how to install Mconf-Live and join the Global Network, see the [MconfNet
 
 == Changelog ==
 
-=== mconf-live0.3 (currently under beta) ===
+=== mconf-live0.3beta5 (April 13th 2013) ===
+ * Fixed the bug that was preventing the deskshare window to close on participants
+ * Fixed the bug that was preventing Android client users to join the voice conference properly on servers behind NAT
+ * Removed the FreeSWITCH sounds like "You are now muted" and "You are currently the only person in this conference"
+ * Changed the interface of the Network Monitor that was annoying some users
+
+=== mconf-live0.3beta1 to mconf-live0.3beta4 ===
  * Source code: https://github.com/mconf/bigbluebutton/tree/mconf-live0.3
  * Based on !BigBlueButton 0.8
  * New kind of participant that only receives audio and video but doesn't transmit anything until he wants to (details in [http://mconf.org/m/posts/2013/01/11/mconf-live-0-3/ this blog post])
