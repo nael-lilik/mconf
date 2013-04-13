@@ -11,6 +11,7 @@ To read how to install Mconf-Live and join the Global Network, see the [MconfNet
 === mconf-live0.3beta5 (April 13th 2013) ===
  * Fixed the bug that was preventing the deskshare window to close on participants
  * Fixed the bug that was preventing Android client users to join the voice conference properly on servers behind NAT
+ * Fixed the race condition that was making possible to create more than one global audio stream on the server
  * Removed the FreeSWITCH sounds like "You are now muted" and "You are currently the only person in this conference"
  * Changed the interface of the Network Monitor that was annoying some users
 
