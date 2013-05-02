@@ -85,3 +85,34 @@ Na aba "!BigBlueButton", haverá um servidor de web conferência já pré-cadast
   * Security Salt: <font color=blue><consultar equipe></font>
   * Version: "`0.8`"
   * String ID: "`default-server`"
+
+== Atualização de versão ==
+
+Atualizar a versão do software (baixar nova versão do branch "latest"):
+
+{{{
+cd ~/mconf-web/current
+git checkout latest
+git pull origin latest
+}}}
+
+Atualizar as dependências:
+
+{{{
+git submodule update
+bundle install --without=development test
+}}}
+
+Migrar o banco de dados:
+
+{{{
+bundle exec rake db:migrate RAILS_ENV=production
+}}}
+
+Atualizar a crontab:
+
+{{{
+bundle exec whenever --update-crontab RAILS_ENV=production
+}}}
+
+Novas versões lançadas do Mconf-Web são incluídas na página do [MconfWebRoadMap changelog e road map]. É sempre importante verificar essa página para ver o que foi atualizado no software.
