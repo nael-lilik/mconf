@@ -112,7 +112,7 @@ bundle exec rake db:migrate RAILS_ENV=production
 Atualizar a crontab:
 
 {{{
-bundle exec whenever --update-crontab RAILS_ENV=production
+bundle exec whenever --update-crontab mconf-web --set environment=production --roles db
 }}}
 
 Novas versões lançadas do Mconf-Web são incluídas na página do [MconfWebRoadMap changelog e road map]. É sempre importante verificar essa página para ver o que foi atualizado no software.
