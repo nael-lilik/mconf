@@ -115,4 +115,4 @@ Atualizar a crontab:
 bundle exec whenever --update-crontab mconf-web --set environment=production --roles db
 }}}
 
-Novas versões lançadas do Mconf-Web são incluídas na página do [MconfWebRoadMap changelog e road map]. É sempre importante verificar essa página para ver o que foi atualizado no software.
+Mais detalhes sobre as versões do Mconf-Web em [MconfWebRoadMap changelog e road map].
