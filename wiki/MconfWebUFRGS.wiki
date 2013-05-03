@@ -92,6 +92,7 @@ Atualizar a versão do software (baixar nova versão do branch "ufrgs"):
 
 {{{
 cd ~/mconf-web/current
+git pull
 git checkout ufrgs
 git pull origin ufrgs
 }}}
