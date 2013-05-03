@@ -116,3 +116,5 @@ bundle exec whenever --update-crontab mconf-web --set environment=production --r
 }}}
 
 Mais detalhes sobre as versões do Mconf-Web em [MconfWebRoadMap changelog e road map].
+
+Por fim, *reiniciar o servidor*. Instruções [MconfWebDeploymentManual#Restart nesta página].
