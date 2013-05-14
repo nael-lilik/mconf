@@ -100,6 +100,8 @@ Then copy the script below and paste it in a file named `install-mconf-chef.sh`:
 {{{
 #!/bin/bash
 
+set -e
+
 if [ ! -f /etc/chef/validation.pem ]
 then
       echo "No validation key found (/etc/chef/validation.pem), aborting..."
