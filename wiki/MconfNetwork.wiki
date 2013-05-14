@@ -57,6 +57,31 @@ ff02::2 ip6-allrouters
 
 Please pay attention at the second line, first comes the IP address of the server, then the hostname followed by the domain name, and then just the hostname. This way, when the server gets registered on Chef Server, it will be identified correctly as `mconf1.ufrgs.br`. *These configurations must be done before install the Chef Client - if you want to modify these configurations later, please contact support AT mconf.org.*
 
+== Setting up the locale properly ==
+
+Please check if the locale of your server is configured properly:
+
+{{{
+$ cat /etc/default/locale
+LANG="en_US.UTF-8"
+}}}
+
+If `LANG` isn't set or has a different value, run:
+
+{{{
+sudo apt-get install language-pack-en
+sudo update-locale LANG=en_US.UTF-8
+}}}
+
+Then check again your locale:
+
+{{{
+$ cat /etc/default/locale
+LANG="en_US.UTF-8"
+}}}
+
+If you see any other language definition (like `LC_LANG`), edit the locale file and remove them. *The content of the locale file must match exactly the content above.*
+
 == Deployment ==
 
 Mconf-Live is installed using the [http://www.opscode.com/chef/ Chef framework], and all the recipes used to deploy a Mconf Node are open source and available on !GitHub (https://github.com/mconf/chef-recipes). We do not provide any other way to install Mconf-Live without Chef, and this service is currently only available for the Mconf Network partners.
