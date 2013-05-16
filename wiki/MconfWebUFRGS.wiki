@@ -119,3 +119,22 @@ bundle exec whenever --update-crontab mconf-web --set environment=production --r
 Mais detalhes sobre as versões do Mconf-Web em [MconfWebRoadMap changelog e road map].
 
 Por fim, *reiniciar o servidor*. Instruções [MconfWebDeploymentManual#Restart nesta página].
+
+== Changelog ==
+
+(list of issues at http://dev.mconf.org/redmine/projects/mconf-web/issues)
+
+*17/05/2013*
+
+  * #718: Rooms that belongs to disabled users or spaces cannot be accessed
+  * #759: Removed text that says that the user can change his room id (he can't)
+  * #766: Fix bug causing errors when trying to update a space (name, description, logo, etc)
+  * #731: When a user tried to accept and invitation to join a space he was asked to create a new account, but creating new accounts is disabled in the site
+  * #728: Fix huge horizontal scroll bar when uploading profile picture
+  * #737: Minimum length for logins is now 1 char
+  * #530: Add options to configure an external help page (when configured the website will have links pointing to http://www.ufrgs.br/cpd/servicos/redes-e-comunicacao/webconferencia-mconf)
+  * Updated translations
+
+*10/05/2013*
+
+  * First version
