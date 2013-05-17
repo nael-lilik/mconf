@@ -8,6 +8,10 @@ To read how to install Mconf-Live and join the Global Network, see the [MconfNet
 
 == Changelog ==
 
+=== mconf-live0.3.1 (May 17th 2013) ===
+ * Upgraded the version of the desktop sharing applet from 0.8 to 0.8.1, which consumes much less network resource
+ * Fixed the bug that was preventing users on Windows to listen the conference if they don't have a microphone connected
+
 === mconf-live0.3beta5 (April 13th 2013) ===
  * Fixed the bug that was preventing the deskshare window to close on participants
  * Fixed the bug that was preventing Android client users to join the voice conference properly on servers behind NAT
