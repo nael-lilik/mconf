@@ -1,1 +1,1 @@
-[https://github.com/mconf/wiki/wiki Our wiki is not hosted on GitHub, click here to see it.]
+[https://github.com/mconf/wiki/wiki Our wiki is now hosted on GitHub, click here to go to it.]
