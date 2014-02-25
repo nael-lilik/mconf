@@ -1,3 +1,4 @@
+#labels Deprecated
 = Mconf-Live =
 
 Mconf-Live is an open source webconference system based on [http://bigbluebutton.org BigBlueButton]. It is part of the Mconf project, which includes a web portal with social network characteristcs, a mobile client and a Global Webconference Network with load balancing, real-time monitoring and usage reports.
