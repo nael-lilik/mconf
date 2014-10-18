@@ -1,5 +1,0 @@
-#summary Video receiving, decoding and rendering explanation.
-
-= Introduction =
-
-This chapter will explain how the video receiving, decoding and rendering was implemented to the MconfMobile.
