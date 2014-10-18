@@ -1,4 +1,0 @@
-#summary MconfMobile video integration.
-
-= Introduction =
-In this chapter it will be explained how the video support was integrated to MconfMobile. Firstly, some alternatives that didn't work will be presented [MconfMobileVideoAlternatives here]. Secondly, the implementation is described [MconfMobileVideoImplementation here].
